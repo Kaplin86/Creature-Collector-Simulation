@@ -21,9 +21,14 @@ func calculateBST():
 
 func _ready():
 	_bstHash = calculateBST()
+	_SpDHash = calculateFinalStat("SpD")
 
 var _bstHash = 0.0
+var _SpDHash = 0.0
 
+enum ActionTypes {Wander,Hunt,LookForMate}
+
+var targetLocation : Vector2
 
 var age = 0.0
 func _process(delta):
@@ -34,11 +39,35 @@ func _process(delta):
 	if energy <= 0:
 		queue_free()
 	
+	var currentAction : ActionTypes = ActionTypes.Wander
+	
 	if GlobalVars.AgeToReproducePerStat * _bstHash < age:
-		if GlobalVars.reproductionType == 0:
-			if energy >= 0.75:
+		if energy >= 0.75:
+			if GlobalVars.reproductionType == 0:
 				energy -= 0.5
 				soloReproduction()
+			elif GlobalVars.reproductionType == 1:
+				currentAction = ActionTypes.LookForMate
+	
+	
+	if energy <= 0.65:
+		currentAction = ActionTypes.Hunt
+	
+	if currentAction == ActionTypes.Wander:
+		wanderCode()
+	elif currentAction == ActionTypes.Hunt:
+		var result = lookForFood()
+		if result:
+			targetLocation = result.global_position
+		else:
+			wanderCode()
+	
+	
+	global_position = lerp(global_position,targetLocation,delta)
+
+func wanderCode():
+	if randi_range(0,20) == 0:
+			targetLocation = global_position + Vector2(randf_range(-50,50),randf_range(-50,50))
 
 func soloReproduction():
 	var newAgent = Agent.new()
@@ -46,3 +75,20 @@ func soloReproduction():
 	newAgent.parts = parts.duplicate(true)
 	for I : BodyPart in newAgent.parts:
 		I.mutateRandomly()
+
+func lookInVision() -> Array[Node2D]:
+	
+	var VisionDistance = _SpDHash * GlobalVars.PixelVisionPerSPD
+	var foundNodes = []
+	var nodes = get_parent().get_children()
+	for I in nodes:
+		if I is Node2D: if global_position.distance_to(I.global_position) < VisionDistance:
+			foundNodes.append(I)
+	return foundNodes
+
+func lookForFood() -> Node2D:
+	var results = lookInVision()
+	for I in results:
+		if I is Fruit:
+			return I
+	return null

@@ -22,6 +22,133 @@ texture_filter = 1
 texture = ExtResource("3_j4dd3")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=886159300]
-position = Vector2(781, 332)
+position = Vector2(757, 303)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon2" type="Sprite2D" parent="." unique_id=1034820367]
+position = Vector2(783.00006, 291)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon3" type="Sprite2D" parent="." unique_id=1517230497]
+position = Vector2(788.00006, 324)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon4" type="Sprite2D" parent="." unique_id=108592889]
+position = Vector2(827, 281)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon5" type="Sprite2D" parent="." unique_id=1874674274]
+position = Vector2(640, 313.00003)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon6" type="Sprite2D" parent="." unique_id=1822747392]
+position = Vector2(430, 106)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon7" type="Sprite2D" parent="." unique_id=1759706113]
+position = Vector2(395.00003, 113.000015)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon8" type="Sprite2D" parent="." unique_id=445565038]
+position = Vector2(407.00003, 83.00001)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon9" type="Sprite2D" parent="." unique_id=1844565830]
+position = Vector2(440, 71)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon10" type="Sprite2D" parent="." unique_id=1987840301]
+position = Vector2(378.00003, 83.00001)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon11" type="Sprite2D" parent="." unique_id=662885382]
+position = Vector2(391, 46)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon12" type="Sprite2D" parent="." unique_id=577743739]
+position = Vector2(366.00003, 117)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon13" type="Sprite2D" parent="." unique_id=798058340]
+position = Vector2(338.00003, 66.00001)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon14" type="Sprite2D" parent="." unique_id=1396656400]
+position = Vector2(236.00003, 411)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon15" type="Sprite2D" parent="." unique_id=1909189214]
+position = Vector2(281, 433.00003)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon16" type="Sprite2D" parent="." unique_id=1057605943]
+position = Vector2(272, 394)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon17" type="Sprite2D" parent="." unique_id=1576953300]
+position = Vector2(231.00003, 471)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon18" type="Sprite2D" parent="." unique_id=2079584043]
+position = Vector2(224.00002, 404.00003)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon19" type="Sprite2D" parent="." unique_id=2003064070]
+position = Vector2(269, 459.00003)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon20" type="Sprite2D" parent="." unique_id=1746817234]
+position = Vector2(310, 421.00003)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon21" type="Sprite2D" parent="." unique_id=5866596]
+position = Vector2(337, 481.00003)
+scale = Vector2(0.1831634, 0.1831634)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")
+
+[node name="Icon22" type="Sprite2D" parent="." unique_id=1922452315]
+position = Vector2(337, 481.00003)
+scale = Vector2(0.1831634, 0.1831634)
 texture = ExtResource("4_ihovo")
 script = ExtResource("5_tls5n")
