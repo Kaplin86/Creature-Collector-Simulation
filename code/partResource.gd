@@ -6,10 +6,10 @@ class_name BodyPart
 @export var DEF = 10
 @export var SpA = 10
 @export var SpD = 10
-@export var SPD = 10
+@export var SP = 10
 
-var stats = ["HP","ATK","DEF","SpA","SpD","SPD"]
+var stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 
 func mutateRandomly():
 	for I in stats:
-		set(I,floor(get(I) + randf_range(-GlobalVars.mutationDist,GlobalVars.mutationDist)))
+		set(I,get(I) + randf_range(-GlobalVars.mutationDist,GlobalVars.mutationDist))

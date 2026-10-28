@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://ikxmy0dy8iol"]
 
 [ext_resource type="Script" uid="uid://co0aqwinkw0fu" path="res://code/Agent.gd" id="1_ngdw2"]
+[ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_oepk7"]
 [ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_ro32a"]
 [ext_resource type="Texture2D" uid="uid://nfbxld78idkp" path="res://art/thebrainguyfromtheoldoldnosmonprojectmeandmyfriendsdidofwhomiwillbeusingasaplaceholderforthetimebeing.png" id="3_j4dd3"]
 [ext_resource type="Texture2D" uid="uid://bmskkcym2ebv3" path="res://icon.svg" id="4_ihovo"]
 [ext_resource type="Script" uid="uid://b6i1w81t4kxe0" path="res://code/fruit.gd" id="5_tls5n"]
+[ext_resource type="Script" uid="uid://bacgc46d072ya" path="res://code/fruitSpawner.gd" id="6_tls5n"]
 
 [sub_resource type="Resource" id="Resource_ngdw2"]
 script = ExtResource("2_ro32a")
@@ -13,10 +15,10 @@ ATK = 30
 DEF = 35
 SpA = 20
 SpD = 20
-SPD = 45
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [node name="Simulatorscene" type="Node2D" unique_id=748557727]
+script = ExtResource("1_oepk7")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=51294036]
 position = Vector2(602, 314)
@@ -434,3 +436,123 @@ position = Vector2(337, 481.00003)
 scale = Vector2(0.1831634, 0.1831634)
 texture = ExtResource("4_ihovo")
 script = ExtResource("5_tls5n")
+
+[node name="Tree" type="Node2D" parent="." unique_id=1089327271]
+position = Vector2(-40, 172)
+script = ExtResource("6_tls5n")
+
+[node name="Tree23" type="Node2D" parent="." unique_id=844098382]
+position = Vector2(257, 320)
+script = ExtResource("6_tls5n")
+
+[node name="Tree24" type="Node2D" parent="." unique_id=1677366298]
+position = Vector2(366, 152)
+script = ExtResource("6_tls5n")
+
+[node name="Tree25" type="Node2D" parent="." unique_id=173531438]
+position = Vector2(651, 93)
+script = ExtResource("6_tls5n")
+
+[node name="Tree26" type="Node2D" parent="." unique_id=1304520549]
+position = Vector2(740, 250)
+script = ExtResource("6_tls5n")
+
+[node name="Tree27" type="Node2D" parent="." unique_id=706823558]
+position = Vector2(775, 413)
+script = ExtResource("6_tls5n")
+
+[node name="Tree28" type="Node2D" parent="." unique_id=1118258164]
+position = Vector2(589, 552)
+script = ExtResource("6_tls5n")
+
+[node name="Tree29" type="Node2D" parent="." unique_id=479201043]
+position = Vector2(350, 526)
+script = ExtResource("6_tls5n")
+
+[node name="Tree30" type="Node2D" parent="." unique_id=338500157]
+position = Vector2(350, 526)
+script = ExtResource("6_tls5n")
+
+[node name="Tree2" type="Node2D" parent="." unique_id=978578404]
+position = Vector2(50, 600)
+script = ExtResource("6_tls5n")
+
+[node name="Tree16" type="Node2D" parent="." unique_id=462493316]
+position = Vector2(675, 358)
+script = ExtResource("6_tls5n")
+
+[node name="Tree3" type="Node2D" parent="." unique_id=1706689830]
+position = Vector2(647, 816)
+script = ExtResource("6_tls5n")
+
+[node name="Tree4" type="Node2D" parent="." unique_id=585598738]
+position = Vector2(1348, 513)
+script = ExtResource("6_tls5n")
+
+[node name="Tree5" type="Node2D" parent="." unique_id=1364062322]
+position = Vector2(1152, -27)
+script = ExtResource("6_tls5n")
+
+[node name="Tree6" type="Node2D" parent="." unique_id=1650718867]
+position = Vector2(698, -203)
+script = ExtResource("6_tls5n")
+
+[node name="Tree7" type="Node2D" parent="." unique_id=1316478687]
+position = Vector2(165, -150)
+script = ExtResource("6_tls5n")
+
+[node name="Tree8" type="Node2D" parent="." unique_id=1526680187]
+position = Vector2(1119, -727)
+script = ExtResource("6_tls5n")
+
+[node name="Tree9" type="Node2D" parent="." unique_id=791765875]
+position = Vector2(2164, -300)
+script = ExtResource("6_tls5n")
+
+[node name="Tree10" type="Node2D" parent="." unique_id=1289322878]
+position = Vector2(2076, 1178)
+script = ExtResource("6_tls5n")
+
+[node name="Tree11" type="Node2D" parent="." unique_id=1109656320]
+position = Vector2(935, 1872)
+script = ExtResource("6_tls5n")
+
+[node name="Tree12" type="Node2D" parent="." unique_id=695681062]
+position = Vector2(-163, 1131)
+script = ExtResource("6_tls5n")
+
+[node name="Tree13" type="Node2D" parent="." unique_id=529923065]
+position = Vector2(-772, -140)
+script = ExtResource("6_tls5n")
+
+[node name="Tree14" type="Node2D" parent="." unique_id=1385021479]
+position = Vector2(-151, -761)
+script = ExtResource("6_tls5n")
+
+[node name="Tree15" type="Node2D" parent="." unique_id=2029416500]
+position = Vector2(145, 72)
+script = ExtResource("6_tls5n")
+
+[node name="Tree17" type="Node2D" parent="." unique_id=2001961575]
+position = Vector2(518, -14)
+script = ExtResource("6_tls5n")
+
+[node name="Tree18" type="Node2D" parent="." unique_id=111269747]
+position = Vector2(821, 83)
+script = ExtResource("6_tls5n")
+
+[node name="Tree19" type="Node2D" parent="." unique_id=835287756]
+position = Vector2(958, 382)
+script = ExtResource("6_tls5n")
+
+[node name="Tree20" type="Node2D" parent="." unique_id=451730828]
+position = Vector2(402, 369)
+script = ExtResource("6_tls5n")
+
+[node name="Tree21" type="Node2D" parent="." unique_id=496235625]
+position = Vector2(493, 214)
+script = ExtResource("6_tls5n")
+
+[node name="Tree22" type="Node2D" parent="." unique_id=1174795304]
+position = Vector2(493, 214)
+script = ExtResource("6_tls5n")

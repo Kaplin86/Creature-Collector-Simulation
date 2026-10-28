@@ -27,11 +27,13 @@ func _init():
 	add_child(newSprite)
 
 func _ready():
-	_bstHash = calculateBST()
-	_SpDHash = calculateFinalStat("SpD")
+	_bstHash = max(calculateBST(),5)
+	_SpDHash = max(5,calculateFinalStat("SpD"))
+	_SPHash = max(5,calculateFinalStat("SP"))
 
 var _bstHash = 0.0
 var _SpDHash = 0.0
+var _SPHash = 0.0
 
 enum ActionTypes {Wander,Hunt,LookForMate}
 
@@ -47,10 +49,10 @@ func _process(delta):
 		queue_free()
 	
 	var currentAction : ActionTypes = ActionTypes.Wander
-	if GlobalVars.AgeToReproducePerStat * _bstHash < age:
+	if max(GlobalVars.AgeToReproducePerStat * _bstHash,30) < age:
 		if energy >= 0.75:
 			if GlobalVars.reproductionType == 0:
-				energy -= 0.5
+				energy -= 0.7
 				soloReproduction()
 			elif GlobalVars.reproductionType == 1:
 				currentAction = ActionTypes.LookForMate
@@ -68,7 +70,7 @@ func _process(delta):
 		var result = lookForFood()
 		if result:
 			targetLocation = result.global_position
-			if targetLocation.distance_to(result.global_position) < 10:
+			if global_position.distance_to(result.global_position) < 5:
 				if result is Fruit:
 					energy += result.NutritionalValue
 					result.queue_free()
@@ -83,7 +85,7 @@ func _process(delta):
 			
 	
 	
-	global_position = lerp(global_position,targetLocation,delta)
+	global_position += global_position.direction_to(targetLocation) * min(_SPHash,global_position.distance_to(targetLocation))
 
 func wanderCode():
 	if randi_range(0,20) == 0:
@@ -95,6 +97,7 @@ func soloReproduction():
 	newAgent.parts = parts.duplicate(true)
 	newAgent.global_position = global_position
 	newAgent.targetLocation = global_position
+	newAgent.energy = 0.5
 	for I : BodyPart in newAgent.parts:
 		I.mutateRandomly()
 	
@@ -109,8 +112,11 @@ func lookInVision() -> Array[Node2D]:
 		if I is Node2D: if global_position.distance_to(I.global_position) < VisionDistance:
 			foundNodes.append(I)
 	
+	var sortedByDistance
 	
 	return foundNodes
+
+
 
 func lookForFood() -> Node2D:
 	var results = lookInVision()
