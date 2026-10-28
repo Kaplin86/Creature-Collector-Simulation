@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ikxmy0dy8iol"]
+
+[ext_resource type="Script" uid="uid://co0aqwinkw0fu" path="res://code/Agent.gd" id="1_ngdw2"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_ro32a"]
+[ext_resource type="Texture2D" uid="uid://nfbxld78idkp" path="res://art/thebrainguyfromtheoldoldnosmonprojectmeandmyfriendsdidofwhomiwillbeusingasaplaceholderforthetimebeing.png" id="3_j4dd3"]
+[ext_resource type="Texture2D" uid="uid://bmskkcym2ebv3" path="res://icon.svg" id="4_ihovo"]
+[ext_resource type="Script" uid="uid://b6i1w81t4kxe0" path="res://code/fruit.gd" id="5_tls5n"]
+
+[sub_resource type="Resource" id="Resource_ngdw2"]
+script = ExtResource("2_ro32a")
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[node name="Simulatorscene" type="Node2D" unique_id=748557727]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=51294036]
+position = Vector2(602, 314)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_ngdw2")])
+
+[node name="Thebrainguyfromtheoldoldnosmonprojectmeandmyfriendsdidofwhomiwillbeusingasaplaceholderforthetimebeing" type="Sprite2D" parent="Node2D" unique_id=2092078239]
+texture_filter = 1
+texture = ExtResource("3_j4dd3")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=886159300]
+position = Vector2(781, 332)
+texture = ExtResource("4_ihovo")
+script = ExtResource("5_tls5n")

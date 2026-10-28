@@ -14,10 +14,18 @@ config/name="Creature-Collector-Simulation"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalVars="*uid://j2fw1yh217hc"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [physics]
 
