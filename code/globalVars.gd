@@ -10,3 +10,5 @@ var AgeToReproducePerStat = 2 #the amount of seconds it takes for a creature to 
 var TimeForSmallCreatureToDieOfStarvation = 120
 
 var PixelVisionPerSPD = 4 #how many inworld units / pixels the agent can see based on their SpD stat
+
+var bstPerBirthTimer = 0.5

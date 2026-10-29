@@ -17,6 +17,16 @@ SpA = 20
 SpD = 20
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
+[sub_resource type="Resource" id="Resource_oepk7"]
+script = ExtResource("2_ro32a")
+HP = 45
+ATK = 30
+DEF = 35
+SpA = 20
+SpD = 40
+SP = 16
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
 [node name="Simulatorscene" type="Node2D" unique_id=748557727]
 script = ExtResource("1_oepk7")
 
@@ -24,8 +34,20 @@ script = ExtResource("1_oepk7")
 position = Vector2(602, 314)
 script = ExtResource("1_ngdw2")
 parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_ngdw2")])
+species = 30
 
 [node name="Thebrainguyfromtheoldoldnosmonprojectmeandmyfriendsdidofwhomiwillbeusingasaplaceholderforthetimebeing" type="Sprite2D" parent="Node2D" unique_id=2092078239]
+texture_filter = 1
+texture = ExtResource("3_j4dd3")
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=1514172927]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(818, 380)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+
+[node name="Thebrainguyfromtheoldoldnosmonprojectmeandmyfriendsdidofwhomiwillbeusingasaplaceholderforthetimebeing" type="Sprite2D" parent="Node2D2" unique_id=1998454812]
 texture_filter = 1
 texture = ExtResource("3_j4dd3")
 

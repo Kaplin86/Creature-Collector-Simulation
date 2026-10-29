@@ -4,9 +4,12 @@ class_name Agent
 # NOTES FOR L8R: A bst of 300 and lower is considered small. For pokemon context, 300 bst is roughly most starter mons.
 
 var energy = 1.0
+var birthtimer = 0
 @export var parts : Array[BodyPart] = []
 
 var memoryFoodPosition # a position that refers to the last seen fruit
+
+@export var species = 1
 
 func calculateFinalStat(stat : String):
 	var sum = 0
@@ -49,7 +52,8 @@ func _process(delta):
 		queue_free()
 	
 	var currentAction : ActionTypes = ActionTypes.Wander
-	if max(GlobalVars.AgeToReproducePerStat * _bstHash,30) < age:
+	birthtimer -= delta
+	if max(GlobalVars.AgeToReproducePerStat * _bstHash,30) < age and birthtimer < 0.01:
 		if energy >= 0.75:
 			if GlobalVars.reproductionType == 0:
 				energy -= 0.7
@@ -98,10 +102,13 @@ func soloReproduction():
 	newAgent.global_position = global_position
 	newAgent.targetLocation = global_position
 	newAgent.energy = 0.5
+	newAgent.species = species
 	for I : BodyPart in newAgent.parts:
 		I.mutateRandomly()
 	
 	get_parent().add_child(newAgent)
+	newAgent.modulate = modulate
+	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
 
 func lookInVision() -> Array[Node2D]:
 	
@@ -112,11 +119,13 @@ func lookInVision() -> Array[Node2D]:
 		if I is Node2D: if global_position.distance_to(I.global_position) < VisionDistance:
 			foundNodes.append(I)
 	
-	var sortedByDistance
+	var sortedByDistance = foundNodes.duplicate()
+	sortedByDistance.sort_custom(byDistance)
 	
-	return foundNodes
+	return sortedByDistance
 
-
+func byDistance(a : Node2D,b : Node2D):
+	return a.global_position.distance_squared_to(global_position) < b.global_position.distance_squared_to(global_position)
 
 func lookForFood() -> Node2D:
 	var results = lookInVision()
