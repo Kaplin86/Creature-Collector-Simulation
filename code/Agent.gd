@@ -10,6 +10,7 @@ var birthtimer = 0
 var memoryFoodPosition # a position that refers to the last seen fruit
 
 @export var species = 1
+var generation = 0
 
 func calculateFinalStat(stat : String):
 	var sum = 0
@@ -33,6 +34,8 @@ func _ready():
 	_bstHash = max(calculateBST(),5)
 	_SpDHash = max(5,calculateFinalStat("SpD"))
 	_SPHash = max(5,calculateFinalStat("SP"))
+	
+	add_to_group("creature")
 
 var _bstHash = 0.0
 var _SpDHash = 0.0
@@ -103,6 +106,7 @@ func soloReproduction():
 	newAgent.targetLocation = global_position
 	newAgent.energy = 0.5
 	newAgent.species = species
+	newAgent.generation = generation + 1
 	for I : BodyPart in newAgent.parts:
 		I.mutateRandomly()
 	

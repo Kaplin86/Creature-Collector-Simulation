@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalVars="*uid://j2fw1yh217hc"
+SimulationRecorder="*uid://b1cnccvtl0a8"
 
 [display]
 
@@ -26,6 +27,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[global_group]
+
+creature=""
 
 [physics]
 
