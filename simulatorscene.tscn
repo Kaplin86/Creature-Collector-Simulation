@@ -22,6 +22,28 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 script = ExtResource("5_dh3iq")
 metadata/_custom_type_script = "uid://b65mjq863idtp"
 
+[sub_resource type="Resource" id="Resource_8tkw1"]
+resource_local_to_scene = true
+script = ExtResource("2_ro32a")
+HP = 70
+ATK = 35
+DEF = 35
+SpA = 35
+SpD = 45
+SP = 20
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_c86cp"]
+resource_local_to_scene = true
+script = ExtResource("2_ro32a")
+HP = 90
+ATK = 50
+DEF = 60
+SpA = 35
+SpD = 30
+SP = 15
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
 [sub_resource type="Resource" id="Resource_84svq"]
 resource_local_to_scene = true
 script = ExtResource("2_ro32a")
@@ -56,12 +78,13 @@ parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
 species = 50
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
-[node name="Node2D4" type="Node2D" parent="." unique_id=385628149 groups=["creature"]]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(201, 340)
+[node name="omni" type="Node2D" parent="." unique_id=707947471 groups=["creature"]]
+modulate = Color(16.497572, 10.581538, 0, 1)
+position = Vector2(448, 34)
 script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
-species = 50
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_8tkw1")])
+species = 10
+dietType = 2
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
 [node name="Node2D5" type="Node2D" parent="." unique_id=1018640247 groups=["creature"]]
@@ -90,7 +113,7 @@ moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
 [node name="Node2D8" type="Node2D" parent="." unique_id=1553449759 groups=["creature"]]
 modulate = Color(1, 0, 1, 1)
-position = Vector2(580, 404)
+position = Vector2(580, 405)
 script = ExtResource("1_ngdw2")
 parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
 species = 50
@@ -104,74 +127,26 @@ parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
 species = 50
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
-[node name="Node2D10" type="Node2D" parent="." unique_id=1387775319 groups=["creature"]]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(933, 406)
+[node name="tankherb" type="Node2D" parent="." unique_id=2006787443 groups=["creature"]]
+modulate = Color(0.00074303197, 7.580347, 9.676489, 1)
+position = Vector2(884, 508)
 script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
-species = 50
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_c86cp")])
+species = 120
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
-[node name="Node2D11" type="Node2D" parent="." unique_id=48987314 groups=["creature"]]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(316, 366)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
-species = 50
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D12" type="Node2D" parent="." unique_id=1246087456 groups=["creature"]]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(610, 589)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
-species = 50
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D13" type="Node2D" parent="." unique_id=1219233307 groups=["creature"]]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(682, 413)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
-species = 50
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D14" type="Node2D" parent="." unique_id=563183987 groups=["creature"]]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(401, 207)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
-species = 50
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D15" type="Node2D" parent="." unique_id=493504212 groups=["creature"]]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(695, 430)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
-species = 50
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D16" type="Node2D" parent="." unique_id=348394707 groups=["creature"]]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(767, 254)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
-species = 50
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D3" type="Node2D" parent="." unique_id=2087841555 groups=["creature"]]
+[node name="carnivore" type="Node2D" parent="." unique_id=2087841555 groups=["creature"]]
 modulate = Color(0, 0, 1, 1)
-position = Vector2(530, 334)
+position = Vector2(508, 330)
 script = ExtResource("1_ngdw2")
 parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
 species = 80
 dietType = 1
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_dh3iq"), SubResource("Resource_feijk")])
 
-[node name="Area2D" type="Area2D" parent="Node2D3" unique_id=1748530045]
+[node name="Area2D" type="Area2D" parent="carnivore" unique_id=1748530045]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D3/Area2D" unique_id=1383519357]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="carnivore/Area2D" unique_id=1383519357]
 shape = SubResource("CircleShape2D_mltvj")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=886159300]

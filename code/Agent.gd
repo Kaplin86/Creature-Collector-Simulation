@@ -46,9 +46,12 @@ func _ready():
 	
 	var newSprite = Sprite2D.new()
 	newSprite.texture = load("res://art/"+str(species)+".png")
+	if newSprite.texture == null:
+		newSprite.texture = load("res://art/"+str(50)+".png")
 	add_child(newSprite)
 	
 	HP = _HPHash
+	targetLocation = global_position + Vector2(randf_range(-50,50),randf_range(-50,50))
 
 func getTyping():
 	return GlobalVars.Typings.Fire
