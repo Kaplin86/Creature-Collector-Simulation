@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="SimulationHistory" format=3]
+[gd_resource type="Resource" script_class="SimulationHistory" format=3 uid="uid://ibed1xaagdki"]
 
-[ext_resource type="Script" path="res://code/partResource.gd" id="1_as1o5"]
-[ext_resource type="Script" path="res://code/SimulationHistory.gd" id="2_yxskd"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="1_as1o5"]
+[ext_resource type="Script" uid="uid://jkwibv1i2xlj" path="res://code/SimulationHistory.gd" id="2_yxskd"]
 
 [sub_resource type="Resource" id="Resource_rt41p"]
 script = ExtResource("1_as1o5")
@@ -165,7 +165,7 @@ ATK = 46.79084703909179
 DEF = 33.25223991174421
 SpA = 30.32853575600445
 SpD = 58.498643628088765
-SP = 11.434426934649455
+SP = 11.434426934649457
 
 [sub_resource type="Resource" id="Resource_nyikr"]
 script = ExtResource("1_as1o5")
@@ -183,7 +183,7 @@ ATK = 46.79084703909179
 DEF = 33.25223991174421
 SpA = 30.32853575600445
 SpD = 58.498643628088765
-SP = 11.434426934649455
+SP = 11.434426934649457
 
 [sub_resource type="Resource" id="Resource_fknq1"]
 script = ExtResource("1_as1o5")
@@ -278,7 +278,7 @@ SP = 11.140934963321266
 [sub_resource type="Resource" id="Resource_7qwqa"]
 script = ExtResource("1_as1o5")
 HP = 62.65959878224676
-ATK = 24.176108722775062
+ATK = 24.176108722775066
 DEF = 32.644332674734045
 SpA = 46.02712267862609
 SpD = 16.003545023590632
@@ -300,7 +300,7 @@ ATK = 27.30819368818515
 DEF = 37.15403151549448
 SpA = 43.09413965350725
 SpD = 12.280851322821382
-SP = 11.694125318360685
+SP = 11.694125318360683
 
 [sub_resource type="Resource" id="Resource_ncacq"]
 script = ExtResource("1_as1o5")
@@ -336,7 +336,7 @@ ATK = 36.24563070376768
 DEF = 36.51628371026231
 SpA = 40.079457637791506
 SpD = 4.274654864487107
-SP = 12.068585264307899
+SP = 12.0685852643079
 
 [sub_resource type="Resource" id="Resource_i82dm"]
 script = ExtResource("1_as1o5")
@@ -354,12 +354,12 @@ ATK = 36.24563070376768
 DEF = 36.51628371026231
 SpA = 40.079457637791506
 SpD = 4.274654864487108
-SP = 12.068585264307899
+SP = 12.0685852643079
 
 [sub_resource type="Resource" id="Resource_jmuwx"]
 script = ExtResource("1_as1o5")
 HP = 84.77843102936025
-ATK = 44.878142419936836
+ATK = 44.87814241993683
 DEF = 31.2767689700296
 SpA = 34.947141663391875
 SpD = 51.24267379156174
@@ -372,12 +372,12 @@ ATK = 31.86715671964423
 DEF = 32.40644637818912
 SpA = 43.55362158351974
 SpD = 3.0951021909949272
-SP = 14.774897046335585
+SP = 14.774897046335584
 
 [sub_resource type="Resource" id="Resource_vksfw"]
 script = ExtResource("1_as1o5")
 HP = 84.77843102936025
-ATK = 44.878142419936836
+ATK = 44.87814241993683
 DEF = 31.2767689700296
 SpA = 34.947141663391875
 SpD = 51.24267379156174
@@ -390,14 +390,14 @@ ATK = 31.867156719644235
 DEF = 32.40644637818912
 SpA = 43.55362158351974
 SpD = 3.0951021909949272
-SP = 14.774897046335585
+SP = 14.774897046335584
 
 [sub_resource type="Resource" id="Resource_ktrkg"]
 script = ExtResource("1_as1o5")
 HP = 87.35095875183227
 ATK = 47.11437870322737
 DEF = 27.89036352985568
-SpA = 31.098167497188594
+SpA = 31.09816749718859
 SpD = 47.45428619430829
 SP = 10.656794815707984
 
@@ -415,7 +415,7 @@ script = ExtResource("1_as1o5")
 HP = 87.35095875183227
 ATK = 47.11437870322737
 DEF = 27.89036352985568
-SpA = 31.098167497188594
+SpA = 31.09816749718859
 SpD = 47.45428619430829
 SP = 10.656794815707984
 
@@ -426,7 +426,7 @@ ATK = 31.504750982384564
 DEF = 37.0450566533042
 SpA = 38.87707857476772
 SpD = 3.1178465492115133
-SP = 11.720761470731663
+SP = 11.720761470731665
 
 [sub_resource type="Resource" id="Resource_6j044"]
 script = ExtResource("1_as1o5")
@@ -444,14 +444,14 @@ ATK = 31.504750982384564
 DEF = 37.04505665330421
 SpA = 38.87707857476772
 SpD = 3.1178465492115133
-SP = 11.720761470731661
+SP = 11.72076147073166
 
 [sub_resource type="Resource" id="Resource_pqntk"]
 script = ExtResource("1_as1o5")
 HP = 85.96572129081498
 ATK = 52.43765513068382
 DEF = 21.965219217806233
-SpA = 29.189834113895298
+SpA = 29.189834113895294
 SpD = 51.73046610346195
 SP = 12.956363222958602
 
@@ -462,7 +462,7 @@ ATK = 31.504750982384564
 DEF = 37.04505665330421
 SpA = 38.87707857476772
 SpD = 3.1178465492115133
-SP = 11.720761470731663
+SP = 11.720761470731665
 
 [sub_resource type="Resource" id="Resource_c8yma"]
 script = ExtResource("1_as1o5")
@@ -480,11 +480,11 @@ ATK = 31.504750982384564
 DEF = 37.04505665330421
 SpA = 38.87707857476772
 SpD = 3.1178465492115133
-SP = 11.720761470731663
+SP = 11.720761470731665
 
 [sub_resource type="Resource" id="Resource_aio26"]
 script = ExtResource("1_as1o5")
-HP = 90.96347720256571
+HP = 90.96347720256573
 ATK = 43.78172203421418
 DEF = 13.366036070607588
 SpA = 27.437973810428556
@@ -494,8 +494,8 @@ SP = 20.055271300819683
 [sub_resource type="Resource" id="Resource_xxwx7"]
 script = ExtResource("1_as1o5")
 HP = 92.23068803325909
-ATK = 47.996355008891676
-DEF = 12.543376884939917
+ATK = 47.99635500889168
+DEF = 12.543376884939915
 SpA = 25.45646702622144
 SpD = 64.83003818788153
 SP = 24.638537417846607
@@ -504,7 +504,7 @@ SP = 24.638537417846607
 script = ExtResource("1_as1o5")
 HP = 97.11730249194142
 ATK = 50.29970431668762
-DEF = 13.910344602593085
+DEF = 13.910344602593083
 SpA = 23.176699402871748
 SpD = 67.80474162987595
 SP = 27.955092514907328
@@ -590,7 +590,7 @@ cachedHistory = [{
 }
 }, {
 50: {
-"averageBST": 228.21517486363098,
+"averageBST": 228.21517486363095,
 "averagePart": SubResource("Resource_2uhpb"),
 "count": 22
 },
@@ -601,7 +601,7 @@ cachedHistory = [{
 }
 }, {
 50: {
-"averageBST": 228.21517486363098,
+"averageBST": 228.21517486363095,
 "averagePart": SubResource("Resource_p5jjf"),
 "count": 22
 },
@@ -760,7 +760,7 @@ cachedHistory = [{
 "count": 18
 },
 80: {
-"averageBST": 251.56494949212018,
+"averageBST": 251.56494949212015,
 "averagePart": SubResource("Resource_ktrkg"),
 "count": 7
 }
@@ -771,7 +771,7 @@ cachedHistory = [{
 "count": 15
 },
 80: {
-"averageBST": 251.56494949212018,
+"averageBST": 251.56494949212015,
 "averagePart": SubResource("Resource_jjtkp"),
 "count": 7
 }

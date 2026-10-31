@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blqn0q5j5o4uh"]
 
 [ext_resource type="Script" uid="uid://dalhmjfgnmomn" path="res://code/simulator_result_renderer.gd" id="1_g3qig"]
-[ext_resource type="Resource" uid="uid://dbgrv5j4cfnmh" path="res://savedSimulationResults/thing.tres" id="2_5k4fe"]
+[ext_resource type="Resource" uid="uid://bx2vh4as1dkmt" path="res://savedSimulationResults/2026-10-31T15-44-26.tres" id="2_5k4fe"]
 
 [node name="Node2D" type="Node2D" unique_id=1248064828]
 script = ExtResource("1_g3qig")
@@ -24,3 +24,9 @@ default_color = Color(0, 1, 1, 1)
 position = Vector2(76, 465)
 width = 5.0
 default_color = Color(0, 1, 1, 1)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1229727520]
+position = Vector2(76, 100)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=1883301886]
+position = Vector2(73, 463)

@@ -1,0 +1,1822 @@
+[gd_resource type="Resource" script_class="SimulationHistory" format=3 uid="uid://bx2vh4as1dkmt"]
+
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="1_bc3x1"]
+[ext_resource type="Script" uid="uid://jkwibv1i2xlj" path="res://code/SimulationHistory.gd" id="2_abyhh"]
+
+[sub_resource type="Resource" id="Resource_7p3q4"]
+script = ExtResource("1_bc3x1")
+HP = 70
+ATK = 35
+DEF = 35
+SpA = 35
+SpD = 40
+
+[sub_resource type="Resource" id="Resource_ob6to"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_oucbs"]
+script = ExtResource("1_bc3x1")
+HP = 70
+ATK = 35
+DEF = 35
+SpA = 35
+SpD = 40
+
+[sub_resource type="Resource" id="Resource_q0rhc"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_6tqso"]
+script = ExtResource("1_bc3x1")
+HP = 70
+ATK = 35
+DEF = 35
+SpA = 35
+SpD = 40
+
+[sub_resource type="Resource" id="Resource_eqioj"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_3h4sh"]
+script = ExtResource("1_bc3x1")
+HP = 70
+ATK = 35
+DEF = 35
+SpA = 35
+SpD = 40
+
+[sub_resource type="Resource" id="Resource_leh05"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_8318g"]
+script = ExtResource("1_bc3x1")
+HP = 70
+ATK = 35
+DEF = 35
+SpA = 35
+SpD = 40
+
+[sub_resource type="Resource" id="Resource_qmg1i"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_xcwu7"]
+script = ExtResource("1_bc3x1")
+HP = 70
+ATK = 35
+DEF = 35
+SpA = 35
+SpD = 40
+
+[sub_resource type="Resource" id="Resource_tdnoa"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_y462v"]
+script = ExtResource("1_bc3x1")
+HP = 70
+ATK = 35
+DEF = 35
+SpA = 35
+SpD = 40
+
+[sub_resource type="Resource" id="Resource_lssa3"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_4gab5"]
+script = ExtResource("1_bc3x1")
+HP = 65.71118796299682
+ATK = 34.05536988105385
+DEF = 36.840386848095925
+SpA = 31.68611460965141
+SpD = 40.461894024972146
+SP = 15.491449081467406
+
+[sub_resource type="Resource" id="Resource_qna73"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_n11ms"]
+script = ExtResource("1_bc3x1")
+HP = 65.71118796299682
+ATK = 34.05536988105385
+DEF = 36.840386848095925
+SpA = 31.68611460965141
+SpD = 40.461894024972146
+SP = 15.491449081467406
+
+[sub_resource type="Resource" id="Resource_1idkk"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_eadxa"]
+script = ExtResource("1_bc3x1")
+HP = 70.91958259828621
+ATK = 30.048180146455973
+DEF = 38.22829670071228
+SpA = 31.73672881518728
+SpD = 40.293458520138536
+SP = 13.150618250615684
+
+[sub_resource type="Resource" id="Resource_drxjq"]
+script = ExtResource("1_bc3x1")
+HP = 90
+ATK = 45
+DEF = 35
+SpA = 35
+SpD = 60
+
+[sub_resource type="Resource" id="Resource_t5588"]
+script = ExtResource("1_bc3x1")
+HP = 62.306087817098536
+ATK = 27.27283272099653
+DEF = 39.36548179580405
+SpA = 30.360959574028023
+SpD = 41.7668568587709
+SP = 6.490245441597023
+
+[sub_resource type="Resource" id="Resource_78f7y"]
+script = ExtResource("1_bc3x1")
+HP = 88.55136476717816
+ATK = 45.62769668202856
+DEF = 38.57838012178182
+SpA = 30.89600086889924
+SpD = 58.83990829939934
+SP = 10.404277280046308
+
+[sub_resource type="Resource" id="Resource_87nkv"]
+script = ExtResource("1_bc3x1")
+HP = 66.76006468409993
+ATK = 35.102405353547596
+DEF = 27.43291565388378
+SpA = 29.87412871310902
+SpD = 43.59153797516082
+SP = -0.17528858276603068
+
+[sub_resource type="Resource" id="Resource_ap7ko"]
+script = ExtResource("1_bc3x1")
+HP = 88.55136476717816
+ATK = 45.62769668202856
+DEF = 38.57838012178182
+SpA = 30.89600086889924
+SpD = 58.83990829939934
+SP = 10.404277280046308
+
+[sub_resource type="Resource" id="Resource_mu3pi"]
+script = ExtResource("1_bc3x1")
+HP = 66.76006468409993
+ATK = 35.102405353547596
+DEF = 27.43291565388378
+SpA = 29.87412871310902
+SpD = 43.59153797516082
+SP = -0.17528858276603068
+
+[sub_resource type="Resource" id="Resource_tl3cq"]
+script = ExtResource("1_bc3x1")
+HP = 88.55136476717816
+ATK = 45.62769668202856
+DEF = 38.57838012178182
+SpA = 30.89600086889924
+SpD = 58.83990829939934
+SP = 10.404277280046308
+
+[sub_resource type="Resource" id="Resource_18hfi"]
+script = ExtResource("1_bc3x1")
+HP = 62.247377564975075
+ATK = 34.21544080328377
+DEF = 24.866098778831127
+SpA = 25.152600288558872
+SpD = 47.50536470910925
+SP = 0.865514654439906
+
+[sub_resource type="Resource" id="Resource_p3nie"]
+script = ExtResource("1_bc3x1")
+HP = 88.55136476717816
+ATK = 45.62769668202856
+DEF = 38.57838012178182
+SpA = 30.89600086889924
+SpD = 58.83990829939934
+SP = 10.404277280046308
+
+[sub_resource type="Resource" id="Resource_ld4xh"]
+script = ExtResource("1_bc3x1")
+HP = 68.31145482205301
+ATK = 30.172936936267885
+DEF = 30.426853197487585
+SpA = 32.9568237814691
+SpD = 49.20901556670333
+SP = 2.0690342152686227
+
+[sub_resource type="Resource" id="Resource_3m0vc"]
+script = ExtResource("1_bc3x1")
+HP = 88.55136476717816
+ATK = 45.62769668202856
+DEF = 38.57838012178182
+SpA = 30.89600086889924
+SpD = 58.83990829939934
+SP = 10.404277280046308
+
+[sub_resource type="Resource" id="Resource_rh2g4"]
+script = ExtResource("1_bc3x1")
+HP = 86.79622377172838
+ATK = 24.155079147526077
+DEF = 24.33613693964443
+SpA = 38.245757844866695
+SpD = 49.34774597498125
+SP = 0.04517998961804048
+
+[sub_resource type="Resource" id="Resource_eecyf"]
+script = ExtResource("1_bc3x1")
+HP = 88.55136476717816
+ATK = 45.62769668202856
+DEF = 38.57838012178182
+SpA = 30.89600086889924
+SpD = 58.83990829939934
+SP = 10.404277280046308
+
+[sub_resource type="Resource" id="Resource_rwoxt"]
+script = ExtResource("1_bc3x1")
+HP = 83.05399662944444
+ATK = 20.15595523794563
+DEF = 24.10616043102098
+SpA = 39.275847569623544
+SpD = 58.30366829038206
+SP = 5.064892854528845
+
+[sub_resource type="Resource" id="Resource_wrv8i"]
+script = ExtResource("1_bc3x1")
+HP = 88.55136476717816
+ATK = 45.62769668202856
+DEF = 38.57838012178182
+SpA = 30.89600086889924
+SpD = 58.83990829939934
+SP = 10.404277280046308
+
+[sub_resource type="Resource" id="Resource_wrtlr"]
+script = ExtResource("1_bc3x1")
+HP = 85.41519669040204
+ATK = 18.849954285211545
+DEF = 5.303166314667353
+SpA = 38.51836969791117
+SpD = 71.18150767152007
+SP = -2.853345943540972
+
+[sub_resource type="Resource" id="Resource_xrbkw"]
+script = ExtResource("1_bc3x1")
+HP = 88.55136476717816
+ATK = 45.62769668202856
+DEF = 38.57838012178182
+SpA = 30.89600086889924
+SpD = 58.83990829939934
+SP = 10.404277280046308
+
+[sub_resource type="Resource" id="Resource_iv3pa"]
+script = ExtResource("1_bc3x1")
+HP = 85.41519669040204
+ATK = 18.84995428521155
+DEF = 5.3031663146673536
+SpA = 38.51836969791117
+SpD = 71.18150767152007
+SP = -2.853345943540972
+
+[sub_resource type="Resource" id="Resource_5l4jd"]
+script = ExtResource("1_bc3x1")
+HP = 88.55136476717816
+ATK = 45.62769668202856
+DEF = 38.57838012178182
+SpA = 30.89600086889924
+SpD = 58.83990829939934
+SP = 10.404277280046308
+
+[sub_resource type="Resource" id="Resource_575l0"]
+script = ExtResource("1_bc3x1")
+HP = 88.07722200701438
+ATK = 17.682748594115
+DEF = 8.05340213339633
+SpA = 42.70064410682533
+SpD = 69.93010290571614
+SP = 3.273373678545242
+
+[sub_resource type="Resource" id="Resource_vsiaa"]
+script = ExtResource("1_bc3x1")
+HP = 85.78967625792501
+ATK = 40.82817979094826
+DEF = 38.20564444490637
+SpA = 28.84370451108408
+SpD = 60.104308699980386
+SP = 9.266551618702914
+
+[sub_resource type="Resource" id="Resource_xjoex"]
+script = ExtResource("1_bc3x1")
+HP = 90.48913831866322
+ATK = 20.060439756833453
+DEF = 5.2998421847432065
+SpA = 43.446066163319934
+SpD = 73.7936601543
+SP = 6.064598136273532
+
+[sub_resource type="Resource" id="Resource_xk28q"]
+script = ExtResource("1_bc3x1")
+HP = 85.78967625792501
+ATK = 40.82817979094826
+DEF = 38.20564444490637
+SpA = 28.84370451108408
+SpD = 60.104308699980386
+SP = 9.266551618702914
+
+[sub_resource type="Resource" id="Resource_wcu32"]
+script = ExtResource("1_bc3x1")
+HP = 89.69768265131911
+ATK = 24.968403821076578
+DEF = 7.9663483199094065
+SpA = 39.2391754396233
+SpD = 69.13023781599819
+SP = 9.47447992602275
+
+[sub_resource type="Resource" id="Resource_tb0l5"]
+script = ExtResource("1_bc3x1")
+HP = 84.19977694310269
+ATK = 44.61891525585677
+DEF = 40.357655759004125
+SpA = 25.267652333874977
+SpD = 56.7080015024323
+SP = 12.139088874466603
+
+[sub_resource type="Resource" id="Resource_06ls0"]
+script = ExtResource("1_bc3x1")
+HP = 87.04305202260683
+ATK = 23.996029149545976
+DEF = 12.718543058100066
+SpA = 35.12854750594898
+SpD = 68.67122546646414
+SP = 7.473269562354396
+
+[sub_resource type="Resource" id="Resource_sb6vq"]
+script = ExtResource("1_bc3x1")
+HP = 84.19977694310269
+ATK = 44.61891525585677
+DEF = 40.357655759004125
+SpA = 25.267652333874977
+SpD = 56.7080015024323
+SP = 12.139088874466603
+
+[sub_resource type="Resource" id="Resource_7iou0"]
+script = ExtResource("1_bc3x1")
+HP = 83.1314492034889
+ATK = 28.787618074002683
+DEF = 16.047669671669556
+SpA = 32.68010575135644
+SpD = 69.59160003497726
+SP = 2.761817362089902
+
+[sub_resource type="Resource" id="Resource_s3h2e"]
+script = ExtResource("1_bc3x1")
+HP = 84.19977694310269
+ATK = 44.61891525585677
+DEF = 40.357655759004125
+SpA = 25.267652333874977
+SpD = 56.7080015024323
+SP = 12.139088874466603
+
+[sub_resource type="Resource" id="Resource_p2jiu"]
+script = ExtResource("1_bc3x1")
+HP = 83.13144920348888
+ATK = 28.787618074002683
+DEF = 16.04766967166956
+SpA = 32.680105751356436
+SpD = 69.59160003497725
+SP = 2.761817362089902
+
+[sub_resource type="Resource" id="Resource_ro5ve"]
+script = ExtResource("1_bc3x1")
+HP = 88.2139084179654
+ATK = 43.06815822670989
+DEF = 38.02482153074348
+SpA = 20.4955727313574
+SpD = 60.88520999497801
+SP = 10.445662422611097
+
+[sub_resource type="Resource" id="Resource_o40ch"]
+script = ExtResource("1_bc3x1")
+HP = 83.13144920348888
+ATK = 28.78761807400268
+DEF = 16.04766967166956
+SpA = 32.680105751356436
+SpD = 69.59160003497725
+SP = 2.761817362089902
+
+[sub_resource type="Resource" id="Resource_tq1pw"]
+script = ExtResource("1_bc3x1")
+HP = 88.2139084179654
+ATK = 43.06815822670989
+DEF = 38.02482153074348
+SpA = 20.4955727313574
+SpD = 60.88520999497801
+SP = 10.445662422611097
+
+[sub_resource type="Resource" id="Resource_ty80h"]
+script = ExtResource("1_bc3x1")
+HP = 81.08885560420437
+ATK = 33.323078631468086
+DEF = 16.338472090356557
+SpA = 33.02460492886128
+SpD = 65.89682442519022
+SP = 3.0168211898923554
+
+[sub_resource type="Resource" id="Resource_62qwy"]
+script = ExtResource("1_bc3x1")
+HP = 87.30286643991258
+ATK = 38.7008803491251
+DEF = 38.80811323953281
+SpA = 20.81897661918973
+SpD = 63.068290059281864
+SP = 10.19921321375859
+
+[sub_resource type="Resource" id="Resource_de1eh"]
+script = ExtResource("1_bc3x1")
+HP = 77.63930500687691
+ATK = 25.479589903047785
+DEF = 18.82065466215621
+SpA = 31.557364686022712
+SpD = 58.24266436019027
+SP = 12.768809117416671
+
+[sub_resource type="Resource" id="Resource_r4gya"]
+script = ExtResource("1_bc3x1")
+HP = 87.30286643991258
+ATK = 38.7008803491251
+DEF = 38.80811323953281
+SpA = 20.81897661918973
+SpD = 63.06829005928187
+SP = 10.19921321375859
+
+[sub_resource type="Resource" id="Resource_da8o3"]
+script = ExtResource("1_bc3x1")
+HP = 73.8447271734639
+ATK = 23.30859776218754
+DEF = 20.439554155574605
+SpA = 28.49620697971721
+SpD = 54.18463459604632
+SP = 10.681551074683224
+
+[sub_resource type="Resource" id="Resource_pshj0"]
+script = ExtResource("1_bc3x1")
+HP = 86.80516784920094
+ATK = 34.19010773799127
+DEF = 35.645488503139795
+SpA = 22.78635669194101
+SpD = 58.69894185903765
+SP = 10.38265872216502
+
+[sub_resource type="Resource" id="Resource_561v5"]
+script = ExtResource("1_bc3x1")
+HP = 76.16431972703661
+ATK = 19.25147275860433
+DEF = 17.839238522721708
+SpA = 27.451534758685735
+SpD = 50.513106846453034
+SP = 8.914311536152933
+
+[sub_resource type="Resource" id="Resource_mt62c"]
+script = ExtResource("1_bc3x1")
+HP = 86.80516784920094
+ATK = 34.19010773799127
+DEF = 35.645488503139795
+SpA = 22.78635669194101
+SpD = 58.69894185903765
+SP = 10.38265872216502
+
+[sub_resource type="Resource" id="Resource_fm3hx"]
+script = ExtResource("1_bc3x1")
+HP = 75.91748539569379
+ATK = 15.160043883692358
+DEF = 16.3487816820797
+SpA = 29.536164311112767
+SpD = 53.56071159369356
+SP = 8.068865748202155
+
+[sub_resource type="Resource" id="Resource_h5nmh"]
+script = ExtResource("1_bc3x1")
+HP = 85.23447186337965
+ATK = 35.4024799061556
+DEF = 34.85337186744974
+SpA = 18.504756909469535
+SpD = 62.97817235068444
+SP = 14.967307950697773
+
+[sub_resource type="Resource" id="Resource_oocss"]
+script = ExtResource("1_bc3x1")
+HP = 71.26510636965156
+ATK = 11.526432148267764
+DEF = 16.222170542006833
+SpA = 29.7681902180643
+SpD = 49.921237233949846
+SP = 7.91809741733867
+
+[sub_resource type="Resource" id="Resource_7s22f"]
+script = ExtResource("1_bc3x1")
+HP = 85.23447186337965
+ATK = 35.4024799061556
+DEF = 34.85337186744974
+SpA = 18.504756909469535
+SpD = 62.97817235068444
+SP = 14.967307950697773
+
+[sub_resource type="Resource" id="Resource_2yfq2"]
+script = ExtResource("1_bc3x1")
+HP = 71.26510636965156
+ATK = 11.526432148267766
+DEF = 16.222170542006833
+SpA = 29.7681902180643
+SpD = 49.921237233949846
+SP = 7.91809741733867
+
+[sub_resource type="Resource" id="Resource_uywmd"]
+script = ExtResource("1_bc3x1")
+HP = 81.39499279500099
+ATK = 33.28192287331614
+DEF = 32.58085368402096
+SpA = 15.961793508340303
+SpD = 61.50078826237581
+SP = 10.46370209707149
+
+[sub_resource type="Resource" id="Resource_154ga"]
+script = ExtResource("1_bc3x1")
+HP = 64.36949157518973
+ATK = 20.7481833191447
+DEF = 17.894024117728915
+SpA = 35.657567198159796
+SpD = 41.680328049147505
+SP = 11.851822306426058
+
+[sub_resource type="Resource" id="Resource_ux1vm"]
+script = ExtResource("1_bc3x1")
+HP = 76.82993880213768
+ATK = 37.372328960445195
+DEF = 36.18141241174366
+SpA = 19.26250218752804
+SpD = 58.8144850589245
+SP = 8.002151770737882
+
+[sub_resource type="Resource" id="Resource_n1wyy"]
+script = ExtResource("1_bc3x1")
+HP = 64.36949157518973
+ATK = 20.7481833191447
+DEF = 17.894024117728915
+SpA = 35.657567198159796
+SpD = 41.680328049147505
+SP = 11.851822306426058
+
+[sub_resource type="Resource" id="Resource_gj22h"]
+script = ExtResource("1_bc3x1")
+HP = 76.82993880213768
+ATK = 37.372328960445195
+DEF = 36.18141241174366
+SpA = 19.26250218752804
+SpD = 58.8144850589245
+SP = 8.002151770737882
+
+[sub_resource type="Resource" id="Resource_nw8jy"]
+script = ExtResource("1_bc3x1")
+HP = 69.31498607039218
+ATK = 25.690120476864273
+DEF = 22.637388699206216
+SpA = 33.595874122829635
+SpD = 40.623953959374155
+SP = 9.868633514655714
+
+[sub_resource type="Resource" id="Resource_qdxq7"]
+script = ExtResource("1_bc3x1")
+HP = 80.23231374232033
+ATK = 34.19206653245956
+DEF = 35.79695128336343
+SpA = 21.55202048288566
+SpD = 62.317105219141425
+SP = 8.150674287709366
+
+[sub_resource type="Resource" id="Resource_iwm71"]
+script = ExtResource("1_bc3x1")
+HP = 72.56765466592758
+ATK = 28.16832285555961
+DEF = 22.55569202611345
+SpA = 36.69772917306483
+SpD = 39.86337216756694
+SP = 6.793354221859629
+
+[sub_resource type="Resource" id="Resource_412fi"]
+script = ExtResource("1_bc3x1")
+HP = 80.23231374232033
+ATK = 34.19206653245956
+DEF = 35.79695128336343
+SpA = 21.552020482885656
+SpD = 62.31710521914143
+SP = 8.150674287709366
+
+[sub_resource type="Resource" id="Resource_n3jb2"]
+script = ExtResource("1_bc3x1")
+HP = 72.56765466592758
+ATK = 28.16832285555961
+DEF = 22.555692026113448
+SpA = 36.69772917306484
+SpD = 39.86337216756694
+SP = 6.793354221859628
+
+[sub_resource type="Resource" id="Resource_iop3o"]
+script = ExtResource("1_bc3x1")
+HP = 85.95582291301194
+ATK = 34.11214545323057
+DEF = 33.699652586791046
+SpA = 22.51543603527272
+SpD = 64.06294833865911
+SP = 17.256303908293415
+
+[sub_resource type="Resource" id="Resource_w80jy"]
+script = ExtResource("1_bc3x1")
+HP = 72.56765466592758
+ATK = 28.16832285555961
+DEF = 22.555692026113448
+SpA = 36.69772917306484
+SpD = 39.86337216756694
+SP = 6.793354221859628
+
+[sub_resource type="Resource" id="Resource_86j64"]
+script = ExtResource("1_bc3x1")
+HP = 85.95582291301194
+ATK = 34.11214545323057
+DEF = 33.699652586791046
+SpA = 22.51543603527272
+SpD = 64.06294833865911
+SP = 17.256303908293415
+
+[sub_resource type="Resource" id="Resource_yoe70"]
+script = ExtResource("1_bc3x1")
+HP = 69.08371361873513
+ATK = 25.217969876688024
+DEF = 21.149844036896464
+SpA = 36.50394460020743
+SpD = 47.58860139775794
+SP = 5.587293351353792
+
+[sub_resource type="Resource" id="Resource_usfp6"]
+script = ExtResource("1_bc3x1")
+HP = 85.95582291301194
+ATK = 34.11214545323057
+DEF = 33.699652586791046
+SpA = 22.51543603527272
+SpD = 64.06294833865911
+SP = 17.256303908293415
+
+[sub_resource type="Resource" id="Resource_6pqlx"]
+script = ExtResource("1_bc3x1")
+HP = 69.73837499830296
+ATK = 20.96495327112471
+DEF = 17.12247548030088
+SpA = 36.633184621281146
+SpD = 42.963140803690095
+SP = 5.006036509259391
+
+[sub_resource type="Resource" id="Resource_0u5e6"]
+script = ExtResource("1_bc3x1")
+HP = 85.95582291301194
+ATK = 34.11214545323057
+DEF = 33.699652586791046
+SpA = 22.515436035272717
+SpD = 64.06294833865911
+SP = 17.256303908293415
+
+[sub_resource type="Resource" id="Resource_y6ouy"]
+script = ExtResource("1_bc3x1")
+HP = 72.46959946953002
+ATK = 30.250603360839683
+DEF = 11.695252321345038
+SpA = 37.43895395571419
+SpD = 39.60376330976846
+SP = 10.731288932844269
+
+[sub_resource type="Resource" id="Resource_1etg4"]
+script = ExtResource("1_bc3x1")
+HP = 85.95582291301193
+ATK = 34.11214545323057
+DEF = 33.699652586791046
+SpA = 22.515436035272717
+SpD = 64.06294833865911
+SP = 17.256303908293415
+
+[sub_resource type="Resource" id="Resource_mysd4"]
+script = ExtResource("1_bc3x1")
+HP = 72.46959946953002
+ATK = 30.250603360839683
+DEF = 11.695252321345038
+SpA = 37.43895395571419
+SpD = 39.60376330976846
+SP = 10.731288932844269
+
+[sub_resource type="Resource" id="Resource_tv3nu"]
+script = ExtResource("1_bc3x1")
+HP = 85.95582291301193
+ATK = 34.11214545323057
+DEF = 33.699652586791046
+SpA = 22.515436035272717
+SpD = 64.06294833865911
+SP = 17.256303908293415
+
+[sub_resource type="Resource" id="Resource_43jcs"]
+script = ExtResource("1_bc3x1")
+HP = 71.99701280273622
+ATK = 37.25067453062515
+DEF = 14.343572440433174
+SpA = 31.031935481632352
+SpD = 39.28360521778813
+SP = 7.365337006001665
+
+[sub_resource type="Resource" id="Resource_3awv3"]
+script = ExtResource("1_bc3x1")
+HP = 82.58935820688869
+ATK = 36.82908982268059
+DEF = 31.53753840798852
+SpA = 18.15449579272486
+SpD = 59.173633070183435
+SP = 14.012822236646494
+
+[sub_resource type="Resource" id="Resource_aa2c5"]
+script = ExtResource("1_bc3x1")
+HP = 68.00088597720426
+ATK = 36.673425716415935
+DEF = 13.189762478306422
+SpA = 33.33468096499234
+SpD = 42.12309242562384
+SP = 8.27721952797022
+
+[sub_resource type="Resource" id="Resource_ekhxu"]
+script = ExtResource("1_bc3x1")
+HP = 82.58935820688869
+ATK = 36.82908982268059
+DEF = 31.53753840798852
+SpA = 18.15449579272486
+SpD = 59.173633070183435
+SP = 14.012822236646494
+
+[sub_resource type="Resource" id="Resource_i6hkc"]
+script = ExtResource("1_bc3x1")
+HP = 66.2497749029436
+ATK = 30.729758198461653
+DEF = 17.698057533928228
+SpA = 25.962442201507685
+SpD = 37.58811228220442
+SP = 5.815691367786484
+
+[sub_resource type="Resource" id="Resource_so6uh"]
+script = ExtResource("1_bc3x1")
+HP = 80.42019877992341
+ATK = 31.27339019606411
+DEF = 33.22075731334049
+SpA = 21.07835961977461
+SpD = 52.887354080767224
+SP = 12.044918805940965
+
+[sub_resource type="Resource" id="Resource_k78b6"]
+script = ExtResource("1_bc3x1")
+HP = 65.11208487284286
+ATK = 32.50596714636008
+DEF = 16.927794249821456
+SpA = 25.005792524230944
+SpD = 41.673045743597655
+SP = 6.051238086311655
+
+[sub_resource type="Resource" id="Resource_43lel"]
+script = ExtResource("1_bc3x1")
+HP = 80.42019877992341
+ATK = 31.27339019606411
+DEF = 33.22075731334049
+SpA = 21.07835961977461
+SpD = 52.887354080767224
+SP = 12.044918805940965
+
+[sub_resource type="Resource" id="Resource_twivg"]
+script = ExtResource("1_bc3x1")
+HP = 60.4424404653688
+ATK = 34.520477852823326
+DEF = 16.34492446570025
+SpA = 21.21319148667271
+SpD = 43.99256690991184
+SP = 2.4006041362269324
+
+[sub_resource type="Resource" id="Resource_jnc5h"]
+script = ExtResource("1_bc3x1")
+HP = 83.32392667337312
+ATK = 28.90398433493712
+DEF = 36.29654849942918
+SpA = 24.117404980667754
+SpD = 50.41719416022585
+SP = 15.44839431984214
+
+[sub_resource type="Resource" id="Resource_e0bwt"]
+script = ExtResource("1_bc3x1")
+HP = 57.10643164912779
+ATK = 34.62801173112405
+DEF = 9.653362354596071
+SpA = 24.277151428357502
+SpD = 43.551240434383246
+SP = -2.84778018736581
+
+[sub_resource type="Resource" id="Resource_02h3l"]
+script = ExtResource("1_bc3x1")
+HP = 83.32392667337312
+ATK = 28.90398433493712
+DEF = 36.29654849942918
+SpA = 24.117404980667754
+SpD = 50.41719416022585
+SP = 15.44839431984214
+
+[sub_resource type="Resource" id="Resource_cm3tg"]
+script = ExtResource("1_bc3x1")
+HP = 57.10643164912779
+ATK = 34.62801173112405
+DEF = 9.653362354596071
+SpA = 24.277151428357502
+SpD = 43.551240434383246
+SP = -2.84778018736581
+
+[sub_resource type="Resource" id="Resource_g5i4l"]
+script = ExtResource("1_bc3x1")
+HP = 86.83850121477184
+ATK = 25.271541634708104
+DEF = 39.53698862798915
+SpA = 22.292012171887873
+SpD = 51.965535151269954
+SP = 14.618375353876468
+
+[sub_resource type="Resource" id="Resource_euc4j"]
+script = ExtResource("1_bc3x1")
+HP = 55.23506747740112
+ATK = 39.80766834674693
+DEF = 8.090802832497802
+SpA = 25.6109631634319
+SpD = 47.49365456934005
+SP = 2.344450039678988
+
+[sub_resource type="Resource" id="Resource_ti3ck"]
+script = ExtResource("1_bc3x1")
+HP = 86.83850121477184
+ATK = 25.271541634708104
+DEF = 39.53698862798915
+SpA = 22.292012171887873
+SpD = 51.965535151269954
+SP = 14.618375353876468
+
+[sub_resource type="Resource" id="Resource_dqbyj"]
+script = ExtResource("1_bc3x1")
+HP = 56.30012247538517
+ATK = 38.413935733861535
+DEF = 4.788688156850121
+SpA = 21.449303822312775
+SpD = 43.623340816999146
+SP = 4.282690600996752
+
+[sub_resource type="Resource" id="Resource_miwbp"]
+script = ExtResource("1_bc3x1")
+HP = 84.44037746773931
+ATK = 24.11116641766519
+DEF = 37.00863310613938
+SpA = 23.379979811974028
+SpD = 56.42784641830213
+SP = 14.472872554032136
+
+[sub_resource type="Resource" id="Resource_ignle"]
+script = ExtResource("1_bc3x1")
+HP = 55.55639157432585
+ATK = 36.44072284857223
+DEF = 3.2129026798196
+SpA = 26.41777629109235
+SpD = 46.87476968599062
+SP = 2.8315718598241477
+
+[sub_resource type="Resource" id="Resource_27mu4"]
+script = ExtResource("1_bc3x1")
+HP = 84.44037746773931
+ATK = 24.11116641766519
+DEF = 37.00863310613938
+SpA = 23.379979811974028
+SpD = 56.42784641830213
+SP = 14.472872554032136
+
+[sub_resource type="Resource" id="Resource_3y2rq"]
+script = ExtResource("1_bc3x1")
+HP = 51.74549453218507
+ATK = 34.41148901868882
+DEF = 7.732632041186538
+SpA = 30.214759918028168
+SpD = 45.353108918968125
+SP = -0.7028223407545401
+
+[sub_resource type="Resource" id="Resource_3urn2"]
+script = ExtResource("1_bc3x1")
+HP = 83.03165321842023
+ATK = 26.172153573465913
+DEF = 36.54390837074854
+SpA = 24.847254923485657
+SpD = 57.954507155552605
+SP = 12.415429463149222
+
+[sub_resource type="Resource" id="Resource_8cv75"]
+script = ExtResource("1_bc3x1")
+HP = 54.948718724172565
+ATK = 30.205013676242892
+DEF = 6.09285396118348
+SpA = 28.644037057404397
+SpD = 46.52231476648227
+SP = -5.195437242032884
+
+[sub_resource type="Resource" id="Resource_icbo7"]
+script = ExtResource("1_bc3x1")
+HP = 80.50144788739492
+ATK = 26.70798552790995
+DEF = 38.31334770278696
+SpA = 20.522137857120416
+SpD = 54.9295851983049
+SP = 8.899773533528803
+
+[sub_resource type="Resource" id="Resource_35sqw"]
+script = ExtResource("1_bc3x1")
+HP = 54.94871872417257
+ATK = 30.20501367624289
+DEF = 6.09285396118348
+SpA = 28.6440370574044
+SpD = 46.52231476648226
+SP = -5.1954372420328845
+
+[sub_resource type="Resource" id="Resource_vpl6i"]
+script = ExtResource("1_bc3x1")
+HP = 79.26133503546336
+ATK = 22.40444093876098
+DEF = 36.81930306165906
+SpA = 23.36286073962088
+SpD = 52.28451720088772
+SP = 12.55064819942765
+
+[sub_resource type="Resource" id="Resource_lwwqd"]
+script = ExtResource("1_bc3x1")
+HP = 52.206015771597485
+ATK = 33.13853919439607
+DEF = 3.018492172997643
+SpA = 28.54385546986688
+SpD = 44.487318757765415
+SP = -2.2875155378539773
+
+[sub_resource type="Resource" id="Resource_wphy4"]
+script = ExtResource("1_bc3x1")
+HP = 75.74609983688593
+ATK = 19.76130896885753
+DEF = 40.45136677740937
+SpA = 22.143200834778412
+SpD = 60.84563047859309
+SP = 16.505955148244812
+
+[sub_resource type="Resource" id="Resource_lnwdi"]
+script = ExtResource("1_bc3x1")
+HP = 52.206015771597485
+ATK = 33.13853919439607
+DEF = 3.018492172997643
+SpA = 28.54385546986688
+SpD = 44.487318757765415
+SP = -2.2875155378539773
+
+[sub_resource type="Resource" id="Resource_rb2f5"]
+script = ExtResource("1_bc3x1")
+HP = 68.42335476005522
+ATK = 18.55041822553772
+DEF = 38.58900213847982
+SpA = 20.354937055552615
+SpD = 66.4284484394501
+SP = 20.30482880632147
+
+[sub_resource type="Resource" id="Resource_2mpd0"]
+script = ExtResource("1_bc3x1")
+HP = 52.206015771597485
+ATK = 33.13853919439607
+DEF = 3.018492172997643
+SpA = 28.54385546986688
+SpD = 44.487318757765415
+SP = -2.2875155378539773
+
+[sub_resource type="Resource" id="Resource_2akgw"]
+script = ExtResource("1_bc3x1")
+HP = 65.845597209296
+ATK = 17.757361818845112
+DEF = 40.20028693646345
+SpA = 15.933918873003453
+SpD = 63.49793731294134
+SP = 18.263587977050328
+
+[sub_resource type="Resource" id="Resource_o0t3q"]
+script = ExtResource("1_bc3x1")
+HP = 65.79952670976036
+ATK = 16.553925440093813
+DEF = 37.35773141489751
+SpA = 14.922599258607676
+SpD = 59.91175215329974
+SP = 15.659058494407429
+
+[sub_resource type="Resource" id="Resource_7ce4b"]
+script = ExtResource("1_bc3x1")
+HP = 65.79952670976036
+ATK = 16.553925440093813
+DEF = 37.35773141489751
+SpA = 14.922599258607676
+SpD = 59.91175215329974
+SP = 15.659058494407429
+
+[sub_resource type="Resource" id="Resource_el6bu"]
+script = ExtResource("1_bc3x1")
+HP = 65.79952670976036
+ATK = 16.553925440093813
+DEF = 37.35773141489751
+SpA = 14.922599258607676
+SpD = 59.91175215329974
+SP = 15.659058494407429
+
+[sub_resource type="Resource" id="Resource_jl08p"]
+script = ExtResource("1_bc3x1")
+HP = 65.79952670976036
+ATK = 16.55392544009381
+DEF = 37.35773141489751
+SpA = 14.922599258607676
+SpD = 59.91175215329973
+SP = 15.65905849440743
+
+[sub_resource type="Resource" id="Resource_kncc4"]
+script = ExtResource("1_bc3x1")
+HP = 65.79952670976036
+ATK = 16.55392544009381
+DEF = 37.35773141489751
+SpA = 14.922599258607676
+SpD = 59.91175215329973
+SP = 15.65905849440743
+
+[sub_resource type="Resource" id="Resource_44tw6"]
+script = ExtResource("1_bc3x1")
+HP = 65.79952670976036
+ATK = 16.55392544009381
+DEF = 37.35773141489751
+SpA = 14.922599258607676
+SpD = 59.91175215329974
+SP = 15.659058494407432
+
+[sub_resource type="Resource" id="Resource_kuw8e"]
+script = ExtResource("1_bc3x1")
+HP = 65.79952670976036
+ATK = 16.55392544009381
+DEF = 37.357731414897515
+SpA = 14.922599258607676
+SpD = 59.91175215329972
+SP = 15.659058494407432
+
+[sub_resource type="Resource" id="Resource_v117f"]
+script = ExtResource("1_bc3x1")
+HP = 65.79952670976036
+ATK = 16.55392544009381
+DEF = 37.357731414897515
+SpA = 14.922599258607676
+SpD = 59.91175215329972
+SP = 15.659058494407432
+
+[resource]
+script = ExtResource("2_abyhh")
+cachedHistory = [{
+50: {
+"averageBST": 225,
+"averagePart": SubResource("Resource_7p3q4"),
+"count": 14
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_ob6to"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 225,
+"averagePart": SubResource("Resource_oucbs"),
+"count": 14
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_q0rhc"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 225,
+"averagePart": SubResource("Resource_6tqso"),
+"count": 14
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_eqioj"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 225,
+"averagePart": SubResource("Resource_3h4sh"),
+"count": 13
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_leh05"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 225,
+"averagePart": SubResource("Resource_8318g"),
+"count": 13
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_qmg1i"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 225,
+"averagePart": SubResource("Resource_xcwu7"),
+"count": 13
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_tdnoa"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 225,
+"averagePart": SubResource("Resource_y462v"),
+"count": 12
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_lssa3"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 224.24640240823743,
+"averagePart": SubResource("Resource_4gab5"),
+"count": 22
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_qna73"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 224.24640240823743,
+"averagePart": SubResource("Resource_n11ms"),
+"count": 22
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_1idkk"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 224.376865031396,
+"averagePart": SubResource("Resource_eadxa"),
+"count": 20
+},
+80: {
+"averageBST": 275,
+"averagePart": SubResource("Resource_drxjq"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 207.56246420829515,
+"averagePart": SubResource("Resource_t5588"),
+"count": 23
+},
+80: {
+"averageBST": 272.8976280193334,
+"averagePart": SubResource("Resource_78f7y"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 202.5857637970351,
+"averagePart": SubResource("Resource_87nkv"),
+"count": 25
+},
+80: {
+"averageBST": 272.8976280193334,
+"averagePart": SubResource("Resource_ap7ko"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 202.5857637970351,
+"averagePart": SubResource("Resource_mu3pi"),
+"count": 25
+},
+80: {
+"averageBST": 272.8976280193334,
+"averagePart": SubResource("Resource_tl3cq"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 194.8523967991981,
+"averagePart": SubResource("Resource_18hfi"),
+"count": 26
+},
+80: {
+"averageBST": 272.8976280193334,
+"averagePart": SubResource("Resource_p3nie"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 213.14611851924937,
+"averagePart": SubResource("Resource_ld4xh"),
+"count": 28
+},
+80: {
+"averageBST": 272.8976280193334,
+"averagePart": SubResource("Resource_3m0vc"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 222.92612366836497,
+"averagePart": SubResource("Resource_rh2g4"),
+"count": 35
+},
+80: {
+"averageBST": 272.8976280193334,
+"averagePart": SubResource("Resource_eecyf"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 229.96052101294552,
+"averagePart": SubResource("Resource_rwoxt"),
+"count": 34
+},
+80: {
+"averageBST": 272.8976280193334,
+"averagePart": SubResource("Resource_wrv8i"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 216.4148487161712,
+"averagePart": SubResource("Resource_wrtlr"),
+"count": 40
+},
+80: {
+"averageBST": 272.8976280193334,
+"averagePart": SubResource("Resource_xrbkw"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 216.41484871617124,
+"averagePart": SubResource("Resource_iv3pa"),
+"count": 38
+},
+80: {
+"averageBST": 272.8976280193334,
+"averagePart": SubResource("Resource_5l4jd"),
+"count": 1
+}
+}, {
+50: {
+"averageBST": 229.71749342561253,
+"averagePart": SubResource("Resource_575l0"),
+"count": 40
+},
+80: {
+"averageBST": 263.038065323547,
+"averagePart": SubResource("Resource_vsiaa"),
+"count": 2
+}
+}, {
+50: {
+"averageBST": 239.15374471413332,
+"averagePart": SubResource("Resource_xjoex"),
+"count": 40
+},
+80: {
+"averageBST": 263.038065323547,
+"averagePart": SubResource("Resource_xk28q"),
+"count": 2
+}
+}, {
+50: {
+"averageBST": 240.4763279739491,
+"averagePart": SubResource("Resource_wcu32"),
+"count": 36
+},
+80: {
+"averageBST": 263.29109066873747,
+"averagePart": SubResource("Resource_tb0l5"),
+"count": 3
+}
+}, {
+50: {
+"averageBST": 235.03066676502027,
+"averagePart": SubResource("Resource_06ls0"),
+"count": 27
+},
+80: {
+"averageBST": 263.29109066873747,
+"averagePart": SubResource("Resource_sb6vq"),
+"count": 3
+}
+}, {
+50: {
+"averageBST": 233.00026009758463,
+"averagePart": SubResource("Resource_7iou0"),
+"count": 22
+},
+80: {
+"averageBST": 263.29109066873747,
+"averagePart": SubResource("Resource_s3h2e"),
+"count": 3
+}
+}, {
+50: {
+"averageBST": 233.0002600975846,
+"averagePart": SubResource("Resource_p2jiu"),
+"count": 19
+},
+80: {
+"averageBST": 261.1333333243653,
+"averagePart": SubResource("Resource_ro5ve"),
+"count": 4
+}
+}, {
+50: {
+"averageBST": 233.0002600975846,
+"averagePart": SubResource("Resource_o40ch"),
+"count": 18
+},
+80: {
+"averageBST": 261.1333333243653,
+"averagePart": SubResource("Resource_tq1pw"),
+"count": 4
+}
+}, {
+50: {
+"averageBST": 232.68865686997287,
+"averagePart": SubResource("Resource_ty80h"),
+"count": 19
+},
+80: {
+"averageBST": 258.8983399208007,
+"averagePart": SubResource("Resource_62qwy"),
+"count": 5
+}
+}, {
+50: {
+"averageBST": 224.50838773571056,
+"averagePart": SubResource("Resource_de1eh"),
+"count": 17
+},
+80: {
+"averageBST": 258.8983399208007,
+"averagePart": SubResource("Resource_r4gya"),
+"count": 4
+}
+}, {
+50: {
+"averageBST": 210.95527174167276,
+"averagePart": SubResource("Resource_da8o3"),
+"count": 16
+},
+80: {
+"averageBST": 248.50872136347567,
+"averagePart": SubResource("Resource_pshj0"),
+"count": 5
+}
+}, {
+50: {
+"averageBST": 200.13398414965428,
+"averagePart": SubResource("Resource_561v5"),
+"count": 13
+},
+80: {
+"averageBST": 248.50872136347567,
+"averagePart": SubResource("Resource_mt62c"),
+"count": 5
+}
+}, {
+50: {
+"averageBST": 198.5920526144743,
+"averagePart": SubResource("Resource_fm3hx"),
+"count": 12
+},
+80: {
+"averageBST": 251.9405608478367,
+"averagePart": SubResource("Resource_h5nmh"),
+"count": 5
+}
+}, {
+50: {
+"averageBST": 186.62123392927896,
+"averagePart": SubResource("Resource_oocss"),
+"count": 10
+},
+80: {
+"averageBST": 251.9405608478367,
+"averagePart": SubResource("Resource_7s22f"),
+"count": 5
+}
+}, {
+50: {
+"averageBST": 186.62123392927896,
+"averagePart": SubResource("Resource_2yfq2"),
+"count": 9
+},
+80: {
+"averageBST": 235.1840532201257,
+"averagePart": SubResource("Resource_uywmd"),
+"count": 6
+}
+}, {
+50: {
+"averageBST": 192.20141656579673,
+"averagePart": SubResource("Resource_154ga"),
+"count": 9
+},
+80: {
+"averageBST": 236.46281919151693,
+"averagePart": SubResource("Resource_ux1vm"),
+"count": 7
+}
+}, {
+50: {
+"averageBST": 192.20141656579673,
+"averagePart": SubResource("Resource_n1wyy"),
+"count": 6
+},
+80: {
+"averageBST": 236.46281919151693,
+"averagePart": SubResource("Resource_gj22h"),
+"count": 7
+}
+}, {
+50: {
+"averageBST": 201.7309568433222,
+"averagePart": SubResource("Resource_nw8jy"),
+"count": 7
+},
+80: {
+"averageBST": 242.2411315478798,
+"averagePart": SubResource("Resource_qdxq7"),
+"count": 8
+}
+}, {
+50: {
+"averageBST": 206.64612511009204,
+"averagePart": SubResource("Resource_iwm71"),
+"count": 7
+},
+80: {
+"averageBST": 242.2411315478798,
+"averagePart": SubResource("Resource_412fi"),
+"count": 6
+}
+}, {
+50: {
+"averageBST": 206.64612511009204,
+"averagePart": SubResource("Resource_n3jb2"),
+"count": 5
+},
+80: {
+"averageBST": 257.6023092352588,
+"averagePart": SubResource("Resource_iop3o"),
+"count": 8
+}
+}, {
+50: {
+"averageBST": 206.64612511009204,
+"averagePart": SubResource("Resource_w80jy"),
+"count": 5
+},
+80: {
+"averageBST": 257.6023092352588,
+"averagePart": SubResource("Resource_86j64"),
+"count": 8
+}
+}, {
+50: {
+"averageBST": 205.1313668816388,
+"averagePart": SubResource("Resource_yoe70"),
+"count": 7
+},
+80: {
+"averageBST": 257.6023092352588,
+"averagePart": SubResource("Resource_usfp6"),
+"count": 8
+}
+}, {
+50: {
+"averageBST": 192.4281656839592,
+"averagePart": SubResource("Resource_6pqlx"),
+"count": 8
+},
+80: {
+"averageBST": 257.6023092352588,
+"averagePart": SubResource("Resource_0u5e6"),
+"count": 6
+}
+}, {
+50: {
+"averageBST": 202.18946135004168,
+"averagePart": SubResource("Resource_y6ouy"),
+"count": 10
+},
+80: {
+"averageBST": 257.6023092352588,
+"averagePart": SubResource("Resource_1etg4"),
+"count": 4
+}
+}, {
+50: {
+"averageBST": 202.18946135004168,
+"averagePart": SubResource("Resource_mysd4"),
+"count": 10
+},
+80: {
+"averageBST": 257.6023092352588,
+"averagePart": SubResource("Resource_tv3nu"),
+"count": 4
+}
+}, {
+50: {
+"averageBST": 201.27213747921672,
+"averagePart": SubResource("Resource_43jcs"),
+"count": 10
+},
+80: {
+"averageBST": 242.29693753711257,
+"averagePart": SubResource("Resource_3awv3"),
+"count": 3
+}
+}, {
+50: {
+"averageBST": 201.59906709051305,
+"averagePart": SubResource("Resource_aa2c5"),
+"count": 11
+},
+80: {
+"averageBST": 242.29693753711257,
+"averagePart": SubResource("Resource_ekhxu"),
+"count": 3
+}
+}, {
+50: {
+"averageBST": 184.04383648683208,
+"averagePart": SubResource("Resource_i6hkc"),
+"count": 12
+},
+80: {
+"averageBST": 230.92497879581083,
+"averagePart": SubResource("Resource_so6uh"),
+"count": 5
+}
+}, {
+50: {
+"averageBST": 187.27592262316463,
+"averagePart": SubResource("Resource_k78b6"),
+"count": 13
+},
+80: {
+"averageBST": 230.92497879581083,
+"averagePart": SubResource("Resource_43lel"),
+"count": 5
+}
+}, {
+50: {
+"averageBST": 178.91420531670386,
+"averagePart": SubResource("Resource_twivg"),
+"count": 12
+},
+80: {
+"averageBST": 238.5074529684752,
+"averagePart": SubResource("Resource_jnc5h"),
+"count": 6
+}
+}, {
+50: {
+"averageBST": 166.36841741022292,
+"averagePart": SubResource("Resource_e0bwt"),
+"count": 14
+},
+80: {
+"averageBST": 238.5074529684752,
+"averagePart": SubResource("Resource_02h3l"),
+"count": 5
+}
+}, {
+50: {
+"averageBST": 166.36841741022292,
+"averagePart": SubResource("Resource_cm3tg"),
+"count": 13
+},
+80: {
+"averageBST": 240.5229541545034,
+"averagePart": SubResource("Resource_g5i4l"),
+"count": 6
+}
+}, {
+50: {
+"averageBST": 178.5826064290968,
+"averagePart": SubResource("Resource_euc4j"),
+"count": 14
+},
+80: {
+"averageBST": 240.5229541545034,
+"averagePart": SubResource("Resource_ti3ck"),
+"count": 6
+}
+}, {
+50: {
+"averageBST": 168.85808160640548,
+"averagePart": SubResource("Resource_dqbyj"),
+"count": 13
+},
+80: {
+"averageBST": 239.84087577585217,
+"averagePart": SubResource("Resource_miwbp"),
+"count": 6
+}
+}, {
+50: {
+"averageBST": 171.33413493962482,
+"averagePart": SubResource("Resource_ignle"),
+"count": 12
+},
+80: {
+"averageBST": 239.84087577585217,
+"averagePart": SubResource("Resource_27mu4"),
+"count": 6
+}
+}, {
+50: {
+"averageBST": 168.75466208830218,
+"averagePart": SubResource("Resource_3y2rq"),
+"count": 12
+},
+80: {
+"averageBST": 240.96490670482217,
+"averagePart": SubResource("Resource_3urn2"),
+"count": 7
+}
+}, {
+50: {
+"averageBST": 161.2175009434527,
+"averagePart": SubResource("Resource_8cv75"),
+"count": 10
+},
+80: {
+"averageBST": 229.874277707046,
+"averagePart": SubResource("Resource_icbo7"),
+"count": 9
+}
+}, {
+50: {
+"averageBST": 161.2175009434527,
+"averagePart": SubResource("Resource_35sqw"),
+"count": 6
+},
+80: {
+"averageBST": 226.6831051758197,
+"averagePart": SubResource("Resource_vpl6i"),
+"count": 10
+}
+}, {
+50: {
+"averageBST": 159.10670582876952,
+"averagePart": SubResource("Resource_lwwqd"),
+"count": 4
+},
+80: {
+"averageBST": 235.45356204476911,
+"averagePart": SubResource("Resource_wphy4"),
+"count": 12
+}
+}, {
+50: {
+"averageBST": 159.10670582876952,
+"averagePart": SubResource("Resource_lnwdi"),
+"count": 1
+},
+80: {
+"averageBST": 232.65098942539692,
+"averagePart": SubResource("Resource_rb2f5"),
+"count": 13
+}
+}, {
+50: {
+"averageBST": 159.10670582876952,
+"averagePart": SubResource("Resource_2mpd0"),
+"count": 1
+},
+80: {
+"averageBST": 221.4986901275997,
+"averagePart": SubResource("Resource_2akgw"),
+"count": 14
+}
+}, {
+80: {
+"averageBST": 210.2045934710665,
+"averagePart": SubResource("Resource_o0t3q"),
+"count": 14
+}
+}, {
+80: {
+"averageBST": 210.2045934710665,
+"averagePart": SubResource("Resource_7ce4b"),
+"count": 12
+}
+}, {
+80: {
+"averageBST": 210.2045934710665,
+"averagePart": SubResource("Resource_el6bu"),
+"count": 12
+}
+}, {
+80: {
+"averageBST": 210.20459347106657,
+"averagePart": SubResource("Resource_jl08p"),
+"count": 9
+}
+}, {
+80: {
+"averageBST": 210.20459347106657,
+"averagePart": SubResource("Resource_kncc4"),
+"count": 9
+}
+}, {
+80: {
+"averageBST": 210.20459347106657,
+"averagePart": SubResource("Resource_44tw6"),
+"count": 7
+}
+}, {
+80: {
+"averageBST": 210.2045934710665,
+"averagePart": SubResource("Resource_kuw8e"),
+"count": 3
+}
+}, {
+80: {
+"averageBST": 210.2045934710665,
+"averagePart": SubResource("Resource_v117f"),
+"count": 3
+}
+}, {}, {}, {}]

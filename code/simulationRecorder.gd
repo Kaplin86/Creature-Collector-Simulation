@@ -50,4 +50,4 @@ func _notification(what: int) -> void:
 		var resource = SimulationHistory.new()
 		resource.cachedHistory = generationByGenerationInfo
 		resource.timePerSample = SampleSpan
-		ResourceSaver.save(resource,"res://savedSimulationResults/thing.tres")
+		ResourceSaver.save(resource,"res://savedSimulationResults/"+Time.get_datetime_string_from_system().replace(":","-")+".tres")

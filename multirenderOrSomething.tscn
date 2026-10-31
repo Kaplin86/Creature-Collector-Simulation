@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ccrpl0l3fje1j"]
+
+[ext_resource type="PackedScene" uid="uid://blqn0q5j5o4uh" path="res://simulatorResultRenderer.tscn" id="1_se8jh"]
+[ext_resource type="Resource" uid="uid://50ykn8hkupp2" path="res://savedSimulationResults/2026-10-31T15-43-22.tres" id="2_4bvju"]
+[ext_resource type="Resource" path="res://savedSimulationResults/2026-10-31T15-46-47.tres" id="3_se8jh"]
+
+[node name="Node2D" type="Node2D" unique_id=805391635]
+
+[node name="Node2D" parent="." unique_id=1248064828 instance=ExtResource("1_se8jh")]
+data = ExtResource("2_4bvju")
+
+[node name="Node2D2" parent="." unique_id=153734565 instance=ExtResource("1_se8jh")]
+position = Vector2(356, 0)
+
+[node name="Node2D3" parent="." unique_id=1583114240 instance=ExtResource("1_se8jh")]
+position = Vector2(841, 0)
+data = ExtResource("3_se8jh")
