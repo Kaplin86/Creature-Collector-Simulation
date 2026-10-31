@@ -12,3 +12,25 @@ var TimeForSmallCreatureToDieOfStarvation = 120
 var PixelVisionPerSPD = 4 #how many inworld units / pixels the agent can see based on their SpD stat
 
 var bstPerBirthTimer = 0.5
+
+
+
+
+
+
+
+enum Typings {Fire,Water,Green,Turqoise,Robot}
+
+func getMoveEffectiveness(moveTyping : Typings, recipientTyping : Typings):
+	return 1
+
+func calculateDamage(move : Move, attacker : Agent,defender : Agent):
+	var statstuff =  move.getRelevantStats(attacker,defender)
+	var level = 5
+	
+	var rawDMG = ((2 * level) / 5.0) + 5
+	var defendedDamage = rawDMG * statstuff[0]/statstuff[1]
+	var finalAttack = (defendedDamage / 5) + 2
+	var fullAttack = getMoveEffectiveness(move.typing,defender.getTyping()) * finalAttack
+	
+	return fullAttack

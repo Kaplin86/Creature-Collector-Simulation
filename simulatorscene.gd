@@ -1,4 +1,4 @@
 extends Node2D
 
 func _ready():
-	Engine.time_scale = 2
+	Engine.time_scale = 16

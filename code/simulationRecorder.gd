@@ -15,25 +15,35 @@ func _ready() -> void:
 	timer.start()
 
 func check():
-	var report = {}
-	var count = get_tree().get_node_count_in_group("creature")
-	report["count"] = count
-	var averageStatTotals = BodyPart.new()
-	var stats = ["HP","ATK","DEF","SpA","SpD","SP"]
-	for I in stats: averageStatTotals.set(I,0)
-	var averageBST = 0
+	var totalReport = {}
+	var specieType = []
 	for I : Agent in get_tree().get_nodes_in_group("creature"):
-		averageBST += I.calculateBST()
-		print(I.calculateFinalStat("HP"))
-		for E in stats:
-			averageStatTotals.set(E,I.calculateFinalStat(E) + averageStatTotals.get(E))
+		if not I.species in specieType:
+			specieType.append(I.species)
 	
-	for I in stats: averageStatTotals.set(I,averageStatTotals.get(I) / count)
-	averageBST /= count
-	print(averageBST)
-	report["averagePart"] = averageStatTotals
-	report["averageBST"] = averageBST
-	generationByGenerationInfo.append(report)
+	for C in specieType:
+		var report = {}
+		var count = 0
+		
+		var averageStatTotals = BodyPart.new()
+		var stats = ["HP","ATK","DEF","SpA","SpD","SP"]
+		for I in stats: averageStatTotals.set(I,0)
+		var averageBST = 0
+		for I : Agent in get_tree().get_nodes_in_group("creature"):
+			if I.species == C:
+				count += 1
+				averageBST += I.calculateBST()
+				for E in stats:
+					averageStatTotals.set(E,I.calculateFinalStat(E) + averageStatTotals.get(E))
+		
+		for I in stats: averageStatTotals.set(I,averageStatTotals.get(I) / count)
+		averageBST /= count
+		report["averagePart"] = averageStatTotals
+		report["averageBST"] = averageBST
+		report["count"] = count
+		totalReport[C] = report
+	
+	generationByGenerationInfo.append(totalReport)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

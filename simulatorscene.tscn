@@ -3,44 +3,50 @@
 [ext_resource type="Script" uid="uid://co0aqwinkw0fu" path="res://code/Agent.gd" id="1_ngdw2"]
 [ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_oepk7"]
 [ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_ro32a"]
-[ext_resource type="Texture2D" uid="uid://nfbxld78idkp" path="res://art/thebrainguyfromtheoldoldnosmonprojectmeandmyfriendsdidofwhomiwillbeusingasaplaceholderforthetimebeing.png" id="3_j4dd3"]
 [ext_resource type="Texture2D" uid="uid://bmskkcym2ebv3" path="res://icon.svg" id="4_ihovo"]
+[ext_resource type="Script" uid="uid://b65mjq863idtp" path="res://code/moveResource.gd" id="5_dh3iq"]
 [ext_resource type="Script" uid="uid://b6i1w81t4kxe0" path="res://code/fruit.gd" id="5_tls5n"]
 [ext_resource type="Script" uid="uid://bacgc46d072ya" path="res://code/fruitSpawner.gd" id="6_tls5n"]
 
-[sub_resource type="Resource" id="Resource_ngdw2"]
+[sub_resource type="Resource" id="Resource_oepk7"]
+resource_local_to_scene = true
 script = ExtResource("2_ro32a")
-HP = 45
-ATK = 30
+HP = 70
+ATK = 35
 DEF = 35
-SpA = 20
-SpD = 20
+SpA = 35
+SpD = 40
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
-[sub_resource type="Resource" id="Resource_oepk7"]
+[sub_resource type="Resource" id="Resource_5ae0i"]
+script = ExtResource("5_dh3iq")
+metadata/_custom_type_script = "uid://b65mjq863idtp"
+
+[sub_resource type="Resource" id="Resource_84svq"]
+resource_local_to_scene = true
 script = ExtResource("2_ro32a")
-HP = 45
-ATK = 30
+HP = 90
+ATK = 45
 DEF = 35
-SpA = 20
-SpD = 40
-SP = 16
+SpA = 35
+SpD = 60
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_dh3iq"]
+script = ExtResource("5_dh3iq")
+metadata/_custom_type_script = "uid://b65mjq863idtp"
+
+[sub_resource type="Resource" id="Resource_feijk"]
+script = ExtResource("5_dh3iq")
+damageType = 1
+typing = 3
+metadata/_custom_type_script = "uid://b65mjq863idtp"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mltvj"]
+radius = 80.0
 
 [node name="Simulatorscene" type="Node2D" unique_id=748557727]
 script = ExtResource("1_oepk7")
-
-[node name="Node2D" type="Node2D" parent="." unique_id=51294036]
-process_mode = 4
-visible = false
-position = Vector2(602, 314)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_ngdw2")])
-species = 30
-
-[node name="Thebrainguyfromtheoldoldnosmonprojectmeandmyfriendsdidofwhomiwillbeusingasaplaceholderforthetimebeing" type="Sprite2D" parent="Node2D" unique_id=2092078239]
-texture_filter = 1
-texture = ExtResource("3_j4dd3")
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=1514172927 groups=["creature"]]
 modulate = Color(1, 0, 1, 1)
@@ -48,10 +54,125 @@ position = Vector2(818, 380)
 script = ExtResource("1_ngdw2")
 parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
 species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
-[node name="Thebrainguyfromtheoldoldnosmonprojectmeandmyfriendsdidofwhomiwillbeusingasaplaceholderforthetimebeing" type="Sprite2D" parent="Node2D2" unique_id=1998454812]
-texture_filter = 1
-texture = ExtResource("3_j4dd3")
+[node name="Node2D4" type="Node2D" parent="." unique_id=385628149 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(201, 340)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D5" type="Node2D" parent="." unique_id=1018640247 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(495, 563)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D6" type="Node2D" parent="." unique_id=1300440216 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(567, 387)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D7" type="Node2D" parent="." unique_id=521954821 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(286, 181)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D8" type="Node2D" parent="." unique_id=1553449759 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(580, 404)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D9" type="Node2D" parent="." unique_id=257832328 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(652, 228)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D10" type="Node2D" parent="." unique_id=1387775319 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(933, 406)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D11" type="Node2D" parent="." unique_id=48987314 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(316, 366)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D12" type="Node2D" parent="." unique_id=1246087456 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(610, 589)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D13" type="Node2D" parent="." unique_id=1219233307 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(682, 413)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D14" type="Node2D" parent="." unique_id=563183987 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(401, 207)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D15" type="Node2D" parent="." unique_id=493504212 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(695, 430)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D16" type="Node2D" parent="." unique_id=348394707 groups=["creature"]]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(767, 254)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_oepk7")])
+species = 50
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
+
+[node name="Node2D3" type="Node2D" parent="." unique_id=2087841555 groups=["creature"]]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(530, 334)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
+species = 80
+dietType = 1
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_dh3iq"), SubResource("Resource_feijk")])
+
+[node name="Area2D" type="Area2D" parent="Node2D3" unique_id=1748530045]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D3/Area2D" unique_id=1383519357]
+shape = SubResource("CircleShape2D_mltvj")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=886159300]
 position = Vector2(757, 303)
