@@ -4,6 +4,10 @@
 [ext_resource type="Resource" uid="uid://bpyfs5y68sotg" path="res://savedSimulationResults/2026-10-31T16-23-22.tres" id="2_dw2ls"]
 
 [sub_resource type="Theme" id="Theme_dw2ls"]
+MarginContainer/constants/margin_bottom = 25
+MarginContainer/constants/margin_left = 25
+MarginContainer/constants/margin_right = 25
+MarginContainer/constants/margin_top = 25
 
 [node name="Node2D" type="Control" unique_id=1539372899]
 layout_mode = 3
