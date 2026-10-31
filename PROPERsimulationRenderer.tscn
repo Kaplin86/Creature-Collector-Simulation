@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://3v2bxi8jbjba"]
+
+[ext_resource type="Script" uid="uid://bdmfjsimxwg8f" path="res://code/SimulationRender.gd" id="1_s317a"]
+[ext_resource type="Resource" uid="uid://bpyfs5y68sotg" path="res://savedSimulationResults/2026-10-31T16-23-22.tres" id="2_dw2ls"]
+
+[node name="Node2D" type="Control" unique_id=1539372899]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s317a")
+simulationHistory = ExtResource("2_dw2ls")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=742385971]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=637755832]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2137694636]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Species Count Graph"
+horizontal_alignment = 1
+
+[node name="ColorCode" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=750732125]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="ScrollContainer/VBoxContainer" unique_id=752520412]
+custom_minimum_size = Vector2(0, 250.02)
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="FullCount" type="Panel" parent="ScrollContainer/VBoxContainer/Margin" unique_id=673349261]
+unique_name_in_owner = true
+layout_mode = 2
