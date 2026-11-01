@@ -25,6 +25,9 @@ func _ready():
 	renderLineOnControl(AverageStatTotalAsPercentage(RelevantSpecies),%FullStatTotal, true)
 	showColorCodes(%ColorCode)
 	
+	makeStatCheckbox(%GlobalStatHbox,updateGlobalSpecie,["HP","ATK","DEF","SpA","SpD","SP"], 0)
+	
+	
 	for I in RelevantSpecies:
 		%MainBox.add_spacer(true)
 		var newLabel = Label.new()
@@ -37,22 +40,8 @@ func _ready():
 		newHoriz.alignment = BoxContainer.ALIGNMENT_CENTER
 		%MainBox.add_child(newHoriz)
 		
-		var STATS = ["COUNT","HP","ATK","DEF","SpA","SpD","SP"]
-		for S in STATS:
-			var NewCheckbox = CheckBox.new()
-			newHoriz.add_child(NewCheckbox)
-			NewCheckbox.text = S
-			NewCheckbox.pressed.connect(UpdateSingleSpecie.bind(I))
-			if S == "COUNT":
-				NewCheckbox.button_pressed = true
-			
-			var newColor = ColorRect.new()
-			newHoriz.add_child(newColor)
-			newColor.color = Color.from_hsv(inverse_lerp(0,RelevantSpecies.max(),I),1,1,1)
-			newColor.custom_minimum_size = Vector2(31,31)
-			
-			if S != "COUNT":
-				newColor.color = StatTocolor[S]
+		makeStatCheckbox(newHoriz,UpdateSingleSpecie.bind(I),["COUNT","HP","ATK","DEF","SpA","SpD","SP"], I)
+		
 			
 			
 		speciesToCheckboxNode[I] = newHoriz
@@ -64,6 +53,28 @@ func _ready():
 		newMargin.custom_minimum_size = Vector2(0,250)
 	await get_tree().process_frame
 	for I in RelevantSpecies: UpdateSingleSpecie(I)
+
+func makeStatCheckbox(target : Control,function : Callable,stats : Array, SpeciesNumber : int):
+	var STATS = stats
+	for S in STATS:
+		var NewCheckbox = CheckBox.new()
+		target.add_child(NewCheckbox)
+		NewCheckbox.text = S
+		NewCheckbox.pressed.connect(function)
+		if S == "COUNT":
+			NewCheckbox.button_pressed = true
+		
+		
+		
+		var newColor = ColorRect.new()
+		target.add_child(newColor)
+		if S == "COUNT":
+			newColor.color = Color.from_hsv(inverse_lerp(0,RelevantSpecies.max(),SpeciesNumber),1,1,1)
+		newColor.custom_minimum_size = Vector2(31,31)
+		
+		if S != "COUNT":
+			newColor.color = StatTocolor[S]
+	
 
 func UpdateSingleSpecie(specie):
 	
@@ -78,6 +89,27 @@ func UpdateSingleSpecie(specie):
 	
 	for I in StatsAssociated:
 		renderLineOnControl(StatAsPercentage([specie],I),speciesToGraphNode[specie],true,StatTocolor[I])
+
+func updateGlobalSpecie():
+	for I in %GlobalStat.get_children(): I.queue_free()
+	
+	var StatsAssociated = []
+	for I : Control in %GlobalStatHbox.get_children(): if I is CheckBox: if I.button_pressed: StatsAssociated.append(I.text)
+	print(StatsAssociated)
+	for I in StatsAssociated:
+		var statPercentage = StatAsPercentage(RelevantSpecies,I)
+		var trueAverages = AllSpeciesAveragePercentageFromPercentage(statPercentage)
+		renderLineOnControl(trueAverages,%GlobalStat,true,StatTocolor[I])
+
+func AllSpeciesAveragePercentageFromPercentage(data : Array[Dictionary]):
+	var newData : Array[Dictionary] = []
+	for I : Dictionary in data:
+		var Total = 0
+		for E in I.values():
+			Total += E
+		Total /= I.size()
+		newData.append({0:Total})
+	return newData
 
 func showColorCodes(displayNode : Control):
 	for I in RelevantSpecies:
