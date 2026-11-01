@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Creature-Collector-Simulation"
+run/main_scene="uid://bo3e4ub2xdk3v"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

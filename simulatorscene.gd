@@ -14,7 +14,14 @@ extends Node2D
 
 @export var mutationLevel = 5
 
+@export var countPerGroup = 5
+
+@export var ChangeOnValues = true
+
 func _ready():
+	
+	if !ChangeOnValues:
+		return 
 	
 	simMinX = sizeX / -2
 	simMaxX = sizeX / 2
@@ -76,10 +83,9 @@ func _ready():
 		newAgent.global_position = randomPosition
 		newAgent.species = %SpeciesHandler.checkChildIfNewSpecies(newAgent,-5)
 		newAgent.modulate = %SpeciesHandler.Species[newAgent.species].color
-		add_child(newAgent.duplicate())
-		add_child(newAgent.duplicate())
-		add_child(newAgent)
-		print(newAgent)
+		for C in range(countPerGroup):
+			add_child(newAgent.duplicate())
+		
 	
 	
 

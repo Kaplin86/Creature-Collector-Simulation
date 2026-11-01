@@ -2,7 +2,13 @@ extends Node2D
 class_name FruitSpawningTree
 
 var fruitTexture = preload("res://art/fruit.png")
+var treeTexture = preload("res://art/tree.png")
 
+func _ready():
+	var newTexture = Sprite2D.new()
+	newTexture.texture = treeTexture
+	newTexture.scale =  Vector2(0.183,0.183)
+	add_child(newTexture)
 
 var dt = 0.0
 func _process(delta):

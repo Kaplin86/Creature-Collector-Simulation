@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://csu200iyltqde" path="res://art/grass.png" id="2_m24cv"]
 [ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/spatial_grid.gd" id="3_nssk4"]
 [ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/species_handler.gd" id="4_lrn8h"]
+[ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/speedSlider.gd" id="6_a4k71"]
 
 [sub_resource type="Resource" id="Resource_nssk4"]
 script = ExtResource("2_lrn8h")
@@ -25,8 +26,8 @@ simMaxY = 4934
 startingSpeciesCount = 80
 startingTreeCount = 300
 basicBodyPart = SubResource("Resource_nssk4")
-sizeX = 5000
-sizeY = 5000
+sizeX = 3000
+sizeY = 3000
 
 [node name="BG" type="TextureRect" parent="." unique_id=1303592634]
 unique_name_in_owner = true
@@ -40,6 +41,8 @@ stretch_mode = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1002187011]
 unique_name_in_owner = true
+collision_layer = 15
+collision_mask = 15
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=603874298]
 position = Vector2(4958, 4866)
@@ -51,3 +54,30 @@ script = ExtResource("3_nssk4")
 [node name="SpeciesHandler" type="Node2D" parent="." unique_id=153540461]
 unique_name_in_owner = true
 script = ExtResource("4_lrn8h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1123902541]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1314581205]
+offset_right = 338.0
+offset_bottom = 57.0
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Panel" unique_id=1004435276]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 7.0
+offset_right = 316.0
+offset_bottom = 23.0
+min_value = 1.0
+max_value = 32.0
+value = 1.0
+script = ExtResource("6_a4k71")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=608197768]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 25.0
+offset_right = 313.0
+offset_bottom = 48.0
+text = "SPEED -"
+
+[connection signal="value_changed" from="CanvasLayer/Panel/HSlider" to="CanvasLayer/Panel/HSlider" method="_on_value_changed"]

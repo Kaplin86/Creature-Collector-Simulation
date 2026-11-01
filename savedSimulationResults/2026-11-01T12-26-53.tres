@@ -36,7 +36,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpD", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ej0dr"]
 script = ExtResource("2_ggu4s")
@@ -70,7 +70,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpD", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_6vfdy"]
 script = ExtResource("2_ggu4s")
@@ -104,7 +104,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpD", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_uf0pb"]
 script = ExtResource("2_ggu4s")
@@ -138,7 +138,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpD", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_5ocll"]
 script = ExtResource("2_ggu4s")
@@ -170,7 +170,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_hp8bs"]
 script = ExtResource("2_ggu4s")
@@ -192,7 +192,7 @@ originStats = Dictionary[String, int]({
 })
 originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 0.8309436, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_g283n"]
 script = ExtResource("2_ggu4s")
@@ -216,7 +216,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"]), Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(1.76189, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_4khm4"]
 script = ExtResource("2_ggu4s")
@@ -248,7 +248,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_bmbw5"]
 script = ExtResource("2_ggu4s")
@@ -270,7 +270,7 @@ originStats = Dictionary[String, int]({
 })
 originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 0.8309436, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_mxa54"]
 script = ExtResource("2_ggu4s")
@@ -294,7 +294,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"]), Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(1.76189, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_uy6rt"]
 script = ExtResource("2_ggu4s")
@@ -327,7 +327,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_hqp2u"]
 script = ExtResource("2_ggu4s")
@@ -350,7 +350,7 @@ originStats = Dictionary[String, int]({
 })
 originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 0.8309436, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_krxol"]
 script = ExtResource("2_ggu4s")
@@ -375,7 +375,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"]), Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(1.76189, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_x77ng"]
 script = ExtResource("2_ggu4s")
@@ -407,7 +407,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_n0ynq"]
 script = ExtResource("2_ggu4s")
@@ -430,7 +430,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"]), Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(1.76189, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_q5epk"]
 script = ExtResource("2_ggu4s")
@@ -453,7 +453,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_5yc15"]
 script = ExtResource("2_ggu4s")
@@ -485,7 +485,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_2t62y"]
 script = ExtResource("2_ggu4s")
@@ -508,7 +508,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_yr7d7"]
 script = ExtResource("2_ggu4s")
@@ -539,7 +539,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_j7pmb"]
 script = ExtResource("2_ggu4s")
@@ -561,7 +561,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"]), Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(1.76189, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_qiotk"]
 script = ExtResource("2_ggu4s")
@@ -583,7 +583,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_qpveq"]
 script = ExtResource("2_ggu4s")
@@ -605,7 +605,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 1
 color = Color(0, 1.9000852, 5, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_luqb8"]
 script = ExtResource("2_ggu4s")
@@ -626,7 +626,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_455ej"]
 script = ExtResource("2_ggu4s")
@@ -647,7 +647,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"]), Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(1.76189, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_4q4u3"]
 script = ExtResource("2_ggu4s")
@@ -668,7 +668,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_cyk7k"]
 script = ExtResource("2_ggu4s")
@@ -690,7 +690,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ykx8m"]
 script = ExtResource("2_ggu4s")
@@ -713,7 +713,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"]), Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(1.76189, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_o0jfc"]
 script = ExtResource("2_ggu4s")
@@ -735,7 +735,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_1e45o"]
 script = ExtResource("2_ggu4s")
@@ -757,7 +757,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(4.3348684, 5, 0, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_tgjrx"]
 script = ExtResource("2_ggu4s")
@@ -778,7 +778,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_h0wfq"]
 script = ExtResource("2_ggu4s")
@@ -801,7 +801,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"]), Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(1.76189, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_8g862"]
 script = ExtResource("2_ggu4s")
@@ -822,7 +822,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_bvp20"]
 script = ExtResource("2_ggu4s")
@@ -843,7 +843,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(4.3348684, 5, 0, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_7rtur"]
 script = ExtResource("2_ggu4s")
@@ -867,7 +867,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_at085"]
 script = ExtResource("2_ggu4s")
@@ -891,7 +891,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_dji4v"]
 script = ExtResource("2_ggu4s")
@@ -915,7 +915,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(4.3348684, 5, 0, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_sqmln"]
 script = ExtResource("2_ggu4s")
@@ -939,7 +939,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_rs03b"]
 script = ExtResource("2_ggu4s")
@@ -961,7 +961,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_emra2"]
 script = ExtResource("2_ggu4s")
@@ -983,7 +983,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_oa5q6"]
 script = ExtResource("2_ggu4s")
@@ -1005,7 +1005,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(4.3348684, 5, 0, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_p5f7q"]
 script = ExtResource("2_ggu4s")
@@ -1027,7 +1027,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_3epef"]
 script = ExtResource("2_ggu4s")
@@ -1050,7 +1050,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_c4v0r"]
 script = ExtResource("2_ggu4s")
@@ -1074,7 +1074,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ttrxw"]
 script = ExtResource("2_ggu4s")
@@ -1098,7 +1098,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_nuyhw"]
 script = ExtResource("2_ggu4s")
@@ -1123,7 +1123,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_t47un"]
 script = ExtResource("2_ggu4s")
@@ -1148,7 +1148,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(4.3348684, 5, 0, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_tn6m8"]
 script = ExtResource("2_ggu4s")
@@ -1173,7 +1173,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_4h4gp"]
 script = ExtResource("2_ggu4s")
@@ -1197,7 +1197,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ukjub"]
 script = ExtResource("2_ggu4s")
@@ -1221,7 +1221,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_734ll"]
 script = ExtResource("2_ggu4s")
@@ -1245,7 +1245,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(4.3348684, 5, 0, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_es7aw"]
 script = ExtResource("2_ggu4s")
@@ -1269,7 +1269,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_787km"]
 script = ExtResource("2_ggu4s")
@@ -1292,7 +1292,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_7giu2"]
 script = ExtResource("2_ggu4s")
@@ -1315,7 +1315,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_m2jwl"]
 script = ExtResource("2_ggu4s")
@@ -1338,7 +1338,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_7gmfo"]
 script = ExtResource("2_ggu4s")
@@ -1360,7 +1360,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_tfjoe"]
 script = ExtResource("2_ggu4s")
@@ -1383,7 +1383,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"]), Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(1.76189, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_b8sdg"]
 script = ExtResource("2_ggu4s")
@@ -1405,7 +1405,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_rg3gv"]
 script = ExtResource("2_ggu4s")
@@ -1427,7 +1427,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_i8gj5"]
 script = ExtResource("2_ggu4s")
@@ -1450,7 +1450,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_6vjy7"]
 script = ExtResource("2_ggu4s")
@@ -1474,7 +1474,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 5, 2.4224782, 5)
-typings = [2]
+typings = Array[int]([2])
 
 [sub_resource type="Resource" id="Resource_nmiao"]
 script = ExtResource("2_ggu4s")
@@ -1497,7 +1497,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_m5is3"]
 script = ExtResource("2_ggu4s")
@@ -1522,7 +1522,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_hc2xy"]
 script = ExtResource("2_ggu4s")
@@ -1547,7 +1547,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_ql3kt"]
 script = ExtResource("2_ggu4s")
@@ -1570,7 +1570,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_q7ff0"]
 script = ExtResource("2_ggu4s")
@@ -1593,7 +1593,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_8mcsv"]
 script = ExtResource("2_ggu4s")
@@ -1616,7 +1616,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ujxgc"]
 script = ExtResource("2_ggu4s")
@@ -1639,7 +1639,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_3v6qg"]
 script = ExtResource("2_ggu4s")
@@ -1662,7 +1662,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 5, 2.0158148, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_linde"]
 script = ExtResource("2_ggu4s")
@@ -1686,7 +1686,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_tmkje"]
 script = ExtResource("2_ggu4s")
@@ -1709,7 +1709,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_x4prc"]
 script = ExtResource("2_ggu4s")
@@ -1732,7 +1732,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_84w05"]
 script = ExtResource("2_ggu4s")
@@ -1756,7 +1756,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_3vraq"]
 script = ExtResource("2_ggu4s")
@@ -1780,7 +1780,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(0, 4.376258, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_o77vc"]
 script = ExtResource("2_ggu4s")
@@ -1803,7 +1803,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_tlo34"]
 script = ExtResource("2_ggu4s")
@@ -1826,7 +1826,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_mrp1u"]
 script = ExtResource("2_ggu4s")
@@ -1848,7 +1848,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_xcxpk"]
 script = ExtResource("2_ggu4s")
@@ -1870,7 +1870,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_aqv32"]
 script = ExtResource("2_ggu4s")
@@ -1892,7 +1892,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_58ig3"]
 script = ExtResource("2_ggu4s")
@@ -1915,7 +1915,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_xe1og"]
 script = ExtResource("2_ggu4s")
@@ -1936,7 +1936,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_be64d"]
 script = ExtResource("2_ggu4s")
@@ -1957,7 +1957,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_d0njk"]
 script = ExtResource("2_ggu4s")
@@ -1980,7 +1980,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_od7l8"]
 script = ExtResource("2_ggu4s")
@@ -2003,7 +2003,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(2.4954247, 0, 5, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_eri4o"]
 script = ExtResource("2_ggu4s")
@@ -2025,7 +2025,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ex4mv"]
 script = ExtResource("2_ggu4s")
@@ -2047,7 +2047,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_je5qe"]
 script = ExtResource("2_ggu4s")
@@ -2070,7 +2070,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_06f8l"]
 script = ExtResource("2_ggu4s")
@@ -2093,7 +2093,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_rvahv"]
 script = ExtResource("2_ggu4s")
@@ -2116,7 +2116,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(2.4954247, 0, 5, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_h4doc"]
 script = ExtResource("2_ggu4s")
@@ -2136,7 +2136,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_oyyf4"]
 script = ExtResource("2_ggu4s")
@@ -2156,7 +2156,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(2.4954247, 0, 5, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_ch27v"]
 script = ExtResource("2_ggu4s")
@@ -2178,7 +2178,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_wv6q6"]
 script = ExtResource("2_ggu4s")
@@ -2200,7 +2200,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(2.4954247, 0, 5, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_jggnt"]
 script = ExtResource("2_ggu4s")
@@ -2220,7 +2220,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_pywfw"]
 script = ExtResource("2_ggu4s")
@@ -2240,7 +2240,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_srdxf"]
 script = ExtResource("2_ggu4s")
@@ -2262,7 +2262,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_k7qkf"]
 script = ExtResource("2_ggu4s")
@@ -2285,7 +2285,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ene67"]
 script = ExtResource("2_ggu4s")
@@ -2305,7 +2305,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_uxg35"]
 script = ExtResource("2_ggu4s")
@@ -2325,7 +2325,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_jy67t"]
 script = ExtResource("2_ggu4s")
@@ -2345,7 +2345,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_lwtuu"]
 script = ExtResource("2_ggu4s")
@@ -2366,7 +2366,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ynmtt"]
 script = ExtResource("2_ggu4s")
@@ -2387,7 +2387,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_spu1m"]
 script = ExtResource("2_ggu4s")
@@ -2409,7 +2409,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_t1uaj"]
 script = ExtResource("2_ggu4s")
@@ -2431,7 +2431,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_focbe"]
 script = ExtResource("2_ggu4s")
@@ -2452,7 +2452,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_cnpxb"]
 script = ExtResource("2_ggu4s")
@@ -2474,7 +2474,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["SP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_7u2qn"]
 script = ExtResource("2_ggu4s")
@@ -2495,7 +2495,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["SP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_hjg6l"]
 script = ExtResource("2_ggu4s")
@@ -2515,7 +2515,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["SP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_tlosk"]
 script = ExtResource("2_ggu4s")
@@ -2536,7 +2536,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["SP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_xk0wy"]
 script = ExtResource("2_ggu4s")
@@ -2557,7 +2557,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["SP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_se777"]
 script = ExtResource("2_ggu4s")
@@ -2578,7 +2578,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_yvjh5"]
 script = ExtResource("2_ggu4s")
@@ -2600,7 +2600,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_dr12e"]
 script = ExtResource("2_ggu4s")
@@ -2621,7 +2621,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_quqv5"]
 script = ExtResource("2_ggu4s")
@@ -2641,7 +2641,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_m3naj"]
 script = ExtResource("2_ggu4s")
@@ -2663,7 +2663,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_7ytmp"]
 script = ExtResource("2_ggu4s")
@@ -2684,7 +2684,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_01xfs"]
 script = ExtResource("2_ggu4s")
@@ -2706,7 +2706,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_6rcjv"]
 script = ExtResource("2_ggu4s")
@@ -2727,7 +2727,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_u8u0k"]
 script = ExtResource("2_ggu4s")
@@ -2748,7 +2748,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_2gfi5"]
 script = ExtResource("2_ggu4s")
@@ -2769,7 +2769,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_53l15"]
 script = ExtResource("2_ggu4s")
@@ -2790,7 +2790,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(2.4954247, 0, 5, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_vscs6"]
 script = ExtResource("2_ggu4s")
@@ -2811,7 +2811,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_a1tf7"]
 script = ExtResource("2_ggu4s")
@@ -2833,7 +2833,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_d18yt"]
 script = ExtResource("2_ggu4s")
@@ -2854,7 +2854,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_6mv65"]
 script = ExtResource("2_ggu4s")
@@ -2876,7 +2876,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ujeko"]
 script = ExtResource("2_ggu4s")
@@ -2896,7 +2896,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_w6s12"]
 script = ExtResource("2_ggu4s")
@@ -2917,7 +2917,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "HP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_pdg4f"]
 script = ExtResource("2_ggu4s")
@@ -2939,7 +2939,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "HP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ouru6"]
 script = ExtResource("2_ggu4s")
@@ -2961,7 +2961,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "HP"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_klu24"]
 script = ExtResource("2_ggu4s")
@@ -2982,7 +2982,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "HP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_s8qp2"]
 script = ExtResource("2_ggu4s")
@@ -3003,7 +3003,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "HP"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_vy68i"]
 script = ExtResource("2_ggu4s")
@@ -3025,7 +3025,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "HP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_v5vt6"]
 script = ExtResource("2_ggu4s")
@@ -3047,7 +3047,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "HP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_8gf48"]
 script = ExtResource("2_ggu4s")
@@ -3070,7 +3070,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "HP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_wyldx"]
 script = ExtResource("2_ggu4s")
@@ -3091,7 +3091,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "DEF", "HP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_d47qa"]
 script = ExtResource("2_ggu4s")
@@ -3112,7 +3112,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ns5ua"]
 script = ExtResource("2_ggu4s")
@@ -3133,7 +3133,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_qa4ae"]
 script = ExtResource("2_ggu4s")
@@ -3155,7 +3155,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_67i2w"]
 script = ExtResource("2_ggu4s")
@@ -3177,7 +3177,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_qht6g"]
 script = ExtResource("2_ggu4s")
@@ -3200,7 +3200,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_i2sru"]
 script = ExtResource("2_ggu4s")
@@ -3222,7 +3222,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_802xi"]
 script = ExtResource("2_ggu4s")
@@ -3244,7 +3244,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_tg3y5"]
 script = ExtResource("2_ggu4s")
@@ -3265,7 +3265,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_7hc1i"]
 script = ExtResource("2_ggu4s")
@@ -3286,7 +3286,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_s4yc5"]
 script = ExtResource("2_ggu4s")
@@ -3307,7 +3307,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_8gmt1"]
 script = ExtResource("2_ggu4s")
@@ -3328,7 +3328,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_eg774"]
 script = ExtResource("2_ggu4s")
@@ -3349,7 +3349,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_n0n2i"]
 script = ExtResource("2_ggu4s")
@@ -3371,7 +3371,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_m3jjw"]
 script = ExtResource("2_ggu4s")
@@ -3392,7 +3392,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_8v5av"]
 script = ExtResource("2_ggu4s")
@@ -3416,7 +3416,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_3ekw2"]
 script = ExtResource("2_ggu4s")
@@ -3440,7 +3440,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_4jvmt"]
 script = ExtResource("2_ggu4s")
@@ -3462,7 +3462,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_iy3b0"]
 script = ExtResource("2_ggu4s")
@@ -3482,7 +3482,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_dcn3p"]
 script = ExtResource("2_ggu4s")
@@ -3503,7 +3503,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_tnhon"]
 script = ExtResource("2_ggu4s")
@@ -3524,7 +3524,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SpA"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_y0b14"]
 script = ExtResource("2_ggu4s")
@@ -3545,7 +3545,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_qndd8"]
 script = ExtResource("2_ggu4s")
@@ -3567,7 +3567,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_npya2"]
 script = ExtResource("2_ggu4s")
@@ -3588,7 +3588,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_qoyan"]
 script = ExtResource("2_ggu4s")
@@ -3608,7 +3608,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_jdar1"]
 script = ExtResource("2_ggu4s")
@@ -3630,7 +3630,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_eg7io"]
 script = ExtResource("2_ggu4s")
@@ -3653,7 +3653,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_fdj7r"]
 script = ExtResource("2_ggu4s")
@@ -3674,7 +3674,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_8rqgx"]
 script = ExtResource("2_ggu4s")
@@ -3695,7 +3695,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_f66pk"]
 script = ExtResource("2_ggu4s")
@@ -3716,7 +3716,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_jpg8k"]
 script = ExtResource("2_ggu4s")
@@ -3738,7 +3738,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_xwnsh"]
 script = ExtResource("2_ggu4s")
@@ -3759,7 +3759,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_qrwda"]
 script = ExtResource("2_ggu4s")
@@ -3780,7 +3780,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_reatq"]
 script = ExtResource("2_ggu4s")
@@ -3802,7 +3802,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_lmdkr"]
 script = ExtResource("2_ggu4s")
@@ -3823,7 +3823,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_o064n"]
 script = ExtResource("2_ggu4s")
@@ -3844,7 +3844,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_3l7m5"]
 script = ExtResource("2_ggu4s")
@@ -3865,7 +3865,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ijmqu"]
 script = ExtResource("2_ggu4s")
@@ -3885,7 +3885,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_6nf0u"]
 script = ExtResource("2_ggu4s")
@@ -3904,7 +3904,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_jwtba"]
 script = ExtResource("2_ggu4s")
@@ -3924,7 +3924,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_n8mm4"]
 script = ExtResource("2_ggu4s")
@@ -3946,7 +3946,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_mm8s2"]
 script = ExtResource("2_ggu4s")
@@ -3969,7 +3969,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["DEF", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_t2nm7"]
 script = ExtResource("2_ggu4s")
@@ -3991,7 +3991,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_4matw"]
 script = ExtResource("2_ggu4s")
@@ -4011,7 +4011,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_hl2lv"]
 script = ExtResource("2_ggu4s")
@@ -4030,7 +4030,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_gnd27"]
 script = ExtResource("2_ggu4s")
@@ -4050,7 +4050,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_8q8h3"]
 script = ExtResource("2_ggu4s")
@@ -4070,7 +4070,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_l8870"]
 script = ExtResource("2_ggu4s")
@@ -4091,7 +4091,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_au3g4"]
 script = ExtResource("2_ggu4s")
@@ -4115,7 +4115,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_abpiv"]
 script = ExtResource("2_ggu4s")
@@ -4139,7 +4139,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_4i61g"]
 script = ExtResource("2_ggu4s")
@@ -4160,7 +4160,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_keoiy"]
 script = ExtResource("2_ggu4s")
@@ -4182,7 +4182,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_tdpe5"]
 script = ExtResource("2_ggu4s")
@@ -4205,7 +4205,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_mx2tl"]
 script = ExtResource("2_ggu4s")
@@ -4225,7 +4225,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_6dm3r"]
 script = ExtResource("2_ggu4s")
@@ -4246,7 +4246,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_6qjy5"]
 script = ExtResource("2_ggu4s")
@@ -4268,7 +4268,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_drdmc"]
 script = ExtResource("2_ggu4s")
@@ -4291,7 +4291,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ywpph"]
 script = ExtResource("2_ggu4s")
@@ -4314,7 +4314,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SpA", "SpD"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_jtiiw"]
 script = ExtResource("2_ggu4s")
@@ -4336,7 +4336,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_kvky0"]
 script = ExtResource("2_ggu4s")
@@ -4357,7 +4357,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_yrsk6"]
 script = ExtResource("2_ggu4s")
@@ -4377,7 +4377,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_bo0ta"]
 script = ExtResource("2_ggu4s")
@@ -4401,7 +4401,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_53slj"]
 script = ExtResource("2_ggu4s")
@@ -4425,7 +4425,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_roy2b"]
 script = ExtResource("2_ggu4s")
@@ -4448,7 +4448,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_w6ud8"]
 script = ExtResource("2_ggu4s")
@@ -4469,7 +4469,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ag5v1"]
 script = ExtResource("2_ggu4s")
@@ -4490,7 +4490,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_hjuqm"]
 script = ExtResource("2_ggu4s")
@@ -4513,7 +4513,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_nvv7d"]
 script = ExtResource("2_ggu4s")
@@ -4534,7 +4534,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_i4x0o"]
 script = ExtResource("2_ggu4s")
@@ -4556,7 +4556,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_eq05g"]
 script = ExtResource("2_ggu4s")
@@ -4579,7 +4579,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_03343"]
 script = ExtResource("2_ggu4s")
@@ -4598,7 +4598,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_j2gr3"]
 script = ExtResource("2_ggu4s")
@@ -4617,7 +4617,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(2.4954247, 0, 5, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_5acc3"]
 script = ExtResource("2_ggu4s")
@@ -4639,7 +4639,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_raj0w"]
 script = ExtResource("2_ggu4s")
@@ -4660,7 +4660,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_nb28h"]
 script = ExtResource("2_ggu4s")
@@ -4680,7 +4680,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_xkatx"]
 script = ExtResource("2_ggu4s")
@@ -4703,7 +4703,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ypegv"]
 script = ExtResource("2_ggu4s")
@@ -4726,7 +4726,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_kwh3t"]
 script = ExtResource("2_ggu4s")
@@ -4747,7 +4747,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_3wxuk"]
 script = ExtResource("2_ggu4s")
@@ -4768,7 +4768,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_bcvmk"]
 script = ExtResource("2_ggu4s")
@@ -4788,7 +4788,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_hb55t"]
 script = ExtResource("2_ggu4s")
@@ -4808,7 +4808,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(2.4954247, 0, 5, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_tc3hf"]
 script = ExtResource("2_ggu4s")
@@ -4830,7 +4830,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_i1sj2"]
 script = ExtResource("2_ggu4s")
@@ -4850,7 +4850,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_iy63n"]
 script = ExtResource("2_ggu4s")
@@ -4870,7 +4870,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_arint"]
 script = ExtResource("2_ggu4s")
@@ -4892,7 +4892,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ek3p1"]
 script = ExtResource("2_ggu4s")
@@ -4913,7 +4913,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_2iusc"]
 script = ExtResource("2_ggu4s")
@@ -4934,7 +4934,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_e4aur"]
 script = ExtResource("2_ggu4s")
@@ -4954,7 +4954,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_j3snl"]
 script = ExtResource("2_ggu4s")
@@ -4975,7 +4975,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_80qct"]
 script = ExtResource("2_ggu4s")
@@ -4996,7 +4996,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(2.4954247, 0, 5, 5)
-typings = [4]
+typings = Array[int]([4])
 
 [sub_resource type="Resource" id="Resource_r6hnj"]
 script = ExtResource("2_ggu4s")
@@ -5018,7 +5018,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_nqhsm"]
 script = ExtResource("2_ggu4s")
@@ -5039,7 +5039,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_1wiuj"]
 script = ExtResource("2_ggu4s")
@@ -5059,7 +5059,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_vwoj5"]
 script = ExtResource("2_ggu4s")
@@ -5082,7 +5082,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_cf1ev"]
 script = ExtResource("2_ggu4s")
@@ -5103,7 +5103,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ccc3r"]
 script = ExtResource("2_ggu4s")
@@ -5124,7 +5124,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_wuvrj"]
 script = ExtResource("2_ggu4s")
@@ -5144,7 +5144,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_8ht1k"]
 script = ExtResource("2_ggu4s")
@@ -5164,7 +5164,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_o0dtr"]
 script = ExtResource("2_ggu4s")
@@ -5184,7 +5184,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SP"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_7alqo"]
 script = ExtResource("2_ggu4s")
@@ -5205,7 +5205,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_74lsi"]
 script = ExtResource("2_ggu4s")
@@ -5227,7 +5227,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_1gka2"]
 script = ExtResource("2_ggu4s")
@@ -5249,7 +5249,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_sll8a"]
 script = ExtResource("2_ggu4s")
@@ -5271,7 +5271,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_o4uri"]
 script = ExtResource("2_ggu4s")
@@ -5291,7 +5291,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_xn3ke"]
 script = ExtResource("2_ggu4s")
@@ -5311,7 +5311,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "SP", "SpA"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_1cprt"]
 script = ExtResource("2_ggu4s")
@@ -5333,7 +5333,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ou45o"]
 script = ExtResource("2_ggu4s")
@@ -5355,7 +5355,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["ATK", "HP", "SpA"])]
 diet = 2
 color = Color(3.2151008, 0, 5, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_didsf"]
 script = ExtResource("2_ggu4s")
@@ -5377,7 +5377,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_1a8pk"]
 script = ExtResource("2_ggu4s")
@@ -5402,7 +5402,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_u6xdb"]
 script = ExtResource("2_ggu4s")
@@ -5426,7 +5426,7 @@ originStats = Dictionary[String, int]({
 })
 originParts = [Array[String](["HP", "SpA", "SpD"])]
 color = Color(2.3278427, 5, 0, 5)
-typings = [1]
+typings = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_f20ww"]
 script = ExtResource("2_ggu4s")
@@ -5450,7 +5450,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_7djsh"]
 script = ExtResource("2_ggu4s")
@@ -5471,7 +5471,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_ttlju"]
 script = ExtResource("2_ggu4s")
@@ -5493,7 +5493,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_7hroh"]
 script = ExtResource("2_ggu4s")
@@ -5515,7 +5515,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_2sy5a"]
 script = ExtResource("2_ggu4s")
@@ -5537,7 +5537,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [sub_resource type="Resource" id="Resource_tygcq"]
 script = ExtResource("2_ggu4s")
@@ -5558,7 +5558,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(5, 0, 1.6747403, 5)
-typings = [0]
+typings = Array[int]([0])
 
 [sub_resource type="Resource" id="Resource_34k0y"]
 script = ExtResource("2_ggu4s")
@@ -5579,7 +5579,7 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 diet = 2
 color = Color(2.3704004, 0, 5, 5)
-typings = [3]
+typings = Array[int]([3])
 
 [resource]
 script = ExtResource("3_gc5uu")

@@ -153,8 +153,7 @@ func ageAndEnergyTick(delta) -> void:
 		
 	if energy <= 0:
 		
-		if dietType == Diets.Carnivore:
-			print("carnivore died of starvation")
+		
 		queue_free()
 
 ## Based on [member energy], [member age], and [birthtimer], the function determines what [enum ActionTypes] to do this frame. [br]
@@ -182,7 +181,6 @@ func determineCurrentAction() -> ActionTypes:
 		if predatorResult:
 			var VisionDistance = _SpDHash * GlobalVars.PixelVisionPerSPD
 			var distRatio = inverse_lerp(0,VisionDistance**2,predatorResult.global_position.distance_squared_to(global_position))
-			print(distRatio)
 			if distRatio > fleeDist:
 				currentAction = ActionTypes.Flee
 	
@@ -441,7 +439,6 @@ func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
 	
-	print("new kid species", newAgent.species, " vs parent's ", species)
 	return newAgent
 
 ## Looks in the vision, calling [SpatialGrid], and returns all of the found nodes.
@@ -458,8 +455,8 @@ func lookInVision() -> Array[Node2D]:
 			continue
 		
 		if global_position.distance_squared_to(I.global_position) < VisionDistance * VisionDistance:
-			
-			ForwardRaycast.target_position = I.global_position
+			ForwardRaycast.global_position = global_position
+			ForwardRaycast.target_position = I.global_position - global_position
 			ForwardRaycast.force_raycast_update()
 			
 			if !ForwardRaycast.is_colliding():
@@ -562,6 +559,6 @@ func battle(target : Agent) -> void:
 	else:
 		energy -= 0.3
 		HP = 1
-		print("battle lose", name)
+		#print("battle lose", name)
 		if target.dietType in [Diets.Carnivore,Diets.Omnivore]:
 			target.energy = 1
