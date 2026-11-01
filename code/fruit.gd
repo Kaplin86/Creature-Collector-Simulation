@@ -1,14 +1,17 @@
 extends Sprite2D
 class_name Fruit
 
+## A edible, fruit object.
+
+## The amount of energy recoveredwhen a carnivore eats this
 @export var NutritionalValue = 0.25
 
-@onready var spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
+@onready var _spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
 
 
 func _ready():
 	await get_tree().process_frame
-	spatialGrid.addEntity(self)
+	_spatialGrid.addEntity(self)
 
 func _exit_tree():
-	spatialGrid.removeEntity(self)
+	_spatialGrid.removeEntity(self)

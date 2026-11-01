@@ -1,6 +1,5 @@
 extends Node
 
-var TimeSpanCreatureInfo
 
 var SampleSpan = 120
 var timer : Timer

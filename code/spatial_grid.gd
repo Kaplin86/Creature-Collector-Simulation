@@ -1,16 +1,20 @@
 extends Node2D
 class_name SpatialGrid
 
-# This is meant to alleviate some of the INSANE lag that happens at higher creature counts
+## A system to efficiently seperate the map into a grid for faster vision-searching
 
+## The size of each cell
 @export var cellSize : float = 120
 
+## The grid, with keys being cells, and the arrays being objects inside that cell
 var grid : Dictionary[Vector2i,Array] = {}
 
+## Returns the current cell the position is inside of
 func getCell(pos : Vector2) -> Vector2i:
 	return Vector2i(floori(pos.x / cellSize),floori(pos.x / cellSize))
 
-func addEntity(entity : Node2D):
+## Adds an entity into its designated cell
+func addEntity(entity : Node2D) -> void:
 	var cell = getCell(entity.global_position)
 	
 	if !grid.has(cell):
@@ -18,7 +22,8 @@ func addEntity(entity : Node2D):
 	
 	grid[cell].append(entity)
 
-func removeEntity(entity : Node2D):
+## Removes the entity from the grid
+func removeEntity(entity : Node2D) -> void:
 	var cell = getCell(entity.global_position)
 	
 	if grid.has(cell):
@@ -27,7 +32,8 @@ func removeEntity(entity : Node2D):
 		if grid[cell].is_empty():
 			grid.erase(cell)
 
-func updateEntity(entity : Node2D, lastPos : Vector2):
+## Updates the cell the entity resides in.
+func updateEntity(entity : Node2D, lastPos : Vector2) -> void:
 	var newCell = getCell(entity.global_position)
 	var oldcell = getCell(lastPos)
 	
@@ -45,7 +51,8 @@ func updateEntity(entity : Node2D, lastPos : Vector2):
 	
 	grid[newCell].append(entity)
 
-func getEntitiesUsingDist(pos : Vector2,radius : float):
+## Returns all entities in the cells that are reached from radius
+func getEntitiesUsingDist(pos : Vector2,radius : float) -> Array:
 	var results = []
 	
 	var topLeftCell = getCell(pos - (Vector2.ONE*radius) )

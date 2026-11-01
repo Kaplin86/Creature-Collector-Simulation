@@ -1,15 +1,19 @@
 extends Node2D
 class_name Agent
 
-## A simulation agent. Has [member HP], [member ENERGY], and [member parts]. 
+## A simulation agent. Has [member HP], [member energy], [member parts], and a lot more. 
 
 var HP : float = 60 ## If HP is below 0, the agent is deleted (only outside of battle)
+
+## The age of the creature, in seconds.
+var age :float = 0.0
+
 
 ## The energy of the creature, from 0.0 to 1.0
 var energy : float = 1.0
 
 ## A timer that dictates if a creature can give birth again. [br] If it is below 0, they can. It gets set to stat-total * simulator-value on reproduction. Reduced by delta every frame.
-var birthtimer = 0
+var birthtimer : float = 0
 
 ## The parts on the creature. Used to dictate its stats
 @export var parts : Array[BodyPart] = []
@@ -19,13 +23,13 @@ var memoryFoodPosition
 
 ## The species number of the agent [br]
 ## See [SpeciesHandler]
-@export var species = 1
+@export var species := 1
 
 ## A somewhat useless value to keep track on how many 'generations' down this agent is. Increased when born and passed down.
-var generation = 0
+var generation := 0
 
 ## Dictates if the creature can move
-var inBattle = false
+var inBattle := false
 
 ## The three types of diets an agent can have
 enum Diets {
@@ -40,26 +44,50 @@ enum Diets {
 @onready var _spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
 @onready var _speciesHandler : SpeciesHandler = get_parent().get_node("SpeciesHandler")
 
-var lookingForMate = false
+## A boolean to signify if the agent is looking for a mate.
+var lookingForMate := false
+
+var _bstHash = 0.0
+var _SpDHash = 0.0
+var _SPHash = 0.0
+var _HPHash = 0.0
+
+## The different types of action the creature can perform. Selected each frame, and immediately acted apon.
+enum ActionTypes {
+	Wander, ## The creature will randomly wander around
+	Hunt, ## The creature will look for food and walk to it, or walk to the last piece of food it saw.
+	LookForMate ## The creature will wander until it finds a mate. Once it finds one, walk to it.
+	}
+
+
+
 
 #Behavior Vals
+## The diet type the agent has
 @export var dietType : Diets = Diets.Herbivore
-@export var battleRiskyness : float = 0.5 #refers to the level of hp a predator needs to be to go hunting. By default, below 50% hp will cause them to not fight.
+## The percentage of [member HP] that a predator needs to be to go hunting. If their [member HP] / MaxHP is less than this, they will abstain and instead do Wander movement until fully healed.
+@export var battleRiskyness : float = 0.5
+## The current location the agent is walking to.
+var targetLocation : Vector2
 
-func calculateFinalStat(stat : String):
+
+## A function that retrieves the sum of all [member parts] in a specific stat [br]
+## [param stat] needs to be an actual stat string ("HP", "ATK", etc.) to work
+func calculateFinalStat(stat : String) -> int:
 	var sum = 0
 	for I in parts:
 		sum += I.get(stat)
 	return sum
 
-func calculateBST():
+## Adds up all stats on all [member parts]
+func calculateBST() -> int:
 	var sum = 0
 	for I in parts:
 		for X in I.stats:
 			sum += I.get(X)
 	return sum
 
-var texture = preload("res://art/50.png")
+var _texture = preload("res://art/50.png")
 
 func _ready():
 	_bstHash = max(calculateBST(),5)
@@ -70,7 +98,7 @@ func _ready():
 	add_to_group("creature")
 	
 	var newSprite = Sprite2D.new()
-	newSprite.texture = texture
+	newSprite.texture = _texture
 	add_child(newSprite)
 	
 	HP = _HPHash
@@ -82,32 +110,36 @@ func _ready():
 func _exit_tree():
 	_spatialGrid.removeEntity(self)
 
-func getTyping():
-	return GlobalVars.Typings.Fire
+## Returns the typing of the first two moves. Will return only one if there is one move, or both moves share a type.
+## For some reason the docs on this are consistently getting bugged. It returns a typing from the [enum GlobalVars.Typings]
+func getTyping() -> Array[GlobalVars.Typings]:
+	var types : Array[GlobalVars.Typings] = []
+	if moveSet.get(0):
+		types.append(moveSet.get(0).typing)
+	
+	if moveSet.get(1):
+		if !types.has(moveSet.get(1).typing):
+			types.append(moveSet.get(1).typing)
+	return types
 
-var _bstHash = 0.0
-var _SpDHash = 0.0
-var _SPHash = 0.0
-var _HPHash = 0.0
-
-enum ActionTypes {Wander,Hunt,LookForMate}
-
-var targetLocation : Vector2
-
-var age = 0.0
-func _process(delta):
-	if _bstHash == 0.0: _bstHash = calculateBST()
+## Runs at the start of the frame-by-frame loop. Increases [member age], [member HP], and decreases [member energy] and [member birthtimer]. The creature is killed here if it lacks energy.
+func ageAndEnergyTick(delta) -> void:
 	age += delta
 	energy -= (delta / GlobalVars.TimeForSmallCreatureToDieOfStarvation) * ( 200/float(_bstHash))
+	birthtimer -= delta
+	
 	if !inBattle:
 		if HP > 0:
 			HP = min(HP + delta, _HPHash)
 		
 	if energy <= 0:
 		queue_free()
-	
+
+## Based on [member energy], [member age], and [birthtimer], the function determines what [enum ActionTypes] to do this frame. [br]
+##If [member GlobalVars.reproductionType] is set to be solo-reproduction / duplication, this function will run [method soloReproduction] instantly if the creature is ready. 
+func determineCurrentAction() -> ActionTypes:
 	var currentAction : ActionTypes = ActionTypes.Wander
-	birthtimer -= delta
+	
 	if max(GlobalVars.AgeToReproducePerStat * _bstHash,30) < age and birthtimer < 0.01:
 		if energy >= 0.75:
 			if GlobalVars.reproductionType == 0:
@@ -115,54 +147,79 @@ func _process(delta):
 				soloReproduction()
 			elif GlobalVars.reproductionType == 1:
 				currentAction = ActionTypes.LookForMate
-				
 	
 	
 	if energy <= 0.75:
 		currentAction = ActionTypes.Hunt
+	return currentAction
+
+## Runs every frame, if the determined [enum ActionTypes] is [enum ActionTypes.Wander]
+func wander() -> void:
+	lookingForMate = false
+	
+	setWanderTarget()
+	var result = lookForFood()
+	if result:
+		memoryFoodPosition = result.global_position
+
+## Runs every frame, if the determined [enum ActionTypes] is [enum ActionTypes.Hunt] [br]
+##Uses the [method lookForFood] to find food in vision. [br]
+##If no food is found, and there is no [member memoryFoodPosition], it runs [method setWanderTarget][br]
+##This is where [method battle] is ran, if the predator is close enough to prey
+func hunt() -> void:
+	lookingForMate = false
+	var result = lookForFood()
+	if result:
+		targetLocation = result.global_position
+		if global_position.distance_to(result.global_position) < 5:
+			if result is Fruit:
+				energy += result.NutritionalValue
+				result.queue_free()
+			if result is Agent:
+				battle(result)
+	else:
+		if memoryFoodPosition:
+			targetLocation = memoryFoodPosition
+			if global_position.distance_to(memoryFoodPosition) < _SpDHash * GlobalVars.PixelVisionPerSPD:
+				memoryFoodPosition = null
+		else:
+			setWanderTarget()
+
+## Runs every frame, if the determined [enum ActionTypes] is [enum ActionTypes.LookForMate]
+##Uses the [method lookForMate] to find mates in vision.[br]
+##If no mate is found, it runs [method setWanderTarget]
+func findMate() -> void:
+	lookingForMate = true
+	var result = lookForMate()
+	if result and result is Agent:
+		targetLocation = result.global_position
+		if global_position.distance_squared_to(targetLocation) <= 10:
+			var ChildBearer : Agent = result
+			var Other : Agent = self
+			if result.energy < energy:
+				ChildBearer = self
+				Other = result
+			
+			ChildBearer.duoReproduction(ChildBearer,Other)
+			ChildBearer.energy -= 0.25
+	else:
+		setWanderTarget()
+		
+
+func _process(delta):
+	if _bstHash == 0.0: _bstHash = calculateBST()
+	
+	ageAndEnergyTick(delta)
+	
+	var currentAction : ActionTypes = determineCurrentAction()
 	
 	if currentAction == ActionTypes.Wander:
-		lookingForMate = false
-		
-		wanderCode()
-		var result = lookForFood()
-		if result:
-			memoryFoodPosition = result.global_position
+		wander()
 	elif currentAction == ActionTypes.Hunt:
-		lookingForMate = false
-		var result = lookForFood()
-		if result:
-			targetLocation = result.global_position
-			if global_position.distance_to(result.global_position) < 5:
-				if result is Fruit:
-					energy += result.NutritionalValue
-					result.queue_free()
-				if result is Agent:
-					battle(result)
-		else:
-			if memoryFoodPosition:
-				targetLocation = memoryFoodPosition
-				if global_position.distance_to(memoryFoodPosition) < _SpDHash * GlobalVars.PixelVisionPerSPD:
-					memoryFoodPosition = null
-			else:
-				wanderCode()
+		hunt()
 	elif currentAction == ActionTypes.LookForMate:
-		lookingForMate = true
-		var result = lookForMate()
-		if result and result is Agent:
-			targetLocation = result.global_position
-			if global_position.distance_squared_to(targetLocation) <= 10:
-				var ChildBearer : Agent = result
-				var Other : Agent = self
-				if result.energy < energy:
-					ChildBearer = self
-					Other = result
-				
-				ChildBearer.duoReproduction(ChildBearer,Other)
-				ChildBearer.energy -= 0.25
-				
-		else:
-			wanderCode()
+		findMate()
+		
 	
 	
 	if !inBattle:
@@ -174,11 +231,14 @@ func _process(delta):
 		if HP <= 0:
 			queue_free()
 
-func wanderCode():
+## sets [member targetLocation] to a nearby location, based on Speed
+func setWanderTarget() -> void:
 	if randi_range(0,20) == 0:
 			targetLocation = global_position + Vector2(randf_range(-_SPHash * 2,_SPHash * 2),randf_range(-_SPHash * 2,_SPHash * 2))
 
-func soloReproduction():
+## The agent creates a new agent at this location, which inherits everything and gets mutated.[br]
+## See [method mutateAgent]
+func soloReproduction() -> Agent:
 	var newAgent = Agent.new()
 	newAgent.dietType = dietType
 	newAgent.parts = parts.duplicate(true)
@@ -200,8 +260,10 @@ func soloReproduction():
 	newAgent.modulate = _speciesHandler.Species[newAgent.species].color
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
+	return newAgent
 
-func mutateAgent(agent : Agent):
+## Mutates the inputted agent.
+func mutateAgent(agent : Agent) -> void:
 	if randf() <= GlobalVars.newLimbChance:
 		var NewPart = BodyPart.new()
 		NewPart.mutateRandomly()
@@ -222,7 +284,10 @@ func mutateAgent(agent : Agent):
 				for C : BodyPart in agent.parts:
 					C.mutateRandomly()
 
-func duoReproduction(parent1 : Agent, parent2 : Agent):
+
+## The agent creates a new agent at this location, which has the averaged stats of both input agents. It is then mutated.[br]
+## See [method mutateAgent]
+func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 	var newAgent = Agent.new()
 	newAgent.dietType = dietType
 	var pool = parent1.parts.duplicate(true)
@@ -264,7 +329,9 @@ func duoReproduction(parent1 : Agent, parent2 : Agent):
 	newAgent.modulate = _speciesHandler.Species[newAgent.species].color
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
+	return newAgent
 
+## Looks in the vision, calling [SpatialGrid], and returns all of the found nodes.
 func lookInVision() -> Array[Node2D]:
 	
 	var VisionDistance = _SpDHash * GlobalVars.PixelVisionPerSPD
@@ -280,13 +347,15 @@ func lookInVision() -> Array[Node2D]:
 		if global_position.distance_squared_to(I.global_position) < VisionDistance * VisionDistance:
 			foundNodes.append(I)
 	
-	foundNodes.sort_custom(byDistance)
+	foundNodes.sort_custom(_byDistance)
 	
 	return foundNodes
 
-func byDistance(a : Node2D,b : Node2D):
+
+func _byDistance(a : Node2D,b : Node2D):
 	return a.global_position.distance_squared_to(global_position) < b.global_position.distance_squared_to(global_position)
 
+## Looks for food in vision, and returns the nearest one. This can either return a [Fruit], or another [Agent]
 func lookForFood() -> Node2D:
 	var results = lookInVision()
 	for I in results:
@@ -302,7 +371,8 @@ func lookForFood() -> Node2D:
 	
 	return null
 
-func lookForMate() -> Node2D:
+## Looks for a mate in vision, and returns the nearest one.
+func lookForMate() -> Agent:
 	var results = lookInVision()
 	for I in results:
 		if I is Agent:
@@ -312,8 +382,9 @@ func lookForMate() -> Node2D:
 	
 	return null
 
-
-func battle(target : Agent):
+## Initiates a battle against the target. It loops until the [member HP] on either creature is reduced to 0. [br]
+##If the battle is won, the intiator kills the target. If it is lost, the intiator leaves at 1 hp and reduced energy.
+func battle(target : Agent) -> void:
 	inBattle = true
 	target.inBattle = true
 	

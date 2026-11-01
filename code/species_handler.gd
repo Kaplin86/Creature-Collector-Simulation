@@ -1,19 +1,27 @@
 extends Node2D
 class_name SpeciesHandler
 
-var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
+## Catalogues each species based on "distance"
 
+var _Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
+
+## An array of currently held Species
 var Species : Array[SpeciesDatastore] = []
 
-var distThreshold = 40
+## The "distance" an [Agent] needs to have to be able to found a new species.
+var distThreshold := 40.0
 
-var statDifWeight = 0.5
-var limbDifWeight = 15
-var dietWeight = 10
+## The "distance" added per stat-difference on an [Agent] and their parent's species' founder.
+var statDifWeight := 0.5
+## The "distance" added per limb-stat-affinity-difference on an [Agent] and their parent's species' founder.
+var limbDifWeight := 15.0
+## The "distance" added if the diet type on a [Agent] is different than their parent's species' founder.
+var dietWeight := 10.0
 
+## Adds a new species to the [member Species] array, and returns the new species number.
 func AddSpecies(first : Agent, Previous : int) -> int:
 	var newDatastore = SpeciesDatastore.new()
-	for I in Stats:
+	for I in _Stats:
 		newDatastore.originStats[I] = first.calculateFinalStat(I)
 	
 	for I in first.parts:
@@ -28,9 +36,10 @@ func AddSpecies(first : Agent, Previous : int) -> int:
 	print(Species)
 	return Species.find(newDatastore)
 
-func evaluateSpecies(check : Agent, Specie : SpeciesDatastore):
+## Checks the "distance" between an agent and a selected species.
+func evaluateSpecies(check : Agent, Specie : SpeciesDatastore) -> float:
 	var weight = 0
-	for I in Stats:
+	for I in _Stats:
 		weight += abs(check.calculateFinalStat(I) - Specie.originStats[I]) * statDifWeight
 	weight /= check.parts.size()
 	
@@ -55,6 +64,9 @@ func evaluateSpecies(check : Agent, Specie : SpeciesDatastore):
 	
 	return weight
 
+## Iterates through each species, and evaluates if the agent falls into a pre-existing species. [br]
+##If it does, it returns that species[br]
+##If it doesn't, it returns a new species from [method AddSpecies]
 func checkChildIfNewSpecies(check : Agent, parentSpecies : int) -> int:
 	for I in Species:
 		var weight = evaluateSpecies(check, I)
