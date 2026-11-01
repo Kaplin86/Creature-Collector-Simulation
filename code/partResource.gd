@@ -10,6 +10,14 @@ class_name BodyPart
 
 var stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 
+@export var UnDebuffedStats = ["HP","SpD","SP"]
+
 func mutateRandomly():
 	for I in stats:
 		set(I,get(I) + randf_range(-GlobalVars.mutationDist,GlobalVars.mutationDist))
+
+func MutateDebuff():
+	UnDebuffedStats.erase(UnDebuffedStats.pick_random())
+	var tempStats = stats.duplicate(true)
+	for I in UnDebuffedStats: tempStats.erase(I)
+	UnDebuffedStats.append(tempStats.pick_random())

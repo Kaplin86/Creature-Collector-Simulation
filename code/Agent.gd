@@ -69,7 +69,7 @@ var age = 0.0
 func _process(delta):
 	if _bstHash == 0.0: _bstHash = calculateBST()
 	age += delta
-	energy -= (delta / GlobalVars.TimeForSmallCreatureToDieOfStarvation) * ( (float(_bstHash)**0.75)/300.0)
+	energy -= (delta / GlobalVars.TimeForSmallCreatureToDieOfStarvation) * ( (float(_bstHash)**-0.75)/300.0)
 	if HP > 0:
 		HP = min(HP + delta, _HPHash)
 	
@@ -116,13 +116,13 @@ func _process(delta):
 			
 	
 	if !inBattle:
-		global_position += global_position.direction_to(targetLocation) * min(_SPHash,global_position.distance_to(targetLocation))
+		global_position += global_position.direction_to(targetLocation) * min(_SPHash * GlobalVars.SpeedPerSpeed,global_position.distance_to(targetLocation))
 		if HP <= 0:
 			queue_free()
 
 func wanderCode():
 	if randi_range(0,20) == 0:
-			targetLocation = global_position + Vector2(randf_range(-50,50),randf_range(-50,50))
+			targetLocation = global_position + Vector2(randf_range(-_SPHash * 2,_SPHash * 2),randf_range(-_SPHash * 2,_SPHash * 2))
 
 func soloReproduction():
 	var newAgent = Agent.new()
@@ -140,8 +140,26 @@ func soloReproduction():
 	for I : BodyPart in newAgent.parts:
 		I.mutateRandomly()
 	
+	if randf() <= GlobalVars.newLimbChance:
+		var NewPart = BodyPart.new()
+		NewPart.mutateRandomly()
+		NewPart.mutateRandomly()
+		NewPart.mutateRandomly()
+		newAgent.parts.append(NewPart)
+		newAgent.species += randi_range(5,500)
+	
+	if randf() <= GlobalVars.MutateLimbDebuffChance:
+		newAgent.parts.pick_random().MutateDebuff()
+		#newAgent.species += generation
+	
+	
 	get_parent().add_child(newAgent)
 	newAgent.modulate = modulate
+	
+	if newAgent.species != species:
+		newAgent.modulate = Color.from_hsv(wrap(newAgent.modulate.h + 0.05,0,1),newAgent.modulate.s,newAgent.modulate.v,1)
+		print("a new species!!?!")
+	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
 
 func lookInVision() -> Array[Node2D]:
@@ -179,7 +197,6 @@ func battle(target : Agent):
 	inBattle = true
 	target.inBattle = true
 	
-	print("BATTLE INITIATED BETWEEN SPECIES ", species, " AND ", target.species)
 	
 	while (target.HP > 0) and (HP > 0):
 		var order = []
@@ -190,7 +207,6 @@ func battle(target : Agent):
 			order.append(self)
 			order.append(target)
 		
-		print(order[0].species, " WILL GO FIRST")
 		
 		for Attacker : Agent in order:
 			var Defender = order[order.find(Attacker) - 1] #Gets the agent that goes before the attacker, which in the context of 2 means the other character. Will need to be changed in 2v2
@@ -201,12 +217,10 @@ func battle(target : Agent):
 			
 			Defender.HP -= damageToDeal
 			
-			print(Attacker.species, " DEALT A TOTAL OF ", damageToDeal, " HP LEAVING ", Defender.species, " AT ", Defender.HP)
 			
 			if !((target.HP > 0) and (HP > 0)):
 				break
 	
-	print("BATTLE END")
 	inBattle = false
 	target.inBattle = false
 	

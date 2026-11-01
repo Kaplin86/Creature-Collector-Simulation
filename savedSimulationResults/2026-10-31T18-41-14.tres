@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="SimulationHistory" format=3]
-
-[ext_resource type="Script" path="res://code/SimulationHistory.gd" id="1_bvn17"]
-
-[resource]
-script = ExtResource("1_bvn17")

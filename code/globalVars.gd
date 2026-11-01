@@ -1,6 +1,6 @@
 extends Node
 
-@export var mutationDist = 2 #the max distance of mutation in a body part
+@export var mutationDist = 3 #the max distance of mutation in a body part
 
 enum SimulationReproductionType {Duplication, TwoParents}
 @export var reproductionType : SimulationReproductionType = SimulationReproductionType.Duplication
@@ -13,9 +13,10 @@ var PixelVisionPerSPD = 4 #how many inworld units / pixels the agent can see bas
 
 var bstPerBirthTimer = 0.5
 
+var SpeedPerSpeed = 0.5
 
-
-
+var newLimbChance = 0.003
+var MutateLimbDebuffChance = 0.05
 
 
 

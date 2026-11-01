@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="SimulationHistory" format=3]
-
-[ext_resource type="Script" path="res://code/SimulationHistory.gd" id="1_uekoj"]
-
-[resource]
-script = ExtResource("1_uekoj")
-cachedHistory = [{}]
