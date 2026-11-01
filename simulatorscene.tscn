@@ -267,7 +267,7 @@ parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
 species = 0
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
-[node name="Node2D19" type="Node2D" parent="." unique_id=434486690 groups=["creature"]]
+[node name="car" type="Node2D" parent="." unique_id=434486690 groups=["creature"]]
 modulate = Color(18.892157, 12.060547, 18.892157, 1)
 position = Vector2(417, 146)
 script = ExtResource("1_ngdw2")
@@ -276,7 +276,7 @@ species = -1
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_c86cp")])
 dietType = 1
 
-[node name="Node2D38" type="Node2D" parent="." unique_id=734898361 groups=["creature"]]
+[node name="car2" type="Node2D" parent="." unique_id=734898361 groups=["creature"]]
 modulate = Color(18.892157, 12.060547, 18.892157, 1)
 position = Vector2(456, 191)
 script = ExtResource("1_ngdw2")
@@ -285,7 +285,7 @@ species = -1
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_c86cp")])
 dietType = 1
 
-[node name="Node2D39" type="Node2D" parent="." unique_id=207744231 groups=["creature"]]
+[node name="car3" type="Node2D" parent="." unique_id=207744231 groups=["creature"]]
 modulate = Color(18.892157, 12.060547, 18.892157, 1)
 position = Vector2(412, 180)
 script = ExtResource("1_ngdw2")

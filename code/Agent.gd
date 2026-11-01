@@ -62,11 +62,16 @@ enum ActionTypes {
 
 
 
-#Behavior Vals
+#Behavior Vals -----------------
 ## The diet type the agent has
 @export var dietType : Diets = Diets.Herbivore
 ## The percentage of [member HP] that a predator needs to be to go hunting. If their [member HP] / MaxHP is less than this, they will abstain and instead do Wander movement until fully healed.
 @export var battleRiskyness : float = 0.5
+## The percentage distance a predator (any carnivore, or carnivore of higher base stat if this agent is already a carnivore) needs to be before this agent goes into run state
+@export var fleeDist : float = 0.5
+
+
+
 ## The current location the agent is walking to.
 var targetLocation : Vector2
 
