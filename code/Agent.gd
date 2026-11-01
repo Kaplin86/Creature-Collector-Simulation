@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 class_name Agent
 
 ## A simulation agent. Has [member HP], [member energy], [member parts], and a lot more. 
@@ -118,6 +118,13 @@ func _ready():
 	targetLocation = global_position + Vector2(randf_range(-50,50),randf_range(-50,50))
 	
 	add_child(ForwardRaycast)
+	
+	var newHitbox = CollisionShape2D.new()
+	add_child(newHitbox)
+	var circle = CircleShape2D.new()
+	circle.radius = 10
+	newHitbox.shape = circle
+	collision_mask = 2
 
 func _exit_tree():
 	_spatialGrid.removeEntity(self)
@@ -234,7 +241,6 @@ func findMate() -> void:
 	else:
 		setWanderTarget()
 
-var _fleeRaycastCooldown = 0.0
 var fleeDirOffset = 0.0
 
 func flee() -> void:
@@ -269,7 +275,6 @@ func flee() -> void:
 func _process(delta):
 	if _bstHash == 0.0: _bstHash = calculateBST()
 	
-	_fleeRaycastCooldown -= delta
 	
 	ageAndEnergyTick(delta)
 	
@@ -292,20 +297,52 @@ func _process(delta):
 	
 	if !inBattle:
 		var oldPos = global_position
-		global_position += global_position.direction_to(targetLocation) * min(_SPHash * GlobalVars.SpeedPerSpeed,global_position.distance_to(targetLocation))
 		
-		global_position.x = clamp(global_position.x,get_parent().simMinX,get_parent().simMaxX)
-		global_position.y = clamp(global_position.y,get_parent().simMinY,get_parent().simMaxY)
+		var offset = targetLocation - global_position
+		var dist = offset.length()
+		var speed = _SPHash * GlobalVars.SpeedPerSpeed 
 		
-		_spatialGrid.updateEntity(self,oldPos)
+		if dist > 0.0 and delta > 0.0:
+			var travelDist = min(speed * delta,dist)
+			var motion = offset.normalized() * travelDist
+			
+			move_and_collide(motion)
+			
+			if global_position.distance_to(targetLocation) < 0.01:
+				global_position = targetLocation
+				velocity = Vector2.ZERO
+			
+		else:
+			velocity = Vector2.ZERO
 		
-		if HP <= 0:
-			queue_free()
 
 ## sets [member targetLocation] to a nearby location, based on Speed
 func setWanderTarget() -> void:
 	if randi_range(0,20) == 0:
-			targetLocation = global_position + Vector2(randf_range(-_SPHash * 2,_SPHash * 2),randf_range(-_SPHash * 2,_SPHash * 2))
+		var awayDirection = (global_position - global_position + Vector2(randf_range(-_SPHash * 2,_SPHash * 2),randf_range(-_SPHash * 2,_SPHash * 2))).normalized()
+	
+		var possibleAngles = [0,30,-30,60,-60,90,-90,135,-135,180]
+		var bestDirection = awayDirection
+		var foundPath = false
+		
+		for angle in possibleAngles:
+			var testDirection = awayDirection.rotated(deg_to_rad(angle))
+			
+			ForwardRaycast.target_position = testDirection * 40
+			ForwardRaycast.force_raycast_update()
+			
+			if !ForwardRaycast.is_colliding():
+				bestDirection = testDirection
+				foundPath = true
+				break
+		
+		if !foundPath:
+			bestDirection = Vector2.from_angle(randf()*TAU)
+		
+		targetLocation = global_position + bestDirection * 100
+		
+		
+		
 
 ## The agent creates a new agent at this location, which inherits everything and gets mutated.[br]
 ## See [method mutateAgent]
@@ -385,7 +422,7 @@ func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 		usingMoves.append(new)
 	
 	
-	newAgent.moveSet = usingMoves
+	newAgent.moveSet = usingMoves.duplicate(true)
 	newAgent.global_position = global_position
 	newAgent.targetLocation = global_position
 	newAgent.energy = 0.5
@@ -403,6 +440,8 @@ func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 	newAgent.modulate = _speciesHandler.Species[newAgent.species].color
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
+	
+	print("new kid species", newAgent.species, " vs parent's ", species)
 	return newAgent
 
 ## Looks in the vision, calling [SpatialGrid], and returns all of the found nodes.
@@ -419,7 +458,12 @@ func lookInVision() -> Array[Node2D]:
 			continue
 		
 		if global_position.distance_squared_to(I.global_position) < VisionDistance * VisionDistance:
-			foundNodes.append(I)
+			
+			ForwardRaycast.target_position = I.global_position
+			ForwardRaycast.force_raycast_update()
+			
+			if !ForwardRaycast.is_colliding():
+				foundNodes.append(I)
 	
 	foundNodes.sort_custom(_byDistance)
 	

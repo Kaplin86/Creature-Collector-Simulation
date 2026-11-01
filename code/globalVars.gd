@@ -29,7 +29,7 @@ var PixelVisionPerSPD := 4
 var bstPerBirthTimer := 0.5
 
 ## The pixel speed on an [Agent], per Speed stat.
-var SpeedPerSpeed := 0.5
+var SpeedPerSpeed := 0.9
 
 ## The chance for an [Agent] to grow a new [BodyPart] when mutating
 var newLimbChance := 0.025
