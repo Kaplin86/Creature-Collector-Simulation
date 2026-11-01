@@ -2,7 +2,7 @@ extends Node
 
 var TimeSpanCreatureInfo
 
-var SampleSpan = 60
+var SampleSpan = 120
 var timer : Timer
 
 var generationByGenerationInfo = []

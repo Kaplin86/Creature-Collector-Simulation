@@ -5,7 +5,7 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 
 var Species : Array[SpeciesDatastore] = []
 
-var distThreshold = 30
+var distThreshold = 40
 
 var statDifWeight = 0.5
 var limbDifWeight = 15

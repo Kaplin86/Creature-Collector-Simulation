@@ -11,7 +11,7 @@ var speciesToGraphNode : Dictionary[int,Control] = {}
 var StatTocolor = {"ATK":Color.GOLD,"DEF":Color.ORANGE,"HP":Color.GREEN,"SpA":Color.TURQUOISE,"SpD":Color.DARK_BLUE,"SP":Color.PURPLE}
 
 
-var CountRemovingThreshHold = 10 #if a species' count never goes higher than this number, the species is considered 'irrelevant'
+var CountRemovingThreshHold = 5 #if a species' count never goes higher than this number, the species is considered 'irrelevant'
 
 func _ready():
 	historyArray = simulationHistory.cachedHistory

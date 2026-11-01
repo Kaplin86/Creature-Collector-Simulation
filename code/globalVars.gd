@@ -1,9 +1,9 @@
 extends Node
 
-@export var mutationDist = 3 #the max distance of mutation in a body part
+@export var mutationDist = 2 #the max distance of mutation in a body part
 
 enum SimulationReproductionType {Duplication, TwoParents}
-@export var reproductionType : SimulationReproductionType = SimulationReproductionType.Duplication
+@export var reproductionType : SimulationReproductionType = SimulationReproductionType.TwoParents
 
 var AgeToReproducePerStat = 2 #the amount of seconds it takes for a creature to be able to reproduce, multiplied by BST. So if the value is 1, it will take 300 seconds for a creature with 300 bst to be ready to reproduce.
 
@@ -15,9 +15,9 @@ var bstPerBirthTimer = 0.5
 
 var SpeedPerSpeed = 0.5
 
-var newLimbChance = 0.5
-var MutateLimbDebuffChance = 0.5
-var changedDietChance = 0.5
+var newLimbChance = 0.05
+var MutateLimbDebuffChance = 0.05
+var changedDietChance = 0.05
 
 
 

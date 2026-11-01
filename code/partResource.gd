@@ -24,3 +24,7 @@ func MutateDebuff():
 	var tempStats = stats.duplicate(true)
 	for I in UnDebuffedStats: tempStats.erase(I)
 	UnDebuffedStats.append(tempStats.pick_random())
+
+func averageWith(otherPart : BodyPart):
+	for I in stats:
+		set(I,(get(I) + otherPart.get(I)) / 2)

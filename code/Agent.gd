@@ -1,29 +1,50 @@
 extends Node2D
 class_name Agent
 
-# NOTES FOR L8R: A bst of 300 and lower is considered small. For pokemon context, 300 bst is roughly most starter mons.
+## A simulation agent. Has [member HP], [member ENERGY], and [member parts]. 
 
-var HP = 60
+var HP : float = 60 ## If HP is below 0, the agent is deleted (only outside of battle)
 
-var energy = 1.0
+## The energy of the creature, from 0.0 to 1.0
+var energy : float = 1.0
+
+## A timer that dictates if a creature can give birth again. [br] If it is below 0, they can. It gets set to stat-total * simulator-value on reproduction. Reduced by delta every frame.
 var birthtimer = 0
+
+## The parts on the creature. Used to dictate its stats
 @export var parts : Array[BodyPart] = []
 
-var memoryFoodPosition # a position that refers to the last seen fruit
+## The position of last seen fruit. Functionally a [Vector2], however it remains untyped
+var memoryFoodPosition
 
+## The species number of the agent [br]
+## See [SpeciesHandler]
 @export var species = 1
+
+## A somewhat useless value to keep track on how many 'generations' down this agent is. Increased when born and passed down.
 var generation = 0
 
+## Dictates if the creature can move
 var inBattle = false
 
-enum Diets {Herbivore, Carnivore, Omnivore}
+## The three types of diets an agent can have
+enum Diets {
+	Herbivore, ## Only eats plants
+	Carnivore, ## Will attempt to hunt other creatures, initiating a [method battle]
+	Omnivore ## Eats plants and other creatures. Initiates a [method battle] when hunting another creature.
+	}
 
-@export var dietType : Diets = Diets.Herbivore
-
+## The list of Moves a creature has. At max, it can have 4
 @export var moveSet : Array[Move] = []
 
-@onready var spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
-@onready var speciesHandler : SpeciesHandler = get_parent().get_node("SpeciesHandler")
+@onready var _spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
+@onready var _speciesHandler : SpeciesHandler = get_parent().get_node("SpeciesHandler")
+
+var lookingForMate = false
+
+#Behavior Vals
+@export var dietType : Diets = Diets.Herbivore
+@export var battleRiskyness : float = 0.5 #refers to the level of hp a predator needs to be to go hunting. By default, below 50% hp will cause them to not fight.
 
 func calculateFinalStat(stat : String):
 	var sum = 0
@@ -54,12 +75,12 @@ func _ready():
 	
 	HP = _HPHash
 	
-	spatialGrid.addEntity(self)
+	_spatialGrid.addEntity(self)
 	
 	targetLocation = global_position + Vector2(randf_range(-50,50),randf_range(-50,50))
 
 func _exit_tree():
-	spatialGrid.removeEntity(self)
+	_spatialGrid.removeEntity(self)
 
 func getTyping():
 	return GlobalVars.Typings.Fire
@@ -78,9 +99,10 @@ func _process(delta):
 	if _bstHash == 0.0: _bstHash = calculateBST()
 	age += delta
 	energy -= (delta / GlobalVars.TimeForSmallCreatureToDieOfStarvation) * ( 200/float(_bstHash))
-	if HP > 0:
-		HP = min(HP + delta, _HPHash)
-	
+	if !inBattle:
+		if HP > 0:
+			HP = min(HP + delta, _HPHash)
+		
 	if energy <= 0:
 		queue_free()
 	
@@ -93,17 +115,21 @@ func _process(delta):
 				soloReproduction()
 			elif GlobalVars.reproductionType == 1:
 				currentAction = ActionTypes.LookForMate
+				
 	
 	
 	if energy <= 0.75:
 		currentAction = ActionTypes.Hunt
 	
 	if currentAction == ActionTypes.Wander:
+		lookingForMate = false
+		
 		wanderCode()
 		var result = lookForFood()
 		if result:
 			memoryFoodPosition = result.global_position
 	elif currentAction == ActionTypes.Hunt:
+		lookingForMate = false
 		var result = lookForFood()
 		if result:
 			targetLocation = result.global_position
@@ -120,14 +146,30 @@ func _process(delta):
 					memoryFoodPosition = null
 			else:
 				wanderCode()
-			
-			
+	elif currentAction == ActionTypes.LookForMate:
+		lookingForMate = true
+		var result = lookForMate()
+		if result and result is Agent:
+			targetLocation = result.global_position
+			if global_position.distance_squared_to(targetLocation) <= 10:
+				var ChildBearer : Agent = result
+				var Other : Agent = self
+				if result.energy < energy:
+					ChildBearer = self
+					Other = result
+				
+				ChildBearer.duoReproduction(ChildBearer,Other)
+				ChildBearer.energy -= 0.25
+				
+		else:
+			wanderCode()
+	
 	
 	if !inBattle:
 		var oldPos = global_position
 		global_position += global_position.direction_to(targetLocation) * min(_SPHash * GlobalVars.SpeedPerSpeed,global_position.distance_to(targetLocation))
 		
-		spatialGrid.updateEntity(self,oldPos)
+		_spatialGrid.updateEntity(self,oldPos)
 		
 		if HP <= 0:
 			queue_free()
@@ -138,9 +180,7 @@ func wanderCode():
 
 func soloReproduction():
 	var newAgent = Agent.new()
-
 	newAgent.dietType = dietType
-
 	newAgent.parts = parts.duplicate(true)
 	newAgent.moveSet = moveSet.duplicate(true)
 	newAgent.global_position = global_position
@@ -149,34 +189,79 @@ func soloReproduction():
 	newAgent.generation = generation + 1
 	
 	
+	mutateAgent(newAgent)
+
+	get_parent().add_child(newAgent)
+	newAgent.modulate = modulate
+	
+	newAgent.species = _speciesHandler.checkChildIfNewSpecies(newAgent,species)
+	
+	
+	newAgent.modulate = _speciesHandler.Species[newAgent.species].color
+	
+	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
+
+func mutateAgent(agent : Agent):
 	if randf() <= GlobalVars.newLimbChance:
 		var NewPart = BodyPart.new()
 		NewPart.mutateRandomly()
 		NewPart.mutateRandomly()
 		NewPart.mutateRandomly()
-		newAgent.parts.append(NewPart)
+		agent.parts.append(NewPart)
 	
 	if randf() <= GlobalVars.MutateLimbDebuffChance:
-		newAgent.parts.pick_random().MutateDebuff()
+		agent.parts.pick_random().MutateDebuff()
 	
-	for I : BodyPart in newAgent.parts:
+	for I : BodyPart in agent.parts:
 		I.mutateRandomly()
 	
 	if randf() <= GlobalVars.changedDietChance:
-		newAgent.dietType = Diets.values().pick_random()
-		if newAgent.dietType != dietType:
+		agent.dietType = Diets.values().pick_random()
+		if agent.dietType != dietType:
 			for Q in range(4):
-				for C : BodyPart in newAgent.parts:
+				for C : BodyPart in agent.parts:
 					C.mutateRandomly()
-		
+
+func duoReproduction(parent1 : Agent, parent2 : Agent):
+	var newAgent = Agent.new()
+	newAgent.dietType = dietType
+	var pool = parent1.parts.duplicate(true)
+	var i = -1
+	for part2 in parent2.parts:
+		i += 1
+		var part1 : BodyPart = pool.get(i)
+		if part1:
+			part1.averageWith(part2)
+	
+	
+	newAgent.parts = pool
+	
+	var movePool = parent1.moveSet.duplicate(true)
+	movePool.append_array(parent2.moveSet.duplicate(true))
+	
+	var usingMoves : Array[Move] = []
+	while usingMoves.size() < 4 and movePool.size() != 0:
+		var new = movePool.pick_random()
+		movePool.erase(new)
+		usingMoves.append(new)
+	
+	
+	newAgent.moveSet = usingMoves
+	newAgent.global_position = global_position
+	newAgent.targetLocation = global_position
+	newAgent.energy = 0.5
+	newAgent.generation = generation + 1
+	newAgent.battleRiskyness = clamp(((parent1.battleRiskyness + parent2.battleRiskyness) / 2),0,1) + randf_range(-0.05,0.05)
+	
+	mutateAgent(newAgent)
 
 	get_parent().add_child(newAgent)
 	newAgent.modulate = modulate
 	
-	newAgent.species = speciesHandler.checkChildIfNewSpecies(newAgent,species)
+	newAgent.species = _speciesHandler.checkChildIfNewSpecies(newAgent,species)
 	
 	
-	newAgent.modulate = speciesHandler.Species[newAgent.species].color
+	newAgent.modulate = _speciesHandler.Species[newAgent.species].color
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
 
@@ -184,7 +269,7 @@ func lookInVision() -> Array[Node2D]:
 	
 	var VisionDistance = _SpDHash * GlobalVars.PixelVisionPerSPD
 	var foundNodes : Array[Node2D] = []
-	var nodes = spatialGrid.getEntitiesUsingDist(global_position,VisionDistance)
+	var nodes = _spatialGrid.getEntitiesUsingDist(global_position,VisionDistance)
 	for I in nodes:
 		if I == self:
 			continue
@@ -209,12 +294,24 @@ func lookForFood() -> Node2D:
 			if I is Fruit:
 				return I
 		elif dietType in [Diets.Carnivore,Diets.Omnivore]:
-			if I is Agent:
-				if !I.inBattle:
-					if I.species != species:
-						return I
+			if inverse_lerp(0,_HPHash,HP) >= battleRiskyness:
+				if I is Agent:
+					if !I.inBattle:
+						if I.species != species:
+							return I
 	
 	return null
+
+func lookForMate() -> Node2D:
+	var results = lookInVision()
+	for I in results:
+		if I is Agent:
+			if I.species == species:
+				if I.lookingForMate and !I.inBattle:
+					return I
+	
+	return null
+
 
 func battle(target : Agent):
 	inBattle = true
@@ -226,7 +323,7 @@ func battle(target : Agent):
 		
 		if turn > 300:
 			var rando = [target,self]
-			rando.pick_random().hp = -9999
+			rando.pick_random().HP = -9999
 		
 		var order = []
 		if target.calculateFinalStat("SP") > _SPHash:
@@ -256,8 +353,10 @@ func battle(target : Agent):
 	
 	if target.HP <= 0:
 		energy = 1
+		print("battle won", name)
 	else:
-		queue_free()
+		energy -= 0.3
+		HP = 1
+		print("battle lose", name)
 		if target.dietType in [Diets.Carnivore,Diets.Omnivore]:
 			target.energy = 1
-	
