@@ -24,7 +24,30 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [sub_resource type="Resource" id="Resource_5ae0i"]
 script = ExtResource("5_dh3iq")
+typing = null
 metadata/_custom_type_script = "uid://b65mjq863idtp"
+
+[sub_resource type="Resource" id="Resource_53aok"]
+resource_local_to_scene = true
+script = ExtResource("2_ro32a")
+HP = 42
+ATK = 52
+DEF = 67
+SpA = 39
+SpD = 35
+SP = 50
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_8tkw1"]
+resource_local_to_scene = true
+script = ExtResource("2_ro32a")
+HP = 42
+ATK = 52
+DEF = 67
+SpA = 39
+SpD = 56
+SP = 80
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [sub_resource type="Resource" id="Resource_c86cp"]
 script = ExtResource("5_dh3iq")
@@ -33,6 +56,10 @@ metadata/_custom_type_script = "uid://b65mjq863idtp"
 
 [node name="Simulatorscene" type="Node2D" unique_id=748557727]
 script = ExtResource("1_oepk7")
+simMinX = -515
+simMaxX = 1747
+simMinY = -305
+simMaxY = 909
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=589775304]
 modulate = Color(1, 1, 1, 0.26666668)
@@ -42,6 +69,42 @@ offset_right = 5752.0
 offset_bottom = 4580.0
 texture = ExtResource("2_5ae0i")
 stretch_mode = 1
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=210398841]
+position = Vector2(-515, -305)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=477823348]
+position = Vector2(1747, 909)
+
+[node name="SimBorder" type="Node" parent="." unique_id=164563081]
+
+[node name="ColorRect" type="ColorRect" parent="SimBorder" unique_id=1601182948]
+offset_left = -556.0
+offset_top = -345.0
+offset_right = 1748.0
+offset_bottom = -305.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="SimBorder" unique_id=1232715939]
+offset_left = -556.0
+offset_top = 914.0
+offset_right = 1748.0
+offset_bottom = 954.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="SimBorder" unique_id=632770203]
+offset_left = 1748.0
+offset_top = -345.0
+offset_right = 1788.0
+offset_bottom = 951.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="SimBorder" unique_id=1054366286]
+offset_left = -555.0
+offset_top = -345.0
+offset_right = -515.0
+offset_bottom = 951.0
+color = Color(0, 0, 0, 1)
 
 [node name="SpatialGrid" type="Node2D" parent="." unique_id=652355942]
 unique_name_in_owner = true
@@ -263,33 +326,42 @@ moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 modulate = Color(0.37748086, 0.6194781, 1, 1)
 position = Vector2(689, 146)
 script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_53aok")])
 species = 0
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
 [node name="car" type="Node2D" parent="." unique_id=434486690 groups=["creature"]]
 modulate = Color(18.892157, 12.060547, 18.892157, 1)
-position = Vector2(417, 146)
+position = Vector2(337, -155)
 script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_8tkw1")])
 species = -1
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_c86cp")])
 dietType = 1
 
-[node name="car2" type="Node2D" parent="." unique_id=734898361 groups=["creature"]]
+[node name="car2" type="Node2D" parent="." unique_id=1636420184 groups=["creature"]]
 modulate = Color(18.892157, 12.060547, 18.892157, 1)
-position = Vector2(456, 191)
+position = Vector2(100, 82)
 script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_8tkw1")])
 species = -1
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_c86cp")])
 dietType = 1
 
-[node name="car3" type="Node2D" parent="." unique_id=207744231 groups=["creature"]]
+[node name="car3" type="Node2D" parent="." unique_id=1281661175 groups=["creature"]]
 modulate = Color(18.892157, 12.060547, 18.892157, 1)
-position = Vector2(412, 180)
+position = Vector2(45, 447)
 script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_8tkw1")])
+species = -1
+moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_c86cp")])
+dietType = 1
+
+[node name="car4" type="Node2D" parent="." unique_id=893969730 groups=["creature"]]
+modulate = Color(18.892157, 12.060547, 18.892157, 1)
+position = Vector2(652, 349)
+script = ExtResource("1_ngdw2")
+parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_8tkw1")])
 species = -1
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_c86cp")])
 dietType = 1
@@ -784,6 +856,42 @@ script = ExtResource("6_tls5n")
 
 [node name="Tree20" type="Node2D" parent="." unique_id=451730828]
 position = Vector2(402, 369)
+script = ExtResource("6_tls5n")
+
+[node name="Tree31" type="Node2D" parent="." unique_id=1510029436]
+position = Vector2(-312, 783)
+script = ExtResource("6_tls5n")
+
+[node name="Tree32" type="Node2D" parent="." unique_id=146819059]
+position = Vector2(-361, 529)
+script = ExtResource("6_tls5n")
+
+[node name="Tree33" type="Node2D" parent="." unique_id=648353016]
+position = Vector2(-324, 180)
+script = ExtResource("6_tls5n")
+
+[node name="Tree34" type="Node2D" parent="." unique_id=202289558]
+position = Vector2(-278, -150)
+script = ExtResource("6_tls5n")
+
+[node name="Tree35" type="Node2D" parent="." unique_id=376676140]
+position = Vector2(1348, -203)
+script = ExtResource("6_tls5n")
+
+[node name="Tree36" type="Node2D" parent="." unique_id=286179821]
+position = Vector2(1532, 8)
+script = ExtResource("6_tls5n")
+
+[node name="Tree37" type="Node2D" parent="." unique_id=1845840252]
+position = Vector2(1566, 296)
+script = ExtResource("6_tls5n")
+
+[node name="Tree38" type="Node2D" parent="." unique_id=1660295010]
+position = Vector2(1456, 768)
+script = ExtResource("6_tls5n")
+
+[node name="Tree39" type="Node2D" parent="." unique_id=1634995402]
+position = Vector2(871, 808)
 script = ExtResource("6_tls5n")
 
 [node name="Tree21" type="Node2D" parent="." unique_id=496235625]

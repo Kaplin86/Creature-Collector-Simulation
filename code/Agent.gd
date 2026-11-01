@@ -21,6 +21,8 @@ var birthtimer : float = 0
 ## The position of last seen fruit. Functionally a [Vector2], however it remains untyped
 var memoryFoodPosition
 
+var _LastAction : ActionTypes
+
 ## The species number of the agent [br]
 ## See [SpeciesHandler]
 @export var species := 1
@@ -56,7 +58,8 @@ var _HPHash = 0.0
 enum ActionTypes {
 	Wander, ## The creature will randomly wander around
 	Hunt, ## The creature will look for food and walk to it, or walk to the last piece of food it saw.
-	LookForMate ## The creature will wander until it finds a mate. Once it finds one, walk to it.
+	LookForMate, ## The creature will wander until it finds a mate. Once it finds one, walk to it.
+	Flee, ## The creature will run from the nearest predator in vision
 	}
 
 
@@ -159,7 +162,21 @@ func determineCurrentAction() -> ActionTypes:
 	
 	if energy <= 0.75:
 		currentAction = ActionTypes.Hunt
+	
+	var predatorResult = lookForPredator()
+	if _LastAction == ActionTypes.Flee:
+		if predatorResult:
+			currentAction = ActionTypes.Flee
+	else:
+		if predatorResult:
+			var VisionDistance = _SpDHash * GlobalVars.PixelVisionPerSPD
+			var distRatio = inverse_lerp(0,VisionDistance**2,predatorResult.global_position.distance_squared_to(global_position))
+			print(distRatio)
+			if distRatio > fleeDist:
+				currentAction = ActionTypes.Flee
+	
 	return currentAction
+
 
 ## Runs every frame, if the determined [enum ActionTypes] is [enum ActionTypes.Wander]
 func wander() -> void:
@@ -179,7 +196,7 @@ func hunt() -> void:
 	var result = lookForFood()
 	if result:
 		targetLocation = result.global_position
-		if global_position.distance_to(result.global_position) < 5:
+		if global_position.distance_to(result.global_position) < 20:
 			if result is Fruit:
 				energy += result.NutritionalValue
 				result.queue_free()
@@ -212,14 +229,25 @@ func findMate() -> void:
 			ChildBearer.energy -= 0.25
 	else:
 		setWanderTarget()
-		
+
+func flee() -> void:
+	var result = lookForPredator()
+	if result:
+		var angle := global_position.angle_to(result.global_position)
+		angle += deg_to_rad(randi_range(-5,5))
+		angle += deg_to_rad(180)
+		var dir = Vector2.from_angle(angle)
+		targetLocation = global_position + dir * 20
+		print("flee!!")
 
 func _process(delta):
 	if _bstHash == 0.0: _bstHash = calculateBST()
 	
 	ageAndEnergyTick(delta)
 	
+	
 	var currentAction : ActionTypes = determineCurrentAction()
+	_LastAction = currentAction
 	
 	if currentAction == ActionTypes.Wander:
 		wander()
@@ -227,12 +255,16 @@ func _process(delta):
 		hunt()
 	elif currentAction == ActionTypes.LookForMate:
 		findMate()
-		
+	elif currentAction == ActionTypes.Flee:
+		flee()
 	
 	
 	if !inBattle:
 		var oldPos = global_position
 		global_position += global_position.direction_to(targetLocation) * min(_SPHash * GlobalVars.SpeedPerSpeed,global_position.distance_to(targetLocation))
+		
+		global_position.x = clamp(global_position.x,get_parent().simMinX,get_parent().simMaxX)
+		global_position.y = clamp(global_position.y,get_parent().simMinY,get_parent().simMaxY)
 		
 		_spatialGrid.updateEntity(self,oldPos)
 		
@@ -378,6 +410,21 @@ func lookForFood() -> Node2D:
 				if I is Agent:
 					if !I.inBattle:
 						if I.species != species:
+							return I
+	
+	return null
+
+## Looks for predators in vision, and returns the nearest one.
+func lookForPredator() -> Node2D:
+	var results = lookInVision()
+	for I in results:
+		if I is Agent:
+			if I.species != species:
+				if I.dietType in [Diets.Omnivore,Diets.Carnivore]:
+					if dietType == Diets.Herbivore: # herbivores flee fear all omnivores and carnivores
+						return I
+					else:
+						if I._bstHash >= _bstHash:
 							return I
 	
 	return null
