@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/spatial_grid.gd" id="3_nssk4"]
 [ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/species_handler.gd" id="4_lrn8h"]
 [ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/speedSlider.gd" id="6_a4k71"]
+[ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/freecam.gd" id="7_xd0na"]
 
 [sub_resource type="Resource" id="Resource_nssk4"]
 script = ExtResource("2_lrn8h")
@@ -78,6 +79,9 @@ offset_left = 15.0
 offset_top = 25.0
 offset_right = 313.0
 offset_bottom = 48.0
-text = "SPEED -"
+text = "SPEED - 1.0"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=864863408]
+script = ExtResource("7_xd0na")
 
 [connection signal="value_changed" from="CanvasLayer/Panel/HSlider" to="CanvasLayer/Panel/HSlider" method="_on_value_changed"]
