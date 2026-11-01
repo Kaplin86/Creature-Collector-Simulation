@@ -242,24 +242,28 @@ func flee() -> void:
 	if !result:
 		return
 	
-	var angle := global_position.angle_to(result.global_position)
-	angle += deg_to_rad(randi_range(-5,5))
-	angle += deg_to_rad(180)
-	var dir = Vector2.from_angle(angle)
+	var awayDirection = (global_position - result.global_position).normalized()
 	
+	var possibleAngles = [0,30,-30,60,-60,90,-90,135,-135,180]
+	var bestDirection = awayDirection
+	var foundPath = false
 	
-	
-	targetLocation = global_position + dir * 20
-	
-	if _fleeRaycastCooldown < 0:
-		_fleeRaycastCooldown = 5
-		ForwardRaycast.target_position = targetLocation
-		ForwardRaycast.force_raycast_update()
-		if ForwardRaycast.is_colliding():
-			fleeDirOffset += deg_to_rad([-1,1].pick_random() * 2)
-	
-	angle += fleeDirOffset
+	for angle in possibleAngles:
+		var testDirection = awayDirection.rotated(deg_to_rad(angle))
 		
+		ForwardRaycast.target_position = testDirection * 40
+		ForwardRaycast.force_raycast_update()
+		
+		if !ForwardRaycast.is_colliding():
+			bestDirection = testDirection
+			foundPath = true
+			break
+	
+	if !foundPath:
+		bestDirection = Vector2.from_angle(randf()*TAU)
+	
+	targetLocation = global_position + bestDirection * 100
+	
 	
 
 func _process(delta):
@@ -447,12 +451,13 @@ func lookForPredator() -> Node2D:
 	for I in results:
 		if I is Agent:
 			if I.species != species:
-				if I.dietType in [Diets.Omnivore,Diets.Carnivore]:
-					if dietType == Diets.Herbivore: # herbivores flee fear all omnivores and carnivores
-						return I
-					else:
-						if I._bstHash >= _bstHash:
+				if I.energy <= 0.75:
+					if I.dietType in [Diets.Omnivore,Diets.Carnivore]:
+						if dietType == Diets.Herbivore: # herbivores flee fear all omnivores and carnivores
 							return I
+						else:
+							if I._bstHash >= _bstHash:
+								return I
 	
 	return null
 
