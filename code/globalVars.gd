@@ -17,6 +17,7 @@ var SpeedPerSpeed = 0.5
 
 var newLimbChance = 0.003
 var MutateLimbDebuffChance = 0.05
+var changedDietChance = 0.1
 
 
 

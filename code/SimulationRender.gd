@@ -11,11 +11,15 @@ var speciesToGraphNode : Dictionary[int,Control] = {}
 var StatTocolor = {"ATK":Color.GOLD,"DEF":Color.ORANGE,"HP":Color.GREEN,"SpA":Color.TURQUOISE,"SpD":Color.DARK_BLUE,"SP":Color.PURPLE}
 
 
+var CountRemovingThreshHold = 10 #if a species' count never goes higher than this number, the species is considered 'irrelevant'
+
 func _ready():
 	historyArray = simulationHistory.cachedHistory
 	for I in historyArray: for C in I.keys(): if not C in RelevantSpecies: RelevantSpecies.append(C)
 	
 	await get_tree().process_frame
+	
+	pruneSpecies()
 	
 	renderLineOnControl(CountAsPercentage(RelevantSpecies),%FullCount)
 	renderLineOnControl(AverageStatTotalAsPercentage(RelevantSpecies),%FullStatTotal, true)
@@ -122,6 +126,20 @@ func AverageStatTotalAsPercentage(species : Array[int]):
 		newArray.append(report)
 	
 	return newArray
+
+func pruneSpecies():
+	var speciesToTop = {}
+	for I in historyArray:
+		for Specie in I.keys():
+			if !speciesToTop.has(Specie): speciesToTop[Specie] = 0 
+			
+			if speciesToTop[Specie] < I[Specie]["count"]:
+				speciesToTop[Specie] = I[Specie]["count"]
+	
+	for I in speciesToTop:
+		if speciesToTop[I] < CountRemovingThreshHold:
+			RelevantSpecies.erase(I)
+	
 
 func StatAsPercentage(species : Array[int],Stat : String):
 	var HighestStat = 0

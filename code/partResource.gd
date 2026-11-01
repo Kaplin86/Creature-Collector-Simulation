@@ -14,7 +14,10 @@ var stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 
 func mutateRandomly():
 	for I in stats:
-		set(I,get(I) + randf_range(-GlobalVars.mutationDist,GlobalVars.mutationDist))
+		var mult = 1.0
+		if not I in UnDebuffedStats: mult = 0.5
+		
+		set(I,get(I) + randf_range(-GlobalVars.mutationDist,GlobalVars.mutationDist) * mult)
 
 func MutateDebuff():
 	UnDebuffedStats.erase(UnDebuffedStats.pick_random())

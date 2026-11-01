@@ -23,6 +23,7 @@ enum Diets {Herbivore, Carnivore, Omnivore}
 @export var moveSet : Array[Move] = []
 
 @onready var spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
+@onready var speciesHandler : SpeciesHandler = get_parent().get_node("SpeciesHandler")
 
 func calculateFinalStat(stat : String):
 	var sum = 0
@@ -147,11 +148,8 @@ func soloReproduction():
 	newAgent.global_position = global_position
 	newAgent.targetLocation = global_position
 	newAgent.energy = 0.5
-	newAgent.species = species
 	newAgent.generation = generation + 1
 	
-	for I : BodyPart in newAgent.parts:
-		I.mutateRandomly()
 	
 	if randf() <= GlobalVars.newLimbChance:
 		var NewPart = BodyPart.new()
@@ -159,19 +157,28 @@ func soloReproduction():
 		NewPart.mutateRandomly()
 		NewPart.mutateRandomly()
 		newAgent.parts.append(NewPart)
-		newAgent.species += randi_range(5,500)
 	
 	if randf() <= GlobalVars.MutateLimbDebuffChance:
 		newAgent.parts.pick_random().MutateDebuff()
-		#newAgent.species += generation
 	
+	for I : BodyPart in newAgent.parts:
+		I.mutateRandomly()
 	
+	if randf() <= GlobalVars.changedDietChance:
+		newAgent.dietType = Diets.values().pick_random()
+		if newAgent.dietType != dietType:
+			for Q in range(4):
+				for C : BodyPart in newAgent.parts:
+					C.mutateRandomly()
+		
+
 	get_parent().add_child(newAgent)
 	newAgent.modulate = modulate
 	
-	if newAgent.species != species:
-		newAgent.modulate = Color.from_hsv(wrap(newAgent.modulate.h + 0.05,0,1),newAgent.modulate.s,newAgent.modulate.v,1)
-		print("a new species!!?!")
+	newAgent.species = speciesHandler.checkChildIfNewSpecies(newAgent,species)
+	
+	
+	newAgent.modulate = speciesHandler.Species[newAgent.species].color
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
 
