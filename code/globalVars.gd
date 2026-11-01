@@ -1,6 +1,6 @@
 extends Node
 
-@export var mutationDist = 5 #the max distance of mutation in a body part
+@export var mutationDist = 2 #the max distance of mutation in a body part
 
 enum SimulationReproductionType {Duplication, TwoParents}
 @export var reproductionType : SimulationReproductionType = SimulationReproductionType.Duplication

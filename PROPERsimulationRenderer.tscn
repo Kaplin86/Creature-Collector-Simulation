@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://3v2bxi8jbjba"]
 
 [ext_resource type="Script" uid="uid://bdmfjsimxwg8f" path="res://code/SimulationRender.gd" id="1_s317a"]
-[ext_resource type="Resource" uid="uid://bpyfs5y68sotg" path="res://savedSimulationResults/2026-10-31T16-23-22.tres" id="2_dw2ls"]
+[ext_resource type="Resource" path="res://savedSimulationResults/2026-10-31T20-36-13.tres" id="2_dw2ls"]
 
 [sub_resource type="Theme" id="Theme_dw2ls"]
 MarginContainer/constants/margin_bottom = 25

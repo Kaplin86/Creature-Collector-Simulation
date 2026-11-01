@@ -45,7 +45,7 @@ func _ready():
 			var newColor = ColorRect.new()
 			newHoriz.add_child(newColor)
 			newColor.color = Color.from_hsv(inverse_lerp(0,RelevantSpecies.max(),I),1,1,1)
-			newColor.custom_minimum_size = Vector2(23,23)
+			newColor.custom_minimum_size = Vector2(31,31)
 			
 			if S != "COUNT":
 				newColor.color = StatTocolor[S]
