@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://co0aqwinkw0fu" path="res://code/Agent.gd" id="1_ngdw2"]
 [ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_oepk7"]
+[ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/spatial_grid.gd" id="2_dh3iq"]
 [ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_ro32a"]
 [ext_resource type="Texture2D" uid="uid://bmskkcym2ebv3" path="res://icon.svg" id="4_ihovo"]
 [ext_resource type="Script" uid="uid://b65mjq863idtp" path="res://code/moveResource.gd" id="5_dh3iq"]
@@ -15,7 +16,7 @@ HP = 40
 ATK = 35
 DEF = 35
 SpA = 30
-SpD = 45
+SpD = 90
 SP = 45
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
@@ -46,6 +47,10 @@ metadata/_custom_type_script = "uid://b65mjq863idtp"
 
 [node name="Simulatorscene" type="Node2D" unique_id=748557727]
 script = ExtResource("1_oepk7")
+
+[node name="SpatialGrid" type="Node2D" parent="." unique_id=652355942]
+unique_name_in_owner = true
+script = ExtResource("2_dh3iq")
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=1514172927 groups=["creature"]]
 modulate = Color(1, 0, 1, 1)
@@ -128,6 +133,8 @@ species = 50
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
 [node name="carnivore2" type="Node2D" parent="." unique_id=1915731725 groups=["creature"]]
+process_mode = 4
+visible = false
 modulate = Color(0, 0, 1, 1)
 position = Vector2(534, 341)
 script = ExtResource("1_ngdw2")

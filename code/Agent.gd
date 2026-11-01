@@ -22,6 +22,8 @@ enum Diets {Herbivore, Carnivore, Omnivore}
 
 @export var moveSet : Array[Move] = []
 
+@onready var spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
+
 func calculateFinalStat(stat : String):
 	var sum = 0
 	for I in parts:
@@ -34,6 +36,7 @@ func calculateBST():
 		for X in I.stats:
 			sum += I.get(X)
 	return sum
+
 
 
 func _ready():
@@ -51,7 +54,13 @@ func _ready():
 	add_child(newSprite)
 	
 	HP = _HPHash
+	
+	spatialGrid.addEntity(self)
+	
 	targetLocation = global_position + Vector2(randf_range(-50,50),randf_range(-50,50))
+
+func _exit_tree():
+	spatialGrid.removeEntity(self)
 
 func getTyping():
 	return GlobalVars.Typings.Fire
@@ -69,7 +78,7 @@ var age = 0.0
 func _process(delta):
 	if _bstHash == 0.0: _bstHash = calculateBST()
 	age += delta
-	energy -= (delta / GlobalVars.TimeForSmallCreatureToDieOfStarvation) * ( (float(_bstHash)**-0.75)/300.0)
+	energy -= (delta / GlobalVars.TimeForSmallCreatureToDieOfStarvation) * ( 200/float(_bstHash))
 	if HP > 0:
 		HP = min(HP + delta, _HPHash)
 	
@@ -116,7 +125,11 @@ func _process(delta):
 			
 	
 	if !inBattle:
+		var oldPos = global_position
 		global_position += global_position.direction_to(targetLocation) * min(_SPHash * GlobalVars.SpeedPerSpeed,global_position.distance_to(targetLocation))
+		
+		spatialGrid.updateEntity(self,oldPos)
+		
 		if HP <= 0:
 			queue_free()
 
@@ -166,15 +179,20 @@ func lookInVision() -> Array[Node2D]:
 	
 	var VisionDistance = _SpDHash * GlobalVars.PixelVisionPerSPD
 	var foundNodes : Array[Node2D] = []
-	var nodes = get_parent().get_children()
+	var nodes = spatialGrid.getEntitiesUsingDist(global_position,VisionDistance)
 	for I in nodes:
-		if I is Node2D: if global_position.distance_to(I.global_position) < VisionDistance:
+		if I == self:
+			continue
+		
+		if !is_instance_valid(I):
+			continue
+		
+		if global_position.distance_squared_to(I.global_position) < VisionDistance * VisionDistance:
 			foundNodes.append(I)
 	
-	var sortedByDistance = foundNodes.duplicate()
-	sortedByDistance.sort_custom(byDistance)
+	foundNodes.sort_custom(byDistance)
 	
-	return sortedByDistance
+	return foundNodes
 
 func byDistance(a : Node2D,b : Node2D):
 	return a.global_position.distance_squared_to(global_position) < b.global_position.distance_squared_to(global_position)
