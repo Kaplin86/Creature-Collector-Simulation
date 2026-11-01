@@ -15,9 +15,9 @@ var bstPerBirthTimer = 0.5
 
 var SpeedPerSpeed = 0.5
 
-var newLimbChance = 0.003
-var MutateLimbDebuffChance = 0.05
-var changedDietChance = 0.1
+var newLimbChance = 0.5
+var MutateLimbDebuffChance = 0.5
+var changedDietChance = 0.5
 
 
 

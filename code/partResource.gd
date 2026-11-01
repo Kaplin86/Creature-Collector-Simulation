@@ -1,12 +1,12 @@
 extends Resource
 class_name BodyPart
 
-@export var HP = 10
-@export var ATK = 10
-@export var DEF = 10
-@export var SpA = 10
-@export var SpD = 10
-@export var SP = 10
+@export var HP = 0
+@export var ATK = 0
+@export var DEF = 0
+@export var SpA = 0
+@export var SpD = 0
+@export var SP = 0
 
 var stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 

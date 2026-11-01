@@ -5,12 +5,10 @@ class_name Fruit
 
 @onready var spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
 
-var fruitTexture = preload("res://art/fruit.png")
 
 func _ready():
 	await get_tree().process_frame
 	spatialGrid.addEntity(self)
-	texture = fruitTexture
 
 func _exit_tree():
 	spatialGrid.removeEntity(self)

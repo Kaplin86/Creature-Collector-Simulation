@@ -1,5 +1,8 @@
 extends Node2D
 
+var fruitTexture = preload("res://art/fruit.png")
+
+
 var dt = 0.0
 func _process(delta):
 	dt += delta
@@ -7,6 +10,6 @@ func _process(delta):
 		var newFruit = Fruit.new()
 		add_sibling(newFruit)
 		newFruit.global_position = global_position + Vector2(randi_range(-200,200),randi_range(-200,200))
-		newFruit.texture = load("res://icon.svg")
+		newFruit.texture = fruitTexture
 		newFruit.scale = Vector2(0.183,0.183)
 		dt = 0.0

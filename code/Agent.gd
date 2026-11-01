@@ -38,7 +38,7 @@ func calculateBST():
 			sum += I.get(X)
 	return sum
 
-
+var texture = preload("res://art/50.png")
 
 func _ready():
 	_bstHash = max(calculateBST(),5)
@@ -49,9 +49,7 @@ func _ready():
 	add_to_group("creature")
 	
 	var newSprite = Sprite2D.new()
-	newSprite.texture = load("res://art/"+str(species)+".png")
-	if newSprite.texture == null:
-		newSprite.texture = load("res://art/"+str(50)+".png")
+	newSprite.texture = texture
 	add_child(newSprite)
 	
 	HP = _HPHash
@@ -222,8 +220,14 @@ func battle(target : Agent):
 	inBattle = true
 	target.inBattle = true
 	
-	
+	var turn = 0
 	while (target.HP > 0) and (HP > 0):
+		turn += 1
+		
+		if turn > 300:
+			var rando = [target,self]
+			rando.pick_random().hp = -9999
+		
 		var order = []
 		if target.calculateFinalStat("SP") > _SPHash:
 			order.append(target)
@@ -238,7 +242,8 @@ func battle(target : Agent):
 			
 			var move : Move = Attacker.moveSet.pick_random()
 			
-			var damageToDeal = GlobalVars.calculateDamage(move, Attacker, Defender)
+			var damageToDeal = max(GlobalVars.calculateDamage(move, Attacker, Defender),1)
+			
 			
 			Defender.HP -= damageToDeal
 			

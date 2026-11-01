@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://co0aqwinkw0fu" path="res://code/Agent.gd" id="1_ngdw2"]
 [ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_oepk7"]
+[ext_resource type="Texture2D" uid="uid://csu200iyltqde" path="res://art/grass.png" id="2_5ae0i"]
 [ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/spatial_grid.gd" id="2_dh3iq"]
 [ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_ro32a"]
 [ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/species_handler.gd" id="3_feijk"]
@@ -27,6 +28,15 @@ metadata/_custom_type_script = "uid://b65mjq863idtp"
 
 [node name="Simulatorscene" type="Node2D" unique_id=748557727]
 script = ExtResource("1_oepk7")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=589775304]
+modulate = Color(1, 1, 1, 0.26666668)
+offset_left = -4300.0
+offset_top = -4982.0
+offset_right = 5752.0
+offset_bottom = 4580.0
+texture = ExtResource("2_5ae0i")
+stretch_mode = 1
 
 [node name="SpatialGrid" type="Node2D" parent="." unique_id=652355942]
 unique_name_in_owner = true
