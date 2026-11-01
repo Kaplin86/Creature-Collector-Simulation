@@ -13,3 +13,5 @@ class_name SpeciesDatastore
 @export var diet : Agent.Diets
 ## The species' signifying color.
 @export var color : Color
+## The specis' signature typings
+@export var typings : Array[GlobalVars.Typings] = []

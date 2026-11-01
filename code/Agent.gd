@@ -117,8 +117,8 @@ func getTyping() -> Array[GlobalVars.Typings]:
 	if moveSet.get(0):
 		types.append(moveSet.get(0).typing)
 	
-	if moveSet.get(1):
-		if !types.has(moveSet.get(1).typing):
+	if moveSet.size() != 1:
+		if moveSet.get(1):
 			types.append(moveSet.get(1).typing)
 	return types
 
@@ -133,6 +133,9 @@ func ageAndEnergyTick(delta) -> void:
 			HP = min(HP + delta, _HPHash)
 		
 	if energy <= 0:
+		
+		if dietType == Diets.Carnivore:
+			print("carnivore died of starvation")
 		queue_free()
 
 ## Based on [member energy], [member age], and [birthtimer], the function determines what [enum ActionTypes] to do this frame. [br]
@@ -276,6 +279,9 @@ func mutateAgent(agent : Agent) -> void:
 	
 	for I : BodyPart in agent.parts:
 		I.mutateRandomly()
+	
+	for I in agent.moveSet:
+		I.mutate()
 	
 	if randf() <= GlobalVars.changedDietChance:
 		agent.dietType = Diets.values().pick_random()

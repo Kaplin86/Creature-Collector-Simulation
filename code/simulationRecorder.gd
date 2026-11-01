@@ -31,10 +31,9 @@ func check():
 		for I : Agent in get_tree().get_nodes_in_group("creature"):
 			if I.species == C:
 				count += 1
-				if count == 1 or count == 2:
-					var packed_scene = PackedScene.new()
-					packed_scene.pack(I)
-					report["example" + str(count)] = packed_scene
+				if count == 1:
+					if I.species in range(I._speciesHandler.Species.size()):
+						report["specieData"] = I._speciesHandler.Species[I.species].duplicate(true)
 				averageBST += I.calculateBST()
 				for E in stats:
 					averageStatTotals.set(E,I.calculateFinalStat(E) + averageStatTotals.get(E))
@@ -44,6 +43,7 @@ func check():
 		report["averagePart"] = averageStatTotals
 		report["averageBST"] = averageBST
 		report["count"] = count
+		
 		
 		totalReport[C] = report
 	

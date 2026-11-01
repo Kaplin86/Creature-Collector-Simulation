@@ -32,11 +32,15 @@ var bstPerBirthTimer := 0.5
 var SpeedPerSpeed := 0.5
 
 ## The chance for an [Agent] to grow a new [BodyPart] when mutating
-var newLimbChance := 0.05
+var newLimbChance := 0.025
 ## The chance for [BodyPart] to change it's stat affinities when mutating.
-var MutateLimbDebuffChance := 0.05
-## Thee chance for an [Agent] to change [enum Agent.Diets] when mutating.
-var changedDietChance := 0.05
+var MutateLimbDebuffChance := 0.025
+## The chance for an [Agent] to change [enum Agent.Diets] when mutating.
+var changedDietChance := 0.025
+## The chance for an [Agent] to change a [enum Move.DamageType] on a move.
+var changeMoveDamageTypeChance := 0.025
+## The chance for an [Agent] to change the typing on a move
+var changeMoveElementalTypeChance := 0.025
 
 ## The various elemental typings.
 enum Typings {

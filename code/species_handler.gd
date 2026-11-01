@@ -11,15 +11,22 @@ var Species : Array[SpeciesDatastore] = []
 ## The "distance" an [Agent] needs to have to be able to found a new species.
 var distThreshold := 40.0
 
-## The "distance" added per stat-difference on an [Agent] and their parent's species' founder.
+## The "distance" added per stat-difference on an [Agent] and a species' founder
 var statDifWeight := 0.5
-## The "distance" added per limb-stat-affinity-difference on an [Agent] and their parent's species' founder.
+## The "distance" added per limb-stat-affinity-difference on an [Agent] and a species' founder.
 var limbDifWeight := 15.0
-## The "distance" added if the diet type on a [Agent] is different than their parent's species' founder.
-var dietWeight := 10.0
+## The "distance" added if the diet type on a [Agent] is different than a species' founder.
+var dietWeight := 30.0
+## The "distance" added if the elemental type on a [Agent] is not present on a species' founder. [br]
+## This checks for both elements, and disreguards order
+var elementWeight := 40.0
 
 ## Adds a new species to the [member Species] array, and returns the new species number.
 func AddSpecies(first : Agent, Previous : int) -> int:
+	
+	if !is_instance_valid(first):
+		return 0
+	
 	var newDatastore = SpeciesDatastore.new()
 	for I in _Stats:
 		newDatastore.originStats[I] = first.calculateFinalStat(I)
@@ -32,8 +39,11 @@ func AddSpecies(first : Agent, Previous : int) -> int:
 	
 	newDatastore.color = Color.from_hsv(randf(),1,1,1) * 5
 	
+	for I in first.getTyping():
+		newDatastore.typings.append(I)
+	
 	Species.append(newDatastore)
-	print(Species)
+	
 	return Species.find(newDatastore)
 
 ## Checks the "distance" between an agent and a selected species.
@@ -61,6 +71,11 @@ func evaluateSpecies(check : Agent, Specie : SpeciesDatastore) -> float:
 	
 	if check.dietType != Specie.diet:
 		weight += dietWeight
+	
+	var agentElements = check.getTyping()
+	for I in Specie.typings:
+		if not I in agentElements:
+			weight += elementWeight
 	
 	return weight
 

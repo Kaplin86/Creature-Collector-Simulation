@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdmfjsimxwg8f" path="res://code/SimulationRender.gd" id="1_s317a"]
 [ext_resource type="Texture2D" uid="uid://sjy6vngtir6w" path="res://art/graphtexture.png" id="1_xkmpp"]
-[ext_resource type="Resource" uid="uid://dmcspjpfpr52l" path="res://savedSimulationResults/2026-11-01T09-54-49.tres" id="3_xkmpp"]
+[ext_resource type="Resource" uid="uid://c3bdslvfvsxe2" path="res://savedSimulationResults/2026-11-01T12-26-53.tres" id="3_xkmpp"]
 
 [sub_resource type="DPITexture" id="DPITexture_xkmpp"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".37\" rx=\"2.333\"/><path fill=\"#1a1a1a\" fill-opacity=\".5\" d=\"m11.5 3.75-5.6 5.6-1.7-1.7-1.5 1.5 3.2 3.2 7.1-7.1z\"/></svg>

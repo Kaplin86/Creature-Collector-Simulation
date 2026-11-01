@@ -4,6 +4,7 @@ extends Control
 
 var historyArray : Array
 var RelevantSpecies : Array[int] = []
+var RelevantSpeciesToData : Dictionary[int,SpeciesDatastore] = {}
 
 var speciesToCheckboxNode : Dictionary[int,HBoxContainer] = {}
 var speciesToGraphNode : Dictionary[int,Control] = {}
@@ -15,7 +16,11 @@ var CountRemovingThreshHold = 5 #if a species' count never goes higher than this
 
 func _ready():
 	historyArray = simulationHistory.cachedHistory
-	for I in historyArray: for C in I.keys(): if not C in RelevantSpecies: RelevantSpecies.append(C)
+	for I in historyArray:
+		for C in I.keys(): 
+			if not C in RelevantSpecies:
+				RelevantSpecies.append(C)
+				RelevantSpeciesToData[C] = I[C].get("specieData",null)
 	
 	await get_tree().process_frame
 	
@@ -35,6 +40,19 @@ func _ready():
 		%MainBox.add_child(newLabel)
 		newLabel.text = "Species Data For Species '" + str(I) + "'"
 		newLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		
+		if RelevantSpeciesToData[I] != null:
+			var speciesData = Label.new()
+			var data : SpeciesDatastore = RelevantSpeciesToData[I]
+			
+			var typingText = GlobalVars.Typings.find_key(data.typings[0]) 
+			
+			if data.typings.size() != 1:
+				typingText += ", " +  GlobalVars.Typings.find_key(data.typings[1]) 
+			
+			speciesData.text = "Typings - " + str(typingText) + ". Diet Type - " + str(data.diet) + "."
+			speciesData.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			%MainBox.add_child(speciesData)
 		
 		var newHoriz = HBoxContainer.new()
 		newHoriz.alignment = BoxContainer.ALIGNMENT_CENTER

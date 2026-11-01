@@ -26,3 +26,12 @@ func getRelevantStats(attacker : Agent, defender : Agent) -> Array[float]:
 		return [attacker.calculateFinalStat("ATK"),defender.calculateFinalStat("DEF")]
 	else:
 		return [attacker.calculateFinalStat("SpA"),defender.calculateFinalStat("SpD")]
+
+## Mutates this move
+func mutate():
+	if randf() <= GlobalVars.changeMoveDamageTypeChance:
+		damageType = abs(1-damageType)
+		print("new damage type")
+	if randf() <= GlobalVars.changeMoveElementalTypeChance:
+		typing = GlobalVars.Typings.values().pick_random()
+		print("new move typing")
