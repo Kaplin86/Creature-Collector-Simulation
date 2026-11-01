@@ -16,6 +16,15 @@ var CountRemovingThreshHold = 5 #if a species' count never goes higher than this
 
 func _ready():
 	historyArray = simulationHistory.cachedHistory
+	RelevantSpeciesToData = {}
+	RelevantSpecies = []
+	
+	var seenLastNode = false
+	for I in %MainBox.get_children():
+		if seenLastNode: I.queue_free()
+		if I == %LastNode:
+			seenLastNode = true
+	
 	for I in historyArray:
 		for C in I.keys(): 
 			if not C in RelevantSpecies:
@@ -26,6 +35,8 @@ func _ready():
 	
 	pruneSpecies()
 	
+	for I in %FullCount.get_children(): I.queue_free()
+	for I in %FullStatTotal.get_children(): I.queue_free()
 	renderLineOnControl(CountAsPercentage(RelevantSpecies),%FullCount)
 	renderLineOnControl(AverageStatTotalAsPercentage(RelevantSpecies),%FullStatTotal, true)
 	showColorCodes(%ColorCode)
@@ -34,7 +45,6 @@ func _ready():
 	
 	
 	for I in RelevantSpecies:
-		%MainBox.add_spacer(true)
 		var newLabel = Label.new()
 		newLabel.add_theme_font_size_override("font_size",25)
 		%MainBox.add_child(newLabel)
@@ -73,6 +83,7 @@ func _ready():
 	for I in RelevantSpecies: UpdateSingleSpecie(I)
 
 func makeStatCheckbox(target : Control,function : Callable,stats : Array, SpeciesNumber : int):
+	for I in target.get_children(): I.queue_free()
 	var STATS = stats
 	for S in STATS:
 		var NewCheckbox = CheckBox.new()
@@ -130,6 +141,7 @@ func AllSpeciesAveragePercentageFromPercentage(data : Array[Dictionary]):
 	return newData
 
 func showColorCodes(displayNode : Control):
+	for I in displayNode.get_children():I.queue_free()
 	for I in RelevantSpecies:
 		var newLabel = Label.new()
 		displayNode.add_child(newLabel)
@@ -232,3 +244,9 @@ func renderLineOnControl(data : Array[Dictionary],control : Control, ignore0 = f
 		else:
 			line2D.default_color = forcecolor
 		control.add_child(line2D)
+
+
+func _on_spin_box_value_changed(value):
+	CountRemovingThreshHold = value
+	_ready()
+	

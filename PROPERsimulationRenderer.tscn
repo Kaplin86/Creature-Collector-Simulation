@@ -70,11 +70,24 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="ScrollContainer/MainBox" unique_id=2137694636]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MainBox" unique_id=1526739726]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MainBox/HBoxContainer" unique_id=2137694636]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 25
-text = "Species Count Graph"
+text = "                                 Species Count Graph"
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/MainBox/HBoxContainer" unique_id=282642618]
+layout_mode = 2
+text = "Population Cutoff"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/MainBox/HBoxContainer" unique_id=2073915289]
+layout_mode = 2
+min_value = 1.0
+value = 5.0
 
 [node name="ColorCode" type="HBoxContainer" parent="ScrollContainer/MainBox" unique_id=750732125]
 unique_name_in_owner = true
@@ -122,7 +135,8 @@ unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Margin3" type="MarginContainer" parent="ScrollContainer/MainBox" unique_id=1330527525]
+[node name="LastNode" type="MarginContainer" parent="ScrollContainer/MainBox" unique_id=1330527525]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 250.02)
 layout_mode = 2
 theme_override_constants/margin_left = 20
@@ -130,6 +144,8 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="GlobalStat" type="Panel" parent="ScrollContainer/MainBox/Margin3" unique_id=366588937]
+[node name="GlobalStat" type="Panel" parent="ScrollContainer/MainBox/LastNode" unique_id=366588937]
 unique_name_in_owner = true
 layout_mode = 2
+
+[connection signal="value_changed" from="ScrollContainer/MainBox/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]

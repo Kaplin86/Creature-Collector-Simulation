@@ -10,4 +10,5 @@ func _on_button_pressed(): #Open Big Sim
 	NewScene.startingTreeCount = %TreeCount.value
 	NewScene.mutationLevel = %MutationCount.value
 	NewScene.countPerGroup = %CountPerGroup.value
+	GlobalVars.reproductionType = %ReproductionType.selected
 	get_tree().change_scene_to_node(NewScene)
