@@ -16,7 +16,7 @@ var statDifWeight := 0.5
 ## The "distance" added per limb-stat-affinity-difference on an [Agent] and a species' founder.
 var limbDifWeight := 15.0
 ## The "distance" added if the diet type on a [Agent] is different than a species' founder.
-var dietWeight := 30.0
+var dietWeight := 45.0
 ## The "distance" added if the elemental type on a [Agent] is not present on a species' founder. [br]
 ## This checks for both elements, and disreguards order
 var elementWeight := 40.0

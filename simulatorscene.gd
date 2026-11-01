@@ -5,11 +5,83 @@ extends Node2D
 @export var simMinY = 0
 @export var simMaxY = 0
 
+@export var startingSpeciesCount = 10
+@export var startingTreeCount = 10
+@export var basicBodyPart : BodyPart
+
+@export var sizeX = 10000
+@export var sizeY = 10000
+
+@export var mutationLevel = 5
+
 func _ready():
-	Engine.time_scale = 16
 	
-	#%SpeciesHandler.AddSpecies($Node2D10,0)
-	#%SpeciesHandler.AddSpecies($Node2D37,0)
+	simMinX = sizeX / -2
+	simMaxX = sizeX / 2
+	
+	simMinY = sizeY / -2
+	simMaxY = sizeY / 2
+	
+	
+	#@await get_tree().process_frame
+	%BG.global_position = Vector2(simMinX,simMinY)
+	%BG.size = Vector2(abs(simMinX - simMaxX),abs(simMinY - simMaxY))
+	
+	var TopWall = CollisionShape2D.new()
+	var BottomWall = CollisionShape2D.new()
+	var Hitbox = RectangleShape2D.new()
+	Hitbox.size = Vector2(abs(simMinX - simMaxX) + 10,10)
+	
+	TopWall.global_position = Vector2(0,simMinY)
+	BottomWall.global_position = Vector2(0,simMaxY)
+	
+	TopWall.shape = Hitbox
+	BottomWall.shape = Hitbox
+	
+	%StaticBody2D.add_child(TopWall)
+	%StaticBody2D.add_child(BottomWall)
+	
+	var LeftWall = CollisionShape2D.new()
+	var RightWall = CollisionShape2D.new()
+	var Hitbox2 = RectangleShape2D.new()
+	Hitbox2.size = Vector2(10,abs(simMinY - simMaxY) + 10)
+	
+	LeftWall.global_position = Vector2(simMinX,  0)
+	RightWall.global_position = Vector2(simMaxX, 0)
+	
+	LeftWall.shape = Hitbox2
+	RightWall.shape = Hitbox2
+	
+	%StaticBody2D.add_child(LeftWall)
+	%StaticBody2D.add_child(RightWall)
+	
+	
+	var move = Move.new()
+	
+	for I in range(startingTreeCount):
+		var newTree = FruitSpawningTree.new()
+		newTree.global_position = Vector2(randf_range(simMinX,simMaxX),randf_range(simMinY,simMaxY))
+		add_child(newTree)
+		for C in range(7):
+			newTree.spawnFruit()
+	
+	for I in range(startingSpeciesCount):
+		var randomPosition = Vector2(randf_range(simMinX,simMaxX),randf_range(simMinY,simMaxY))
+		var newAgent = Agent.new()
+		var part1 = basicBodyPart.duplicate(true)
+		newAgent.parts.append(part1)
+		newAgent.moveSet.append(move.duplicate(true))
+		for C in range(mutationLevel):
+			newAgent.mutateAgent(newAgent)
+		newAgent.global_position = randomPosition
+		newAgent.species = %SpeciesHandler.checkChildIfNewSpecies(newAgent,-5)
+		newAgent.modulate = %SpeciesHandler.Species[newAgent.species].color
+		add_child(newAgent.duplicate())
+		add_child(newAgent.duplicate())
+		add_child(newAgent)
+		print(newAgent)
+	
+	
 
 func _process(delta):
 	#print(%SpatialGrid.getCell(get_global_mouse_position()))
