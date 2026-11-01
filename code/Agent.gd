@@ -97,6 +97,8 @@ func calculateBST() -> int:
 
 var _texture = preload("res://art/50.png")
 
+@onready var ForwardRaycast : RayCast2D = RayCast2D.new()
+
 func _ready():
 	_bstHash = max(calculateBST(),5)
 	_SpDHash = max(5,calculateFinalStat("SpD"))
@@ -114,6 +116,8 @@ func _ready():
 	_spatialGrid.addEntity(self)
 	
 	targetLocation = global_position + Vector2(randf_range(-50,50),randf_range(-50,50))
+	
+	add_child(ForwardRaycast)
 
 func _exit_tree():
 	_spatialGrid.removeEntity(self)
@@ -230,18 +234,38 @@ func findMate() -> void:
 	else:
 		setWanderTarget()
 
+var _fleeRaycastCooldown = 0.0
+var fleeDirOffset = 0.0
+
 func flee() -> void:
 	var result = lookForPredator()
-	if result:
-		var angle := global_position.angle_to(result.global_position)
-		angle += deg_to_rad(randi_range(-5,5))
-		angle += deg_to_rad(180)
-		var dir = Vector2.from_angle(angle)
-		targetLocation = global_position + dir * 20
-		print("flee!!")
+	if !result:
+		return
+	
+	var angle := global_position.angle_to(result.global_position)
+	angle += deg_to_rad(randi_range(-5,5))
+	angle += deg_to_rad(180)
+	var dir = Vector2.from_angle(angle)
+	
+	
+	
+	targetLocation = global_position + dir * 20
+	
+	if _fleeRaycastCooldown < 0:
+		_fleeRaycastCooldown = 5
+		ForwardRaycast.target_position = targetLocation
+		ForwardRaycast.force_raycast_update()
+		if ForwardRaycast.is_colliding():
+			fleeDirOffset += deg_to_rad([-1,1].pick_random() * 2)
+	
+	angle += fleeDirOffset
+		
+	
 
 func _process(delta):
 	if _bstHash == 0.0: _bstHash = calculateBST()
+	
+	_fleeRaycastCooldown -= delta
 	
 	ageAndEnergyTick(delta)
 	
@@ -251,10 +275,13 @@ func _process(delta):
 	
 	if currentAction == ActionTypes.Wander:
 		wander()
+		fleeDirOffset = 0
 	elif currentAction == ActionTypes.Hunt:
 		hunt()
+		fleeDirOffset = 0
 	elif currentAction == ActionTypes.LookForMate:
 		findMate()
+		fleeDirOffset = 0
 	elif currentAction == ActionTypes.Flee:
 		flee()
 	
