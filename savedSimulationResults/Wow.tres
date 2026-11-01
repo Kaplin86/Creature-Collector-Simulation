@@ -1,0 +1,3213 @@
+[gd_resource type="Resource" script_class="SimulationHistory" format=3]
+
+[ext_resource type="Script" path="res://code/SpeciesData.gd" id="1_1xwfg"]
+[ext_resource type="Script" path="res://code/partResource.gd" id="2_gcswx"]
+[ext_resource type="Script" path="res://code/SimulationHistory.gd" id="3_813hf"]
+
+[sub_resource type="Resource" id="Resource_vbsch"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 31,
+"HP": 28,
+"SP": 31,
+"SpA": 25,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 2
+color = Color(0, 0.57457685, 5, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_mebbg"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 28
+DEF = 31
+SpA = 25
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_duion"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_vf65h"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 28
+DEF = 27
+SpA = 28
+SpD = 29
+SP = 28
+
+[sub_resource type="Resource" id="Resource_lul8r"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 29,
+"DEF": 25,
+"HP": 30,
+"SP": 29,
+"SpA": 27,
+"SpD": 29
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(0, 5, 3.5339093, 5)
+typings = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_o78vh"]
+script = ExtResource("2_gcswx")
+HP = 30
+ATK = 29
+DEF = 25
+SpA = 27
+SpD = 29
+SP = 29
+
+[sub_resource type="Resource" id="Resource_70yee"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 30,
+"DEF": 25,
+"HP": 29,
+"SP": 30,
+"SpA": 27,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 1
+color = Color(5, 4.476996, 0, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_s5pte"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 30
+DEF = 25
+SpA = 27
+SpD = 28
+SP = 30
+
+[sub_resource type="Resource" id="Resource_0c27m"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_2he7m"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_7lwii"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 31,
+"HP": 28,
+"SP": 31,
+"SpA": 25,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 2
+color = Color(0, 0.57457685, 5, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_m02kj"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 28
+DEF = 31
+SpA = 25
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_2w3p8"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_ir7dl"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 27
+DEF = 27
+SpA = 28
+SpD = 29
+SP = 28
+
+[sub_resource type="Resource" id="Resource_4hrxi"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 29,
+"DEF": 25,
+"HP": 30,
+"SP": 29,
+"SpA": 27,
+"SpD": 29
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(0, 5, 3.5339093, 5)
+typings = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_yjdax"]
+script = ExtResource("2_gcswx")
+HP = 30
+ATK = 29
+DEF = 25
+SpA = 27
+SpD = 29
+SP = 29
+
+[sub_resource type="Resource" id="Resource_j02by"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 30,
+"DEF": 25,
+"HP": 29,
+"SP": 30,
+"SpA": 27,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 1
+color = Color(5, 4.476996, 0, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_wabk4"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 30
+DEF = 25
+SpA = 27
+SpD = 28
+SP = 30
+
+[sub_resource type="Resource" id="Resource_1g14f"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_y71ee"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_0qioh"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 31,
+"HP": 28,
+"SP": 31,
+"SpA": 25,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 2
+color = Color(0, 0.57457685, 5, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_dworf"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 28
+DEF = 31
+SpA = 25
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_lrvt6"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_kitsk"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 27
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_7wsee"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 29,
+"DEF": 25,
+"HP": 30,
+"SP": 29,
+"SpA": 27,
+"SpD": 29
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(0, 5, 3.5339093, 5)
+typings = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_ovwev"]
+script = ExtResource("2_gcswx")
+HP = 30
+ATK = 29
+DEF = 25
+SpA = 27
+SpD = 29
+SP = 29
+
+[sub_resource type="Resource" id="Resource_eqy4j"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 30,
+"DEF": 25,
+"HP": 29,
+"SP": 30,
+"SpA": 27,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 1
+color = Color(5, 4.476996, 0, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_rly1k"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 30
+DEF = 25
+SpA = 27
+SpD = 28
+SP = 30
+
+[sub_resource type="Resource" id="Resource_27vwd"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_t66xn"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_8thnl"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 31,
+"HP": 28,
+"SP": 31,
+"SpA": 25,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 2
+color = Color(0, 0.57457685, 5, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_mthdt"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 28
+DEF = 31
+SpA = 25
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_v88at"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_7l0jo"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 27
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_28lkp"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 29,
+"DEF": 25,
+"HP": 30,
+"SP": 29,
+"SpA": 27,
+"SpD": 29
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(0, 5, 3.5339093, 5)
+typings = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_2xcgy"]
+script = ExtResource("2_gcswx")
+HP = 30
+ATK = 29
+DEF = 25
+SpA = 27
+SpD = 29
+SP = 29
+
+[sub_resource type="Resource" id="Resource_aksqy"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 30,
+"DEF": 25,
+"HP": 29,
+"SP": 30,
+"SpA": 27,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 1
+color = Color(5, 4.476996, 0, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_bmdvg"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 30
+DEF = 25
+SpA = 27
+SpD = 28
+SP = 30
+
+[sub_resource type="Resource" id="Resource_d5pjc"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_4yqew"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_jmx4r"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_b45tp"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 27
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_dvvcj"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 29,
+"DEF": 25,
+"HP": 30,
+"SP": 29,
+"SpA": 27,
+"SpD": 29
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(0, 5, 3.5339093, 5)
+typings = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_8e3hy"]
+script = ExtResource("2_gcswx")
+HP = 30
+ATK = 29
+DEF = 25
+SpA = 27
+SpD = 29
+SP = 29
+
+[sub_resource type="Resource" id="Resource_2ry28"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 30,
+"DEF": 25,
+"HP": 29,
+"SP": 30,
+"SpA": 27,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 1
+color = Color(5, 4.476996, 0, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_tnak0"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 30
+DEF = 25
+SpA = 27
+SpD = 28
+SP = 30
+
+[sub_resource type="Resource" id="Resource_i3qda"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_v8rqr"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_y1dyj"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_0laa1"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 27
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_giv2p"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 29,
+"DEF": 25,
+"HP": 30,
+"SP": 29,
+"SpA": 27,
+"SpD": 29
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(0, 5, 3.5339093, 5)
+typings = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_sv7vs"]
+script = ExtResource("2_gcswx")
+HP = 30
+ATK = 29
+DEF = 25
+SpA = 27
+SpD = 29
+SP = 29
+
+[sub_resource type="Resource" id="Resource_ovbcc"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 30,
+"DEF": 25,
+"HP": 29,
+"SP": 30,
+"SpA": 27,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+diet = 1
+color = Color(5, 4.476996, 0, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_pvjaj"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 30
+DEF = 25
+SpA = 27
+SpD = 28
+SP = 30
+
+[sub_resource type="Resource" id="Resource_4fnq1"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_4gobr"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_ua5ns"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_d1jii"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 26
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_vcgnu"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 29,
+"DEF": 25,
+"HP": 30,
+"SP": 29,
+"SpA": 27,
+"SpD": 29
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(0, 5, 3.5339093, 5)
+typings = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_37r87"]
+script = ExtResource("2_gcswx")
+HP = 30
+ATK = 29
+DEF = 25
+SpA = 27
+SpD = 29
+SP = 29
+
+[sub_resource type="Resource" id="Resource_ymjvp"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_v0kqa"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_0ohab"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_8qeyf"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 26
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_43wmq"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_f0p14"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_g61e6"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_2n8oh"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 26
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_w50v4"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_v6u0f"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_cpiww"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_8qqd8"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 26
+DEF = 26
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_sb8du"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_aqojd"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_mr0wi"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_kcs6n"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 26
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_rmbax"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_hi0xl"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_63or3"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_hxdq6"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 26
+DEF = 26
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_4foxr"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_a2bex"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_0nwb0"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_hcw4t"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 26
+DEF = 26
+SpA = 27
+SpD = 28
+SP = 28
+
+[sub_resource type="Resource" id="Resource_w7l6b"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_aei03"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_vuqgi"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_4wf65"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
+
+[sub_resource type="Resource" id="Resource_g11vq"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_j6eqa"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_chqq1"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_3xlar"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
+
+[sub_resource type="Resource" id="Resource_qdehd"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_2jkgu"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_wyn55"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_t3dk0"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
+
+[sub_resource type="Resource" id="Resource_aqvsb"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_wh8w3"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_1c8a7"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_hf3cu"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
+
+[sub_resource type="Resource" id="Resource_jqtjj"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_ysc5d"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_tk5x8"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_ljp8u"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
+
+[sub_resource type="Resource" id="Resource_ijew6"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_hnpuc"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_wb8x7"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_vbsyr"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
+
+[sub_resource type="Resource" id="Resource_kdbv2"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_myhrt"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_x3qe8"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_ve011"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_yknt8"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_xarwn"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_4ugw1"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_mvbng"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_nrjoh"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_ob6o0"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_r52qv"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_ok7kn"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_vpit7"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_qhrkq"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_jw8x8"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_bdfk6"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_tgq0w"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_yposp"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_e2bym"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_7wo3w"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_o7guv"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_t5j6s"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_xsoaj"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_o8nsm"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 25
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_poere"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_7hwqa"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_7u2ag"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_67eb4"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 25
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_tdhg0"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_1p04g"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_3gm67"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_cfhrx"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 25
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_ag6d8"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_wm22e"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_ns56m"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_7mk3b"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 25
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_kl442"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_f78fh"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_dgirb"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_8dwgr"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_sejql"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_r06mc"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_ga4bt"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_liprf"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_vtbei"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_cvhhc"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_ihhhr"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_rpglb"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_8aser"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_swbrh"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_347jl"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_3ekbp"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 24
+DEF = 25
+SpA = 25
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_trmxv"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_xqpe5"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_1f2v6"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_bvrji"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 26
+SP = 27
+
+[sub_resource type="Resource" id="Resource_xkyjb"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_5ocvv"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_r8w8a"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_ii52c"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 24
+SpD = 26
+SP = 27
+
+[sub_resource type="Resource" id="Resource_r6e1j"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_pw11y"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_uxskv"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_f64w5"]
+script = ExtResource("2_gcswx")
+HP = 27
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 26
+SP = 27
+
+[sub_resource type="Resource" id="Resource_pdr54"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_fydq0"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_uoylt"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_mqaaa"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 24
+SpD = 27
+SP = 27
+
+[sub_resource type="Resource" id="Resource_iftb0"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_anxg1"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_bicip"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_l6rtr"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 24
+SpD = 26
+SP = 27
+
+[sub_resource type="Resource" id="Resource_uldem"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_60j8m"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_43pf5"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_v6q32"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 24
+SpD = 26
+SP = 26
+
+[sub_resource type="Resource" id="Resource_tq2u3"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_xe3ig"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_0v6qq"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_tsrbm"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 24
+DEF = 25
+SpA = 24
+SpD = 26
+SP = 26
+
+[sub_resource type="Resource" id="Resource_fxyyw"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_6brio"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_alrrd"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_26x14"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 24
+DEF = 24
+SpA = 24
+SpD = 26
+SP = 26
+
+[sub_resource type="Resource" id="Resource_cvu7q"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_pr7p1"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_ada2p"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_6jhr3"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 24
+DEF = 24
+SpA = 24
+SpD = 26
+SP = 26
+
+[sub_resource type="Resource" id="Resource_q7ctc"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_n4158"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_1kjax"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_ne3h1"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 23
+DEF = 23
+SpA = 23
+SpD = 25
+SP = 26
+
+[sub_resource type="Resource" id="Resource_r8p5t"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_hv65m"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_32ewm"]
+script = ExtResource("1_1xwfg")
+previousSpecies = 1
+originStats = Dictionary[String, int]({
+"ATK": 24,
+"DEF": 23,
+"HP": 27,
+"SP": 27,
+"SpA": 25,
+"SpD": 26
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(0, 5, 1.7311001, 5)
+typings = Array[int]([3, 3])
+
+[sub_resource type="Resource" id="Resource_adagy"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 22
+DEF = 22
+SpA = 23
+SpD = 24
+SP = 26
+
+[sub_resource type="Resource" id="Resource_1vpxg"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 27,
+"DEF": 28,
+"HP": 28,
+"SP": 28,
+"SpA": 28,
+"SpD": 28
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(5, 0, 3.4894657, 5)
+typings = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_qibve"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 24
+DEF = 24
+SpA = 22
+SpD = 25
+SP = 25
+
+[sub_resource type="Resource" id="Resource_ud54m"]
+script = ExtResource("1_1xwfg")
+previousSpecies = -5
+originStats = Dictionary[String, int]({
+"ATK": 28,
+"DEF": 28,
+"HP": 29,
+"SP": 31,
+"SpA": 27,
+"SpD": 30
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(2.1597064, 5, 0, 5)
+typings = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_au4ee"]
+script = ExtResource("2_gcswx")
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
+
+[sub_resource type="Resource" id="Resource_un6hu"]
+script = ExtResource("1_1xwfg")
+previousSpecies = 1
+originStats = Dictionary[String, int]({
+"ATK": 24,
+"DEF": 23,
+"HP": 27,
+"SP": 27,
+"SpA": 25,
+"SpD": 26
+})
+originParts = [Array[String](["HP", "SP", "SpD"])]
+color = Color(0, 5, 1.7311001, 5)
+typings = Array[int]([3, 3])
+
+[sub_resource type="Resource" id="Resource_iscqy"]
+script = ExtResource("2_gcswx")
+HP = 26
+ATK = 23
+DEF = 22
+SpA = 21
+SpD = 25
+SP = 25
+
+[resource]
+script = ExtResource("3_813hf")
+cachedHistory = [{
+0: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_mebbg"),
+"count": 3,
+"specieData": SubResource("Resource_vbsch")
+},
+1: {
+"averageBST": 170,
+"averagePart": SubResource("Resource_vf65h"),
+"count": 231,
+"specieData": SubResource("Resource_duion")
+},
+2: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_o78vh"),
+"count": 3,
+"specieData": SubResource("Resource_lul8r")
+},
+3: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_s5pte"),
+"count": 3,
+"specieData": SubResource("Resource_70yee")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_2he7m"),
+"count": 3,
+"specieData": SubResource("Resource_0c27m")
+}
+}, {
+0: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_m02kj"),
+"count": 3,
+"specieData": SubResource("Resource_7lwii")
+},
+1: {
+"averageBST": 170,
+"averagePart": SubResource("Resource_ir7dl"),
+"count": 222,
+"specieData": SubResource("Resource_2w3p8")
+},
+2: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_yjdax"),
+"count": 3,
+"specieData": SubResource("Resource_4hrxi")
+},
+3: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_wabk4"),
+"count": 2,
+"specieData": SubResource("Resource_j02by")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_y71ee"),
+"count": 3,
+"specieData": SubResource("Resource_1g14f")
+}
+}, {
+0: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_dworf"),
+"count": 2,
+"specieData": SubResource("Resource_0qioh")
+},
+1: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_kitsk"),
+"count": 172,
+"specieData": SubResource("Resource_lrvt6")
+},
+2: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_ovwev"),
+"count": 3,
+"specieData": SubResource("Resource_7wsee")
+},
+3: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_rly1k"),
+"count": 1,
+"specieData": SubResource("Resource_eqy4j")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_t66xn"),
+"count": 3,
+"specieData": SubResource("Resource_27vwd")
+}
+}, {
+0: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_mthdt"),
+"count": 1,
+"specieData": SubResource("Resource_8thnl")
+},
+1: {
+"averageBST": 168,
+"averagePart": SubResource("Resource_7l0jo"),
+"count": 130,
+"specieData": SubResource("Resource_v88at")
+},
+2: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_2xcgy"),
+"count": 3,
+"specieData": SubResource("Resource_28lkp")
+},
+3: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_bmdvg"),
+"count": 1,
+"specieData": SubResource("Resource_aksqy")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_4yqew"),
+"count": 2,
+"specieData": SubResource("Resource_d5pjc")
+}
+}, {
+1: {
+"averageBST": 168,
+"averagePart": SubResource("Resource_b45tp"),
+"count": 78,
+"specieData": SubResource("Resource_jmx4r")
+},
+2: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_8e3hy"),
+"count": 3,
+"specieData": SubResource("Resource_dvvcj")
+},
+3: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_tnak0"),
+"count": 1,
+"specieData": SubResource("Resource_2ry28")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_v8rqr"),
+"count": 2,
+"specieData": SubResource("Resource_i3qda")
+}
+}, {
+1: {
+"averageBST": 168,
+"averagePart": SubResource("Resource_0laa1"),
+"count": 58,
+"specieData": SubResource("Resource_y1dyj")
+},
+2: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_sv7vs"),
+"count": 1,
+"specieData": SubResource("Resource_giv2p")
+},
+3: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_pvjaj"),
+"count": 1,
+"specieData": SubResource("Resource_ovbcc")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_4gobr"),
+"count": 2,
+"specieData": SubResource("Resource_4fnq1")
+}
+}, {
+1: {
+"averageBST": 167,
+"averagePart": SubResource("Resource_d1jii"),
+"count": 47,
+"specieData": SubResource("Resource_ua5ns")
+},
+2: {
+"averageBST": 169,
+"averagePart": SubResource("Resource_37r87"),
+"count": 1,
+"specieData": SubResource("Resource_vcgnu")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_v0kqa"),
+"count": 1,
+"specieData": SubResource("Resource_ymjvp")
+}
+}, {
+1: {
+"averageBST": 167,
+"averagePart": SubResource("Resource_8qeyf"),
+"count": 42,
+"specieData": SubResource("Resource_0ohab")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_f0p14"),
+"count": 1,
+"specieData": SubResource("Resource_43wmq")
+}
+}, {
+1: {
+"averageBST": 167,
+"averagePart": SubResource("Resource_2n8oh"),
+"count": 36,
+"specieData": SubResource("Resource_g61e6")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_v6u0f"),
+"count": 1,
+"specieData": SubResource("Resource_w50v4")
+}
+}, {
+1: {
+"averageBST": 165,
+"averagePart": SubResource("Resource_8qqd8"),
+"count": 39,
+"specieData": SubResource("Resource_cpiww")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_aqojd"),
+"count": 1,
+"specieData": SubResource("Resource_sb8du")
+}
+}, {
+1: {
+"averageBST": 165,
+"averagePart": SubResource("Resource_kcs6n"),
+"count": 39,
+"specieData": SubResource("Resource_mr0wi")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_hi0xl"),
+"count": 1,
+"specieData": SubResource("Resource_rmbax")
+}
+}, {
+1: {
+"averageBST": 165,
+"averagePart": SubResource("Resource_hxdq6"),
+"count": 38,
+"specieData": SubResource("Resource_63or3")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_a2bex"),
+"count": 1,
+"specieData": SubResource("Resource_4foxr")
+}
+}, {
+1: {
+"averageBST": 165,
+"averagePart": SubResource("Resource_hcw4t"),
+"count": 39,
+"specieData": SubResource("Resource_0nwb0")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_aei03"),
+"count": 1,
+"specieData": SubResource("Resource_w7l6b")
+}
+}, {
+1: {
+"averageBST": 163,
+"averagePart": SubResource("Resource_4wf65"),
+"count": 40,
+"specieData": SubResource("Resource_vuqgi")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_j6eqa"),
+"count": 1,
+"specieData": SubResource("Resource_g11vq")
+}
+}, {
+1: {
+"averageBST": 163,
+"averagePart": SubResource("Resource_3xlar"),
+"count": 41,
+"specieData": SubResource("Resource_chqq1")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_2jkgu"),
+"count": 1,
+"specieData": SubResource("Resource_qdehd")
+}
+}, {
+1: {
+"averageBST": 163,
+"averagePart": SubResource("Resource_t3dk0"),
+"count": 39,
+"specieData": SubResource("Resource_wyn55")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_wh8w3"),
+"count": 1,
+"specieData": SubResource("Resource_aqvsb")
+}
+}, {
+1: {
+"averageBST": 162,
+"averagePart": SubResource("Resource_hf3cu"),
+"count": 40,
+"specieData": SubResource("Resource_1c8a7")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_ysc5d"),
+"count": 1,
+"specieData": SubResource("Resource_jqtjj")
+}
+}, {
+1: {
+"averageBST": 162,
+"averagePart": SubResource("Resource_ljp8u"),
+"count": 39,
+"specieData": SubResource("Resource_tk5x8")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_hnpuc"),
+"count": 1,
+"specieData": SubResource("Resource_ijew6")
+}
+}, {
+1: {
+"averageBST": 162,
+"averagePart": SubResource("Resource_vbsyr"),
+"count": 40,
+"specieData": SubResource("Resource_wb8x7")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_myhrt"),
+"count": 1,
+"specieData": SubResource("Resource_kdbv2")
+}
+}, {
+1: {
+"averageBST": 162,
+"averagePart": SubResource("Resource_ve011"),
+"count": 40,
+"specieData": SubResource("Resource_x3qe8")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_xarwn"),
+"count": 1,
+"specieData": SubResource("Resource_yknt8")
+}
+}, {
+1: {
+"averageBST": 161,
+"averagePart": SubResource("Resource_mvbng"),
+"count": 40,
+"specieData": SubResource("Resource_4ugw1")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_ob6o0"),
+"count": 1,
+"specieData": SubResource("Resource_nrjoh")
+}
+}, {
+1: {
+"averageBST": 161,
+"averagePart": SubResource("Resource_ok7kn"),
+"count": 40,
+"specieData": SubResource("Resource_r52qv")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_qhrkq"),
+"count": 1,
+"specieData": SubResource("Resource_vpit7")
+}
+}, {
+1: {
+"averageBST": 162,
+"averagePart": SubResource("Resource_bdfk6"),
+"count": 41,
+"specieData": SubResource("Resource_jw8x8")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_yposp"),
+"count": 1,
+"specieData": SubResource("Resource_tgq0w")
+}
+}, {
+1: {
+"averageBST": 161,
+"averagePart": SubResource("Resource_7wo3w"),
+"count": 42,
+"specieData": SubResource("Resource_e2bym")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_t5j6s"),
+"count": 1,
+"specieData": SubResource("Resource_o7guv")
+}
+}, {
+1: {
+"averageBST": 160,
+"averagePart": SubResource("Resource_o8nsm"),
+"count": 43,
+"specieData": SubResource("Resource_xsoaj")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_7hwqa"),
+"count": 1,
+"specieData": SubResource("Resource_poere")
+}
+}, {
+1: {
+"averageBST": 160,
+"averagePart": SubResource("Resource_67eb4"),
+"count": 42,
+"specieData": SubResource("Resource_7u2ag")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_1p04g"),
+"count": 1,
+"specieData": SubResource("Resource_tdhg0")
+}
+}, {
+1: {
+"averageBST": 160,
+"averagePart": SubResource("Resource_cfhrx"),
+"count": 42,
+"specieData": SubResource("Resource_3gm67")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_wm22e"),
+"count": 1,
+"specieData": SubResource("Resource_ag6d8")
+}
+}, {
+1: {
+"averageBST": 160,
+"averagePart": SubResource("Resource_7mk3b"),
+"count": 42,
+"specieData": SubResource("Resource_ns56m")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_f78fh"),
+"count": 1,
+"specieData": SubResource("Resource_kl442")
+}
+}, {
+1: {
+"averageBST": 158,
+"averagePart": SubResource("Resource_8dwgr"),
+"count": 46,
+"specieData": SubResource("Resource_dgirb")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_r06mc"),
+"count": 1,
+"specieData": SubResource("Resource_sejql")
+}
+}, {
+1: {
+"averageBST": 158,
+"averagePart": SubResource("Resource_liprf"),
+"count": 42,
+"specieData": SubResource("Resource_ga4bt")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_cvhhc"),
+"count": 1,
+"specieData": SubResource("Resource_vtbei")
+}
+}, {
+1: {
+"averageBST": 158,
+"averagePart": SubResource("Resource_rpglb"),
+"count": 40,
+"specieData": SubResource("Resource_ihhhr")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_swbrh"),
+"count": 1,
+"specieData": SubResource("Resource_8aser")
+}
+}, {
+1: {
+"averageBST": 157,
+"averagePart": SubResource("Resource_3ekbp"),
+"count": 40,
+"specieData": SubResource("Resource_347jl")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_xqpe5"),
+"count": 1,
+"specieData": SubResource("Resource_trmxv")
+}
+}, {
+1: {
+"averageBST": 157,
+"averagePart": SubResource("Resource_bvrji"),
+"count": 41,
+"specieData": SubResource("Resource_1f2v6")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_5ocvv"),
+"count": 1,
+"specieData": SubResource("Resource_xkyjb")
+}
+}, {
+1: {
+"averageBST": 156,
+"averagePart": SubResource("Resource_ii52c"),
+"count": 38,
+"specieData": SubResource("Resource_r8w8a")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_pw11y"),
+"count": 1,
+"specieData": SubResource("Resource_r6e1j")
+}
+}, {
+1: {
+"averageBST": 158,
+"averagePart": SubResource("Resource_f64w5"),
+"count": 39,
+"specieData": SubResource("Resource_uxskv")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_fydq0"),
+"count": 1,
+"specieData": SubResource("Resource_pdr54")
+}
+}, {
+1: {
+"averageBST": 157,
+"averagePart": SubResource("Resource_mqaaa"),
+"count": 42,
+"specieData": SubResource("Resource_uoylt")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_anxg1"),
+"count": 1,
+"specieData": SubResource("Resource_iftb0")
+}
+}, {
+1: {
+"averageBST": 155,
+"averagePart": SubResource("Resource_l6rtr"),
+"count": 43,
+"specieData": SubResource("Resource_bicip")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_60j8m"),
+"count": 1,
+"specieData": SubResource("Resource_uldem")
+}
+}, {
+1: {
+"averageBST": 154,
+"averagePart": SubResource("Resource_v6q32"),
+"count": 46,
+"specieData": SubResource("Resource_43pf5")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_xe3ig"),
+"count": 1,
+"specieData": SubResource("Resource_tq2u3")
+}
+}, {
+1: {
+"averageBST": 153,
+"averagePart": SubResource("Resource_tsrbm"),
+"count": 47,
+"specieData": SubResource("Resource_0v6qq")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_6brio"),
+"count": 1,
+"specieData": SubResource("Resource_fxyyw")
+}
+}, {
+1: {
+"averageBST": 153,
+"averagePart": SubResource("Resource_26x14"),
+"count": 50,
+"specieData": SubResource("Resource_alrrd")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_pr7p1"),
+"count": 1,
+"specieData": SubResource("Resource_cvu7q")
+}
+}, {
+1: {
+"averageBST": 152,
+"averagePart": SubResource("Resource_6jhr3"),
+"count": 50,
+"specieData": SubResource("Resource_ada2p")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_n4158"),
+"count": 1,
+"specieData": SubResource("Resource_q7ctc")
+}
+}, {
+1: {
+"averageBST": 149,
+"averagePart": SubResource("Resource_ne3h1"),
+"count": 53,
+"specieData": SubResource("Resource_1kjax")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_hv65m"),
+"count": 1,
+"specieData": SubResource("Resource_r8p5t")
+},
+5: {
+"averageBST": 144,
+"averagePart": SubResource("Resource_adagy"),
+"count": 2,
+"specieData": SubResource("Resource_32ewm")
+}
+}, {
+1: {
+"averageBST": 149,
+"averagePart": SubResource("Resource_qibve"),
+"count": 55,
+"specieData": SubResource("Resource_1vpxg")
+},
+4: {
+"averageBST": 173,
+"averagePart": SubResource("Resource_au4ee"),
+"count": 1,
+"specieData": SubResource("Resource_ud54m")
+},
+5: {
+"averageBST": 143,
+"averagePart": SubResource("Resource_iscqy"),
+"count": 3,
+"specieData": SubResource("Resource_un6hu")
+}
+}]
+timePerSample = 120

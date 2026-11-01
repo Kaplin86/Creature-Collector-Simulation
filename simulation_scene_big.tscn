@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/spatial_grid.gd" id="3_nssk4"]
 [ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/species_handler.gd" id="4_lrn8h"]
 [ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/speedSlider.gd" id="6_a4k71"]
+[ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/saveSim.gd" id="7_36jwc"]
 [ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/freecam.gd" id="7_xd0na"]
 
 [sub_resource type="Resource" id="Resource_nssk4"]
@@ -81,7 +82,24 @@ offset_right = 313.0
 offset_bottom = 48.0
 text = "SPEED - 1.0"
 
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=977740875]
+offset_left = 900.0
+offset_top = 4.0
+offset_right = 1146.0
+offset_bottom = 35.0
+text = "Save Simulation History To File"
+script = ExtResource("7_36jwc")
+
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer/Button" unique_id=1180132799]
+oversampling_override = 1.0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.tres")
+use_native_dialog = true
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=864863408]
 script = ExtResource("7_xd0na")
 
 [connection signal="value_changed" from="CanvasLayer/Panel/HSlider" to="CanvasLayer/Panel/HSlider" method="_on_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
+[connection signal="file_selected" from="CanvasLayer/Button/FileDialog" to="CanvasLayer/Button" method="_on_file_dialog_file_selected"]

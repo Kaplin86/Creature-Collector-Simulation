@@ -48,12 +48,9 @@ func check():
 		totalReport[C] = report
 	
 	generationByGenerationInfo.append(totalReport)
-	
 
-func _process(delta):
-	if Input.is_action_just_pressed("saveSim"):
-		var resource = SimulationHistory.new()
-		resource.cachedHistory = generationByGenerationInfo
-		resource.timePerSample = SampleSpan
-		ResourceSaver.save(resource,"res://savedSimulationResults/"+Time.get_datetime_string_from_system().replace(":","-")+".tres")
-		print("Saved!")
+func saveToFile(file : String):
+	var resource = SimulationHistory.new()
+	resource.cachedHistory = generationByGenerationInfo
+	resource.timePerSample = SampleSpan
+	return ResourceSaver.save(resource,file)
