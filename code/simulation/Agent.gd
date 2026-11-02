@@ -77,7 +77,6 @@ enum ActionTypes {
 @export var fleeDist : float = 0.5
 
 
-
 ## The current location the agent is walking to.
 var targetLocation : Vector2
 
@@ -162,8 +161,7 @@ func ageAndEnergyTick(delta) -> void:
 		
 		queue_free()
 
-## Based on [member energy], [member age], and [birthtimer], the function determines what [enum ActionTypes] to do this frame. [br]
-##If [member GlobalVars.reproductionType] is set to be solo-reproduction / duplication, this function will run [method soloReproduction] instantly if the creature is ready. 
+## Based on various values.
 func determineCurrentAction() -> ActionTypes:
 	var currentAction : ActionTypes = ActionTypes.Wander
 	
@@ -353,7 +351,9 @@ func setWanderTarget() -> void:
 func soloReproduction() -> Agent:
 	var newAgent = Agent.new()
 	newAgent.dietType = dietType
-	newAgent.parts = parts.duplicate(true)
+	
+	for I in parts: newAgent.parts.append(I.duplicate(true))
+
 	newAgent.moveSet = moveSet.duplicate(true)
 	newAgent.global_position = global_position
 	newAgent.targetLocation = global_position
@@ -387,10 +387,10 @@ func mutateAgent(agent : Agent) -> void:
 		agent.parts.pick_random().MutateDebuff()
 	
 	for I : BodyPart in agent.parts:
-		I.mutateRandomly()
+		I.mutateRandomly() #Alters stats a tiny bit
 	
 	for I in agent.moveSet:
-		I.mutate()
+		I.mutate() # Chance to alter the moveset
 	
 	if randf() <= GlobalVars.changedDietChance:
 		agent.dietType = Diets.values().pick_random()

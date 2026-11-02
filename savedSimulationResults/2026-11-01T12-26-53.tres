@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="SimulationHistory" format=3 uid="uid://c3bdslvfvsxe2"]
 
-[ext_resource type="Script" uid="uid://h2nkglx6becs" path="res://code/SpeciesData.gd" id="1_kj3y3"]
-[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_ggu4s"]
-[ext_resource type="Script" uid="uid://jkwibv1i2xlj" path="res://code/SimulationHistory.gd" id="3_gc5uu"]
+[ext_resource type="Script" uid="uid://h2nkglx6becs" path="res://code/simulation/SpeciesData.gd" id="1_kj3y3"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_ggu4s"]
+[ext_resource type="Script" uid="uid://jkwibv1i2xlj" path="res://code/simulationAnalysisRelating/SimulationHistory.gd" id="3_gc5uu"]
 
 [sub_resource type="Resource" id="Resource_8ojjh"]
 script = ExtResource("2_ggu4s")

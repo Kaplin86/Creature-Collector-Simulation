@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3v2bxi8jbjba"]
 
-[ext_resource type="Script" uid="uid://bdmfjsimxwg8f" path="res://code/SimulationRender.gd" id="1_s317a"]
+[ext_resource type="Script" uid="uid://bdmfjsimxwg8f" path="res://code/simulationAnalysisRelating/SimulationRender.gd" id="1_s317a"]
 [ext_resource type="Texture2D" uid="uid://sjy6vngtir6w" path="res://art/graphtexture.png" id="1_xkmpp"]
 [ext_resource type="Resource" uid="uid://c8n6kcirqlr1v" path="res://savedSimulationResults/Wow.tres" id="3_xkmpp"]
 

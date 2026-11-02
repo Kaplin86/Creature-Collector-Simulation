@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dcetmjvhqnun0"]
 
 [ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_yyx55"]
-[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_lrn8h"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_lrn8h"]
 [ext_resource type="Texture2D" uid="uid://csu200iyltqde" path="res://art/grass.png" id="2_m24cv"]
-[ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/spatial_grid.gd" id="3_nssk4"]
-[ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/species_handler.gd" id="4_lrn8h"]
-[ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/speedSlider.gd" id="6_a4k71"]
-[ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/saveSim.gd" id="7_36jwc"]
-[ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/freecam.gd" id="7_xd0na"]
+[ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/simulation/spatial_grid.gd" id="3_nssk4"]
+[ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/simulation/species_handler.gd" id="4_lrn8h"]
+[ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/UI/speedSlider.gd" id="6_a4k71"]
+[ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/UI/saveSim.gd" id="7_36jwc"]
+[ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/UI/freecam.gd" id="7_xd0na"]
 
 [sub_resource type="Resource" id="Resource_nssk4"]
 script = ExtResource("2_lrn8h")

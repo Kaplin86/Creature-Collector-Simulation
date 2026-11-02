@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="SimulationHistory" format=3 uid="uid://cvxncwuxdi1dl"]
 
-[ext_resource type="Script" uid="uid://co0aqwinkw0fu" path="res://code/Agent.gd" id="1_qhgsu"]
-[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_cm0ti"]
-[ext_resource type="Script" uid="uid://b65mjq863idtp" path="res://code/moveResource.gd" id="3_yg7vs"]
-[ext_resource type="Script" uid="uid://jkwibv1i2xlj" path="res://code/SimulationHistory.gd" id="4_tbcl5"]
+[ext_resource type="Script" uid="uid://co0aqwinkw0fu" path="res://code/simulation/Agent.gd" id="1_qhgsu"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_cm0ti"]
+[ext_resource type="Script" uid="uid://b65mjq863idtp" path="res://code/simulation/moveResource.gd" id="3_yg7vs"]
+[ext_resource type="Script" uid="uid://jkwibv1i2xlj" path="res://code/simulationAnalysisRelating/SimulationHistory.gd" id="4_tbcl5"]
 
 [sub_resource type="Resource" id="Resource_y166e"]
 script = ExtResource("2_cm0ti")

@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://ikxmy0dy8iol"]
 
-[ext_resource type="Script" uid="uid://co0aqwinkw0fu" path="res://code/Agent.gd" id="1_ngdw2"]
+[ext_resource type="Script" uid="uid://co0aqwinkw0fu" path="res://code/simulation/Agent.gd" id="1_ngdw2"]
 [ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_oepk7"]
 [ext_resource type="Texture2D" uid="uid://csu200iyltqde" path="res://art/grass.png" id="2_5ae0i"]
-[ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/spatial_grid.gd" id="2_dh3iq"]
-[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_ro32a"]
-[ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/species_handler.gd" id="3_feijk"]
-[ext_resource type="Script" uid="uid://b65mjq863idtp" path="res://code/moveResource.gd" id="5_dh3iq"]
-[ext_resource type="Script" uid="uid://b6i1w81t4kxe0" path="res://code/fruit.gd" id="5_tls5n"]
+[ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/simulation/spatial_grid.gd" id="2_dh3iq"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_ro32a"]
+[ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/simulation/species_handler.gd" id="3_feijk"]
+[ext_resource type="Script" uid="uid://b65mjq863idtp" path="res://code/simulation/moveResource.gd" id="5_dh3iq"]
+[ext_resource type="Script" uid="uid://b6i1w81t4kxe0" path="res://code/simulation/fruit.gd" id="5_tls5n"]
 [ext_resource type="Texture2D" uid="uid://cv2xaisgtt0ih" path="res://art/fruit.png" id="6_dh3iq"]
-[ext_resource type="Script" uid="uid://bacgc46d072ya" path="res://code/fruitSpawner.gd" id="6_tls5n"]
+[ext_resource type="Script" uid="uid://bacgc46d072ya" path="res://code/simulation/fruitSpawner.gd" id="6_tls5n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a36lu"]
 size = Vector2(43, 1309)

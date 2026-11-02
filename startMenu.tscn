@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bo3e4ub2xdk3v"]
 
-[ext_resource type="Script" uid="uid://040f3t4x1sxg" path="res://code/start_menu.gd" id="1_gqihx"]
-[ext_resource type="Script" uid="uid://iilvoaxjvcgo" path="res://code/ViewSimulationButton.gd" id="2_1ydhs"]
+[ext_resource type="Script" uid="uid://040f3t4x1sxg" path="res://code/UI/start_menu.gd" id="1_gqihx"]
+[ext_resource type="Script" uid="uid://iilvoaxjvcgo" path="res://code/UI/ViewSimulationButton.gd" id="2_1ydhs"]
 
 [sub_resource type="Gradient" id="Gradient_geivo"]
 offsets = PackedFloat32Array(0, 0.07053292, 1)
