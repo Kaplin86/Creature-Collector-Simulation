@@ -1,7 +1,7 @@
 extends Node
 
 
-var SampleSpan = 120
+var SampleSpan = 240
 var timer : Timer
 
 var generationByGenerationInfo = []

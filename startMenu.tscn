@@ -91,6 +91,22 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nytm"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.99607843, 0.84705883, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 3
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
 [node name="Node3D" type="Control" unique_id=431147789]
 layout_mode = 3
 anchors_preset = 0
@@ -294,6 +310,7 @@ offset_left = 9.0
 offset_top = 11.0
 offset_right = 235.0
 offset_bottom = 84.0
+tooltip_text = "The size of the map. A single creature is roughly 20 x 20"
 theme_override_styles/panel = SubResource("StyleBoxFlat_gqihx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Panel" unique_id=1044470553]
@@ -345,6 +362,7 @@ offset_left = 245.0
 offset_top = 11.0
 offset_right = 429.0
 offset_bottom = 84.0
+tooltip_text = "The amount of starting groups are spawned. They are spawned in groups to allow for reproduction, and future behaviors once those are implemented."
 theme_override_styles/panel = SubResource("StyleBoxFlat_1ydhs")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Panel2" unique_id=268345731]
@@ -383,6 +401,7 @@ offset_left = 435.0
 offset_top = 11.0
 offset_right = 579.0
 offset_bottom = 84.0
+tooltip_text = "The amount of trees placed around the map."
 theme_override_styles/panel = SubResource("StyleBoxFlat_rr6mw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Panel4" unique_id=1285888462]
@@ -420,6 +439,8 @@ offset_left = 435.0
 offset_top = 95.0
 offset_right = 579.0
 offset_bottom = 168.0
+tooltip_text = "The amount of times each group gets randomly mutated. This typically only happens once when a new child is born.
+Increasing this to high values can cause very wild results."
 theme_override_styles/panel = SubResource("StyleBoxFlat_4gtxw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Panel5" unique_id=1755386805]
@@ -457,6 +478,7 @@ offset_left = 8.0
 offset_top = 94.0
 offset_right = 234.0
 offset_bottom = 167.0
+tooltip_text = "The reproduction type for the simulation. I reccomend asexual until more complex creature behaviors are implemented."
 theme_override_styles/panel = SubResource("StyleBoxFlat_8mqn5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Panel6" unique_id=1490327718]
@@ -493,6 +515,7 @@ offset_left = 244.0
 offset_top = 94.0
 offset_right = 428.0
 offset_bottom = 167.0
+tooltip_text = "The amount of creatures spawn per group."
 theme_override_styles/panel = SubResource("StyleBoxFlat_t72po")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Panel3" unique_id=1853297165]
@@ -524,6 +547,38 @@ theme_override_constants/field_and_buttons_separation = -1
 min_value = 2.0
 max_value = 10.0
 value = 3.0
+
+[node name="Panel3" type="Panel" parent="." unique_id=2131525471]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 41.0
+offset_right = 1126.0
+offset_bottom = 286.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nytm")
+
+[node name="Label" type="Label" parent="Panel3" unique_id=305152295]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Heyo! Welcome to my super scuffed 
+creature collector themed simulator thingamajig
+Well, its not really creature collector-y yet, is it?
+It will be, trust!! But for this first ship, no.
+
+If your apart of hack club, do DM me any interesting simulation result files you end up simulating :)"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1552977148]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 514.0
+offset_right = 466.0
+offset_bottom = 537.0
+text = "Tip: Hover over a property to get a description."
 
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
 [connection signal="file_selected" from="Button2/FileDialog" to="Button2" method="_on_file_dialog_file_selected"]

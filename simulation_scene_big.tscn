@@ -15,8 +15,8 @@ HP = 30
 ATK = 30
 DEF = 30
 SpA = 30
-SpD = 30
-SP = 30
+SpD = 60
+SP = 35
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [node name="SimulationSceneBig" type="Node2D" unique_id=1984677836]
@@ -97,9 +97,16 @@ access = 2
 filters = PackedStringArray("*.tres")
 use_native_dialog = true
 
+[node name="Button2" type="Button" parent="CanvasLayer" unique_id=1790258319]
+offset_top = 61.0
+offset_right = 100.0
+offset_bottom = 110.0
+text = "Go Back To Main Menu"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=864863408]
 script = ExtResource("7_xd0na")
 
 [connection signal="value_changed" from="CanvasLayer/Panel/HSlider" to="CanvasLayer/Panel/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
 [connection signal="file_selected" from="CanvasLayer/Button/FileDialog" to="CanvasLayer/Button" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]

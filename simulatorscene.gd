@@ -93,3 +93,8 @@ func _process(delta):
 	#print(%SpatialGrid.getCell(get_global_mouse_position()))
 	#print(delta)
 	pass
+
+
+func _on_button_2_pressed():
+	Engine.time_scale = 1
+	Transition.transition(load("res://startMenu.tscn").instantiate())

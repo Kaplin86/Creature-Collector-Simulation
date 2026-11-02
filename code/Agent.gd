@@ -3,6 +3,9 @@ class_name Agent
 
 ## A simulation agent. Has [member HP], [member energy], [member parts], and a lot more. 
 
+# Note For l8r: Look into rendering using MultiMeshInstance2D
+
+
 var HP : float = 60 ## If HP is below 0, the agent is deleted (only outside of battle)
 
 ## The age of the creature, in seconds.
@@ -125,6 +128,9 @@ func _ready():
 	circle.radius = 10
 	newHitbox.shape = circle
 	collision_mask = 2
+
+
+
 
 func _exit_tree():
 	_spatialGrid.removeEntity(self)
@@ -351,7 +357,7 @@ func soloReproduction() -> Agent:
 	newAgent.moveSet = moveSet.duplicate(true)
 	newAgent.global_position = global_position
 	newAgent.targetLocation = global_position
-	newAgent.energy = 0.5
+	newAgent.energy = 0.7
 	newAgent.generation = generation + 1
 	
 	

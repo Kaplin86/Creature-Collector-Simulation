@@ -73,11 +73,16 @@ size_flags_vertical = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MainBox" unique_id=1526739726]
 layout_mode = 2
 
+[node name="MainMenu" type="Button" parent="ScrollContainer/MainBox/HBoxContainer" unique_id=1505709052]
+modulate = Color(2.427556, 2.427556, 2.427556, 1)
+layout_mode = 2
+text = "Go Back To Main Menu"
+
 [node name="Label" type="Label" parent="ScrollContainer/MainBox/HBoxContainer" unique_id=2137694636]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 25
-text = "                                 Species Count Graph"
+text = "Species Count Graph"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="ScrollContainer/MainBox/HBoxContainer" unique_id=282642618]
@@ -148,4 +153,5 @@ theme_override_constants/margin_bottom = 20
 unique_name_in_owner = true
 layout_mode = 2
 
+[connection signal="pressed" from="ScrollContainer/MainBox/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="value_changed" from="ScrollContainer/MainBox/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]

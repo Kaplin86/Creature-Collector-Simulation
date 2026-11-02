@@ -250,3 +250,7 @@ func _on_spin_box_value_changed(value):
 	CountRemovingThreshHold = value
 	_ready()
 	
+
+
+func _on_main_menu_pressed():
+	Transition.transition(load("res://startMenu.tscn").instantiate())
