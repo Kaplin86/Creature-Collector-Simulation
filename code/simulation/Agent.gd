@@ -318,7 +318,8 @@ func _process(delta):
 			velocity = Vector2.ZERO
 		
 
-## sets [member targetLocation] to a nearby location, based on Speed
+## sets [member targetLocation] to a nearby location, based on Speed.[br]
+## Most gene behaviors will call this if they fail.
 func setWanderTarget() -> void:
 	if randi_range(0,20) == 0:
 		var awayDirection = (global_position - global_position + Vector2(randf_range(-_SPHash * 2,_SPHash * 2),randf_range(-_SPHash * 2,_SPHash * 2))).normalized()
@@ -508,7 +509,7 @@ func lookForPredator() -> Node2D:
 	
 	return null
 
-## Looks for a mate in vision, and returns the nearest one.
+## Looks for a valid mate in vision, and returns the nearest one.
 func lookForMate() -> Agent:
 	var results = lookInVision()
 	for I in results:
