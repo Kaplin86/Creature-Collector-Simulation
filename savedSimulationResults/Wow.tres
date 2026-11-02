@@ -1,8 +1,17 @@
-[gd_resource type="Resource" script_class="SimulationHistory" format=3]
+[gd_resource type="Resource" script_class="SimulationHistory" format=3 uid="uid://c8n6kcirqlr1v"]
 
-[ext_resource type="Script" path="res://code/SpeciesData.gd" id="1_1xwfg"]
-[ext_resource type="Script" path="res://code/partResource.gd" id="2_gcswx"]
-[ext_resource type="Script" path="res://code/SimulationHistory.gd" id="3_813hf"]
+[ext_resource type="Script" uid="uid://h2nkglx6becs" path="res://code/SpeciesData.gd" id="1_1xwfg"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/partResource.gd" id="2_gcswx"]
+[ext_resource type="Script" uid="uid://jkwibv1i2xlj" path="res://code/SimulationHistory.gd" id="3_813hf"]
+
+[sub_resource type="Resource" id="Resource_mebbg"]
+script = ExtResource("2_gcswx")
+HP = 28
+ATK = 28
+DEF = 31
+SpA = 25
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_vbsch"]
 script = ExtResource("1_1xwfg")
@@ -20,14 +29,14 @@ diet = 2
 color = Color(0, 0.57457685, 5, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_mebbg"]
+[sub_resource type="Resource" id="Resource_vf65h"]
 script = ExtResource("2_gcswx")
 HP = 28
 ATK = 28
-DEF = 31
-SpA = 25
-SpD = 30
-SP = 31
+DEF = 27
+SpA = 28
+SpD = 29
+SP = 28
 
 [sub_resource type="Resource" id="Resource_duion"]
 script = ExtResource("1_1xwfg")
@@ -44,14 +53,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_vf65h"]
+[sub_resource type="Resource" id="Resource_o78vh"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 28
-DEF = 27
-SpA = 28
+HP = 30
+ATK = 29
+DEF = 25
+SpA = 27
 SpD = 29
-SP = 28
+SP = 29
 
 [sub_resource type="Resource" id="Resource_lul8r"]
 script = ExtResource("1_1xwfg")
@@ -68,14 +77,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(0, 5, 3.5339093, 5)
 typings = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_o78vh"]
+[sub_resource type="Resource" id="Resource_s5pte"]
 script = ExtResource("2_gcswx")
-HP = 30
-ATK = 29
+HP = 29
+ATK = 30
 DEF = 25
 SpA = 27
-SpD = 29
-SP = 29
+SpD = 28
+SP = 30
 
 [sub_resource type="Resource" id="Resource_70yee"]
 script = ExtResource("1_1xwfg")
@@ -93,14 +102,14 @@ diet = 1
 color = Color(5, 4.476996, 0, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_s5pte"]
+[sub_resource type="Resource" id="Resource_2he7m"]
 script = ExtResource("2_gcswx")
 HP = 29
-ATK = 30
-DEF = 25
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 30
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_0c27m"]
 script = ExtResource("1_1xwfg")
@@ -117,12 +126,12 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_2he7m"]
+[sub_resource type="Resource" id="Resource_m02kj"]
 script = ExtResource("2_gcswx")
-HP = 29
+HP = 28
 ATK = 28
-DEF = 28
-SpA = 27
+DEF = 31
+SpA = 25
 SpD = 30
 SP = 31
 
@@ -142,14 +151,14 @@ diet = 2
 color = Color(0, 0.57457685, 5, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_m02kj"]
+[sub_resource type="Resource" id="Resource_ir7dl"]
 script = ExtResource("2_gcswx")
 HP = 28
-ATK = 28
-DEF = 31
-SpA = 25
-SpD = 30
-SP = 31
+ATK = 27
+DEF = 27
+SpA = 28
+SpD = 29
+SP = 28
 
 [sub_resource type="Resource" id="Resource_2w3p8"]
 script = ExtResource("1_1xwfg")
@@ -166,14 +175,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_ir7dl"]
+[sub_resource type="Resource" id="Resource_yjdax"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 27
-DEF = 27
-SpA = 28
+HP = 30
+ATK = 29
+DEF = 25
+SpA = 27
 SpD = 29
-SP = 28
+SP = 29
 
 [sub_resource type="Resource" id="Resource_4hrxi"]
 script = ExtResource("1_1xwfg")
@@ -190,14 +199,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(0, 5, 3.5339093, 5)
 typings = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_yjdax"]
+[sub_resource type="Resource" id="Resource_wabk4"]
 script = ExtResource("2_gcswx")
-HP = 30
-ATK = 29
+HP = 29
+ATK = 30
 DEF = 25
 SpA = 27
-SpD = 29
-SP = 29
+SpD = 28
+SP = 30
 
 [sub_resource type="Resource" id="Resource_j02by"]
 script = ExtResource("1_1xwfg")
@@ -215,14 +224,14 @@ diet = 1
 color = Color(5, 4.476996, 0, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_wabk4"]
+[sub_resource type="Resource" id="Resource_y71ee"]
 script = ExtResource("2_gcswx")
 HP = 29
-ATK = 30
-DEF = 25
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 30
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_1g14f"]
 script = ExtResource("1_1xwfg")
@@ -239,12 +248,12 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_y71ee"]
+[sub_resource type="Resource" id="Resource_dworf"]
 script = ExtResource("2_gcswx")
-HP = 29
+HP = 28
 ATK = 28
-DEF = 28
-SpA = 27
+DEF = 31
+SpA = 25
 SpD = 30
 SP = 31
 
@@ -264,14 +273,14 @@ diet = 2
 color = Color(0, 0.57457685, 5, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_dworf"]
+[sub_resource type="Resource" id="Resource_kitsk"]
 script = ExtResource("2_gcswx")
 HP = 28
-ATK = 28
-DEF = 31
-SpA = 25
-SpD = 30
-SP = 31
+ATK = 27
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_lrvt6"]
 script = ExtResource("1_1xwfg")
@@ -288,14 +297,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_kitsk"]
+[sub_resource type="Resource" id="Resource_ovwev"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 27
-DEF = 27
+HP = 30
+ATK = 29
+DEF = 25
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 29
+SP = 29
 
 [sub_resource type="Resource" id="Resource_7wsee"]
 script = ExtResource("1_1xwfg")
@@ -312,14 +321,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(0, 5, 3.5339093, 5)
 typings = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_ovwev"]
+[sub_resource type="Resource" id="Resource_rly1k"]
 script = ExtResource("2_gcswx")
-HP = 30
-ATK = 29
+HP = 29
+ATK = 30
 DEF = 25
 SpA = 27
-SpD = 29
-SP = 29
+SpD = 28
+SP = 30
 
 [sub_resource type="Resource" id="Resource_eqy4j"]
 script = ExtResource("1_1xwfg")
@@ -337,14 +346,14 @@ diet = 1
 color = Color(5, 4.476996, 0, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_rly1k"]
+[sub_resource type="Resource" id="Resource_t66xn"]
 script = ExtResource("2_gcswx")
 HP = 29
-ATK = 30
-DEF = 25
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 30
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_27vwd"]
 script = ExtResource("1_1xwfg")
@@ -361,12 +370,12 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_t66xn"]
+[sub_resource type="Resource" id="Resource_mthdt"]
 script = ExtResource("2_gcswx")
-HP = 29
+HP = 28
 ATK = 28
-DEF = 28
-SpA = 27
+DEF = 31
+SpA = 25
 SpD = 30
 SP = 31
 
@@ -386,14 +395,14 @@ diet = 2
 color = Color(0, 0.57457685, 5, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_mthdt"]
+[sub_resource type="Resource" id="Resource_7l0jo"]
 script = ExtResource("2_gcswx")
 HP = 28
-ATK = 28
-DEF = 31
-SpA = 25
-SpD = 30
-SP = 31
+ATK = 27
+DEF = 27
+SpA = 27
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_v88at"]
 script = ExtResource("1_1xwfg")
@@ -410,14 +419,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_7l0jo"]
+[sub_resource type="Resource" id="Resource_2xcgy"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 27
-DEF = 27
+HP = 30
+ATK = 29
+DEF = 25
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 29
+SP = 29
 
 [sub_resource type="Resource" id="Resource_28lkp"]
 script = ExtResource("1_1xwfg")
@@ -434,14 +443,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(0, 5, 3.5339093, 5)
 typings = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_2xcgy"]
+[sub_resource type="Resource" id="Resource_bmdvg"]
 script = ExtResource("2_gcswx")
-HP = 30
-ATK = 29
+HP = 29
+ATK = 30
 DEF = 25
 SpA = 27
-SpD = 29
-SP = 29
+SpD = 28
+SP = 30
 
 [sub_resource type="Resource" id="Resource_aksqy"]
 script = ExtResource("1_1xwfg")
@@ -459,14 +468,14 @@ diet = 1
 color = Color(5, 4.476996, 0, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_bmdvg"]
+[sub_resource type="Resource" id="Resource_4yqew"]
 script = ExtResource("2_gcswx")
 HP = 29
-ATK = 30
-DEF = 25
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 30
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_d5pjc"]
 script = ExtResource("1_1xwfg")
@@ -483,14 +492,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_4yqew"]
+[sub_resource type="Resource" id="Resource_b45tp"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
+HP = 28
+ATK = 27
+DEF = 27
 SpA = 27
-SpD = 30
-SP = 31
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_jmx4r"]
 script = ExtResource("1_1xwfg")
@@ -507,14 +516,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_b45tp"]
+[sub_resource type="Resource" id="Resource_8e3hy"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 27
-DEF = 27
+HP = 30
+ATK = 29
+DEF = 25
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 29
+SP = 29
 
 [sub_resource type="Resource" id="Resource_dvvcj"]
 script = ExtResource("1_1xwfg")
@@ -531,14 +540,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(0, 5, 3.5339093, 5)
 typings = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_8e3hy"]
+[sub_resource type="Resource" id="Resource_tnak0"]
 script = ExtResource("2_gcswx")
-HP = 30
-ATK = 29
+HP = 29
+ATK = 30
 DEF = 25
 SpA = 27
-SpD = 29
-SP = 29
+SpD = 28
+SP = 30
 
 [sub_resource type="Resource" id="Resource_2ry28"]
 script = ExtResource("1_1xwfg")
@@ -556,14 +565,14 @@ diet = 1
 color = Color(5, 4.476996, 0, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_tnak0"]
+[sub_resource type="Resource" id="Resource_v8rqr"]
 script = ExtResource("2_gcswx")
 HP = 29
-ATK = 30
-DEF = 25
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 30
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_i3qda"]
 script = ExtResource("1_1xwfg")
@@ -580,14 +589,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_v8rqr"]
+[sub_resource type="Resource" id="Resource_0laa1"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
+HP = 28
+ATK = 27
+DEF = 27
 SpA = 27
-SpD = 30
-SP = 31
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_y1dyj"]
 script = ExtResource("1_1xwfg")
@@ -604,14 +613,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_0laa1"]
+[sub_resource type="Resource" id="Resource_sv7vs"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 27
-DEF = 27
+HP = 30
+ATK = 29
+DEF = 25
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 29
+SP = 29
 
 [sub_resource type="Resource" id="Resource_giv2p"]
 script = ExtResource("1_1xwfg")
@@ -628,14 +637,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(0, 5, 3.5339093, 5)
 typings = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_sv7vs"]
+[sub_resource type="Resource" id="Resource_pvjaj"]
 script = ExtResource("2_gcswx")
-HP = 30
-ATK = 29
+HP = 29
+ATK = 30
 DEF = 25
 SpA = 27
-SpD = 29
-SP = 29
+SpD = 28
+SP = 30
 
 [sub_resource type="Resource" id="Resource_ovbcc"]
 script = ExtResource("1_1xwfg")
@@ -653,14 +662,14 @@ diet = 1
 color = Color(5, 4.476996, 0, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_pvjaj"]
+[sub_resource type="Resource" id="Resource_4gobr"]
 script = ExtResource("2_gcswx")
 HP = 29
-ATK = 30
-DEF = 25
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 30
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_4fnq1"]
 script = ExtResource("1_1xwfg")
@@ -677,14 +686,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_4gobr"]
+[sub_resource type="Resource" id="Resource_d1jii"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
+HP = 28
+ATK = 26
+DEF = 27
 SpA = 27
-SpD = 30
-SP = 31
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_ua5ns"]
 script = ExtResource("1_1xwfg")
@@ -701,14 +710,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_d1jii"]
+[sub_resource type="Resource" id="Resource_37r87"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 26
-DEF = 27
+HP = 30
+ATK = 29
+DEF = 25
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 29
+SP = 29
 
 [sub_resource type="Resource" id="Resource_vcgnu"]
 script = ExtResource("1_1xwfg")
@@ -725,14 +734,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(0, 5, 3.5339093, 5)
 typings = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_37r87"]
+[sub_resource type="Resource" id="Resource_v0kqa"]
 script = ExtResource("2_gcswx")
-HP = 30
-ATK = 29
-DEF = 25
+HP = 29
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 29
-SP = 29
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_ymjvp"]
 script = ExtResource("1_1xwfg")
@@ -749,14 +758,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_v0kqa"]
+[sub_resource type="Resource" id="Resource_8qeyf"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
+HP = 28
+ATK = 26
+DEF = 27
 SpA = 27
-SpD = 30
-SP = 31
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_0ohab"]
 script = ExtResource("1_1xwfg")
@@ -773,14 +782,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_8qeyf"]
+[sub_resource type="Resource" id="Resource_f0p14"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 26
-DEF = 27
+HP = 29
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_43wmq"]
 script = ExtResource("1_1xwfg")
@@ -797,14 +806,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_f0p14"]
+[sub_resource type="Resource" id="Resource_2n8oh"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
+HP = 28
+ATK = 26
+DEF = 27
 SpA = 27
-SpD = 30
-SP = 31
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_g61e6"]
 script = ExtResource("1_1xwfg")
@@ -821,14 +830,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_2n8oh"]
+[sub_resource type="Resource" id="Resource_v6u0f"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 26
-DEF = 27
+HP = 29
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_w50v4"]
 script = ExtResource("1_1xwfg")
@@ -845,14 +854,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_v6u0f"]
+[sub_resource type="Resource" id="Resource_8qqd8"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
+HP = 28
+ATK = 26
+DEF = 26
 SpA = 27
-SpD = 30
-SP = 31
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_cpiww"]
 script = ExtResource("1_1xwfg")
@@ -869,14 +878,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_8qqd8"]
+[sub_resource type="Resource" id="Resource_aqojd"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 26
-DEF = 26
+HP = 29
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_sb8du"]
 script = ExtResource("1_1xwfg")
@@ -893,14 +902,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_aqojd"]
+[sub_resource type="Resource" id="Resource_kcs6n"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
+HP = 28
+ATK = 26
+DEF = 27
 SpA = 27
-SpD = 30
-SP = 31
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_mr0wi"]
 script = ExtResource("1_1xwfg")
@@ -917,14 +926,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_kcs6n"]
+[sub_resource type="Resource" id="Resource_hi0xl"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 26
-DEF = 27
+HP = 29
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_rmbax"]
 script = ExtResource("1_1xwfg")
@@ -941,14 +950,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_hi0xl"]
+[sub_resource type="Resource" id="Resource_hxdq6"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
+HP = 28
+ATK = 26
+DEF = 26
 SpA = 27
-SpD = 30
-SP = 31
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_63or3"]
 script = ExtResource("1_1xwfg")
@@ -965,14 +974,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_hxdq6"]
+[sub_resource type="Resource" id="Resource_a2bex"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 26
-DEF = 26
+HP = 29
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_4foxr"]
 script = ExtResource("1_1xwfg")
@@ -989,14 +998,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_a2bex"]
+[sub_resource type="Resource" id="Resource_hcw4t"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
+HP = 28
+ATK = 26
+DEF = 26
 SpA = 27
-SpD = 30
-SP = 31
+SpD = 28
+SP = 28
 
 [sub_resource type="Resource" id="Resource_0nwb0"]
 script = ExtResource("1_1xwfg")
@@ -1013,14 +1022,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_hcw4t"]
+[sub_resource type="Resource" id="Resource_aei03"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 26
-DEF = 26
+HP = 29
+ATK = 28
+DEF = 28
 SpA = 27
-SpD = 28
-SP = 28
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_w7l6b"]
 script = ExtResource("1_1xwfg")
@@ -1037,14 +1046,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_aei03"]
+[sub_resource type="Resource" id="Resource_4wf65"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
 
 [sub_resource type="Resource" id="Resource_vuqgi"]
 script = ExtResource("1_1xwfg")
@@ -1061,14 +1070,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_4wf65"]
+[sub_resource type="Resource" id="Resource_j6eqa"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 28
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_g11vq"]
 script = ExtResource("1_1xwfg")
@@ -1085,14 +1094,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_j6eqa"]
+[sub_resource type="Resource" id="Resource_3xlar"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
 
 [sub_resource type="Resource" id="Resource_chqq1"]
 script = ExtResource("1_1xwfg")
@@ -1109,14 +1118,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_3xlar"]
+[sub_resource type="Resource" id="Resource_2jkgu"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 28
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_qdehd"]
 script = ExtResource("1_1xwfg")
@@ -1133,14 +1142,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_2jkgu"]
+[sub_resource type="Resource" id="Resource_t3dk0"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
 
 [sub_resource type="Resource" id="Resource_wyn55"]
 script = ExtResource("1_1xwfg")
@@ -1157,14 +1166,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_t3dk0"]
+[sub_resource type="Resource" id="Resource_wh8w3"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 28
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_aqvsb"]
 script = ExtResource("1_1xwfg")
@@ -1181,14 +1190,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_wh8w3"]
+[sub_resource type="Resource" id="Resource_hf3cu"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
 
 [sub_resource type="Resource" id="Resource_1c8a7"]
 script = ExtResource("1_1xwfg")
@@ -1205,14 +1214,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_hf3cu"]
+[sub_resource type="Resource" id="Resource_ysc5d"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 28
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_jqtjj"]
 script = ExtResource("1_1xwfg")
@@ -1229,14 +1238,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_ysc5d"]
+[sub_resource type="Resource" id="Resource_ljp8u"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
 
 [sub_resource type="Resource" id="Resource_tk5x8"]
 script = ExtResource("1_1xwfg")
@@ -1253,14 +1262,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_ljp8u"]
+[sub_resource type="Resource" id="Resource_hnpuc"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 28
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_ijew6"]
 script = ExtResource("1_1xwfg")
@@ -1277,14 +1286,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_hnpuc"]
+[sub_resource type="Resource" id="Resource_vbsyr"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 28
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 28
 
 [sub_resource type="Resource" id="Resource_wb8x7"]
 script = ExtResource("1_1xwfg")
@@ -1301,14 +1310,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_vbsyr"]
+[sub_resource type="Resource" id="Resource_myhrt"]
 script = ExtResource("2_gcswx")
-HP = 28
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 28
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_kdbv2"]
 script = ExtResource("1_1xwfg")
@@ -1325,14 +1334,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_myhrt"]
+[sub_resource type="Resource" id="Resource_ve011"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_x3qe8"]
 script = ExtResource("1_1xwfg")
@@ -1349,14 +1358,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_ve011"]
+[sub_resource type="Resource" id="Resource_xarwn"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_yknt8"]
 script = ExtResource("1_1xwfg")
@@ -1373,14 +1382,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_xarwn"]
+[sub_resource type="Resource" id="Resource_mvbng"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_4ugw1"]
 script = ExtResource("1_1xwfg")
@@ -1397,14 +1406,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_mvbng"]
+[sub_resource type="Resource" id="Resource_ob6o0"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_nrjoh"]
 script = ExtResource("1_1xwfg")
@@ -1421,14 +1430,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_ob6o0"]
+[sub_resource type="Resource" id="Resource_ok7kn"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_r52qv"]
 script = ExtResource("1_1xwfg")
@@ -1445,14 +1454,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_ok7kn"]
+[sub_resource type="Resource" id="Resource_qhrkq"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_vpit7"]
 script = ExtResource("1_1xwfg")
@@ -1469,14 +1478,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_qhrkq"]
+[sub_resource type="Resource" id="Resource_bdfk6"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_jw8x8"]
 script = ExtResource("1_1xwfg")
@@ -1493,14 +1502,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_bdfk6"]
+[sub_resource type="Resource" id="Resource_yposp"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_tgq0w"]
 script = ExtResource("1_1xwfg")
@@ -1517,14 +1526,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_yposp"]
+[sub_resource type="Resource" id="Resource_7wo3w"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 26
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_e2bym"]
 script = ExtResource("1_1xwfg")
@@ -1541,14 +1550,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_7wo3w"]
+[sub_resource type="Resource" id="Resource_t5j6s"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 26
-SpA = 26
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_o7guv"]
 script = ExtResource("1_1xwfg")
@@ -1565,14 +1574,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_t5j6s"]
+[sub_resource type="Resource" id="Resource_o8nsm"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 25
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_xsoaj"]
 script = ExtResource("1_1xwfg")
@@ -1589,14 +1598,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_o8nsm"]
+[sub_resource type="Resource" id="Resource_7hwqa"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 26
-SpA = 25
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_poere"]
 script = ExtResource("1_1xwfg")
@@ -1613,14 +1622,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_7hwqa"]
+[sub_resource type="Resource" id="Resource_67eb4"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 25
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_7u2ag"]
 script = ExtResource("1_1xwfg")
@@ -1637,14 +1646,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_67eb4"]
+[sub_resource type="Resource" id="Resource_1p04g"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 26
-SpA = 25
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_tdhg0"]
 script = ExtResource("1_1xwfg")
@@ -1661,14 +1670,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_1p04g"]
+[sub_resource type="Resource" id="Resource_cfhrx"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 25
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_3gm67"]
 script = ExtResource("1_1xwfg")
@@ -1685,14 +1694,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_cfhrx"]
+[sub_resource type="Resource" id="Resource_wm22e"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 26
-SpA = 25
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_ag6d8"]
 script = ExtResource("1_1xwfg")
@@ -1709,14 +1718,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_wm22e"]
+[sub_resource type="Resource" id="Resource_7mk3b"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 26
+SpA = 25
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_ns56m"]
 script = ExtResource("1_1xwfg")
@@ -1733,14 +1742,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_7mk3b"]
+[sub_resource type="Resource" id="Resource_f78fh"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 26
-SpA = 25
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_kl442"]
 script = ExtResource("1_1xwfg")
@@ -1757,14 +1766,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_f78fh"]
+[sub_resource type="Resource" id="Resource_8dwgr"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_dgirb"]
 script = ExtResource("1_1xwfg")
@@ -1781,14 +1790,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_8dwgr"]
+[sub_resource type="Resource" id="Resource_r06mc"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 25
-SpA = 25
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_sejql"]
 script = ExtResource("1_1xwfg")
@@ -1805,14 +1814,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_r06mc"]
+[sub_resource type="Resource" id="Resource_liprf"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_ga4bt"]
 script = ExtResource("1_1xwfg")
@@ -1829,14 +1838,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_liprf"]
+[sub_resource type="Resource" id="Resource_cvhhc"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 25
-SpA = 25
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_vtbei"]
 script = ExtResource("1_1xwfg")
@@ -1853,14 +1862,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_cvhhc"]
+[sub_resource type="Resource" id="Resource_rpglb"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_ihhhr"]
 script = ExtResource("1_1xwfg")
@@ -1877,14 +1886,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_rpglb"]
+[sub_resource type="Resource" id="Resource_swbrh"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 25
-SpA = 25
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_8aser"]
 script = ExtResource("1_1xwfg")
@@ -1901,14 +1910,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_swbrh"]
+[sub_resource type="Resource" id="Resource_3ekbp"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 24
+DEF = 25
+SpA = 25
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_347jl"]
 script = ExtResource("1_1xwfg")
@@ -1925,14 +1934,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_3ekbp"]
+[sub_resource type="Resource" id="Resource_xqpe5"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 24
-DEF = 25
-SpA = 25
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_trmxv"]
 script = ExtResource("1_1xwfg")
@@ -1949,14 +1958,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_xqpe5"]
+[sub_resource type="Resource" id="Resource_bvrji"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 26
+SP = 27
 
 [sub_resource type="Resource" id="Resource_1f2v6"]
 script = ExtResource("1_1xwfg")
@@ -1973,14 +1982,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_bvrji"]
+[sub_resource type="Resource" id="Resource_5ocvv"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 25
-DEF = 25
-SpA = 25
-SpD = 26
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_xkyjb"]
 script = ExtResource("1_1xwfg")
@@ -1997,14 +2006,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_5ocvv"]
+[sub_resource type="Resource" id="Resource_ii52c"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 24
+SpD = 26
+SP = 27
 
 [sub_resource type="Resource" id="Resource_r8w8a"]
 script = ExtResource("1_1xwfg")
@@ -2021,14 +2030,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_ii52c"]
+[sub_resource type="Resource" id="Resource_pw11y"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 25
-DEF = 25
-SpA = 24
-SpD = 26
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_r6e1j"]
 script = ExtResource("1_1xwfg")
@@ -2045,14 +2054,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_pw11y"]
+[sub_resource type="Resource" id="Resource_f64w5"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 27
+ATK = 25
+DEF = 25
+SpA = 25
+SpD = 26
+SP = 27
 
 [sub_resource type="Resource" id="Resource_uxskv"]
 script = ExtResource("1_1xwfg")
@@ -2069,14 +2078,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_f64w5"]
+[sub_resource type="Resource" id="Resource_fydq0"]
 script = ExtResource("2_gcswx")
-HP = 27
-ATK = 25
-DEF = 25
-SpA = 25
-SpD = 26
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_pdr54"]
 script = ExtResource("1_1xwfg")
@@ -2093,14 +2102,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_fydq0"]
+[sub_resource type="Resource" id="Resource_mqaaa"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 24
+SpD = 27
+SP = 27
 
 [sub_resource type="Resource" id="Resource_uoylt"]
 script = ExtResource("1_1xwfg")
@@ -2117,14 +2126,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_mqaaa"]
+[sub_resource type="Resource" id="Resource_anxg1"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 25
-DEF = 25
-SpA = 24
-SpD = 27
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_iftb0"]
 script = ExtResource("1_1xwfg")
@@ -2141,14 +2150,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_anxg1"]
+[sub_resource type="Resource" id="Resource_l6rtr"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 24
+SpD = 26
+SP = 27
 
 [sub_resource type="Resource" id="Resource_bicip"]
 script = ExtResource("1_1xwfg")
@@ -2165,14 +2174,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_l6rtr"]
+[sub_resource type="Resource" id="Resource_60j8m"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 25
-DEF = 25
-SpA = 24
-SpD = 26
-SP = 27
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_uldem"]
 script = ExtResource("1_1xwfg")
@@ -2189,14 +2198,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_60j8m"]
+[sub_resource type="Resource" id="Resource_v6q32"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 25
+DEF = 25
+SpA = 24
+SpD = 26
+SP = 26
 
 [sub_resource type="Resource" id="Resource_43pf5"]
 script = ExtResource("1_1xwfg")
@@ -2213,14 +2222,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_v6q32"]
+[sub_resource type="Resource" id="Resource_xe3ig"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 25
-DEF = 25
-SpA = 24
-SpD = 26
-SP = 26
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_tq2u3"]
 script = ExtResource("1_1xwfg")
@@ -2237,14 +2246,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_xe3ig"]
+[sub_resource type="Resource" id="Resource_tsrbm"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 24
+DEF = 25
+SpA = 24
+SpD = 26
+SP = 26
 
 [sub_resource type="Resource" id="Resource_0v6qq"]
 script = ExtResource("1_1xwfg")
@@ -2261,14 +2270,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_tsrbm"]
+[sub_resource type="Resource" id="Resource_6brio"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 24
-DEF = 25
-SpA = 24
-SpD = 26
-SP = 26
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_fxyyw"]
 script = ExtResource("1_1xwfg")
@@ -2285,14 +2294,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_6brio"]
+[sub_resource type="Resource" id="Resource_26x14"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 24
+DEF = 24
+SpA = 24
+SpD = 26
+SP = 26
 
 [sub_resource type="Resource" id="Resource_alrrd"]
 script = ExtResource("1_1xwfg")
@@ -2309,14 +2318,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_26x14"]
+[sub_resource type="Resource" id="Resource_pr7p1"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 24
-DEF = 24
-SpA = 24
-SpD = 26
-SP = 26
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_cvu7q"]
 script = ExtResource("1_1xwfg")
@@ -2333,14 +2342,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_pr7p1"]
+[sub_resource type="Resource" id="Resource_6jhr3"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 24
+DEF = 24
+SpA = 24
+SpD = 26
+SP = 26
 
 [sub_resource type="Resource" id="Resource_ada2p"]
 script = ExtResource("1_1xwfg")
@@ -2357,14 +2366,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_6jhr3"]
+[sub_resource type="Resource" id="Resource_n4158"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 24
-DEF = 24
-SpA = 24
-SpD = 26
-SP = 26
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_q7ctc"]
 script = ExtResource("1_1xwfg")
@@ -2381,14 +2390,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_n4158"]
+[sub_resource type="Resource" id="Resource_ne3h1"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 23
+DEF = 23
+SpA = 23
+SpD = 25
+SP = 26
 
 [sub_resource type="Resource" id="Resource_1kjax"]
 script = ExtResource("1_1xwfg")
@@ -2405,14 +2414,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_ne3h1"]
+[sub_resource type="Resource" id="Resource_hv65m"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 23
-DEF = 23
-SpA = 23
-SpD = 25
-SP = 26
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_r8p5t"]
 script = ExtResource("1_1xwfg")
@@ -2429,14 +2438,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_hv65m"]
+[sub_resource type="Resource" id="Resource_adagy"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 22
+DEF = 22
+SpA = 23
+SpD = 24
+SP = 26
 
 [sub_resource type="Resource" id="Resource_32ewm"]
 script = ExtResource("1_1xwfg")
@@ -2453,14 +2462,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(0, 5, 1.7311001, 5)
 typings = Array[int]([3, 3])
 
-[sub_resource type="Resource" id="Resource_adagy"]
+[sub_resource type="Resource" id="Resource_qibve"]
 script = ExtResource("2_gcswx")
 HP = 26
-ATK = 22
-DEF = 22
-SpA = 23
-SpD = 24
-SP = 26
+ATK = 24
+DEF = 24
+SpA = 22
+SpD = 25
+SP = 25
 
 [sub_resource type="Resource" id="Resource_1vpxg"]
 script = ExtResource("1_1xwfg")
@@ -2477,14 +2486,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(5, 0, 3.4894657, 5)
 typings = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_qibve"]
+[sub_resource type="Resource" id="Resource_au4ee"]
 script = ExtResource("2_gcswx")
-HP = 26
-ATK = 24
-DEF = 24
-SpA = 22
-SpD = 25
-SP = 25
+HP = 29
+ATK = 28
+DEF = 28
+SpA = 27
+SpD = 30
+SP = 31
 
 [sub_resource type="Resource" id="Resource_ud54m"]
 script = ExtResource("1_1xwfg")
@@ -2501,14 +2510,14 @@ originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(2.1597064, 5, 0, 5)
 typings = Array[int]([2])
 
-[sub_resource type="Resource" id="Resource_au4ee"]
+[sub_resource type="Resource" id="Resource_iscqy"]
 script = ExtResource("2_gcswx")
-HP = 29
-ATK = 28
-DEF = 28
-SpA = 27
-SpD = 30
-SP = 31
+HP = 26
+ATK = 23
+DEF = 22
+SpA = 21
+SpD = 25
+SP = 25
 
 [sub_resource type="Resource" id="Resource_un6hu"]
 script = ExtResource("1_1xwfg")
@@ -2524,15 +2533,6 @@ originStats = Dictionary[String, int]({
 originParts = [Array[String](["HP", "SP", "SpD"])]
 color = Color(0, 5, 1.7311001, 5)
 typings = Array[int]([3, 3])
-
-[sub_resource type="Resource" id="Resource_iscqy"]
-script = ExtResource("2_gcswx")
-HP = 26
-ATK = 23
-DEF = 22
-SpA = 21
-SpD = 25
-SP = 25
 
 [resource]
 script = ExtResource("3_813hf")

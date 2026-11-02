@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalVars="*uid://j2fw1yh217hc"
 SimulationRecorder="*uid://b1cnccvtl0a8"
+Transition="*uid://ce4nwf5b6akqi"
 
 [display]
 

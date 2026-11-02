@@ -60,7 +60,7 @@ func _ready():
 			if data.typings.size() != 1:
 				typingText += ", " +  GlobalVars.Typings.find_key(data.typings[1]) 
 			
-			speciesData.text = "Typings - " + str(typingText) + ". Diet Type - " + str(data.diet) + "."
+			speciesData.text = "Typings - " + str(typingText) + ". Diet Type - " + str(Agent.Diets.find_key(data.diet)) + "."
 			speciesData.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			%MainBox.add_child(speciesData)
 		

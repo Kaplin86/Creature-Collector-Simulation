@@ -11,4 +11,4 @@ func _on_file_dialog_file_selected(path):
 	var Viewer = load("res://PROPERsimulationRenderer.tscn").instantiate()
 	Viewer.simulationHistory = SimHistory
 	print(SimHistory)
-	get_tree().change_scene_to_node(Viewer)
+	Transition.transition(Viewer)
