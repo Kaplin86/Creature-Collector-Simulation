@@ -141,6 +141,10 @@ func getTyping() -> Array[GlobalVars.Typings]:
 			types.append(moveSet.get(1).typing)
 	return types
 
+## Returns the pixel vision distance the creature can look
+func getVisionDist() -> float:
+	return _SpDHash * GlobalVars.PixelVisionPerSPD
+
 ## Runs at the start of the frame-by-frame loop. Increases [member age], [member HP], and decreases [member energy] and [member birthtimer]. The creature is killed here if it lacks energy.
 func ageAndEnergyTick(delta) -> void:
 	age += delta
@@ -436,7 +440,7 @@ func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 ## Looks in the vision, calling [SpatialGrid], and returns all of the found nodes.
 func lookInVision() -> Array[Node2D]:
 	
-	var VisionDistance = _SpDHash * GlobalVars.PixelVisionPerSPD
+	var VisionDistance = getVisionDist()
 	var foundNodes : Array[Node2D] = []
 	var nodes = _spatialGrid.getEntitiesUsingDist(global_position,VisionDistance)
 	for I in nodes:

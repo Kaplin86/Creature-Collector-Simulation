@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/UI/speedSlider.gd" id="6_a4k71"]
 [ext_resource type="Script" uid="uid://b2ug6cy5obeye" path="res://code/simulation/behaviorGenes/nestingGene.gd" id="6_sxo3m"]
 [ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/UI/saveSim.gd" id="7_36jwc"]
+[ext_resource type="Script" uid="uid://csxdydupwwvui" path="res://code/simulation/behaviorGenes/nestDestroyingGene.gd" id="7_fei7e"]
 [ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/UI/freecam.gd" id="7_xd0na"]
 
 [sub_resource type="Resource" id="Resource_nssk4"]
@@ -37,6 +38,10 @@ metadata/_custom_type_script = "uid://b7avj5tkibsm1"
 script = ExtResource("6_sxo3m")
 metadata/_custom_type_script = "uid://b2ug6cy5obeye"
 
+[sub_resource type="Resource" id="Resource_a5t8r"]
+script = ExtResource("7_fei7e")
+metadata/_custom_type_script = "uid://csxdydupwwvui"
+
 [node name="SimulationSceneBig" type="Node2D" unique_id=1984677836]
 script = ExtResource("1_yyx55")
 simMinX = -4934
@@ -46,7 +51,7 @@ simMaxY = 4934
 startingSpeciesCount = 80
 startingTreeCount = 300
 basicBodyPart = SubResource("Resource_nssk4")
-startingGenes = Array[ExtResource("3_epn4a")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e")])
+startingGenes = Array[ExtResource("3_epn4a")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e"), SubResource("Resource_a5t8r")])
 sizeX = 3000
 sizeY = 3000
 

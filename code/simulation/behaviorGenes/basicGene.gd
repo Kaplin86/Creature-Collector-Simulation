@@ -16,8 +16,7 @@ class_name BasicBehaviorGene
 
 ## This function returns the current value of the gene.[br] 
 ##All outputs should be ran through [method _sanitizeOutput] before returned.
-@abstract 
-func evaluate(agent : Agent) -> float
+@abstract func evaluate(agent : Agent) -> float
 
 ## Makes sure the gene's value is within the correct
 func sanitizeOutput(input : float) -> float:
@@ -25,8 +24,7 @@ func sanitizeOutput(input : float) -> float:
 
 ## Called when the agent chooses a specific action.[br]
 ##If an action needs to keep memory of something, it should be saved on the gene and be limited.
-@abstract
-func act(agent : Agent) -> void
+@abstract func act(agent : Agent) -> void
 
 ## Slightly alters the multiplier, minimum, and maximum on the creature.
 func mutate():
