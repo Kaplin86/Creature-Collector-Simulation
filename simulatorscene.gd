@@ -8,6 +8,7 @@ extends Node2D
 @export var startingSpeciesCount = 10
 @export var startingTreeCount = 10
 @export var basicBodyPart : BodyPart
+@export var startingGenes : Array[BasicBehaviorGene] = []
 
 @export var sizeX = 10000
 @export var sizeY = 10000
@@ -75,6 +76,7 @@ func _ready():
 	for I in range(startingSpeciesCount):
 		var randomPosition = Vector2(randf_range(simMinX,simMaxX),randf_range(simMinY,simMaxY))
 		var newAgent = Agent.new()
+		for C in startingGenes: newAgent.genes.append(C.duplicate(true))
 		var part1 = basicBodyPart.duplicate(true)
 		newAgent.parts.append(part1)
 		newAgent.moveSet.append(move.duplicate(true))

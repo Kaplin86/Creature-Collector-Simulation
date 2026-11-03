@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_yyx55"]
 [ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_lrn8h"]
 [ext_resource type="Texture2D" uid="uid://csu200iyltqde" path="res://art/grass.png" id="2_m24cv"]
+[ext_resource type="Script" uid="uid://dw7opa0wcldui" path="res://code/simulation/behaviorGenes/basicGene.gd" id="3_epn4a"]
 [ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/simulation/spatial_grid.gd" id="3_nssk4"]
 [ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/simulation/species_handler.gd" id="4_lrn8h"]
+[ext_resource type="Script" uid="uid://dik3rlumbu1em" path="res://code/simulation/behaviorGenes/basicHunt.gd" id="4_sxo3m"]
+[ext_resource type="Script" uid="uid://b7avj5tkibsm1" path="res://code/simulation/behaviorGenes/matingGene.gd" id="5_fei7e"]
 [ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/UI/speedSlider.gd" id="6_a4k71"]
 [ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/UI/saveSim.gd" id="7_36jwc"]
 [ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/UI/freecam.gd" id="7_xd0na"]
@@ -19,6 +22,16 @@ SpD = 60
 SP = 35
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
+[sub_resource type="Resource" id="Resource_e02ve"]
+script = ExtResource("4_sxo3m")
+multiplier = 1.5
+metadata/_custom_type_script = "uid://dik3rlumbu1em"
+
+[sub_resource type="Resource" id="Resource_jcwse"]
+script = ExtResource("5_fei7e")
+multiplier = 1.5
+metadata/_custom_type_script = "uid://b7avj5tkibsm1"
+
 [node name="SimulationSceneBig" type="Node2D" unique_id=1984677836]
 script = ExtResource("1_yyx55")
 simMinX = -4934
@@ -28,6 +41,7 @@ simMaxY = 4934
 startingSpeciesCount = 80
 startingTreeCount = 300
 basicBodyPart = SubResource("Resource_nssk4")
+startingGenes = Array[ExtResource("3_epn4a")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse")])
 sizeX = 3000
 sizeY = 3000
 

@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://b6i1w81t4kxe0" path="res://code/simulation/fruit.gd" id="5_tls5n"]
 [ext_resource type="Texture2D" uid="uid://cv2xaisgtt0ih" path="res://art/fruit.png" id="6_dh3iq"]
 [ext_resource type="Script" uid="uid://bacgc46d072ya" path="res://code/simulation/fruitSpawner.gd" id="6_tls5n"]
+[ext_resource type="Script" uid="uid://dik3rlumbu1em" path="res://code/simulation/behaviorGenes/basicHunt.gd" id="9_c86cp"]
+[ext_resource type="Script" uid="uid://b7avj5tkibsm1" path="res://code/simulation/behaviorGenes/matingGene.gd" id="10_8tkw1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a36lu"]
 size = Vector2(43, 1309)
@@ -35,6 +37,14 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 script = ExtResource("5_dh3iq")
 typing = null
 metadata/_custom_type_script = "uid://b65mjq863idtp"
+
+[sub_resource type="Resource" id="Resource_36jwc"]
+script = ExtResource("9_c86cp")
+metadata/_custom_type_script = "uid://dik3rlumbu1em"
+
+[sub_resource type="Resource" id="Resource_8dd5j"]
+script = ExtResource("10_8tkw1")
+metadata/_custom_type_script = "uid://b7avj5tkibsm1"
 
 [sub_resource type="Resource" id="Resource_53aok"]
 resource_local_to_scene = true
@@ -245,6 +255,7 @@ modulate = Color(0.37748086, 0.6194781, 1, 1)
 position = Vector2(650, 327)
 script = ExtResource("1_ngdw2")
 parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
+genes = Array[Object]([SubResource("Resource_36jwc"), SubResource("Resource_8dd5j")])
 species = 0
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 

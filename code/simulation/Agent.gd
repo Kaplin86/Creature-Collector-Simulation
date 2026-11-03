@@ -22,11 +22,7 @@ var birthtimer : float = 0
 @export var parts : Array[BodyPart] = []
 
 ## The behavior genes on the creature. Used to dictate how it acts
-@export var genes : Array[BasicBehaviorGene] = [
-	BasicHuntingGene.new(),
-	BasicMateGene.new()
-	
-]
+@export var genes : Array[BasicBehaviorGene] = []
 
 ## The position of last seen fruit. Functionally a [Vector2], however it remains untyped
 var memoryFoodPosition
@@ -122,6 +118,10 @@ func _ready():
 	circle.radius = 10
 	newHitbox.shape = circle
 	collision_mask = 2
+	
+	if genes == []:
+		genes.append(BasicHuntingGene.new())
+		genes.append(BasicMateGene.new())
 
 
 
@@ -401,13 +401,13 @@ func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 	
 	var typeToGene = {}
 	for I : BasicBehaviorGene in parent1.genes:
-		typeToGene[I.get_class()] = I.duplicate(true)
+		typeToGene[I.get_script()] = I.duplicate(true)
 	for I : BasicBehaviorGene in parent2.genes:
-		if typeToGene.has(I.get_class()):
+		if typeToGene.has(I.get_script()):
 			if randi_range(0,1) == 0:
-				typeToGene[I.get_class()] = I.duplicate(true)
+				typeToGene[I.get_script()] = I.duplicate(true)
 		else:
-			typeToGene[I.get_class()] = I.duplicate(true)
+			typeToGene[I.get_script()] = I.duplicate(true)
 	
 	for I in typeToGene.values(): newAgent.genes.append(I.duplicate(true))
 	
