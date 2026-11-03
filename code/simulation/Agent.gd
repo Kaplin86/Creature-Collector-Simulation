@@ -254,7 +254,7 @@ func flee() -> void:
 	targetLocation = global_position + bestDirection * 100
 	
 	
-
+var lastAction = null
 func _process(delta):
 	if _bstHash == 0.0: _bstHash = calculateBST()
 	
@@ -264,6 +264,7 @@ func _process(delta):
 	
 	var currentAction : BasicBehaviorGene = determineCurrentAction()
 	currentAction.act(self)
+	lastAction = currentAction
 	
 	
 	if !inBattle:

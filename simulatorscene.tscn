@@ -8,10 +8,12 @@
 [ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/simulation/species_handler.gd" id="3_feijk"]
 [ext_resource type="Script" uid="uid://b65mjq863idtp" path="res://code/simulation/moveResource.gd" id="5_dh3iq"]
 [ext_resource type="Script" uid="uid://b6i1w81t4kxe0" path="res://code/simulation/fruit.gd" id="5_tls5n"]
-[ext_resource type="Texture2D" uid="uid://cv2xaisgtt0ih" path="res://art/fruit.png" id="6_dh3iq"]
 [ext_resource type="Script" uid="uid://bacgc46d072ya" path="res://code/simulation/fruitSpawner.gd" id="6_tls5n"]
+[ext_resource type="Script" uid="uid://dw7opa0wcldui" path="res://code/simulation/behaviorGenes/basicGene.gd" id="9_8tkw1"]
 [ext_resource type="Script" uid="uid://dik3rlumbu1em" path="res://code/simulation/behaviorGenes/basicHunt.gd" id="9_c86cp"]
 [ext_resource type="Script" uid="uid://b7avj5tkibsm1" path="res://code/simulation/behaviorGenes/matingGene.gd" id="10_8tkw1"]
+[ext_resource type="Script" uid="uid://b2ug6cy5obeye" path="res://code/simulation/behaviorGenes/nestingGene.gd" id="11_53aok"]
+[ext_resource type="Texture2D" uid="uid://b8n22den8t4vw" path="res://art/fruit.png" id="13_hjk8x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a36lu"]
 size = Vector2(43, 1309)
@@ -21,30 +23,6 @@ size = Vector2(2351, 50)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a36lu"]
 radius = 95.63472
-
-[sub_resource type="Resource" id="Resource_84svq"]
-resource_local_to_scene = true
-script = ExtResource("2_ro32a")
-HP = 42
-ATK = 52
-DEF = 67
-SpA = 39
-SpD = 56
-SP = 50
-metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
-
-[sub_resource type="Resource" id="Resource_5ae0i"]
-script = ExtResource("5_dh3iq")
-typing = null
-metadata/_custom_type_script = "uid://b65mjq863idtp"
-
-[sub_resource type="Resource" id="Resource_36jwc"]
-script = ExtResource("9_c86cp")
-metadata/_custom_type_script = "uid://dik3rlumbu1em"
-
-[sub_resource type="Resource" id="Resource_8dd5j"]
-script = ExtResource("10_8tkw1")
-metadata/_custom_type_script = "uid://b7avj5tkibsm1"
 
 [sub_resource type="Resource" id="Resource_53aok"]
 resource_local_to_scene = true
@@ -56,6 +34,23 @@ SpA = 39
 SpD = 35
 SP = 50
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_sxo3m"]
+script = ExtResource("10_8tkw1")
+metadata/_custom_type_script = "uid://b7avj5tkibsm1"
+
+[sub_resource type="Resource" id="Resource_fei7e"]
+script = ExtResource("9_c86cp")
+metadata/_custom_type_script = "uid://dik3rlumbu1em"
+
+[sub_resource type="Resource" id="Resource_e02ve"]
+script = ExtResource("11_53aok")
+metadata/_custom_type_script = "uid://b2ug6cy5obeye"
+
+[sub_resource type="Resource" id="Resource_5ae0i"]
+script = ExtResource("5_dh3iq")
+typing = null
+metadata/_custom_type_script = "uid://b65mjq863idtp"
 
 [node name="Simulatorscene" type="Node2D" unique_id=748557727]
 script = ExtResource("1_oepk7")
@@ -108,13 +103,13 @@ shape = SubResource("CircleShape2D_a36lu")
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2155151, 2.1359937)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="Fruit" type="Sprite2D" parent="StaticBody2D/CollisionShape2D5" unique_id=731267354]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2415643, -1.9877614)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=2053987]
 position = Vector2(325, 719)
@@ -124,13 +119,13 @@ shape = SubResource("CircleShape2D_a36lu")
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2155151, 2.1359937)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="Fruit" type="Sprite2D" parent="StaticBody2D/CollisionShape2D6" unique_id=1428232015]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2415643, -1.9877614)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D" unique_id=959787073]
 position = Vector2(191, 600)
@@ -140,13 +135,13 @@ shape = SubResource("CircleShape2D_a36lu")
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2155151, 2.1359937)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="Fruit" type="Sprite2D" parent="StaticBody2D/CollisionShape2D7" unique_id=825227908]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2415643, -1.9877614)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D" unique_id=34878030]
 position = Vector2(141, 441)
@@ -156,13 +151,13 @@ shape = SubResource("CircleShape2D_a36lu")
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2155151, 2.1359937)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="Fruit" type="Sprite2D" parent="StaticBody2D/CollisionShape2D8" unique_id=796202462]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2415643, -1.9877614)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D" unique_id=5296668]
 position = Vector2(45, 292)
@@ -172,13 +167,13 @@ shape = SubResource("CircleShape2D_a36lu")
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2155151, 2.1359937)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="Fruit" type="Sprite2D" parent="StaticBody2D/CollisionShape2D9" unique_id=577697137]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 1)
 scale = Vector2(2.2415643, -1.9877614)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 
 [node name="SimBorder" type="Node" parent="." unique_id=164563081]
 
@@ -218,637 +213,421 @@ script = ExtResource("2_dh3iq")
 unique_name_in_owner = true
 script = ExtResource("3_feijk")
 
-[node name="Node2D10" type="CharacterBody2D" parent="." unique_id=161908406 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(545, 346)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D19" type="CharacterBody2D" parent="." unique_id=1037250615 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(483, 325)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D11" type="CharacterBody2D" parent="." unique_id=1443939453 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(541, 277)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D12" type="CharacterBody2D" parent="." unique_id=1245415075 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(510, 316)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D13" type="CharacterBody2D" parent="." unique_id=305414741 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(650, 327)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-genes = Array[Object]([SubResource("Resource_36jwc"), SubResource("Resource_8dd5j")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D14" type="CharacterBody2D" parent="." unique_id=944896621 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(583, 400)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D15" type="CharacterBody2D" parent="." unique_id=1179931086 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(500, 439)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D16" type="CharacterBody2D" parent="." unique_id=388851301 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(467, 383)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D17" type="CharacterBody2D" parent="." unique_id=1481843199 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(434, 241)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D18" type="CharacterBody2D" parent="." unique_id=1051135171 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(627, 246)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D20" type="CharacterBody2D" parent="." unique_id=399388355 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(367, 306)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D21" type="CharacterBody2D" parent="." unique_id=1467152197 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(363, 237)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D22" type="CharacterBody2D" parent="." unique_id=1383748144 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(332, 276)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D23" type="CharacterBody2D" parent="." unique_id=888392693 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(472, 287)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D24" type="CharacterBody2D" parent="." unique_id=1314146965 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(405, 360)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D25" type="CharacterBody2D" parent="." unique_id=1488559500 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(322, 399)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D26" type="CharacterBody2D" parent="." unique_id=217840964 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(289, 343)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D27" type="CharacterBody2D" parent="." unique_id=585447914 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(256, 201)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D28" type="CharacterBody2D" parent="." unique_id=157054067 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(449, 206)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D29" type="CharacterBody2D" parent="." unique_id=715762254 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(607, 246)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D30" type="CharacterBody2D" parent="." unique_id=2011552182 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(603, 177)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D31" type="CharacterBody2D" parent="." unique_id=828151570 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(572, 216)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D32" type="CharacterBody2D" parent="." unique_id=660490381 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(712, 227)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D33" type="CharacterBody2D" parent="." unique_id=1343873768 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(645, 300)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D34" type="CharacterBody2D" parent="." unique_id=51654146 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(562, 339)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D35" type="CharacterBody2D" parent="." unique_id=798712474 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(529, 283)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
-[node name="Node2D36" type="CharacterBody2D" parent="." unique_id=733200458 groups=["creature"]]
-modulate = Color(0.37748086, 0.6194781, 1, 1)
-position = Vector2(496, 141)
-script = ExtResource("1_ngdw2")
-parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_84svq")])
-species = 0
-moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
-
 [node name="Node2D37" type="CharacterBody2D" parent="." unique_id=488329793 groups=["creature"]]
 modulate = Color(0.37748086, 0.6194781, 1, 1)
 position = Vector2(689, 146)
 script = ExtResource("1_ngdw2")
 parts = Array[ExtResource("2_ro32a")]([SubResource("Resource_53aok")])
+genes = Array[ExtResource("9_8tkw1")]([SubResource("Resource_sxo3m"), SubResource("Resource_fei7e"), SubResource("Resource_e02ve")])
 species = 0
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=886159300]
 position = Vector2(757, 303)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon2" type="Sprite2D" parent="." unique_id=1034820367]
 position = Vector2(783.00006, 291)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon3" type="Sprite2D" parent="." unique_id=1517230497]
 position = Vector2(788.00006, 324)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon4" type="Sprite2D" parent="." unique_id=108592889]
 position = Vector2(827, 281)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon5" type="Sprite2D" parent="." unique_id=1874674274]
 position = Vector2(640, 313.00003)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon6" type="Sprite2D" parent="." unique_id=1822747392]
 position = Vector2(430, 106)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon7" type="Sprite2D" parent="." unique_id=1759706113]
 position = Vector2(395.00003, 113.000015)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon8" type="Sprite2D" parent="." unique_id=445565038]
 position = Vector2(407.00003, 83.00001)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon9" type="Sprite2D" parent="." unique_id=1844565830]
 position = Vector2(440, 71)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon10" type="Sprite2D" parent="." unique_id=1987840301]
 position = Vector2(378.00003, 83.00001)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon11" type="Sprite2D" parent="." unique_id=662885382]
 position = Vector2(391, 46)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon12" type="Sprite2D" parent="." unique_id=577743739]
 position = Vector2(366.00003, 117)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon13" type="Sprite2D" parent="." unique_id=798058340]
 position = Vector2(338.00003, 66.00001)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon45" type="Sprite2D" parent="." unique_id=615603268]
 position = Vector2(368.7224, 258.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon46" type="Sprite2D" parent="." unique_id=1080050349]
 position = Vector2(333.72244, 265.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon47" type="Sprite2D" parent="." unique_id=1534895686]
 position = Vector2(345.72244, 235.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon48" type="Sprite2D" parent="." unique_id=658941825]
 position = Vector2(378.7224, 223.72246)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon49" type="Sprite2D" parent="." unique_id=348733078]
 position = Vector2(316.72244, 235.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon50" type="Sprite2D" parent="." unique_id=633551983]
 position = Vector2(329.7224, 198.72246)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon51" type="Sprite2D" parent="." unique_id=1633656615]
 position = Vector2(304.72244, 269.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon52" type="Sprite2D" parent="." unique_id=1534818958]
 position = Vector2(276.72244, 218.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon53" type="Sprite2D" parent="." unique_id=278560777]
 position = Vector2(664.7224, 200.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon54" type="Sprite2D" parent="." unique_id=1774634117]
 position = Vector2(629.7224, 207.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon55" type="Sprite2D" parent="." unique_id=47082046]
 position = Vector2(641.7224, 177.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon56" type="Sprite2D" parent="." unique_id=2083399977]
 position = Vector2(674.7224, 165.72246)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon57" type="Sprite2D" parent="." unique_id=1464606721]
 position = Vector2(612.7224, 177.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon58" type="Sprite2D" parent="." unique_id=728221906]
 position = Vector2(625.7224, 140.72246)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon59" type="Sprite2D" parent="." unique_id=1992168439]
 position = Vector2(600.7224, 211.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon60" type="Sprite2D" parent="." unique_id=311187410]
 position = Vector2(572.7224, 160.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon61" type="Sprite2D" parent="." unique_id=2062450689]
 position = Vector2(567.7225, 500.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon62" type="Sprite2D" parent="." unique_id=1928074024]
 position = Vector2(532.7225, 507.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon63" type="Sprite2D" parent="." unique_id=1660245059]
 position = Vector2(544.7225, 477.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon64" type="Sprite2D" parent="." unique_id=1880809980]
 position = Vector2(577.7225, 465.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon65" type="Sprite2D" parent="." unique_id=870317197]
 position = Vector2(515.7225, 477.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon66" type="Sprite2D" parent="." unique_id=1930822775]
 position = Vector2(528.7225, 440.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon67" type="Sprite2D" parent="." unique_id=613902497]
 position = Vector2(503.72247, 511.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon68" type="Sprite2D" parent="." unique_id=1730582436]
 position = Vector2(475.72247, 460.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon23" type="Sprite2D" parent="." unique_id=579646750]
 position = Vector2(907.7225, 570.7225)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon24" type="Sprite2D" parent="." unique_id=2046719302]
 position = Vector2(946.7224, 527.7225)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon25" type="Sprite2D" parent="." unique_id=352546120]
 position = Vector2(759.7224, 559.7225)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon26" type="Sprite2D" parent="." unique_id=554943164]
 position = Vector2(549.7224, 352.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon27" type="Sprite2D" parent="." unique_id=84974485]
 position = Vector2(514.7224, 359.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon28" type="Sprite2D" parent="." unique_id=1612380995]
 position = Vector2(526.7224, 329.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon29" type="Sprite2D" parent="." unique_id=29943183]
 position = Vector2(559.7224, 317.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon30" type="Sprite2D" parent="." unique_id=664662194]
 position = Vector2(497.72244, 329.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon31" type="Sprite2D" parent="." unique_id=1575402109]
 position = Vector2(510.7224, 292.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon32" type="Sprite2D" parent="." unique_id=818031282]
 position = Vector2(485.72244, 363.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon33" type="Sprite2D" parent="." unique_id=1126543017]
 position = Vector2(457.72244, 312.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon34" type="Sprite2D" parent="." unique_id=1028476072]
 position = Vector2(1147.7224, 724.7225)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon35" type="Sprite2D" parent="." unique_id=1967271124]
 position = Vector2(1186.7224, 681.7225)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon36" type="Sprite2D" parent="." unique_id=1096328395]
 position = Vector2(999.7224, 713.7225)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon37" type="Sprite2D" parent="." unique_id=1042975385]
 position = Vector2(789.7224, 506.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon38" type="Sprite2D" parent="." unique_id=97630474]
 position = Vector2(754.7224, 513.7225)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon39" type="Sprite2D" parent="." unique_id=1098127381]
 position = Vector2(766.7224, 483.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon40" type="Sprite2D" parent="." unique_id=737679006]
 position = Vector2(799.7224, 471.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon41" type="Sprite2D" parent="." unique_id=552622760]
 position = Vector2(737.7224, 483.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon42" type="Sprite2D" parent="." unique_id=1441245903]
 position = Vector2(750.7224, 446.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon43" type="Sprite2D" parent="." unique_id=988200108]
 position = Vector2(725.7224, 517.7225)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon44" type="Sprite2D" parent="." unique_id=1214855905]
 position = Vector2(697.7224, 466.72247)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon14" type="Sprite2D" parent="." unique_id=1396656400]
 position = Vector2(236.00003, 411)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon15" type="Sprite2D" parent="." unique_id=1909189214]
 position = Vector2(281, 433.00003)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon16" type="Sprite2D" parent="." unique_id=1057605943]
 position = Vector2(272, 394)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon17" type="Sprite2D" parent="." unique_id=1576953300]
 position = Vector2(231.00003, 471)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon18" type="Sprite2D" parent="." unique_id=2079584043]
 position = Vector2(224.00002, 404.00003)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon19" type="Sprite2D" parent="." unique_id=2003064070]
 position = Vector2(269, 459.00003)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon20" type="Sprite2D" parent="." unique_id=1746817234]
 position = Vector2(310, 421.00003)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon21" type="Sprite2D" parent="." unique_id=5866596]
 position = Vector2(337, 481.00003)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Icon22" type="Sprite2D" parent="." unique_id=1922452315]
 position = Vector2(337, 481.00003)
 scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("6_dh3iq")
+texture = ExtResource("13_hjk8x")
 script = ExtResource("5_tls5n")
 
 [node name="Tree" type="Node2D" parent="." unique_id=1089327271]

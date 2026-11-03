@@ -30,6 +30,8 @@ func act(agent : Agent) -> void
 
 ## Slightly alters the multiplier, minimum, and maximum on the creature.
 func mutate():
-	multiplier += randf_range(-0.05,0.05)
-	minimum += randf_range(-0.05,0.05)
-	maximum += randf_range(-0.05,0.05)
+	var mRange = 0.1
+	multiplier += randf_range(-mRange,mRange)
+	minimum += randf_range(-mRange,mRange)
+	maximum += randf_range(-mRange,mRange)
+	resource_name = str(get_script().get_global_name()) + " - " + str(multiplier)
