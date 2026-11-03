@@ -1,5 +1,5 @@
 extends BasicBehaviorGene
-class_name BasicMateBehavior
+class_name BasicMateGene
 
 ## A gene where the creature will attempt to walk to another creature for matings. Functions as a wander if no mate is found.
 

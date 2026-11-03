@@ -21,10 +21,15 @@ var birthtimer : float = 0
 ## The parts on the creature. Used to dictate its stats
 @export var parts : Array[BodyPart] = []
 
+## The behavior genes on the creature. Used to dictate how it acts
+@export var genes : Array[BasicBehaviorGene] = [
+	BasicHuntingGene.new(),
+	BasicMateGene.new()
+	
+]
+
 ## The position of last seen fruit. Functionally a [Vector2], however it remains untyped
 var memoryFoodPosition
-
-var _LastAction : ActionTypes
 
 ## The species number of the agent [br]
 ## See [SpeciesHandler]
@@ -56,16 +61,6 @@ var _bstHash = 0.0
 var _SpDHash = 0.0
 var _SPHash = 0.0
 var _HPHash = 0.0
-
-## The different types of action the creature can perform. Selected each frame, and immediately acted apon.
-enum ActionTypes {
-	Wander, ## The creature will randomly wander around
-	Hunt, ## The creature will look for food and walk to it, or walk to the last piece of food it saw.
-	LookForMate, ## The creature will wander until it finds a mate. Once it finds one, walk to it.
-	Flee, ## The creature will run from the nearest predator in vision
-	}
-
-
 
 
 #Behavior Vals -----------------
@@ -161,32 +156,18 @@ func ageAndEnergyTick(delta) -> void:
 		
 		queue_free()
 
+var wanderGene = WanderGene.new()
+
 ## Based on various values.
-func determineCurrentAction() -> ActionTypes:
-	var currentAction : ActionTypes = ActionTypes.Wander
+func determineCurrentAction() -> BasicBehaviorGene:
+	var currentAction = wanderGene
+	var highestTier = 0.65
 	
-	if max(GlobalVars.AgeToReproducePerStat * _bstHash,30) < age and birthtimer < 0.01:
-		if energy >= 0.75:
-			if GlobalVars.reproductionType == 0:
-				energy -= 0.7
-				soloReproduction()
-			elif GlobalVars.reproductionType == 1:
-				currentAction = ActionTypes.LookForMate
-	
-	
-	if energy <= 0.75:
-		currentAction = ActionTypes.Hunt
-	
-	var predatorResult = lookForPredator()
-	if _LastAction == ActionTypes.Flee:
-		if predatorResult:
-			currentAction = ActionTypes.Flee
-	else:
-		if predatorResult:
-			var VisionDistance = _SpDHash * GlobalVars.PixelVisionPerSPD
-			var distRatio = inverse_lerp(0,VisionDistance**2,predatorResult.global_position.distance_squared_to(global_position))
-			if distRatio > fleeDist:
-				currentAction = ActionTypes.Flee
+	for I in genes:
+		var val = I.evaluate(self)
+		if val > highestTier:
+			currentAction = I
+			highestTier = val
 	
 	return currentAction
 
@@ -281,20 +262,8 @@ func _process(delta):
 	ageAndEnergyTick(delta)
 	
 	
-	var currentAction : ActionTypes = determineCurrentAction()
-	_LastAction = currentAction
-	
-	if currentAction == ActionTypes.Wander:
-		wander()
-		fleeDirOffset = 0
-	elif currentAction == ActionTypes.Hunt:
-		hunt()
-		fleeDirOffset = 0
-	elif currentAction == ActionTypes.LookForMate:
-		findMate()
-		fleeDirOffset = 0
-	elif currentAction == ActionTypes.Flee:
-		flee()
+	var currentAction : BasicBehaviorGene = determineCurrentAction()
+	currentAction.act(self)
 	
 	
 	if !inBattle:
@@ -354,6 +323,7 @@ func soloReproduction() -> Agent:
 	newAgent.dietType = dietType
 	
 	for I in parts: newAgent.parts.append(I.duplicate(true))
+	for I in genes: newAgent.genes.append(I.duplicate(true))
 
 	newAgent.moveSet = moveSet.duplicate(true)
 	newAgent.global_position = global_position
@@ -393,6 +363,9 @@ func mutateAgent(agent : Agent) -> void:
 	for I in agent.moveSet:
 		I.mutate() # Chance to alter the moveset
 	
+	for I in agent.genes:
+		I.mutate()
+	
 	if randf() <= GlobalVars.changedDietChance:
 		agent.dietType = Diets.values().pick_random()
 		if agent.dietType != dietType:
@@ -426,6 +399,17 @@ func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 		movePool.erase(new)
 		usingMoves.append(new)
 	
+	var typeToGene = {}
+	for I : BasicBehaviorGene in parent1.genes:
+		typeToGene[I.get_class()] = I.duplicate(true)
+	for I : BasicBehaviorGene in parent2.genes:
+		if typeToGene.has(I.get_class()):
+			if randi_range(0,1) == 0:
+				typeToGene[I.get_class()] = I.duplicate(true)
+		else:
+			typeToGene[I.get_class()] = I.duplicate(true)
+	
+	for I in typeToGene.values(): newAgent.genes.append(I.duplicate(true))
 	
 	newAgent.moveSet = usingMoves.duplicate(true)
 	newAgent.global_position = global_position
