@@ -368,8 +368,26 @@ func mutateAgent(agent : Agent) -> void:
 	for I in agent.moveSet:
 		I.mutate() # Chance to alter the moveset
 	
+	
+	
+	if randf() <= GlobalVars.changeBehaviorGenesChance:
+		if randi_range(0,1) == 0:
+			genes.erase(genes.pick_random())
+		else:
+			var thinkingGene = GlobalVars.genePool.pick_random()
+			var hasIt = false
+			var haveTypes = []
+			for I : BasicBehaviorGene in agent.genes: 
+				if I.get_script() == thinkingGene:
+					hasIt = true
+					break
+			
+			if !hasIt:
+				agent.genes.append(thinkingGene.new())
+	
 	for I in agent.genes:
 		I.mutate()
+	
 	
 	if randf() <= GlobalVars.changedDietChance:
 		agent.dietType = Diets.values().pick_random()

@@ -41,6 +41,17 @@ var changedDietChance := 0.03
 var changeMoveDamageTypeChance := 0.03
 ## The chance for an [Agent] to change the typing on a move
 var changeMoveElementalTypeChance := 0.03
+## The chance for an [Agent] to alter their [member Agent.genes]
+var changeBehaviorGenesChance := 0.03
+
+## Genes that the creatures can potentially gain
+var genePool : Array[GDScript]= [
+	BasicHuntingGene,
+	BasicMateGene,
+	NestDestroyingGene,
+	NestGene
+]
+
 
 ## The various elemental typings.
 enum Typings {
