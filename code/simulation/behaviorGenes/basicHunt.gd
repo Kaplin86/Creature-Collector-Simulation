@@ -24,9 +24,13 @@ func act(agent : Agent) -> void:
 
 ## Checks if the target is close enough to be eaten.
 func attemptToEat(target, agent : Agent):
-	if target.global_position.distance_to(target.global_position) < 10:
+	if target.global_position.distance_to(target.global_position) < 5:
 		if target is Fruit:
-			agent.energy += target.NutritionalValue
-			target.queue_free()
+			var val = min(0.05,target.NutritionalValue)
+			agent.energy += val
+			target.NutritionalValue -= val
+			if target.NutritionalValue <= 0.0:
+				target.queue_free()
+			#target.queue_free()
 		if target is Agent:
 			agent.battle(target)
