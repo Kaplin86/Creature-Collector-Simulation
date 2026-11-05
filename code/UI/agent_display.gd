@@ -13,8 +13,7 @@ func _process(delta: float) -> void:
 		if lastDisplayedAgent != displayingAgent:
 			onNew()
 			lastDisplayedAgent = displayingAgent
-		
-		
+		%DietType.selected = displayingAgent.dietType
 		%Age.text = "Age - " + str(int(floor(displayingAgent.age))) + " SECONDS"
 		%Species.text = "Species #" + str(displayingAgent.species)
 		%Energy.text = "Energy - " + str(String.num(displayingAgent.energy,4))
@@ -49,3 +48,9 @@ func onNew():
 		scriptToGeneLabel[script] = newLabel
 		newBar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	
+
+
+func _on_diet_type_item_selected(index: int) -> void:
+	displayingAgent.dietType = index
+	displayingAgent.updateSpecies()
+	print("new selected")

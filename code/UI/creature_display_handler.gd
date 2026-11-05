@@ -29,3 +29,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				%Camera2D.target = null
 				$CanvasLayer/Panel2.visible = false
 				$CanvasLayer/Panel2.displayingAgent = null 
+
+func _draw() -> void:
+	if $CanvasLayer/Panel2.displayingAgent:
+		var agent : Agent =  $CanvasLayer/Panel2.displayingAgent
+		draw_circle(agent.global_position,agent.getVisionDist(),Color.REBECCA_PURPLE,false,3)
+
+func _process(delta: float) -> void:
+	queue_redraw()

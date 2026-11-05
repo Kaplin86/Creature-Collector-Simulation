@@ -29,6 +29,19 @@ theme_override_font_sizes/font_size = 34
 text = "NAME"
 horizontal_alignment = 1
 
+[node name="DietType" type="OptionButton" parent="VBoxContainer" unique_id=1261239123]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "Herbivore"
+popup/item_0/id = 0
+popup/item_1/text = "Carnivore"
+popup/item_1/id = 1
+popup/item_2/text = "Omnivore"
+popup/item_2/id = 2
+
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=2095820568]
 layout_mode = 2
 
@@ -75,3 +88,5 @@ text = "WanderGene"
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/GeneContainer" unique_id=117108098]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="item_selected" from="VBoxContainer/DietType" to="." method="_on_diet_type_item_selected"]

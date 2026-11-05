@@ -383,13 +383,15 @@ func soloReproduction() -> Agent:
 	get_parent().add_child(newAgent)
 	newAgent.modulate = modulate
 	
-	newAgent.species = _speciesHandler.checkChildIfNewSpecies(newAgent,species)
-	
-	
-	newAgent.modulate = _speciesHandler.Species[newAgent.species].color
+	newAgent.updateSpecies()
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
 	return newAgent
+
+## Checks with [SpeciesHandler] to determine what class this creature is, and updates modulate accordingly.
+func updateSpecies():
+	species = _speciesHandler.checkChildIfNewSpecies(self,species)
+	modulate = _speciesHandler.Species[species].color
 
 ## Mutates the inputted agent.
 func mutateAgent(agent : Agent) -> void:
