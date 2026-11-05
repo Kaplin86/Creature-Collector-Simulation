@@ -7,7 +7,7 @@ func evaluate(agent : Agent) -> float:
 	var nest = getEnemyNestInVision(agent)
 	if nest:
 		return sanitizeOutput(
-			inverse_lerp(0,agent.getVisionDist(),agent.global_position.distance_squared_to(nest.global_position))
+			inverse_lerp(agent.getVisionDist(),0,agent.global_position.distance_squared_to(nest.global_position))
 			* multiplier
 		)
 	

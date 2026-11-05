@@ -15,7 +15,7 @@ func evaluate(agent : Agent) -> float:
 func act(agent : Agent) -> void:
 	if GlobalVars.reproductionType == GlobalVars.SimulationReproductionType.Duplication:
 		agent.soloReproduction()
-		agent.energy -= 0.65
+		agent.energy -= 0.3
 		return
 	
 	agent.lookingForMate = true

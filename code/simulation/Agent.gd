@@ -71,6 +71,8 @@ var _HPHash = 0.0
 ## The current location the agent is walking to.
 var targetLocation : Vector2
 
+## Object that the creature is holding.
+var holdingObject : Node = null 
 
 ## A function that retrieves the sum of all [member parts] in a specific stat [br]
 ## [param stat] needs to be an actual stat string ("HP", "ATK", etc.) to work
@@ -87,6 +89,25 @@ func calculateBST() -> int:
 		for X in I.stats:
 			sum += I.get(X)
 	return sum
+
+## Picks up a object
+func pickup(node : Node2D) -> bool:
+	if holdingObject == null:
+		var new = node.duplicate()
+		holdingObject = new
+		node.queue_free()
+		return true
+	return false
+
+## Drops an object
+func drop() -> bool:
+	if holdingObject:
+		holdingObject.global_position = global_position
+		add_sibling(holdingObject)
+		holdingObject = null
+		return true
+	return false
+
 
 var _texture = preload("res://art/50.png")
 
