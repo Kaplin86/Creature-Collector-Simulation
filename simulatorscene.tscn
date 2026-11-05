@@ -222,12 +222,6 @@ genes = Array[ExtResource("9_8tkw1")]([SubResource("Resource_sxo3m"), SubResourc
 species = 0
 moveSet = Array[ExtResource("5_dh3iq")]([SubResource("Resource_5ae0i")])
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=886159300]
-position = Vector2(757, 303)
-scale = Vector2(0.1831634, 0.1831634)
-texture = ExtResource("13_hjk8x")
-script = ExtResource("5_tls5n")
-
 [node name="Icon2" type="Sprite2D" parent="." unique_id=1034820367]
 position = Vector2(783.00006, 291)
 scale = Vector2(0.1831634, 0.1831634)

@@ -169,7 +169,7 @@ func getVisionDist() -> float:
 ## Runs at the start of the frame-by-frame loop. Increases [member age], [member HP], and decreases [member energy] and [member birthtimer]. The creature is killed here if it lacks energy.
 func ageAndEnergyTick(delta) -> void:
 	age += delta
-	energy -= (delta / GlobalVars.TimeForSmallCreatureToDieOfStarvation) * ( 200/float(_bstHash))
+	energy -= delta * GlobalVars.HungerRate / (_bstHash / 300.0) ** 0.33
 	birthtimer -= delta
 	
 	if !inBattle:

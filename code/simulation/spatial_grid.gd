@@ -11,7 +11,7 @@ var grid : Dictionary[Vector2i,Array] = {}
 
 ## Returns the current cell the position is inside of
 func getCell(pos : Vector2) -> Vector2i:
-	return Vector2i(floori(pos.x / cellSize),floori(pos.x / cellSize))
+	return Vector2i(floori(pos.x / cellSize),floori(pos.y / cellSize))
 
 ## Adds an entity into its designated cell
 func addEntity(entity : Node2D) -> void:

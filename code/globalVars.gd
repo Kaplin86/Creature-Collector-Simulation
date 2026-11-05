@@ -20,7 +20,7 @@ var reproductionType : SimulationReproductionType = SimulationReproductionType.T
 var AgeToReproducePerStat := 2
 
 ## An arbitrary value that i honestly dont really know what it means anymore lol.
-var TimeForSmallCreatureToDieOfStarvation := 210
+var HungerRate := 0.003
 
 ## The pixel distance an [Agent] can see, per Special Defense stat.
 var PixelVisionPerSPD := 4

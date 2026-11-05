@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://6y433bmh1127"]
+
+[ext_resource type="Script" uid="uid://b36ki7x072wfi" path="res://code/UI/agent_display.gd" id="1_r38y8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r38y8"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Panel" type="PanelContainer" unique_id=1985622593]
+offset_right = 340.0
+offset_bottom = 584.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r38y8")
+script = ExtResource("1_r38y8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=417452959]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBoxContainer" unique_id=1154245834]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "NAME"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=2095820568]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=469342255]
+layout_mode = 2
+columns = 2
+
+[node name="Age" type="Label" parent="VBoxContainer/GridContainer" unique_id=709499981]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "AGE - "
+
+[node name="Species" type="Label" parent="VBoxContainer/GridContainer" unique_id=1090954750]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Species #"
+
+[node name="Energy" type="Label" parent="VBoxContainer/GridContainer" unique_id=1007990241]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Energy - "
+
+[node name="HP" type="Label" parent="VBoxContainer/GridContainer" unique_id=2047125801]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP - "

@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/UI/freecam.gd" id="7_xd0na"]
 [ext_resource type="Script" uid="uid://b2841htlhfmmj" path="res://code/simulation/behaviorGenes/pickupFoodGene.gd" id="8_e02ve"]
 [ext_resource type="Script" uid="uid://de1wnb5d6xfov" path="res://code/simulation/behaviorGenes/dropOffAtNestGene.gd" id="9_jcwse"]
+[ext_resource type="Script" uid="uid://c7fc7oc8hryxy" path="res://code/UI/creature_display_handler.gd" id="13_a5t8r"]
+[ext_resource type="PackedScene" uid="uid://6y433bmh1127" path="res://scenes/ui/agentDisplay.tscn" id="14_pa1np"]
 
 [sub_resource type="Resource" id="Resource_nssk4"]
 script = ExtResource("2_lrn8h")
@@ -91,6 +93,18 @@ script = ExtResource("3_nssk4")
 unique_name_in_owner = true
 script = ExtResource("4_lrn8h")
 
+[node name="CreatureDisplayHandler" type="Node2D" parent="." unique_id=458496466]
+script = ExtResource("13_a5t8r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CreatureDisplayHandler" unique_id=367386866]
+
+[node name="Panel2" parent="CreatureDisplayHandler/CanvasLayer" unique_id=1814895799 instance=ExtResource("14_pa1np")]
+visible = false
+offset_left = 808.0
+offset_top = 48.0
+offset_right = 1148.0
+offset_bottom = 632.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1123902541]
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1314581205]
@@ -138,6 +152,7 @@ offset_bottom = 110.0
 text = "Go Back To Main Menu"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=864863408]
+unique_name_in_owner = true
 script = ExtResource("7_xd0na")
 
 [connection signal="value_changed" from="CanvasLayer/Panel/HSlider" to="CanvasLayer/Panel/HSlider" method="_on_value_changed"]
