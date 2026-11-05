@@ -8,6 +8,15 @@ var lastDisplayedAgent : Agent
 var scriptToGeneLabel = {}
 var scriptToGeneBar = {}
 
+var newgeneIndexToResource = {}
+
+func _ready() -> void:
+	for I in GlobalVars.genePool:
+		%NewGeneOption.add_item(I.new().get_script().get_global_name() )
+		var index = %NewGeneOption.item_count - 1
+		newgeneIndexToResource[index] = I.new().get_script()
+	print(newgeneIndexToResource)
+
 func _process(delta: float) -> void:
 	if is_instance_valid(displayingAgent):
 		if lastDisplayedAgent != displayingAgent:
@@ -20,25 +29,38 @@ func _process(delta: float) -> void:
 		%HP.text = "HP - " + str(int(displayingAgent.HP))
 		
 		for I in displayingAgent.lastValueCheckResults:
-			var text : Label = scriptToGeneLabel[I]
-			text.add_theme_color_override("font_color",Color.WHITE)
-			var bar : ProgressBar= scriptToGeneBar[I]
-			bar.min_value = displayingAgent._minGeneHash
-			bar.max_value = displayingAgent._maxGeneHash
-			bar.value = displayingAgent.lastValueCheckResults[I]
-			
-			if I == displayingAgent.lastPerformedGene:
-				text.add_theme_color_override("font_color",Color.RED) 
+			if scriptToGeneLabel.has(I):
+				var text : Label = scriptToGeneLabel[I]
+				text.add_theme_color_override("font_color",Color.WHITE)
+				var bar : ProgressBar= scriptToGeneBar[I]
+				bar.min_value = displayingAgent._minGeneHash
+				bar.max_value = displayingAgent._maxGeneHash
+				bar.value = displayingAgent.lastValueCheckResults[I]
+				
+				if I == displayingAgent.lastPerformedGene:
+					text.add_theme_color_override("font_color",Color.RED) 
 			
 
 func onNew():
-	
+	scriptToGeneLabel = {}
+	scriptToGeneBar = {}
 	for I in %GeneContainer.get_children(): I.queue_free()
 	var genes = []
 	genes.append_array(displayingAgent.genes)
 	genes.append(displayingAgent.wanderGene)
+	var notDisabled = newgeneIndexToResource.keys()
+	notDisabled.append(-1)
 	for I in genes:
 		var script : GDScript = I.get_script()
+		var newButton = Button.new()
+		if I is WanderGene: newButton.disabled = true
+		newButton.text = "X"
+		newButton.pressed.connect(func():
+			if is_instance_valid(displayingAgent):
+				displayingAgent.genes.erase(I)
+				onNew()
+			)
+		%GeneContainer.add_child(newButton)
 		var newLabel = Label.new()
 		%GeneContainer.add_child(newLabel)
 		newLabel.text = script.get_global_name()
@@ -47,10 +69,20 @@ func onNew():
 		scriptToGeneBar[script] = newBar
 		scriptToGeneLabel[script] = newLabel
 		newBar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	
-
+		var index = newgeneIndexToResource.find_key(script)
+		if index != null:
+			notDisabled.erase(index)
+			%NewGeneOption.set_item_disabled(index,true)
+	%NewGeneOption.selected = notDisabled[0]
 
 func _on_diet_type_item_selected(index: int) -> void:
 	displayingAgent.dietType = index
 	displayingAgent.updateSpecies()
 	print("new selected")
+
+
+func _on_add_new_gene_pressed() -> void:
+	if %NewGeneOption.selected != -1:
+		if is_instance_valid(displayingAgent):
+			displayingAgent.genes.append(newgeneIndexToResource[%NewGeneOption.selected].new())
+			onNew()

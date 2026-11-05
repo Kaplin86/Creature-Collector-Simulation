@@ -49,7 +49,9 @@ var genePool : Array[GDScript]= [
 	BasicHuntingGene,
 	BasicMateGene,
 	NestDestroyingGene,
-	NestGene
+	NestGene,
+	DropOffAtNestGene,
+	PickupFoodGene
 ]
 
 

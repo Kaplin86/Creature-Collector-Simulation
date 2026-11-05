@@ -79,7 +79,7 @@ layout_mode = 2
 [node name="GeneContainer" type="GridContainer" parent="VBoxContainer" unique_id=2104852282]
 unique_name_in_owner = true
 layout_mode = 2
-columns = 2
+columns = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/GeneContainer" unique_id=2124583128]
 layout_mode = 2
@@ -89,4 +89,17 @@ text = "WanderGene"
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1077301099]
+layout_mode = 2
+
+[node name="AddNewGene" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=875642350]
+layout_mode = 2
+text = "ADD"
+
+[node name="NewGeneOption" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1791020309]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
 [connection signal="item_selected" from="VBoxContainer/DietType" to="." method="_on_diet_type_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddNewGene" to="." method="_on_add_new_gene_pressed"]
