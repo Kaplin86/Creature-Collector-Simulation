@@ -58,6 +58,14 @@ var _SpDHash = 0.0
 var _SPHash = 0.0
 var _HPHash = 0.0
 
+var _minGeneHash = 0.0 # the lowest value the lowest gene can be
+var _maxGeneHash = 0.0 # the highest value the highest gene can be
+
+## A dictionary with the last checked gene values, indexed by script.
+var lastValueCheckResults : Dictionary[GDScript,float]= {}
+
+## Last performed gene, in script form
+var lastPerformedGene : GDScript
 
 #Behavior Vals -----------------
 ## The diet type the agent has
@@ -188,11 +196,24 @@ func determineCurrentAction() -> BasicBehaviorGene:
 	var currentAction = wanderGene
 	var highestTier = 0.65
 	
+	_minGeneHash = 999
+	_maxGeneHash = -999
+	
+	lastValueCheckResults[currentAction.get_script()] = highestTier
+	
 	for I in genes:
 		var val = I.evaluate(self)
+		
+		lastValueCheckResults[I.get_script()] = val
+		
 		if val > highestTier:
 			currentAction = I
 			highestTier = val
+		
+		_maxGeneHash = max(_maxGeneHash,I.maximum)
+		_minGeneHash = min(_minGeneHash,I.minimum)
+	
+	lastPerformedGene = currentAction.get_script()
 	
 	return currentAction
 
@@ -279,7 +300,6 @@ func flee() -> void:
 	targetLocation = global_position + bestDirection * 100
 	
 	
-var lastAction = null
 func _process(delta):
 	if _bstHash == 0.0: _bstHash = calculateBST()
 	
@@ -289,7 +309,7 @@ func _process(delta):
 	
 	var currentAction : BasicBehaviorGene = determineCurrentAction()
 	currentAction.act(self)
-	lastAction = currentAction
+	
 	
 	
 	if !inBattle:
