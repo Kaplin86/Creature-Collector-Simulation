@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cjrjtwk7lctae"]
+
+[ext_resource type="Script" uid="uid://ts6ajx140fm" path="res://code/UI/stat_graph.gd" id="1_o7ue5"]
+
+[node name="Control" type="Control" unique_id=1835469434]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -441.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7ue5")
+padding = 52.325
+CurrentStatblock = Dictionary[int, int]({
+0: 394,
+1: 350,
+2: 125,
+3: 150,
+4: 50,
+5: 270
+})

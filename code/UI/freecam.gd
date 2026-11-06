@@ -4,7 +4,7 @@ var sensitivity = 2
 
 var target : Node2D = null
 
-func _input(event):
+func _unhandled_input(event):
 	
 	if !target:
 		if event is InputEventMouseMotion:

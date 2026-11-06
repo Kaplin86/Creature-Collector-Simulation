@@ -74,6 +74,10 @@ func onNew():
 			notDisabled.erase(index)
 			%NewGeneOption.set_item_disabled(index,true)
 	%NewGeneOption.selected = notDisabled[0]
+	
+	
+	
+	
 
 func _on_diet_type_item_selected(index: int) -> void:
 	displayingAgent.dietType = index

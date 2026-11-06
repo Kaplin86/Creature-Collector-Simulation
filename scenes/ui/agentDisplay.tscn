@@ -20,16 +20,21 @@ offset_bottom = 584.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_r38y8")
 script = ExtResource("1_r38y8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=417452959]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1842102691]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="VBoxContainer" unique_id=1154245834]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=417452959]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Name" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1154245834]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "NAME"
 horizontal_alignment = 1
 
-[node name="DietType" type="OptionButton" parent="VBoxContainer" unique_id=1261239123]
+[node name="DietType" type="OptionButton" parent="ScrollContainer/VBoxContainer" unique_id=1261239123]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
@@ -42,64 +47,71 @@ popup/item_1/id = 1
 popup/item_2/text = "Omnivore"
 popup/item_2/id = 2
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=2095820568]
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer" unique_id=2095820568]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=469342255]
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/VBoxContainer" unique_id=469342255]
 layout_mode = 2
 columns = 2
 
-[node name="Age" type="Label" parent="VBoxContainer/GridContainer" unique_id=709499981]
+[node name="Age" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=709499981]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "AGE - "
 
-[node name="Species" type="Label" parent="VBoxContainer/GridContainer" unique_id=1090954750]
+[node name="Species" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=1090954750]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Species #"
 
-[node name="Energy" type="Label" parent="VBoxContainer/GridContainer" unique_id=1007990241]
+[node name="Energy" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=1007990241]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Energy - "
 
-[node name="HP" type="Label" parent="VBoxContainer/GridContainer" unique_id=2047125801]
+[node name="HP" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=2047125801]
 unique_name_in_owner = true
 layout_mode = 2
 text = "HP - "
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=1451081078]
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer" unique_id=1451081078]
 layout_mode = 2
 
-[node name="GeneContainer" type="GridContainer" parent="VBoxContainer" unique_id=2104852282]
+[node name="GeneContainer" type="GridContainer" parent="ScrollContainer/VBoxContainer" unique_id=2104852282]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/GeneContainer" unique_id=2124583128]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GeneContainer" unique_id=2124583128]
 layout_mode = 2
 text = "WanderGene"
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/GeneContainer" unique_id=117108098]
+[node name="ProgressBar" type="ProgressBar" parent="ScrollContainer/VBoxContainer/GeneContainer" unique_id=117108098]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1077301099]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1077301099]
 layout_mode = 2
 
-[node name="AddNewGene" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=875642350]
+[node name="AddNewGene" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=875642350]
 layout_mode = 2
 text = "ADD"
 
-[node name="NewGeneOption" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1791020309]
+[node name="NewGeneOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1791020309]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="item_selected" from="VBoxContainer/DietType" to="." method="_on_diet_type_item_selected"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddNewGene" to="." method="_on_add_new_gene_pressed"]
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer" unique_id=1475648551]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=641133881]
+layout_mode = 2
+text = "Body Part #1"
+
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/DietType" to="." method="_on_diet_type_item_selected"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/AddNewGene" to="." method="_on_add_new_gene_pressed"]

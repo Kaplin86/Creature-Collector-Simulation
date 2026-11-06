@@ -4,12 +4,13 @@ class_name CreatureDisplayHandler
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
-
+			
 			var mousePos = get_global_mouse_position()
 			var creatures = %SpatialGrid.getEntitiesUsingDist(mousePos,200)
+			
 			var lowestDist = INF
 			var closestCreature : Agent = null
-			#print()
+			print(%SpatialGrid.getEntitiesUsingDist(mousePos,1))
 			for I in creatures:
 				if is_instance_valid(I):
 					if I is Agent:
