@@ -22,12 +22,26 @@ func _process(delta: float) -> void:
 		if lastDisplayedAgent != displayingAgent:
 			onNew()
 			lastDisplayedAgent = displayingAgent
+		
+		%Name.text = displayingAgent.name
 		%DietType.selected = displayingAgent.dietType
 		%Age.text = "Age - " + str(int(floor(displayingAgent.age))) + " SECONDS"
 		%Species.text = "Species #" + str(displayingAgent.species)
 		%Energy.text = "Energy - " + str(String.num(displayingAgent.energy,4))
 		%HP.text = "HP - " + str(int(displayingAgent.HP))
 		
+		if displayingAgent.dietType == displayingAgent.Diets.Herbivore:
+			%Risk.visible = false
+			%CurrentRatio.visible = false
+		else:
+			%Risk.visible = true
+			%CurrentRatio.visible = true
+		
+		%Risk.text = "Riskyness - " + str(displayingAgent.battleRiskyness) 
+		%CurrentRatio.text = "Risk Ratio - " + str( inverse_lerp(0,displayingAgent._HPHash,displayingAgent.HP) )
+		var cell =  %SpatialGrid.getCell(displayingAgent.global_position)
+		%Cell.text = "Spatial Cell - " + str(cell)
+		%InCell.text = "Bugged Cell? - " + str(not displayingAgent in  %SpatialGrid.grid.get(cell,[]))
 		for I in displayingAgent.lastValueCheckResults:
 			if scriptToGeneLabel.has(I):
 				var text : Label = scriptToGeneLabel[I]

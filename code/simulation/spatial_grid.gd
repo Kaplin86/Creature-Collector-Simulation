@@ -25,10 +25,11 @@ func addEntity(entity : Node2D) -> void:
 ## Removes the entity from the grid
 func removeEntity(entity : Node2D) -> void:
 	var cell = getCell(entity.global_position)
-	
 	if grid.has(cell):
 		grid[cell].erase(entity)
-		
+		for I in grid[cell]: 
+			if !is_instance_valid(I):
+				grid[cell].erase(I)
 		if grid[cell].is_empty():
 			grid.erase(cell)
 

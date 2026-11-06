@@ -100,10 +100,14 @@ script = ExtResource("13_a5t8r")
 
 [node name="Panel2" parent="CreatureDisplayHandler/CanvasLayer" unique_id=1814895799 instance=ExtResource("14_pa1np")]
 visible = false
-offset_left = 808.0
-offset_top = 48.0
-offset_right = 1148.0
-offset_bottom = 632.0
+anchors_preset = -1
+anchor_left = 0.7013889
+anchor_top = 0.074074075
+anchor_right = 0.9965278
+anchor_bottom = 0.97530866
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1123902541]
 
@@ -131,10 +135,11 @@ offset_bottom = 48.0
 text = "SPEED - 1.0"
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=977740875]
-offset_left = 900.0
-offset_top = 4.0
-offset_right = 1146.0
-offset_bottom = 35.0
+anchors_preset = -1
+anchor_left = 0.78125
+anchor_top = 0.0061728396
+anchor_right = 0.9947917
+anchor_bottom = 0.054012347
 text = "Save Simulation History To File"
 script = ExtResource("7_36jwc")
 

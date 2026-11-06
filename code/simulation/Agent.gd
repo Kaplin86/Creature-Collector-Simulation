@@ -147,6 +147,7 @@ func _ready():
 	
 	targetLocation = global_position + Vector2(randf_range(-50,50),randf_range(-50,50))
 	
+	ForwardRaycast.collision_mask = 2
 	add_child(ForwardRaycast)
 	
 	var newHitbox = CollisionShape2D.new()
@@ -192,8 +193,10 @@ func ageAndEnergyTick(delta) -> void:
 		if HP > 0:
 			HP = min(HP + delta, _HPHash)
 		
-	if energy <= 0:
+	if energy <= 0 or HP < 0:
 		
+		if holdingObject:
+			drop()
 		
 		queue_free()
 
@@ -235,28 +238,7 @@ func wander() -> void:
 	if result:
 		memoryFoodPosition = result.global_position
 
-## Runs every frame, if the determined [enum ActionTypes] is [enum ActionTypes.Hunt] [br]
-##Uses the [method lookForFood] to find food in vision. [br]
-##If no food is found, and there is no [member memoryFoodPosition], it runs [method setWanderTarget][br]
-##This is where [method battle] is ran, if the predator is close enough to prey
-func hunt() -> void:
-	lookingForMate = false
-	var result = lookForFood()
-	if result:
-		targetLocation = result.global_position
-		if global_position.distance_to(result.global_position) < 20:
-			if result is Fruit:
-				energy += result.NutritionalValue
-				result.queue_free()
-			if result is Agent:
-				battle(result)
-	else:
-		if memoryFoodPosition:
-			targetLocation = memoryFoodPosition
-			if global_position.distance_to(memoryFoodPosition) < _SpDHash * GlobalVars.PixelVisionPerSPD:
-				memoryFoodPosition = null
-		else:
-			setWanderTarget()
+
 
 ## Runs every frame, if the determined [enum ActionTypes] is [enum ActionTypes.LookForMate]
 ##Uses the [method lookForMate] to find mates in vision.[br]
@@ -339,6 +321,8 @@ func _process(delta):
 			
 		else:
 			velocity = Vector2.ZERO
+		
+		_spatialGrid.updateEntity(self,oldPos)
 		
 
 ## sets [member targetLocation] to a nearby location, based on Speed.[br]
@@ -512,12 +496,14 @@ func lookInVision() -> Array[Node2D]:
 	var VisionDistance = getVisionDist()
 	var foundNodes : Array[Node2D] = []
 	var nodes = _spatialGrid.getEntitiesUsingDist(global_position,VisionDistance)
+	
 	for I in nodes:
 		if I == self:
 			continue
 		
 		if !is_instance_valid(I):
 			continue
+		
 		
 		if global_position.distance_squared_to(I.global_position) < VisionDistance * VisionDistance:
 			ForwardRaycast.global_position = global_position
@@ -543,8 +529,8 @@ func lookForFood() -> Node2D:
 			if I is Fruit:
 				return I
 		elif dietType in [Diets.Carnivore,Diets.Omnivore]:
-			if inverse_lerp(0,_HPHash,HP) >= battleRiskyness:
-				if I is Agent:
+			if I is Agent:
+				if inverse_lerp(0,_HPHash,HP) >= battleRiskyness:
 					if !I.inBattle:
 						if I.species != species:
 							return I
