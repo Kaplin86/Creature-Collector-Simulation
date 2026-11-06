@@ -90,6 +90,14 @@ func calculateFinalStat(stat : String) -> int:
 		sum += I.get(stat)
 	return sum
 
+## A function that retrieves the sum of all [member parts] in a specific stat, ignoring levels [br]
+## [param stat] needs to be an actual stat string ("HP", "ATK", etc.) to work
+func calculateBaseStat(stat : String) -> int:
+	var sum = 0
+	for I in parts:
+		sum += I.get(stat)
+	return sum
+
 ## Adds up all stats on all [member parts]
 func calculateBST() -> int:
 	var sum = 0

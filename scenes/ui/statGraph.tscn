@@ -7,12 +7,12 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -960.0
-offset_bottom = -441.0
+offset_right = -1017.0
+offset_bottom = -513.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o7ue5")
-padding = 52.325
+padding = 52.0
 CurrentStatblock = Dictionary[int, int]({
 0: 394,
 1: 350,

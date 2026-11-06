@@ -76,6 +76,18 @@ func onNew():
 	%NewGeneOption.selected = notDisabled[0]
 	
 	
+	for I in %PartsGrid.get_children(): I.queue_free()
+	var maxVals : Dictionary[int,int] = {}
+	for I in StatGraphDisplay.StatTypes: 
+		print(StatGraphDisplay.StatTypes[I])
+		maxVals[StatGraphDisplay.StatTypes[I]] = displayingAgent.calculateBaseStat(I)
+	print(maxVals)
+	for I : BodyPart in displayingAgent.parts:
+		var NewDisplay = StatGraphDisplay.new()
+		NewDisplay.setCurrentBlockFromPart(I)
+		NewDisplay.CurrentStatblockMAX = maxVals
+		%PartsGrid.add_child(NewDisplay)
+		
 	
 	
 

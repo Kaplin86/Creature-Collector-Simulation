@@ -17,6 +17,7 @@ corner_detail = 5
 [node name="Panel" type="PanelContainer" unique_id=1985622593]
 offset_right = 340.0
 offset_bottom = 584.0
+mouse_force_pass_scroll_events = false
 theme_override_styles/panel = SubResource("StyleBoxFlat_r38y8")
 script = ExtResource("1_r38y8")
 
@@ -111,7 +112,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=641133881]
 layout_mode = 2
-text = "Body Part #1"
+text = "Parts (Base Stat Total Contribution)"
+
+[node name="PartsGrid" type="GridContainer" parent="ScrollContainer/VBoxContainer" unique_id=274168941]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2
 
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/DietType" to="." method="_on_diet_type_item_selected"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/AddNewGene" to="." method="_on_add_new_gene_pressed"]
