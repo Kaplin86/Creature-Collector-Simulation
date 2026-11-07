@@ -552,6 +552,26 @@ func lookForFood() -> Node2D:
 	
 	return null
 
+## The same as [member lookForFood], except it returns all food options
+func lookForFoods() -> Array[Node2D]:
+	var results = lookInVision()
+	var final : Array[Node2D] = []
+	for I in results:
+		if dietType in [Diets.Herbivore,Diets.Omnivore]:
+			if I is Fruit:
+				final.append(I)
+				continue
+		elif dietType in [Diets.Carnivore,Diets.Omnivore]:
+			if I is Agent:
+				if inverse_lerp(0,_HPHash,HP) >= battleRiskyness:
+					if !I.inBattle:
+						if I.species != species:
+							final.append(I)
+							continue
+	
+	return final
+
+
 ## Looks for predators in vision, and returns the nearest one.
 func lookForPredator() -> Node2D:
 	var results = lookInVision()

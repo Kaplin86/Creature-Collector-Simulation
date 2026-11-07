@@ -48,10 +48,12 @@ metadata/_custom_type_script = "uid://csxdydupwwvui"
 
 [sub_resource type="Resource" id="Resource_pa1np"]
 script = ExtResource("8_e02ve")
+multiplier = 7.0
 metadata/_custom_type_script = "uid://b2841htlhfmmj"
 
 [sub_resource type="Resource" id="Resource_ggqyc"]
 script = ExtResource("9_jcwse")
+minimum = 0.7
 metadata/_custom_type_script = "uid://de1wnb5d6xfov"
 
 [node name="SimulationSceneBig" type="Node2D" unique_id=1984677836]
