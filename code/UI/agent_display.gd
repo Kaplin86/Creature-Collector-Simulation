@@ -30,6 +30,9 @@ func _process(delta: float) -> void:
 		%Energy.text = "Energy - " + str(String.num(displayingAgent.energy,4))
 		%HP.text = "HP - " + str(int(displayingAgent.HP))
 		
+		%LevelBox.value = displayingAgent.level
+		%Exp.text = "EXP: (" + str(String.num(displayingAgent.expPoints,1)) + " / " + str(displayingAgent.expNeeded()) + ")"
+		
 		if displayingAgent.dietType == displayingAgent.Diets.Herbivore:
 			%Risk.visible = false
 			%CurrentRatio.visible = false
@@ -116,3 +119,8 @@ func _on_add_new_gene_pressed() -> void:
 		if is_instance_valid(displayingAgent):
 			displayingAgent.genes.append(newgeneIndexToResource[%NewGeneOption.selected].new())
 			onNew()
+
+
+func _on_level_box_value_changed(value):
+	if is_instance_valid(displayingAgent):
+		displayingAgent.level = value

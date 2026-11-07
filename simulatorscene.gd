@@ -19,6 +19,9 @@ extends Node2D
 
 @export var ChangeOnValues = true
 
+@export var minStartingLevel = 5
+@export var maxStartingLevel = 15
+
 func _ready():
 	
 	if !ChangeOnValues:
@@ -86,8 +89,15 @@ func _ready():
 		newAgent.species = %SpeciesHandler.checkChildIfNewSpecies(newAgent,-5)
 		newAgent.modulate = %SpeciesHandler.Species[newAgent.species].color
 		for C in range(countPerGroup):
-			add_child(newAgent.duplicate())
-		
+			var dupe = newAgent.duplicate()
+			dupe.level = randi_range(minStartingLevel,maxStartingLevel)
+			dupe.age = dupe.level * 20
+			add_child(dupe)
+			
+		var newNest = Nest.new()
+		newNest.species = newAgent.species
+		newNest.global_position = randomPosition
+		add_child(newNest)
 	
 	
 

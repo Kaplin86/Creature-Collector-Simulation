@@ -17,5 +17,11 @@ func _ready():
 	newSprite.texture = _texture
 	add_child(newSprite)
 
+func _process(delta):
+	_spatialGrid.updateEntity(self,global_position)
+
 func _exit_tree():
 	_spatialGrid.removeEntity(self)
+
+func _draw():
+	draw_string(ThemeDB.fallback_font,Vector2.ZERO - Vector2(100,0),str(species),HORIZONTAL_ALIGNMENT_CENTER,200)

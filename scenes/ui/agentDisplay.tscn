@@ -50,6 +50,25 @@ popup/item_1/id = 1
 popup/item_2/text = "Omnivore"
 popup/item_2/id = 2
 
+[node name="HFlowContainer" type="HFlowContainer" parent="ScrollContainer/VBoxContainer" unique_id=653699745]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HFlowContainer" unique_id=1478756204]
+layout_mode = 2
+text = "Level"
+
+[node name="LevelBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/HFlowContainer" unique_id=1740072030]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/HFlowContainer" unique_id=811965377]
+layout_mode = 2
+
+[node name="Exp" type="Label" parent="ScrollContainer/VBoxContainer/HFlowContainer" unique_id=1912864655]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer" unique_id=2095820568]
 layout_mode = 2
 
@@ -89,14 +108,17 @@ text = "Riskyness - "
 [node name="CurrentRatio" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=95522241]
 unique_name_in_owner = true
 layout_mode = 2
+text = "1/2"
 
 [node name="Cell" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=1915006011]
 unique_name_in_owner = true
 layout_mode = 2
+text = "(cell)"
 
 [node name="InCell" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=56587561]
 unique_name_in_owner = true
 layout_mode = 2
+text = "blahblah"
 
 [node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer" unique_id=1451081078]
 layout_mode = 2
@@ -139,4 +161,5 @@ layout_mode = 2
 columns = 2
 
 [connection signal="item_selected" from="ScrollContainer/VBoxContainer/DietType" to="." method="_on_diet_type_item_selected"]
+[connection signal="value_changed" from="ScrollContainer/VBoxContainer/HFlowContainer/LevelBox" to="." method="_on_level_box_value_changed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/AddNewGene" to="." method="_on_add_new_gene_pressed"]

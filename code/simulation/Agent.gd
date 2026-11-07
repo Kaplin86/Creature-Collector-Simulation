@@ -15,6 +15,12 @@ var age :float = 0.0
 ## The energy of the creature, from 0.0 to 1.0
 var energy : float = 1.0
 
+## the creature's level
+var level : int = 1
+
+## the creature's exp
+var expPoints : float = 1
+
 ## A timer that dictates if a creature can give birth again. [br] If it is below 0, they can. It gets set to stat-total * simulator-value on reproduction. Reduced by delta every frame.
 var birthtimer : float = 0
 
@@ -57,6 +63,7 @@ var _bstHash = 0.0
 var _SpDHash = 0.0
 var _SPHash = 0.0
 var _HPHash = 0.0
+var _lastHashLevel : int = -99
 
 var _minGeneHash = 0.0 # the lowest value the lowest gene can be
 var _maxGeneHash = 0.0 # the highest value the highest gene can be
@@ -82,13 +89,18 @@ var targetLocation : Vector2
 ## Object that the creature is holding.
 var holdingObject : Node = null 
 
-## A function that retrieves the sum of all [member parts] in a specific stat [br]
+## A function that retrieves the sum of all [member parts] in a specific stat, accounting for levels. [br]
 ## [param stat] needs to be an actual stat string ("HP", "ATK", etc.) to work
 func calculateFinalStat(stat : String) -> int:
 	var sum = 0
 	for I in parts:
 		sum += I.get(stat)
-	return sum
+	
+	if stat == "HP":
+		return (((2 * sum) * level) / 100) + 10 + level
+	else:
+		return (((2 * sum) * level) / 100) + 5
+	
 
 ## A function that retrieves the sum of all [member parts] in a specific stat, ignoring levels [br]
 ## [param stat] needs to be an actual stat string ("HP", "ATK", etc.) to work
@@ -130,10 +142,7 @@ var _texture = preload("res://art/50.png")
 @onready var ForwardRaycast : RayCast2D = RayCast2D.new()
 
 func _ready():
-	_bstHash = max(calculateBST(),5)
-	_SpDHash = max(5,calculateFinalStat("SpD"))
-	_SPHash = max(5,calculateFinalStat("SP"))
-	_HPHash = max(5,calculateFinalStat("HP"))
+	updateLevelHashes()
 	
 	add_to_group("creature")
 	
@@ -162,7 +171,15 @@ func _ready():
 		genes.append(BasicMateGene.new())
 
 
-
+## To save on resources, passively needed values (such as BST, HP, Special Defense and Speed) are
+## stored as hash variables rather than being recalculated every frame.[br]
+## This function updates those hashes.
+func updateLevelHashes():
+	_bstHash = max(calculateBST(),5)
+	_SpDHash = max(5,calculateFinalStat("SpD"))
+	_SPHash = max(5,calculateFinalStat("SP"))
+	_HPHash = max(5,calculateFinalStat("HP"))
+	_lastHashLevel = level
 
 func _exit_tree():
 	_spatialGrid.removeEntity(self)
@@ -188,6 +205,10 @@ func ageAndEnergyTick(delta) -> void:
 	age += delta
 	energy -= delta * GlobalVars.HungerRate / (_bstHash / 300.0) ** 0.33
 	birthtimer -= delta
+	
+	expPoints += delta
+	
+	checkLevel()
 	
 	if !inBattle:
 		if HP > 0:
@@ -237,28 +258,6 @@ func wander() -> void:
 	var result = lookForFood()
 	if result:
 		memoryFoodPosition = result.global_position
-
-
-
-## Runs every frame, if the determined [enum ActionTypes] is [enum ActionTypes.LookForMate]
-##Uses the [method lookForMate] to find mates in vision.[br]
-##If no mate is found, it runs [method setWanderTarget]
-func findMate() -> void:
-	lookingForMate = true
-	var result = lookForMate()
-	if result and result is Agent:
-		targetLocation = result.global_position
-		if global_position.distance_squared_to(targetLocation) <= 10:
-			var ChildBearer : Agent = result
-			var Other : Agent = self
-			if result.energy < energy:
-				ChildBearer = self
-				Other = result
-			
-			ChildBearer.duoReproduction(ChildBearer,Other)
-			ChildBearer.energy -= 0.25
-	else:
-		setWanderTarget()
 
 var fleeDirOffset = 0.0
 
@@ -324,6 +323,23 @@ func _process(delta):
 		
 		_spatialGrid.updateEntity(self,oldPos)
 		
+
+## Checks the current EXP, and detects if the creature leveled up.
+func checkLevel() -> void:
+	var expNeededVal = expNeeded()
+	if expPoints >= expNeededVal:
+		expPoints -= expNeededVal
+		level += 1
+	if level != _lastHashLevel:
+		updateLevelHashes()
+
+## Returns the exp needed for next level, based on current level.
+func expNeeded() -> float:
+	return level ** 3
+
+## Age as adulthood metric (from 0.0 to 1.0+, with 1.0 exactly being when the creature is old enough to reproduce)
+func getAgeMetric() -> float:
+	return inverse_lerp(0,max(GlobalVars.AgeToReproducePerStat * _bstHash,30),age)
 
 ## sets [member targetLocation] to a nearby location, based on Speed.[br]
 ## Most gene behaviors will call this if they fail.
@@ -411,7 +427,6 @@ func mutateAgent(agent : Agent) -> void:
 		else:
 			var thinkingGene = GlobalVars.genePool.pick_random()
 			var hasIt = false
-			var haveTypes = []
 			for I : BasicBehaviorGene in agent.genes: 
 				if I.get_script() == thinkingGene:
 					hasIt = true
@@ -606,10 +621,13 @@ func battle(target : Agent) -> void:
 	
 	if target.HP <= 0:
 		energy = 1
-		print("battle won", name)
+		expPoints += target.level/7.0
 	else:
 		energy -= 0.3
 		HP = 1
 		#print("battle lose", name)
+		
+		target.expPoints += level/7.0
 		if target.dietType in [Diets.Carnivore,Diets.Omnivore]:
 			target.energy = 1
+			
