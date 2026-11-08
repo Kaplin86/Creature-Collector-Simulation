@@ -28,6 +28,7 @@ func check():
 		var stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 		for I in stats: averageStatTotals.set(I,0)
 		var averageBST = 0
+		var averageLevel = 0
 		for I : Agent in get_tree().get_nodes_in_group("creature"):
 			if I.species == C:
 				count += 1
@@ -35,19 +36,23 @@ func check():
 					if I.species in range(I._speciesHandler.Species.size()):
 						report["specieData"] = I._speciesHandler.Species[I.species].duplicate(true)
 				averageBST += I.calculateBST()
+				averageLevel += I.level
 				for E in stats:
-					averageStatTotals.set(E,I.calculateFinalStat(E) + averageStatTotals.get(E))
+					averageStatTotals.set(E,I.calculateBaseStat(E) + averageStatTotals.get(E))
 		
 		for I in stats: averageStatTotals.set(I,averageStatTotals.get(I) / count)
 		averageBST /= count
+		averageLevel /= count
 		report["averagePart"] = averageStatTotals
 		report["averageBST"] = averageBST
 		report["count"] = count
+		report["averageLevel"] = averageLevel
 		
 		
 		totalReport[C] = report
 	
-	generationByGenerationInfo.append(totalReport)
+	if specieType != []:
+		generationByGenerationInfo.append(totalReport)
 
 func saveToFile(file : String):
 	var resource = SimulationHistory.new()

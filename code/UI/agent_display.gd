@@ -10,6 +10,8 @@ var scriptToGeneBar = {}
 
 var newgeneIndexToResource = {}
 
+var stats = ["HP","ATK","DEF","SpA","SpD","SP"]
+
 func _ready() -> void:
 	for I in GlobalVars.genePool:
 		%NewGeneOption.add_item(I.new().get_script().get_global_name() )
@@ -56,7 +58,12 @@ func _process(delta: float) -> void:
 				
 				if I == displayingAgent.lastPerformedGene:
 					text.add_theme_color_override("font_color",Color.RED) 
-			
+		
+		for I in %StatDisplay.StatTypes:
+			%StatDisplay.CurrentStatblock[%StatDisplay.StatTypes[I]] = displayingAgent.calculateFinalStat(str(I))
+			%StatDisplay.CurrentStatblockMAX[%StatDisplay.StatTypes[I]] = displayingAgent.calculateFinalStatManualLevel(str(I),100)
+			#print(%StatDisplay.StatTypes[I],"- ",displayingAgent.calculateFinalStat(str(I)), " / ", displayingAgent.calculateFinalStatManualLevel(str(I),100))
+			%StatDisplay.queue_redraw()
 
 func onNew():
 	scriptToGeneLabel = {}
@@ -111,9 +118,10 @@ func onNew():
 	
 
 func _on_diet_type_item_selected(index: int) -> void:
-	displayingAgent.dietType = index
-	displayingAgent.updateSpecies()
-	print("new selected")
+	if is_instance_valid(displayingAgent):
+		displayingAgent.dietType = index
+		displayingAgent.updateSpecies()
+		print("new selected")
 
 
 func _on_add_new_gene_pressed() -> void:

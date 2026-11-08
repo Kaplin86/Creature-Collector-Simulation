@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://6y433bmh1127"]
 
 [ext_resource type="Script" uid="uid://b36ki7x072wfi" path="res://code/UI/agent_display.gd" id="1_r38y8"]
+[ext_resource type="Script" uid="uid://ts6ajx140fm" path="res://code/UI/stat_graph.gd" id="2_v715a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r38y8"]
 content_margin_left = 5.0
@@ -70,6 +71,19 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer" unique_id=2095820568]
+layout_mode = 2
+
+[node name="CenterContainer" type="AspectRatioContainer" parent="ScrollContainer/VBoxContainer" unique_id=686628965]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="StatDisplay" type="Control" parent="ScrollContainer/VBoxContainer/CenterContainer" unique_id=17518656]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_v715a")
+metadata/_custom_type_script = "uid://ts6ajx140fm"
+
+[node name="HSeparator4" type="HSeparator" parent="ScrollContainer/VBoxContainer" unique_id=1530759904]
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer/VBoxContainer" unique_id=469342255]

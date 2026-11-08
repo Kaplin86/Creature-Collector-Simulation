@@ -9,7 +9,7 @@ var RelevantSpeciesToData : Dictionary[int,SpeciesDatastore] = {}
 var speciesToCheckboxNode : Dictionary[int,HBoxContainer] = {}
 var speciesToGraphNode : Dictionary[int,Control] = {}
 
-var StatTocolor = {"ATK":Color.GOLD,"DEF":Color.ORANGE,"HP":Color.GREEN,"SpA":Color.TURQUOISE,"SpD":Color.DARK_BLUE,"SP":Color.PURPLE}
+var StatTocolor = {"ATK":Color.GOLD,"DEF":Color.ORANGE,"HP":Color.GREEN,"SpA":Color.TURQUOISE,"SpD":Color.DARK_BLUE,"SP":Color.PURPLE,"LEVEL":Color.WHITE}
 
 
 var CountRemovingThreshHold = 5 #if a species' count never goes higher than this number, the species is considered 'irrelevant'
@@ -41,7 +41,7 @@ func _ready():
 	renderLineOnControl(AverageStatTotalAsPercentage(RelevantSpecies),%FullStatTotal, true)
 	showColorCodes(%ColorCode)
 	
-	makeStatCheckbox(%GlobalStatHbox,updateGlobalSpecie,["HP","ATK","DEF","SpA","SpD","SP"], 0)
+	makeStatCheckbox(%GlobalStatHbox,updateGlobalSpecie,["HP","ATK","DEF","SpA","SpD","SP","LEVEL"], 0)
 	
 	
 	for I in RelevantSpecies:
@@ -68,7 +68,7 @@ func _ready():
 		newHoriz.alignment = BoxContainer.ALIGNMENT_CENTER
 		%MainBox.add_child(newHoriz)
 		
-		makeStatCheckbox(newHoriz,UpdateSingleSpecie.bind(I),["COUNT","HP","ATK","DEF","SpA","SpD","SP"], I)
+		makeStatCheckbox(newHoriz,UpdateSingleSpecie.bind(I),["COUNT","HP","ATK","DEF","SpA","SpD","SP","LEVEL"], I)
 		
 			
 			
@@ -116,6 +116,10 @@ func UpdateSingleSpecie(specie):
 		renderLineOnControl(CountAsPercentage([specie]),speciesToGraphNode[specie])
 		StatsAssociated.erase("COUNT")
 	
+	if "LEVEL" in StatsAssociated:
+		renderLineOnControl(LevelAsPercentage([specie]),speciesToGraphNode[specie],false,Color.WHITE)
+		StatsAssociated.erase("LEVEL")
+	
 	for I in StatsAssociated:
 		renderLineOnControl(StatAsPercentage([specie],I),speciesToGraphNode[specie],true,StatTocolor[I])
 
@@ -126,18 +130,24 @@ func updateGlobalSpecie():
 	for I : Control in %GlobalStatHbox.get_children(): if I is CheckBox: if I.button_pressed: StatsAssociated.append(I.text)
 	print(StatsAssociated)
 	for I in StatsAssociated:
-		var statPercentage = StatAsPercentage(RelevantSpecies,I)
+		var statPercentage
+		if I == "LEVEL":
+			statPercentage = LevelAsPercentage(RelevantSpecies)
+			print(statPercentage)
+		else:
+			statPercentage = StatAsPercentage(RelevantSpecies,I)
 		var trueAverages = AllSpeciesAveragePercentageFromPercentage(statPercentage)
 		renderLineOnControl(trueAverages,%GlobalStat,true,StatTocolor[I])
 
 func AllSpeciesAveragePercentageFromPercentage(data : Array[Dictionary]):
 	var newData : Array[Dictionary] = []
 	for I : Dictionary in data:
-		var Total = 0
-		for E in I.values():
-			Total += E
-		Total /= I.size()
-		newData.append({0:Total})
+		if I != {}:
+			var Total = 0
+			for E in I.values():
+				Total += E
+			Total /= I.size()
+			newData.append({0:Total})
 	return newData
 
 func showColorCodes(displayNode : Control):
@@ -164,6 +174,25 @@ func CountAsPercentage(species : Array[int]):
 		var report = {}
 		for Specie in species:
 			report[Specie] = inverse_lerp(0,HighestCount,I.get(Specie,{}).get("count",0))
+		newArray.append(report)
+	
+	return newArray
+
+
+func LevelAsPercentage(species : Array[int]):
+	var HighestLevel = 0
+	for I in historyArray: 
+		for Specie in I.keys():
+			if Specie in species:
+				if I[Specie].get("averageLevel",0) > HighestLevel:
+					HighestLevel = I[Specie].get("averageLevel",0)
+	
+	var newArray : Array[Dictionary] = []
+	for I in historyArray: 
+		
+		var report = {}
+		for Specie in species:
+			report[Specie] = clamp(inverse_lerp(0,HighestLevel,I.get(Specie,{}).get("averageLevel",0)),0,1)
 		newArray.append(report)
 	
 	return newArray

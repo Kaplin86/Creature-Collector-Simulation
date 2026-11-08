@@ -20,6 +20,10 @@ var dietWeight := 45.0
 ## The "distance" added if the elemental type on a [Agent] is not present on a species' founder. [br]
 ## This checks for both elements, and disreguards order
 var elementWeight := 40.0
+## The "distance" added for each behavior TYPE difference (per missing or added behavior)
+var behaviorWeight := 40.0
+## The "distance" added for each behavior VALUE difference (per each 0.1 difference in value)
+var behaviorValueWeight := 1.0
 
 ## Adds a new species to the [member Species] array, and returns the new species number.
 func AddSpecies(first : Agent, Previous : int) -> int:
@@ -29,7 +33,7 @@ func AddSpecies(first : Agent, Previous : int) -> int:
 	
 	var newDatastore = SpeciesDatastore.new()
 	for I in _Stats:
-		newDatastore.originStats[I] = first.calculateFinalStat(I)
+		newDatastore.originStats[I] = first.calculateBaseStat(I)
 	
 	for I in first.parts:
 		newDatastore.originParts.append(I.UnDebuffedStats)
@@ -37,10 +41,13 @@ func AddSpecies(first : Agent, Previous : int) -> int:
 	newDatastore.diet = first.dietType
 	newDatastore.previousSpecies = Previous
 	
-	newDatastore.color = Color.from_hsv(randf(),1,1,1) * 5
+	newDatastore.color = Color.from_hsv(randf(),randf(),1,1) * 1
 	
 	for I in first.getTyping():
 		newDatastore.typings.append(I)
+	
+	for I in first.genes:
+		newDatastore.behaviors.append(I)
 	
 	Species.append(newDatastore)
 	
@@ -50,7 +57,7 @@ func AddSpecies(first : Agent, Previous : int) -> int:
 func evaluateSpecies(check : Agent, Specie : SpeciesDatastore) -> float:
 	var weight = 0
 	for I in _Stats:
-		weight += abs(check.calculateFinalStat(I) - Specie.originStats[I]) * statDifWeight
+		weight += abs(check.calculateBaseStat(I) - Specie.originStats[I]) * statDifWeight
 	weight /= check.parts.size()
 	
 	
@@ -76,6 +83,27 @@ func evaluateSpecies(check : Agent, Specie : SpeciesDatastore) -> float:
 	for I in Specie.typings:
 		if not I in agentElements:
 			weight += elementWeight
+	
+	var scriptToGeneResource : Dictionary[GDScript,BasicBehaviorGene] = {}
+	for I in check.genes:
+		scriptToGeneResource[I.get_script()] = I
+	for I in Specie.behaviors:
+		var currentScript = I.get_script()
+		var checkVersion : BasicBehaviorGene = scriptToGeneResource.get(currentScript,null)
+		
+		if checkVersion:
+			# The creature has a behavior the species has.
+			
+			weight += (abs(checkVersion.minimum - I.minimum) / 0.1) * behaviorValueWeight
+			weight += (abs(checkVersion.maximum - I.maximum) / 0.1) * behaviorValueWeight
+			weight += (abs(checkVersion.multiplier - I.multiplier) / 0.1) * behaviorValueWeight
+			weight += (abs(checkVersion.ageRestriction - I.ageRestriction) / 0.1) * behaviorValueWeight
+			scriptToGeneResource.erase(currentScript)
+		else:
+			# The creature lacks a behavior the species has.
+			weight += behaviorWeight
+	
+	weight += scriptToGeneResource.size() * behaviorWeight #if all behaviors are accounted for, the dictionary should be empty.
 	
 	return weight
 

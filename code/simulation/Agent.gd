@@ -102,6 +102,17 @@ func calculateFinalStat(stat : String) -> int:
 		return (((2 * sum) * level) / 100) + 5
 	
 
+## Exactly like [method calculateFinalStat], except you can input level
+func calculateFinalStatManualLevel(stat : String, levelVal : int) -> int:
+	var sum = 0
+	for I in parts:
+		sum += I.get(stat)
+	
+	if stat == "HP":
+		return (((2 * sum) * levelVal) / 100) + 10 + levelVal
+	else:
+		return (((2 * sum) * levelVal) / 100) + 5
+
 ## A function that retrieves the sum of all [member parts] in a specific stat, ignoring levels [br]
 ## [param stat] needs to be an actual stat string ("HP", "ATK", etc.) to work
 func calculateBaseStat(stat : String) -> int:
