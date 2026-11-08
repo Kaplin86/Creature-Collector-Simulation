@@ -67,7 +67,7 @@ func onNew():
 	genes.append(displayingAgent.wanderGene)
 	var notDisabled = newgeneIndexToResource.keys()
 	notDisabled.append(-1)
-	for I in genes:
+	for I : BasicBehaviorGene in genes:
 		var script : GDScript = I.get_script()
 		var newButton = Button.new()
 		if I is WanderGene: newButton.disabled = true
@@ -81,11 +81,13 @@ func onNew():
 		var newLabel = Label.new()
 		%GeneContainer.add_child(newLabel)
 		newLabel.text = script.get_global_name()
+		
 		var newBar = ProgressBar.new()
 		%GeneContainer.add_child(newBar)
 		scriptToGeneBar[script] = newBar
 		scriptToGeneLabel[script] = newLabel
 		newBar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		newBar.tooltip_text = "Min: " + str(String.num(I.minimum,2)) + "\nMax: " + str(String.num(I.maximum,2)) + "\nMult: " + str(String.num(I.multiplier,2))
 		var index = newgeneIndexToResource.find_key(script)
 		if index != null:
 			notDisabled.erase(index)
