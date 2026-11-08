@@ -233,15 +233,18 @@ func determineCurrentAction() -> BasicBehaviorGene:
 	
 	lastValueCheckResults[currentAction.get_script()] = highestTier
 	
+	var currentAgeRatio = getAgeMetric()
+	
 	for I in genes:
 		var val = I.evaluate(self)
 		
 		lastValueCheckResults[I.get_script()] = val
 		
 		if val > highestTier:
-			currentAction = I
-			highestTier = val
-		
+			if currentAgeRatio >= I.ageRestriction:
+				currentAction = I
+				highestTier = val
+			
 		_maxGeneHash = max(_maxGeneHash,I.maximum)
 		_minGeneHash = min(_minGeneHash,I.minimum)
 	
@@ -299,7 +302,9 @@ func _process(delta):
 	var currentAction : BasicBehaviorGene = determineCurrentAction()
 	currentAction.act(self)
 	
-	
+	var result = lookForFood()
+	if result:
+		memoryFoodPosition = result.global_position
 	
 	if !inBattle:
 		var oldPos = global_position

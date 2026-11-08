@@ -14,6 +14,9 @@ class_name BasicBehaviorGene
 ## The maximum value this gene can return
 @export var maximum := 1.0
 
+## The minimum age this gene can be performed at (in range of ages, with 0.0 being just born, 1.0 being fully grown, and so on)
+@export var ageRestriction := 0.0
+
 ## This function returns the current value of the gene.[br] 
 ##All outputs should be ran through [method _sanitizeOutput] before returned.
 @abstract func evaluate(agent : Agent) -> float
@@ -32,4 +35,5 @@ func mutate():
 	multiplier += randf_range(-mRange,mRange)
 	minimum += randf_range(-mRange,mRange)
 	maximum += randf_range(-mRange,mRange)
+	ageRestriction += randf_range(-mRange,mRange)
 	resource_name = str(get_script().get_global_name()) + " - " + str(multiplier)
