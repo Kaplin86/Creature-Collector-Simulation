@@ -37,10 +37,10 @@ SP = 7
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [sub_resource type="Resource" id="Resource_nxbpk"]
-resource_name = "All Rounder"
+resource_name = "General but defensive"
 script = ExtResource("2_qo5ej")
 HP = 8
-DEF = 8
+DEF = 9
 SpD = 8
 SP = 8
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
@@ -67,8 +67,6 @@ shadow_enabled = true
 script = ExtResource("1_lotmn")
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_0wrkg"), SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2")])
 spineDistPerSegment = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node2D" unique_id=1437198857]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1627548154]
 transform = Transform3D(0.92621386, -0.14668633, 0.34729102, 0, 0.9211998, 0.3890899, -0.37699857, -0.36038047, 0.85322803, 1.6203085, 1.8153368, 3.980801)
