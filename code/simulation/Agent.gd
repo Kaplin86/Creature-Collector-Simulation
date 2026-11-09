@@ -564,7 +564,8 @@ func lookForFood() -> Node2D:
 				if inverse_lerp(0,_HPHash,HP) >= battleRiskyness:
 					if !I.inBattle:
 						if I.species != species:
-							return I
+							if I.age > 10:
+								return I
 	
 	return null
 

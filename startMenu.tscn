@@ -567,7 +567,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Heyo! Welcome to my super scuffed 
 creature collector themed simulator thingamajig
 Well, its not really creature collector-y yet, is it?
-It will be, trust!! But for this first ship, no.
+It will be, trust!! But for this first and second ship, no.
 
 If your apart of hack club, do DM me any interesting simulation result files you end up simulating :)"
 autowrap_mode = 2

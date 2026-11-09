@@ -17,6 +17,13 @@ When a carnivore or omnivore wishes to hunt another creature, it will initate a 
 ## The final goal
 Once the simulation part of the project is well rounded, I wish to expand this into a survival-focused creature collector. One where you can release a creature into the ecosystem, and use a device to skip 1 year into the future, and see how the ecosystem changes.
 
+## How to use / Play
+- Download the latest .EXE from [Github Releases](https://github.com/Kaplin86/Creature-Collector-Simulation/releases/tag/Major-Release)
+- Run the exe file
+- If windows defender pops up, press "Run Anyway"
+### Non-windows versions
+- For the time being, since I don't have a proper way to test and verify the other exports, there will not be exports for non-windows OS.
+
 ## Development
 - Engine used is Godot 4.7
 - Clone the repo, and hit Import in Godot, and select the project.godot file inside the repo
