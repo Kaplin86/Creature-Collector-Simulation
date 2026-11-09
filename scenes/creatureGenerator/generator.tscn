@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://8w0aw7a0rgn6"]
+
+[ext_resource type="Script" uid="uid://dgj6pgauej7pv" path="res://code/creatureGenerator/generator.gd" id="1_lotmn"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_qo5ej"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qo5ej"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0wrkg"]
+sky_material = SubResource("ProceduralSkyMaterial_qo5ej")
+
+[sub_resource type="Environment" id="Environment_7en3s"]
+background_mode = 2
+sky = SubResource("Sky_0wrkg")
+
+[sub_resource type="Resource" id="Resource_0wrkg"]
+resource_name = "HP limb"
+script = ExtResource("2_qo5ej")
+HP = 40
+ATK = 20
+DEF = 5
+SpA = 5
+SpD = 5
+SP = 7
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_7en3s"]
+resource_name = "Attack Limb"
+script = ExtResource("2_qo5ej")
+HP = 3
+ATK = 78
+DEF = 4
+SpA = 3
+SpD = 4
+SP = 7
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_nxbpk"]
+resource_name = "All Rounder"
+script = ExtResource("2_qo5ej")
+HP = 8
+DEF = 8
+SpD = 8
+SP = 8
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_7d1b2"]
+resource_name = "Speed Part"
+script = ExtResource("2_qo5ej")
+HP = -7
+ATK = 4
+DEF = 4
+SP = 44
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[node name="Node3D" type="Node3D" unique_id=510493856]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1534849307]
+environment = SubResource("Environment_7en3s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1531794172]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Node2D" type="Node3D" parent="." unique_id=1829976961]
+script = ExtResource("1_lotmn")
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_0wrkg"), SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2")])
+spineDistPerSegment = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node2D" unique_id=1437198857]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1627548154]
+transform = Transform3D(0.92621386, -0.14668633, 0.34729102, 0, 0.9211998, 0.3890899, -0.37699857, -0.36038047, 0.85322803, 1.6203085, 1.8153368, 3.980801)
