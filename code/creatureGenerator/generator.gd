@@ -27,9 +27,11 @@ func getAllStatTotal() -> int:
 	return sum
 
 
-func getPartsWithHighestStat(stat) -> Array[BodyPart]: 
+func getPartsWithHighestStat(stat, startingArray = null) -> Array[BodyPart]: 
 	var partsReturned : Array[BodyPart]= []
-	for I in parts:
+	var using = parts
+	if startingArray: using = startingArray
+	for I in using:
 		var valid := true
 		for S in Stats:
 			if I.get(S) > I.get(stat):
@@ -38,11 +40,19 @@ func getPartsWithHighestStat(stat) -> Array[BodyPart]:
 		if valid: partsReturned.append(I)
 	return partsReturned
 
+
+
 func generate():
 	seed(seedVal)
 	for I in get_children(): I.queue_free()
-	var spinePoints = createSpinePoints()
-	renderSpineFromPoints(spinePoints)
+	var spinePoints := createSpinePoints()
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	renderSpineFromPoints(properSpinePoints)
+	var headPos = (properSpinePoints[-1])
+	var firstPos = (properSpinePoints[0])
+	createHead(headPos)
+	createEnding(firstPos)
+	var limbAssignment := assignLimbs(properSpinePoints)
 	#print(generateRingOfPointsAroundPoint(Vector3.ZERO,10,3,Vector3(0,-1,-1).normalized()))
 
 ## This returns the spine layout for the creature. Imagine this as a 2D image from the side, with each point referring to a seperate spine point
@@ -71,22 +81,24 @@ func createSpinePoints() -> PackedVector2Array:
 	
 	return points
 
+func sanitizeSpinePoints(spine : PackedVector2Array) -> Array[Vector3]:
+	var points : Array[Vector3] = []
+	var subCount = 3
+	for I in spine:
+		var next = spine.get(spine.find(I) + 1)
+		var currentPos = spinePosTo3D(I) + (Vector3(sin(I.x),cos(I.x),cos(I.y)) * 0.1)
+		points.append(currentPos) 
+		if next:
+			next = spinePosTo3D(next)
+			for C in range(subCount):
+				points.append(lerp(currentPos,next,(C + 1) / float(subCount + 1)))
+	return points
+
 ## Creates a handful of meshes to fill in for the spine
-func renderSpineFromPoints(spine : PackedVector2Array) -> void:
+func renderSpineFromPoints(points : Array[Vector3]) -> void:
 	var newMesh = MeshInstance3D.new()
 	var actualMesh = SurfaceTool.new()
 	
-	var subCount = 3
-	
-	var points : Array[Vector3] = []
-	for I in spine:
-		var next = spine.get(spine.find(I) + 1)
-		var currentPos = Vector3(0,-I.y,I.x) + (Vector3(sin(I.x),cos(I.x),cos(I.y)) * 0.1)
-		points.append(currentPos)
-		if next:
-			next = Vector3(0,-next.y,next.x)
-			for C in range(subCount):
-				points.append(lerp(currentPos,next,(C + 1) / float(subCount + 1)))
 
 	
 	
@@ -134,3 +146,87 @@ func generateRingOfPointsAroundPoint(center : Vector3,pointCount : int, thicknes
 		ringPoints.append(crossed.rotated(up.normalized() ,dirOffset) * thickness + center)
 	
 	return ringPoints
+
+
+func spinePosTo3D(pos : Vector2):
+	return Vector3(0,-pos.y,pos.x)
+
+func createHead(pos : Vector3):
+	var newMesh = MeshInstance3D.new()
+	add_child(newMesh)
+	newMesh.global_position = pos
+	newMesh.mesh = SphereMesh.new()
+	var newFace = Sprite3D.new()
+	newFace.texture = load("res://art/cuteface.png")
+	add_child(newFace)
+	newFace.global_position = pos + Vector3(0,0,-0.5)
+	
+
+func createEnding(pos : Vector3):
+	var newMesh = MeshInstance3D.new()
+	add_child(newMesh)
+	newMesh.global_position = pos
+	var sphere =  SphereMesh.new()
+	sphere.radius = spineThickness
+	sphere.height = spineThickness * 2
+	newMesh.mesh = sphere
+
+
+## A very, VERY basic function for determining where each limb will be placed along the spine.
+func assignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
+	var limbsRemaining : Array[BodyPart] = parts.duplicate()
+	
+	var jointToLimb : Dictionary[int,Array] = {}
+	
+	# legs first
+	var legEquivilent = getPartsWithHighestStat("SP",limbsRemaining)
+	
+	var humanoid = false
+	
+	if legEquivilent.size() > 2: #more than bipedal
+		pass
+	else:
+		humanoid = true
+		jointToLimb[0] = legEquivilent
+		for I in legEquivilent: limbsRemaining.erase(I)
+	
+	var armEquivilent = getPartsWithHighestStat("ATK",limbsRemaining)
+	for I in getPartsWithHighestStat("SpA",limbsRemaining): if !armEquivilent.has(I): armEquivilent.append(I)
+	
+	var ArmPairs : Array[Array]= [ [] ]
+	for I in armEquivilent:
+		if ArmPairs[-1].size() != 2:
+			ArmPairs[-1].append(I)
+		else:
+			ArmPairs.append([I])
+	
+	
+	
+	if !humanoid:
+		pass
+	elif humanoid:
+		var offset = 0.1
+		for I in ArmPairs:
+			offset += 0.1
+			var point = int(spinePoints.size() * 0.55 + offset)
+			jointToLimb[point] = I
+			for C in I: limbsRemaining.erase(C)
+	
+	var armorEquivilent = getPartsWithHighestStat("DEF",limbsRemaining)
+	for I in getPartsWithHighestStat("SpD",limbsRemaining): if !armorEquivilent.has(I): armorEquivilent.append(I)
+	for I in getPartsWithHighestStat("HP",limbsRemaining): if !armorEquivilent.has(I): armorEquivilent.append(I)
+
+	
+	while armorEquivilent.size() > 0:
+		var chosen = armorEquivilent.pop_front()
+		var posOptions = range(spinePoints.size())
+		for I in jointToLimb.keys(): posOptions.erase(I)
+		var pos = posOptions.pick_random()
+		jointToLimb[pos] = [chosen]
+		limbsRemaining.erase(chosen)
+	
+	
+	
+	print("remaining: ", limbsRemaining)
+	
+	return jointToLimb

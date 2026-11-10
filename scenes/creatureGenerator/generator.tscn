@@ -59,11 +59,7 @@ script = ExtResource("2_qo5ej")
 SP = 5
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_nxbpk"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_mltvj"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_mltvj"]
+[sub_resource type="SphereMesh" id="SphereMesh_qo5ej"]
 
 [node name="Node3D" type="Node3D" unique_id=510493856]
 
@@ -76,7 +72,6 @@ shadow_enabled = true
 
 [node name="Node2D" type="Node3D" parent="." unique_id=1829976961]
 script = ExtResource("1_lotmn")
-seedVal = 5
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_0wrkg"), SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2"), SubResource("Resource_qo5ej")])
 spineDistPerSegment = 1
 spineThickness = 0.215
@@ -84,15 +79,6 @@ spineThickness = 0.215
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1627548154]
 transform = Transform3D(0.92621386, -0.14668633, 0.34729102, 0, 0.9211998, 0.3890899, -0.37699857, -0.36038047, 0.85322803, 1.6203085, 1.8153368, 3.980801)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1611393553]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3765235)
-mesh = SubResource("ImmediateMesh_nxbpk")
-
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=961875245]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.711058, 0, 0)
-mesh = SubResource("CylinderMesh_mltvj")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1558679197]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.304172, 0)
-visible = false
-mesh = SubResource("SphereMesh_mltvj")
+mesh = SubResource("SphereMesh_qo5ej")
