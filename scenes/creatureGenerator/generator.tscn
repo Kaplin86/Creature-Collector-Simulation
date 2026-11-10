@@ -24,6 +24,7 @@ SpA = 5
 SpD = 5
 SP = 7
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+metadata/context = "front"
 
 [sub_resource type="Resource" id="Resource_7en3s"]
 resource_name = "Attack Limb"
@@ -35,6 +36,7 @@ SpA = 3
 SpD = 4
 SP = 7
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+metadata/context = "arm"
 
 [sub_resource type="Resource" id="Resource_nxbpk"]
 resource_name = "General but defensive"
@@ -44,6 +46,7 @@ DEF = 9
 SpD = 8
 SP = 8
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+metadata/context = "back"
 
 [sub_resource type="Resource" id="Resource_7d1b2"]
 resource_name = "Speed Part"
@@ -53,13 +56,20 @@ ATK = 4
 DEF = 4
 SP = 44
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+metadata/context = "leg"
 
 [sub_resource type="Resource" id="Resource_qo5ej"]
 script = ExtResource("2_qo5ej")
 SP = 5
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+metadata/context = "leg"
 
 [sub_resource type="SphereMesh" id="SphereMesh_qo5ej"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mltvj"]
+size = Vector3(0.27819824, 1.8676758, 0.28955078)
+
+[sub_resource type="PrismMesh" id="PrismMesh_mltvj"]
 
 [node name="Node3D" type="Node3D" unique_id=510493856]
 
@@ -72,6 +82,7 @@ shadow_enabled = true
 
 [node name="Node2D" type="Node3D" parent="." unique_id=1829976961]
 script = ExtResource("1_lotmn")
+seedVal = 7
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_0wrkg"), SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2"), SubResource("Resource_qo5ej")])
 spineDistPerSegment = 1
 spineThickness = 0.215
@@ -82,3 +93,23 @@ transform = Transform3D(0.92621386, -0.14668633, 0.34729102, 0, 0.9211998, 0.389
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=961875245]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.711058, 0, 0)
 mesh = SubResource("SphereMesh_qo5ej")
+
+[node name="PlaceholderLimbArmLeg" type="Node3D" parent="." unique_id=2023947803]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7565193, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceholderLimbArmLeg" unique_id=905600667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90697515, 0)
+mesh = SubResource("BoxMesh_mltvj")
+
+[node name="PlaceholderLimbDefense" type="Node3D" parent="." unique_id=2006970701]
+unique_name_in_owner = true
+transform = Transform3D(2.2609625, 0, 0, 0, 4.1085253, 0, 0, 0, 0.113764405, 1.4416591, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceholderLimbDefense" unique_id=671807125]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 2.291579, 0, 0, 0)
+mesh = SubResource("PrismMesh_mltvj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PlaceholderLimbDefense" unique_id=11807009]
+transform = Transform3D(-0.165, 9.885941e-09, 0, -3.6268877e-09, -0.16499998, 0, 0, 0, 2.291579, 0, 0, 0)
+mesh = SubResource("PrismMesh_mltvj")

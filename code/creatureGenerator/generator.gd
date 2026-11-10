@@ -41,7 +41,6 @@ func getPartsWithHighestStat(stat, startingArray = null) -> Array[BodyPart]:
 	return partsReturned
 
 
-
 func generate():
 	seed(seedVal)
 	for I in get_children(): I.queue_free()
@@ -53,6 +52,7 @@ func generate():
 	createHead(headPos)
 	createEnding(firstPos)
 	var limbAssignment := assignLimbs(properSpinePoints)
+	renderLimbs(properSpinePoints,limbAssignment)
 	#print(generateRingOfPointsAroundPoint(Vector3.ZERO,10,3,Vector3(0,-1,-1).normalized()))
 
 ## This returns the spine layout for the creature. Imagine this as a 2D image from the side, with each point referring to a seperate spine point
@@ -188,7 +188,9 @@ func assignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
 	else:
 		humanoid = true
 		jointToLimb[0] = legEquivilent
-		for I in legEquivilent: limbsRemaining.erase(I)
+		for I in legEquivilent: 
+			I.set_meta("context","leg")
+			limbsRemaining.erase(I)
 	
 	var armEquivilent = getPartsWithHighestStat("ATK",limbsRemaining)
 	for I in getPartsWithHighestStat("SpA",limbsRemaining): if !armEquivilent.has(I): armEquivilent.append(I)
@@ -210,23 +212,54 @@ func assignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
 			offset += 0.1
 			var point = int(spinePoints.size() * 0.55 + offset)
 			jointToLimb[point] = I
-			for C in I: limbsRemaining.erase(C)
+			for C in I: 
+				C.set_meta("context","arm")
+				limbsRemaining.erase(C)
 	
 	var armorEquivilent = getPartsWithHighestStat("DEF",limbsRemaining)
 	for I in getPartsWithHighestStat("SpD",limbsRemaining): if !armorEquivilent.has(I): armorEquivilent.append(I)
-	for I in getPartsWithHighestStat("HP",limbsRemaining): if !armorEquivilent.has(I): armorEquivilent.append(I)
-
+	
+	for I in armorEquivilent: I.set_meta("context","back")
+	for I in getPartsWithHighestStat("HP",limbsRemaining): if !armorEquivilent.has(I): I.set_meta("context","front");armorEquivilent.append(I)
+	
 	
 	while armorEquivilent.size() > 0:
 		var chosen = armorEquivilent.pop_front()
-		var posOptions = range(spinePoints.size())
+		var posOptions = range(spinePoints.size() - 5)
 		for I in jointToLimb.keys(): posOptions.erase(I)
 		var pos = posOptions.pick_random()
 		jointToLimb[pos] = [chosen]
 		limbsRemaining.erase(chosen)
-	
-	
-	
-	print("remaining: ", limbsRemaining)
+		
+
 	
 	return jointToLimb
+
+func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array]):
+	for I in assignment:
+		var actualPos = spinePoints[I]
+		var placingParts = assignment[I]
+		
+		var index = 0
+		for C in placingParts:
+			index += 1
+			
+			var percentage = lerp(-1,1,index / placingParts.size())
+			if placingParts.size() == 1:
+				percentage = 0
+			
+			var newModel
+			if C.get_meta("context","") in ["arm","leg"]:
+				newModel = %PlaceholderLimbArmLeg.duplicate()
+			elif C.get_meta("context","") in ["back","front"]:
+				newModel = %PlaceholderLimbDefense.duplicate()
+			add_child(newModel)
+			newModel.global_position = actualPos + Vector3(percentage * spineThickness,0,0)
+			if C.get_meta("context","") == "arm":
+				newModel.global_rotation_degrees = Vector3(90,0,0)
+			if C.get_meta("context","") == "front":
+				newModel.global_position += Vector3(0,0,spineThickness)
+			if C.get_meta("context","") == "back":
+				newModel.global_position -= Vector3(0,0,spineThickness)
+			
+		print(actualPos,placingParts)
