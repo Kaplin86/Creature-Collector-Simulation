@@ -10,8 +10,11 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 @export_group("Config")
 @export var statTotalPerSpineSegment := 50
 @export var spineDistPerSegment := 5
-@export var spineThickness := 0.2
+@export var spineMaxThickness := 0.2
+@export var spineMinThickness := 0.1
+@export_range(0.00000001,0.005,0.00000001) var spineMinMaxOffsetPerStat = 0.005
 
+var spineThicknessChart : Dictionary[int,float] = {}
 
 func getStatTotal(stat) -> int:
 	var sum = 0
@@ -43,15 +46,22 @@ func getPartsWithHighestStat(stat, startingArray = null) -> Array[BodyPart]:
 
 func generate():
 	seed(seedVal)
+	
+	for I in Stats:
+		print(I, " : ",getStatTotal(I))
+	print(getAllStatTotal())
+	
 	for I in get_children(): I.queue_free()
 	var spinePoints := createSpinePoints()
 	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var limbAssignment := assignLimbs(properSpinePoints)
+	
+	addSpineThickness(properSpinePoints,limbAssignment)
 	renderSpineFromPoints(properSpinePoints)
+
 	var headPos = (properSpinePoints[-1])
 	var firstPos = (properSpinePoints[0])
 	createHead(headPos)
-	createEnding(firstPos)
-	var limbAssignment := assignLimbs(properSpinePoints)
 	renderLimbs(properSpinePoints,limbAssignment)
 	#print(generateRingOfPointsAroundPoint(Vector3.ZERO,10,3,Vector3(0,-1,-1).normalized()))
 
@@ -66,16 +76,19 @@ func createSpinePoints() -> PackedVector2Array:
 	noise.frequency = 0.56
 	
 	@warning_ignore("integer_division")
-	var length = randi_range(2,int(getAllStatTotal() / statTotalPerSpineSegment))
+	var length = randi_range(2,min(int(getAllStatTotal() / statTotalPerSpineSegment),5))
 	var direction : float = deg_to_rad(randf_range(-185,-175))
+	var curveMult = 0.5
 	if getPartsWithHighestStat("SP").size() <= 2:
-		print(getPartsWithHighestStat("SP"))
+		#print(getPartsWithHighestStat("SP"))
 		direction =  deg_to_rad(randf_range(-95,-85))
+		curveMult = 0.25
 	var currentPosition = Vector2.ZERO
 	points.append(currentPosition)
 	
+	
 	for I in length:
-		direction += noise.get_noise_2dv(currentPosition) * PI * 0.8
+		direction += noise.get_noise_2dv(currentPosition) * PI * 0.8 * curveMult
 		currentPosition += Vector2.from_angle(direction) * spineDistPerSegment
 		points.append(currentPosition)
 	
@@ -92,7 +105,24 @@ func sanitizeSpinePoints(spine : PackedVector2Array) -> Array[Vector3]:
 			next = spinePosTo3D(next)
 			for C in range(subCount):
 				points.append(lerp(currentPos,next,(C + 1) / float(subCount + 1)))
+	
+	
+	
 	return points
+
+func addSpineThickness(points,body):
+	var offset = getAllStatTotal() * spineMinMaxOffsetPerStat
+	for I in range(points.size()):
+		spineThicknessChart[I] = randf_range(spineMinThickness + offset ,spineMaxThickness + offset) + body.get(I,[]).size()*0.2
+	spineThicknessChart[points.size() - 2] = 0.5
+	spineThicknessChart[points.size() - 1] = 0.5
+	
+	var newSpineThickness : Dictionary[int,float]= {}
+	for I in spineThicknessChart:
+		var basicVal = spineThicknessChart.get(I) 
+		newSpineThickness[I] = (basicVal + spineThicknessChart.get(I - 1,basicVal) + spineThicknessChart.get(I + 1, basicVal)) / 3
+	spineThicknessChart = newSpineThickness
+	
 
 ## Creates a handful of meshes to fill in for the spine
 func renderSpineFromPoints(points : Array[Vector3]) -> void:
@@ -110,12 +140,21 @@ func renderSpineFromPoints(points : Array[Vector3]) -> void:
 		if nextPos:
 			var nextDir = pos.direction_to(nextPos)
 
-			rings.append(generateRingOfPointsAroundPoint(pos,10,spineThickness,nextDir.normalized()))
+			rings.append(generateRingOfPointsAroundPoint(pos,10,spineThicknessChart[I],nextDir.normalized()))
 			lastDir = nextDir
 		else:
-			rings.append(generateRingOfPointsAroundPoint(pos,10,spineThickness,lastDir.normalized()))
+			rings.append(generateRingOfPointsAroundPoint(pos,10,spineThicknessChart[I],lastDir.normalized()))
 	
 	actualMesh.begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
+	
+	# ending
+	for I in range(rings[0].size() + 1):
+		var ring = rings[0]
+		actualMesh.set_normal(Vector3(1,0,0))
+		actualMesh.add_vertex(ring[wrap(I,0,ring.size() - 1)])
+		actualMesh.set_normal(Vector3(1,0,0))
+		actualMesh.add_vertex(ring.get(wrap(I - 5,0,ring.size() - 1)))
+	
 	for I in range(rings.size() - 1):
 		var ringA = rings[I]
 		var ringB = rings[I + 1]
@@ -162,14 +201,6 @@ func createHead(pos : Vector3):
 	newFace.global_position = pos + Vector3(0,0,-0.5)
 	
 
-func createEnding(pos : Vector3):
-	var newMesh = MeshInstance3D.new()
-	add_child(newMesh)
-	newMesh.global_position = pos
-	var sphere =  SphereMesh.new()
-	sphere.radius = spineThickness
-	sphere.height = spineThickness * 2
-	newMesh.mesh = sphere
 
 
 ## A very, VERY basic function for determining where each limb will be placed along the spine.
@@ -210,7 +241,7 @@ func assignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
 		var offset = 0.1
 		for I in ArmPairs:
 			offset += 0.1
-			var point = int(spinePoints.size() * 0.55 + offset)
+			var point = int(spinePoints.size() * 0.75 + offset)
 			jointToLimb[point] = I
 			for C in I: 
 				C.set_meta("context","arm")
@@ -254,12 +285,12 @@ func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array
 			elif C.get_meta("context","") in ["back","front"]:
 				newModel = %PlaceholderLimbDefense.duplicate()
 			add_child(newModel)
-			newModel.global_position = actualPos + Vector3(percentage * spineThickness,0,0)
+			newModel.global_position = actualPos + Vector3(percentage * spineThicknessChart[I],0,0)
 			if C.get_meta("context","") == "arm":
-				newModel.global_rotation_degrees = Vector3(90,0,0)
+				newModel.global_rotation_degrees = Vector3(percentage*-45,90,0)
 			if C.get_meta("context","") == "front":
-				newModel.global_position += Vector3(0,0,spineThickness)
+				newModel.global_position += Vector3(0,0,spineThicknessChart[I])
 			if C.get_meta("context","") == "back":
-				newModel.global_position -= Vector3(0,0,spineThickness)
+				newModel.global_position -= Vector3(0,0,spineThicknessChart[I])
 			
 		print(actualPos,placingParts)

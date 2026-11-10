@@ -14,55 +14,49 @@ sky_material = SubResource("ProceduralSkyMaterial_qo5ej")
 background_mode = 2
 sky = SubResource("Sky_0wrkg")
 
-[sub_resource type="Resource" id="Resource_0wrkg"]
-resource_name = "HP limb"
+[sub_resource type="Resource" id="Resource_qo5ej"]
+resource_name = "HPpart"
 script = ExtResource("2_qo5ej")
-HP = 40
-ATK = 20
-DEF = 5
-SpA = 5
-SpD = 5
-SP = 7
+HP = 110
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 metadata/context = "front"
 
-[sub_resource type="Resource" id="Resource_7en3s"]
-resource_name = "Attack Limb"
+[sub_resource type="Resource" id="Resource_0wrkg"]
+resource_name = "Arm"
 script = ExtResource("2_qo5ej")
-HP = 3
-ATK = 78
-DEF = 4
-SpA = 3
-SpD = 4
-SP = 7
+ATK = 80
+SpA = 40
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+metadata/context = "arm"
+
+[sub_resource type="Resource" id="Resource_7en3s"]
+resource_name = "Arm"
+script = ExtResource("2_qo5ej")
+ATK = 80
+SpA = 40
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 metadata/context = "arm"
 
 [sub_resource type="Resource" id="Resource_nxbpk"]
-resource_name = "General but defensive"
+resource_name = "leg"
 script = ExtResource("2_qo5ej")
-HP = 8
-DEF = 9
-SpD = 8
-SP = 8
+SP = 50
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
-metadata/context = "back"
+metadata/context = "leg"
 
 [sub_resource type="Resource" id="Resource_7d1b2"]
-resource_name = "Speed Part"
+resource_name = "leg"
 script = ExtResource("2_qo5ej")
-HP = -7
-ATK = 4
-DEF = 4
-SP = 44
+SP = 50
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 metadata/context = "leg"
 
-[sub_resource type="Resource" id="Resource_qo5ej"]
+[sub_resource type="Resource" id="Resource_g8s65"]
 script = ExtResource("2_qo5ej")
-SP = 5
+DEF = 110
+SpD = 110
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
-metadata/context = "leg"
+metadata/context = "back"
 
 [sub_resource type="SphereMesh" id="SphereMesh_qo5ej"]
 
@@ -82,10 +76,9 @@ shadow_enabled = true
 
 [node name="Node2D" type="Node3D" parent="." unique_id=1829976961]
 script = ExtResource("1_lotmn")
-seedVal = 7
-parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_0wrkg"), SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2"), SubResource("Resource_qo5ej")])
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qo5ej"), SubResource("Resource_0wrkg"), SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2"), SubResource("Resource_g8s65")])
 spineDistPerSegment = 1
-spineThickness = 0.215
+spineMinMaxOffsetPerStat = 0.0007236909999999999
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1627548154]
 transform = Transform3D(0.92621386, -0.14668633, 0.34729102, 0, 0.9211998, 0.3890899, -0.37699857, -0.36038047, 0.85322803, 1.6203085, 1.8153368, 3.980801)
@@ -96,7 +89,7 @@ mesh = SubResource("SphereMesh_qo5ej")
 
 [node name="PlaceholderLimbArmLeg" type="Node3D" parent="." unique_id=2023947803]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7565193, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.493964, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceholderLimbArmLeg" unique_id=905600667]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90697515, 0)
@@ -104,7 +97,7 @@ mesh = SubResource("BoxMesh_mltvj")
 
 [node name="PlaceholderLimbDefense" type="Node3D" parent="." unique_id=2006970701]
 unique_name_in_owner = true
-transform = Transform3D(2.2609625, 0, 0, 0, 4.1085253, 0, 0, 0, 0.113764405, 1.4416591, 0, 0)
+transform = Transform3D(2.2609625, 0, 0, 0, 4.1085253, 0, 0, 0, 0.113764405, 8.179104, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceholderLimbDefense" unique_id=671807125]
 transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 2.291579, 0, 0, 0)
