@@ -63,7 +63,7 @@ metadata/context = "back"
 [sub_resource type="BoxMesh" id="BoxMesh_mltvj"]
 size = Vector3(0.27819824, 1.8676758, 0.28955078)
 
-[sub_resource type="PrismMesh" id="PrismMesh_mltvj"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_4kxuq"]
 
 [node name="Node3D" type="Node3D" unique_id=510493856]
 
@@ -78,7 +78,7 @@ shadow_enabled = true
 script = ExtResource("1_lotmn")
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qo5ej"), SubResource("Resource_0wrkg"), SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2"), SubResource("Resource_g8s65")])
 spineDistPerSegment = 1
-spineMinMaxOffsetPerStat = 0.0007236909999999999
+spineMinMaxOffsetPerStat = 0.00072369099999999
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1627548154]
 transform = Transform3D(0.92621386, -0.14668633, 0.34729102, 0, 0.9211998, 0.3890899, -0.37699857, -0.36038047, 0.85322803, 1.6203085, 1.8153368, 3.980801)
@@ -100,9 +100,5 @@ unique_name_in_owner = true
 transform = Transform3D(2.2609625, 0, 0, 0, 4.1085253, 0, 0, 0, 0.113764405, 8.179104, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceholderLimbDefense" unique_id=671807125]
-transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 2.291579, 0, 0, 0)
-mesh = SubResource("PrismMesh_mltvj")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="PlaceholderLimbDefense" unique_id=11807009]
-transform = Transform3D(-0.165, 9.885941e-09, 0, -3.6268877e-09, -0.16499998, 0, 0, 0, 2.291579, 0, 0, 0)
-mesh = SubResource("PrismMesh_mltvj")
+transform = Transform3D(-2.1855693e-09, 0.074999996, 0, -0.049999993, -3.278354e-09, 0, 0, 0, 0.94, 0, 0, 0)
+mesh = SubResource("CylinderMesh_4kxuq")

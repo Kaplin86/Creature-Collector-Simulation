@@ -2,6 +2,52 @@
 extends Node3D
 class_name CreatureGeneratorNode
 
+## BODY TYPE PLANNING -----------------------------------
+## This is a small tree to show how exactly i will code the body renderer,
+## starting with figuring out the "body type". You know what they say, Good plan = good code.
+##
+## Step 1: Fallback
+##
+##                                    / Steel Or Poison -> FallBack 3
+##                          --> Typing                      "Gathering Shape"
+##                      / No          \ 
+##     Fallback        /                Water -> Fallback 4
+##    "RoundShape" --> Has Tail?                "Fish Shape"
+##                     \ 
+##                      \ Yes
+##                         FallBack2
+##                         "SerpentineShape"
+##
+## Shapes remaining "Legs shape","Insect shape","four legged shape","upright torso shape", "two leg and tail shape", "human shape", "two wing shape", "arms shape"
+
+## Step 2: Legs
+##                         / --> Four --> "Four legged shape"
+##                        /
+##                       / --> Two --> "Legs Shape"
+##  PreviousShape       /
+##  Step 1 shape    --> Leg Count
+##                     \
+##                      \ --> Six / Eight --> "Insectoid shape"
+##
+## Shapes remaining ,"upright torso shape", "two leg and tail shape", "human shape", "two wing shape", "arm shape"
+
+## Step 3: Arms
+##
+## Any Step 1 Shape -> more than 1 arm -> Stat Spread -> Physical stats "Arms shape"
+##                                             \ Special stats "Upright torso shape" 
+##
+## Legs shape -> has two arms -> "human shape"
+## 
+## Shapes remaining , "two leg and tail shape", "two wing shape"
+##
+
+## Step 4: Tails and wings
+##
+## "Human shape" -> Has tail -> "two leg and tail shape"
+##
+## Step 1 shape and legs shape -> Has two wings -> "two wing shape"
+
+
 var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 
 @export_tool_button("Run Action") var run_action_btn = generate
