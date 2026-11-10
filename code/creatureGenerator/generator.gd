@@ -39,11 +39,11 @@ func getPartsWithHighestStat(stat) -> Array[BodyPart]:
 	return partsReturned
 
 func generate():
-	#seed(seedVal)
+	seed(seedVal)
 	for I in get_children(): I.queue_free()
-	#var spinePoints = createSpinePoints()
-	#renderSpineFromPoints(spinePoints)
-	print(generateRingOfPointsAroundPoint(Vector3.ZERO,10,3,Vector3(0,-1,-1).normalized()))
+	var spinePoints = createSpinePoints()
+	renderSpineFromPoints(spinePoints)
+	#print(generateRingOfPointsAroundPoint(Vector3.ZERO,10,3,Vector3(0,-1,-1).normalized()))
 
 ## This returns the spine layout for the creature. Imagine this as a 2D image from the side, with each point referring to a seperate spine point
 func createSpinePoints() -> PackedVector2Array:
@@ -74,16 +74,51 @@ func createSpinePoints() -> PackedVector2Array:
 ## Creates a handful of meshes to fill in for the spine
 func renderSpineFromPoints(spine : PackedVector2Array) -> void:
 	var newMesh = MeshInstance3D.new()
-	var actualMesh = ImmediateMesh.new()
+	var actualMesh = SurfaceTool.new()
 	
-	for I in range(spine):
-		var pos = spine[I]
-		var nextPos = spine[I + 1]
+	var subCount = 3
+	
+	var points : Array[Vector3] = []
+	for I in spine:
+		var next = spine.get(spine.find(I) + 1)
+		var currentPos = Vector3(0,-I.y,I.x) + (Vector3(sin(I.x),cos(I.x),cos(I.y)) * 0.1)
+		points.append(currentPos)
+		if next:
+			next = Vector3(0,-next.y,next.x)
+			for C in range(subCount):
+				points.append(lerp(currentPos,next,(C + 1) / float(subCount + 1)))
+
+	
+	
+	var rings :Array[Array] = []
+	var lastDir = Vector3(0,0,-1)
+	for I in points.size():
+		var pos = points[I]
+		var nextPos = points.get(I + 1)
+		if nextPos:
+			var nextDir = pos.direction_to(nextPos)
+
+			rings.append(generateRingOfPointsAroundPoint(pos,10,spineThickness,nextDir.normalized()))
+			lastDir = nextDir
+		else:
+			rings.append(generateRingOfPointsAroundPoint(pos,10,spineThickness,lastDir.normalized()))
+	
+	actualMesh.begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
+	for I in range(rings.size() - 1):
+		var ringA = rings[I]
+		var ringB = rings[I + 1]
+		
+		for stitch in range(ringA.size() + 1):
+			var pairIndex = stitch % ringA.size()
+			
+			actualMesh.set_normal(Vector3(1,0,0))
+			actualMesh.add_vertex(ringA[pairIndex])
+			
+			actualMesh.set_normal(Vector3(1,0,0))
+			actualMesh.add_vertex(ringB[pairIndex])
 		
 	
-	actualMesh.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
-	
-	newMesh.mesh = actualMesh
+	newMesh.mesh = actualMesh.commit()
 	add_child(newMesh)
 
 func generateRingOfPointsAroundPoint(center : Vector3,pointCount : int, thickness : float, up : Vector3):
@@ -91,11 +126,11 @@ func generateRingOfPointsAroundPoint(center : Vector3,pointCount : int, thicknes
 	var dirOffset = 0.0
 	for I in pointCount:
 		dirOffset += TAU / pointCount
-		var crossed = up.cross(Vector3(-1,0,0)).normalized()
-		var newMesh = MeshInstance3D.new()
-		newMesh.mesh = BoxMesh.new()
-		add_child(newMesh)
-		newMesh.global_position = crossed.rotated(up,dirOffset)
-		print(crossed.rotated(up,dirOffset))
+		var crossed = up.normalized().cross(Vector3(-1,0,0)).normalized() 
+		#var newMesh = MeshInstance3D.new()
+		#newMesh.mesh = BoxMesh.new()
+		#add_child(newMesh)
+		#newMesh.global_position = crossed.rotated(up,dirOffset) + center
+		ringPoints.append(crossed.rotated(up.normalized() ,dirOffset) * thickness + center)
 	
 	return ringPoints
