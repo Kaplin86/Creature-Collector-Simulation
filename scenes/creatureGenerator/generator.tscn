@@ -77,6 +77,7 @@ shadow_enabled = true
 [node name="Node2D" type="Node3D" parent="." unique_id=1829976961]
 script = ExtResource("1_lotmn")
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qo5ej"), SubResource("Resource_0wrkg"), SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2"), SubResource("Resource_g8s65")])
+typings = Array[int]([0, 1])
 spineDistPerSegment = 1
 spineMinMaxOffsetPerStat = 0.00072369099999999
 

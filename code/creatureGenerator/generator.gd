@@ -13,9 +13,9 @@ class_name CreatureGeneratorNode
 ##                      / No          \ 
 ##     Fallback        /                Water -> Fallback 4
 ##    "RoundShape" --> Has Tail?                "Fish Shape"
-##                     \ 
-##                      \ Yes
-##                         FallBack2
+##                     \                  /
+##                      \ Yes         / Water type?
+##                         FallBack2   
 ##                         "SerpentineShape"
 ##
 ## Shapes remaining "Legs shape","Insect shape","four legged shape","upright torso shape", "two leg and tail shape", "human shape", "two wing shape", "arms shape"
@@ -47,13 +47,41 @@ class_name CreatureGeneratorNode
 ##
 ## Step 1 shape and legs shape -> Has two wings -> "two wing shape"
 
+## A body type, each having unique generation.
+enum BodyTypes { 
+	Round, ## A creature thats exclusively a head. Pokemon examples: Voltorb, Nacli, Solosis
+	Serpentine, ## A creature that is a head, base / torso, and a leg. Pokemon Examples: Dratini, Ekans, Dreepy (I think dreepy is an important example due to how defined the head is)
+	Fish, ## Need I explain this one? This can be interpreted as an offbranch of Round and Serpentine. Pokemon Examples: Magikarp, Tatsugiri, Luvdisc
+	Gathering, ## This is the hardest body type to clearly define, as its multiple Round creatures bunched up. Pokemon Examples: Dugtrio, Tandemaus, Klink
+	UprightTorso, ## Creatures that have a torso and a head. Pokemon Examples: Vanillite, Diglett, Morelull
+	FourLegged, ## Four legged animal, typically has a neck and tail. Pokemon Examples: Eevee, Dialga, Boltund
+	Insectoid, ## Wingless bug with a lot of legs. Pokemon Examples: Paras, Sewaddle, Blipbug, Galvantula
+	Legs, ## Take Round or Serpentine and slap on legs. Pokemon Example: Seedot, Oddish, Toedscool
+	Arms, ## Take Round or Serpentine and slap on arms. Pokemon Example: Geodude, Yamask, Reuniclus
+	Human, ## A creature with two legs, two arms, a torso and a head. Pokemon Example: Mr. Mime, Lurantis, Regirock
+	TailedHuman, ## Human with a tail. Pokemon Example: Charmander, Lucario, Archaludon technically
+	WingedShape, ## Creatures without arms but have wings. Pokemon Example: Pidgey, Natu, Altaria
+	}
+
+## The different types a limb can be
+enum BodyPartTypes {
+	Torso, ## Typically only one. Favors HP and Defensive Stats.
+	Arm, ## Favors Attack and Special Attack.
+	Leg, ## Favors Speed
+	Tail, ## Well Rounded Part
+	Wings, ## Favors Speed and Attack Stats
+	Other, ## Leftover pieces.
+}
+
 
 var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 
 @export_tool_button("Run Action") var run_action_btn = generate
 @export var seedVal := 1
 @export var parts : Array[BodyPart] = []
+@export var typings : Array[GlobalVars.Typings] = []
 @export_group("Config")
+@export var specializationThreshold = 0.5
 @export var statTotalPerSpineSegment := 50
 @export var spineDistPerSegment := 5
 @export var spineMaxThickness := 0.2
@@ -75,6 +103,18 @@ func getAllStatTotal() -> int:
 			sum += I.get(C)
 	return sum
 
+func getTotalStatOnPart(part : BodyPart) -> int:
+	var sum = 0
+	for C in Stats:
+		sum += part.get(C)
+	return sum
+
+func getHighestStatValueOnPart(part : BodyPart) -> int:
+	var val = 0
+	for C in Stats:
+		if part.get(C) > val:
+			val = part.get(C)
+	return val
 
 func getPartsWithHighestStat(stat, startingArray = null) -> Array[BodyPart]: 
 	var partsReturned : Array[BodyPart]= []
@@ -92,12 +132,12 @@ func getPartsWithHighestStat(stat, startingArray = null) -> Array[BodyPart]:
 
 func generate():
 	seed(seedVal)
-	
-	for I in Stats:
-		print(I, " : ",getStatTotal(I))
-	print(getAllStatTotal())
-	
+
 	for I in get_children(): I.queue_free()
+	
+	var definePartsAsLimbs := defineLimbs()
+	print(defineBodyType(definePartsAsLimbs))
+	
 	var spinePoints := createSpinePoints()
 	var properSpinePoints := sanitizeSpinePoints(spinePoints)
 	var limbAssignment := assignLimbs(properSpinePoints)
@@ -109,7 +149,119 @@ func generate():
 	var firstPos = (properSpinePoints[0])
 	createHead(headPos)
 	renderLimbs(properSpinePoints,limbAssignment)
-	#print(generateRingOfPointsAroundPoint(Vector3.ZERO,10,3,Vector3(0,-1,-1).normalized()))
+
+
+func defineLimbs() -> Dictionary[BodyPart,BodyPartTypes]:
+	var limbDefs : Dictionary[BodyPart,BodyPartTypes] = {}
+	
+	var remainingLimbs = parts.duplicate(true)
+	var torsoScore = 0
+	var torso = null
+	for I in remainingLimbs:
+		var score = I.get("HP") * 1.5 + I.get("DEF") + I.get("SpA")
+		if score > torsoScore:
+			torsoScore = score
+			torso = I
+	
+	remainingLimbs.erase(torso)
+	limbDefs[torso] = BodyPartTypes.Torso
+	
+	var legs = []
+	for I in getPartsWithHighestStat("SP",remainingLimbs):
+		var proportion = float(I.get("SP")) / float(getTotalStatOnPart(I) )
+		if proportion > specializationThreshold:
+			legs.append(I) # Only speed specialized part are legs
+	
+	for I in legs:
+		remainingLimbs.erase(I)
+		limbDefs[I] = BodyPartTypes.Leg
+	
+	var armCandidates = getPartsWithHighestStat("ATK",remainingLimbs)
+	armCandidates.append_array(getPartsWithHighestStat("SpA"))
+	var arms = []
+	for I in armCandidates:
+		var proportion = float(I.get("ATK") + I.get("SpA")) / float(getTotalStatOnPart(I) )
+		if proportion > specializationThreshold:
+			arms.append(I) # Only offense specialized parts get to be arms
+	
+	for I in arms:
+		remainingLimbs.erase(I)
+		limbDefs[I] = BodyPartTypes.Arm
+	
+	var tail
+	var highestPercent = 0
+	for I in remainingLimbs:
+		var avg = getTotalStatOnPart(I) / 6.0
+		var percent = avg / float(getHighestStatValueOnPart(I))
+		print(percent, " is the percent")
+		if percent > highestPercent:
+			highestPercent = percent
+			tail = I
+	
+	if highestPercent > 0.8:
+		limbDefs[tail] = BodyPartTypes.Tail
+		remainingLimbs.erase(tail)
+	
+	var wingCandidates = getPartsWithHighestStat("ATK",remainingLimbs)
+	wingCandidates.append_array(getPartsWithHighestStat("SpA",remainingLimbs))
+	wingCandidates.append_array(getPartsWithHighestStat("SP",remainingLimbs))
+	var wings = []
+	for I in wingCandidates:
+		var proportion = float(I.get("ATK") + I.get("SpA") + I.get("SP")) / float(getTotalStatOnPart(I) )
+		if proportion > specializationThreshold:
+			wings.append(I) # Only offense and speed specialized parts get to be wings
+	
+	for I in wings:
+		remainingLimbs.erase(I)
+		limbDefs[I] = BodyPartTypes.Wings
+	
+	for I in remainingLimbs:
+		limbDefs[I] = BodyPartTypes.Other
+	
+	return limbDefs
+
+func defineBodyType(limbDef : Dictionary[BodyPart,BodyPartTypes]) -> BodyTypes:
+	var body = BodyTypes.Round
+	var bodyTypeArray : Array[BodyPartTypes] = limbDef.values()
+	
+	# Step 1
+	if bodyTypeArray.has(BodyPartTypes.Torso):
+		if bodyTypeArray.has(BodyPartTypes.Tail):
+			body = BodyTypes.Serpentine
+		else:
+			body = BodyTypes.UprightTorso
+	elif typings.has(GlobalVars.Typings.Robot):
+		if randf_range(0,2) == 1:
+			body = BodyTypes.Gathering
+	elif typings.has(GlobalVars.Typings.Water):
+		if randf_range(0,2) == 1:
+			body = BodyTypes.Fish
+	
+	# Step 2
+	var legCount = bodyTypeArray.count(BodyPartTypes.Leg)
+	if legCount == 2:
+		body = BodyTypes.Legs
+	elif legCount == 4:
+		body = BodyTypes.FourLegged
+	elif legCount in [6,8]:
+		body = BodyTypes.Insectoid
+	
+	# Step 3
+	var armCount = bodyTypeArray.count(BodyPartTypes.Arm)
+	
+	if legCount == 2 and armCount == 2:
+		body = BodyTypes.Human
+	elif body in [BodyTypes.Round,BodyTypes.Serpentine]:
+		body = BodyTypes.Arms
+	
+	# Step 4
+	if bodyTypeArray.has(BodyPartTypes.Tail) and BodyTypes.Human:
+		body = BodyTypes.TailedHuman
+	
+	if bodyTypeArray.count(BodyPartTypes.Wings) >= 2 and armCount < 1:
+		body = BodyTypes.WingedShape
+	
+	return body
 
 ## This returns the spine layout for the creature. Imagine this as a 2D image from the side, with each point referring to a seperate spine point
 func createSpinePoints() -> PackedVector2Array:
@@ -140,6 +292,7 @@ func createSpinePoints() -> PackedVector2Array:
 	
 	return points
 
+## Converts spine points into physical vector 3s
 func sanitizeSpinePoints(spine : PackedVector2Array) -> Array[Vector3]:
 	var points : Array[Vector3] = []
 	var subCount = 3
@@ -156,6 +309,7 @@ func sanitizeSpinePoints(spine : PackedVector2Array) -> Array[Vector3]:
 	
 	return points
 
+## Adds thickness values for each point
 func addSpineThickness(points,body):
 	var offset = getAllStatTotal() * spineMinMaxOffsetPerStat
 	for I in range(points.size()):
@@ -218,6 +372,7 @@ func renderSpineFromPoints(points : Array[Vector3]) -> void:
 	newMesh.mesh = actualMesh.commit()
 	add_child(newMesh)
 
+## Makes rings
 func generateRingOfPointsAroundPoint(center : Vector3,pointCount : int, thickness : float, up : Vector3):
 	var ringPoints : Array[Vector3] = []
 	var dirOffset = 0.0
@@ -232,10 +387,11 @@ func generateRingOfPointsAroundPoint(center : Vector3,pointCount : int, thicknes
 	
 	return ringPoints
 
-
+## Converts vector 2 to vector 3
 func spinePosTo3D(pos : Vector2):
 	return Vector3(0,-pos.y,pos.x)
 
+## Creates a head at position
 func createHead(pos : Vector3):
 	var newMesh = MeshInstance3D.new()
 	add_child(newMesh)
@@ -312,6 +468,7 @@ func assignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
 	
 	return jointToLimb
 
+## Place limbs at assigned spots.
 func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array]):
 	for I in assignment:
 		var actualPos = spinePoints[I]
