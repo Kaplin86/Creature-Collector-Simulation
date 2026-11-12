@@ -60,12 +60,27 @@ metadata/context = "back"
 
 [sub_resource type="Resource" id="Resource_qp4so"]
 script = ExtResource("2_qo5ej")
-ATK = 670
+ATK = 90
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [sub_resource type="Resource" id="Resource_actsh"]
 script = ExtResource("2_qo5ej")
-ATK = 670
+HP = 30
+ATK = 30
+DEF = 30
+SpA = 30
+SpD = 30
+SP = 25
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_o0skd"]
+script = ExtResource("2_qo5ej")
+HP = 30
+ATK = 30
+DEF = 30
+SpA = 30
+SpD = 30
+SP = 30
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [sub_resource type="SphereMesh" id="SphereMesh_qo5ej"]
@@ -92,9 +107,18 @@ spineDistPerSegment = 1.0
 spineMinMaxOffsetPerStat = 0.00072369099999999
 
 [node name="CircularExample" type="Node3D" parent="." unique_id=1391007162]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.866747, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4845276, 0, 0)
 script = ExtResource("1_lotmn")
-parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qp4so"), SubResource("Resource_actsh")])
+seedVal = 2
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qp4so")])
+typings = Array[int]([0, 1])
+spineMinMaxOffsetPerStat = 0.00072369099999999
+
+[node name="SerpentineExample" type="Node3D" parent="." unique_id=488969311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.267545, 0, 0)
+script = ExtResource("1_lotmn")
+seedVal = 2
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_actsh"), SubResource("Resource_o0skd")])
 typings = Array[int]([0, 1])
 spineMinMaxOffsetPerStat = 0.00072369099999999
 

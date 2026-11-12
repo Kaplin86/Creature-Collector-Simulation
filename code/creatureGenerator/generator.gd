@@ -138,12 +138,27 @@ func generate():
 	
 	var definePartsAsLimbs := defineLimbs()
 	var bodyTypeUsing := defineBodyType(definePartsAsLimbs)
+	print("starting up ", seedVal )
 	print( BodyTypes.keys()[bodyTypeUsing] )
-	print(BodyPartTypes.keys()[definePartsAsLimbs.values()[0]])
+	for I in definePartsAsLimbs.values():
+		print(BodyPartTypes.keys()[I])
+	#print(BodyPartTypes.keys()[definePartsAsLimbs.values()[0]])
 	
 	if bodyTypeUsing == BodyTypes.Round:
 		generateRoundBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.Serpentine:
+		generateSerpentineBody(definePartsAsLimbs)
+
+func generateSerpentineBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
+	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment,180,0)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints)
 	
+	addSpineThickness(properSpinePoints,limbAssignment,0.6)
+	renderSpineFromPoints(properSpinePoints)
+	
+	createHead(properSpinePoints[-1])
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
 
 ## The generation function for [enum BodyTypes.Round]
 func generateRoundBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes] ):
@@ -277,7 +292,8 @@ func defineBodyType(limbDef : Dictionary[BodyPart,BodyPartTypes]) -> BodyTypes:
 		body = BodyTypes.Arms
 	
 	# Step 4
-	if bodyTypeArray.has(BodyPartTypes.Tail) and BodyTypes.Human:
+	
+	if bodyTypeArray.has(BodyPartTypes.Tail) and body == BodyTypes.Human:
 		body = BodyTypes.TailedHuman
 	
 	if bodyTypeArray.count(BodyPartTypes.Wings) >= 2 and armCount < 1:
@@ -311,13 +327,13 @@ func createSpinePoints(length, startingDir, curveMult) -> PackedVector2Array:
 ## Converts spine points into physical vector 3s
 func sanitizeSpinePoints(spine : PackedVector2Array) -> Array[Vector3]:
 	var points : Array[Vector3] = []
-	var subCount = 3
+	var subCount = 1
 	for I in spine:
 		var next = spine.get(spine.find(I) + 1)
 		var currentPos = spinePosTo3D(I) + (Vector3(sin(I.x),cos(I.x),cos(I.y)) * 0.1)
 		points.append(currentPos) 
 		if next:
-			next = spinePosTo3D(next)
+			next = spinePosTo3D(next) + (Vector3(sin(next.x),cos(next.x),cos(next.y)) * 0.1)
 			for C in range(subCount):
 				points.append(lerp(currentPos,next,(C + 1) / float(subCount + 1)))
 	
@@ -327,17 +343,18 @@ func sanitizeSpinePoints(spine : PackedVector2Array) -> Array[Vector3]:
 
 ## Adds thickness values for each point
 func addSpineThickness(points,body, mult = 1.0):
+	spineThicknessChart = {}
 	var offset = getAllStatTotal() * spineMinMaxOffsetPerStat * mult
 	for I in range(points.size()):
 		spineThicknessChart[I] = randf_range(spineMinThickness + offset ,spineMaxThickness + offset) + body.get(I,[]).size()*0.2
-	spineThicknessChart[points.size() - 2] = 0.5
-	spineThicknessChart[points.size() - 1] = 0.5
+	spineThicknessChart[points.size() - 2] = offset * 0.2
+	spineThicknessChart[points.size() - 1] = offset * 0.2
 	
-	var newSpineThickness : Dictionary[int,float]= {}
-	for I in spineThicknessChart:
-		var basicVal = spineThicknessChart.get(I) 
-		newSpineThickness[I] = (basicVal + spineThicknessChart.get(I - 1,basicVal) + spineThicknessChart.get(I + 1, basicVal)) / 3
-	spineThicknessChart = newSpineThickness
+	#var newSpineThickness : Dictionary[int,float]= {}
+	#for I in spineThicknessChart:
+	#	var basicVal = spineThicknessChart.get(I) 
+	#	newSpineThickness[I] = (basicVal + spineThicknessChart.get(I - 1,basicVal) + spineThicknessChart.get(I + 1, basicVal)) / 3
+	#spineThicknessChart = newSpineThickness
 	
 
 ## Creates a handful of meshes to fill in for the spine
@@ -349,17 +366,17 @@ func renderSpineFromPoints(points : Array[Vector3]) -> void:
 	
 	
 	var rings :Array[Array] = []
-	var lastDir = Vector3(0,0,-1)
+	var lastDir = Vector3(0,-1,-1)
 	for I in points.size():
 		var pos = points[I]
 		var nextPos = points.get(I + 1)
 		if nextPos:
 			var nextDir = pos.direction_to(nextPos)
 
-			rings.append(generateRingOfPointsAroundPoint(pos,10,spineThicknessChart[I],nextDir.normalized()))
+			rings.append(generateRingOfPointsAroundPoint(pos,15,spineThicknessChart[I],nextDir.normalized()))
 			lastDir = nextDir
 		else:
-			rings.append(generateRingOfPointsAroundPoint(pos,10,spineThicknessChart[I],lastDir.normalized()))
+			rings.append(generateRingOfPointsAroundPoint(pos,15,spineThicknessChart[I],lastDir.normalized()))
 	
 	actualMesh.begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
 	
@@ -368,8 +385,8 @@ func renderSpineFromPoints(points : Array[Vector3]) -> void:
 		var ring = rings[0]
 		actualMesh.set_normal(Vector3(1,0,0))
 		actualMesh.add_vertex(ring[wrap(I,0,ring.size() - 1)])
-		actualMesh.set_normal(Vector3(1,0,0))
-		actualMesh.add_vertex(ring.get(wrap(I - 5,0,ring.size() - 1)))
+		actualMesh.add_vertex(ring[wrap(I + 1,0,ring.size() - 1)])
+		actualMesh.add_vertex(points[0])
 	
 	for I in range(rings.size() - 1):
 		var ringA = rings[I]
@@ -392,13 +409,23 @@ func renderSpineFromPoints(points : Array[Vector3]) -> void:
 func generateRingOfPointsAroundPoint(center : Vector3,pointCount : int, thickness : float, up : Vector3):
 	var ringPoints : Array[Vector3] = []
 	var dirOffset = 0.0
+	var normal = up.normalized()
+	var reference = Vector3(-1,0,0)
+	if abs(normal.dot(reference)) > 0.99:
+		reference = Vector3.FORWARD
+
+	
 	for I in pointCount:
 		dirOffset += TAU / pointCount
-		var crossed = up.normalized().cross(Vector3(-1,0,0)).normalized() 
+		var crossed = normal.cross(reference).normalized() 
+		
 		#var newMesh = MeshInstance3D.new()
 		#newMesh.mesh = BoxMesh.new()
+		
 		#add_child(newMesh)
-		#newMesh.global_position = crossed.rotated(up,dirOffset) + center
+		#newMesh.position = crossed.rotated(up.normalized() ,dirOffset) * thickness + center
+		#newMesh.scale = Vector3(0.1,0.1,0.1)
+		
 		ringPoints.append(crossed.rotated(up.normalized() ,dirOffset) * thickness + center)
 	
 	return ringPoints
@@ -419,8 +446,10 @@ func createHead(pos : Vector3):
 	newFace.position = pos + Vector3(0,0,-0.5)
 	
 
-func randomlyAssignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
+func randomlyAssignLimbs(spinePoints : Array[Vector3], partsList : Array[BodyPart] = []) -> Dictionary[int,Array]:
 	var limbsRemaining : Array[BodyPart] = parts.duplicate()
+	if partsList != []:
+		limbsRemaining = partsList.duplicate(true)
 	var jointToLimb : Dictionary[int,Array] = {}
 	while limbsRemaining:
 		var new = limbsRemaining.pop_front()
@@ -545,3 +574,6 @@ func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array
 				newModel.position -= Vector3(0,0,spineThicknessChart[I])
 			
 		print(actualPos,placingParts)
+
+func _ready():
+	generate()
