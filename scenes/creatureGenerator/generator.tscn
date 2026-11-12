@@ -58,6 +58,16 @@ SpD = 110
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 metadata/context = "back"
 
+[sub_resource type="Resource" id="Resource_qp4so"]
+script = ExtResource("2_qo5ej")
+ATK = 670
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_actsh"]
+script = ExtResource("2_qo5ej")
+ATK = 670
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
 [sub_resource type="SphereMesh" id="SphereMesh_qo5ej"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mltvj"]
@@ -78,7 +88,14 @@ shadow_enabled = true
 script = ExtResource("1_lotmn")
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qo5ej"), SubResource("Resource_0wrkg"), SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2"), SubResource("Resource_g8s65")])
 typings = Array[int]([0, 1])
-spineDistPerSegment = 1
+spineDistPerSegment = 1.0
+spineMinMaxOffsetPerStat = 0.00072369099999999
+
+[node name="CircularExample" type="Node3D" parent="." unique_id=1391007162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.866747, 0, 0)
+script = ExtResource("1_lotmn")
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qp4so"), SubResource("Resource_actsh")])
+typings = Array[int]([0, 1])
 spineMinMaxOffsetPerStat = 0.00072369099999999
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1627548154]

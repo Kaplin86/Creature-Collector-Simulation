@@ -83,7 +83,7 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 @export_group("Config")
 @export var specializationThreshold = 0.5
 @export var statTotalPerSpineSegment := 50
-@export var spineDistPerSegment := 5
+@export var spineDistPerSegment := 0.25
 @export var spineMaxThickness := 0.2
 @export var spineMinThickness := 0.1
 @export_range(0.00000001,0.005,0.00000001) var spineMinMaxOffsetPerStat = 0.005
@@ -119,7 +119,8 @@ func getHighestStatValueOnPart(part : BodyPart) -> int:
 func getPartsWithHighestStat(stat, startingArray = null) -> Array[BodyPart]: 
 	var partsReturned : Array[BodyPart]= []
 	var using = parts
-	if startingArray: using = startingArray
+	if startingArray != null: 
+		using = startingArray
 	for I in using:
 		var valid := true
 		for S in Stats:
@@ -136,9 +137,29 @@ func generate():
 	for I in get_children(): I.queue_free()
 	
 	var definePartsAsLimbs := defineLimbs()
-	print(defineBodyType(definePartsAsLimbs))
+	var bodyTypeUsing := defineBodyType(definePartsAsLimbs)
+	print( BodyTypes.keys()[bodyTypeUsing] )
+	print(BodyPartTypes.keys()[definePartsAsLimbs.values()[0]])
 	
-	var spinePoints := createSpinePoints()
+	if bodyTypeUsing == BodyTypes.Round:
+		generateRoundBody(definePartsAsLimbs)
+	
+
+## The generation function for [enum BodyTypes.Round]
+func generateRoundBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes] ):
+	
+	var spinePoints := createSpinePoints(1,-90,0)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints)
+	
+	addSpineThickness(properSpinePoints,limbAssignment,0.5)
+	renderSpineFromPoints(properSpinePoints)
+	
+	createHead(properSpinePoints[-1])
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
+
+func oldGenerationCodeDeprecatedDontUseDeleteLater():
+	var spinePoints := createSpinePoints(1,1,1)
 	var properSpinePoints := sanitizeSpinePoints(spinePoints)
 	var limbAssignment := assignLimbs(properSpinePoints)
 	
@@ -148,7 +169,7 @@ func generate():
 	var headPos = (properSpinePoints[-1])
 	var firstPos = (properSpinePoints[0])
 	createHead(headPos)
-	renderLimbs(properSpinePoints,limbAssignment)
+	#renderLimbs(properSpinePoints,limbAssignment)
 
 
 func defineLimbs() -> Dictionary[BodyPart,BodyPartTypes]:
@@ -158,13 +179,13 @@ func defineLimbs() -> Dictionary[BodyPart,BodyPartTypes]:
 	var torsoScore = 0
 	var torso = null
 	for I in remainingLimbs:
-		var score = I.get("HP") * 1.5 + I.get("DEF") + I.get("SpA")
+		var score = I.get("HP") * 1.5 + I.get("DEF") + I.get("SpD")
 		if score > torsoScore:
 			torsoScore = score
 			torso = I
 	
 	remainingLimbs.erase(torso)
-	limbDefs[torso] = BodyPartTypes.Torso
+	if torso: limbDefs[torso] = BodyPartTypes.Torso
 	
 	var legs = []
 	for I in getPartsWithHighestStat("SP",remainingLimbs):
@@ -184,21 +205,22 @@ func defineLimbs() -> Dictionary[BodyPart,BodyPartTypes]:
 		if proportion > specializationThreshold:
 			arms.append(I) # Only offense specialized parts get to be arms
 	
+	
 	for I in arms:
 		remainingLimbs.erase(I)
 		limbDefs[I] = BodyPartTypes.Arm
 	
+	
 	var tail
-	var highestPercent = 0
+	var lowestPercent = INF
 	for I in remainingLimbs:
 		var avg = getTotalStatOnPart(I) / 6.0
-		var percent = avg / float(getHighestStatValueOnPart(I))
-		print(percent, " is the percent")
-		if percent > highestPercent:
-			highestPercent = percent
+		var percent = 1 - (avg / float(getHighestStatValueOnPart(I)))
+		if percent < lowestPercent:
+			lowestPercent = percent
 			tail = I
 	
-	if highestPercent > 0.8:
+	if lowestPercent < 0.2:
 		limbDefs[tail] = BodyPartTypes.Tail
 		remainingLimbs.erase(tail)
 	
@@ -251,7 +273,7 @@ func defineBodyType(limbDef : Dictionary[BodyPart,BodyPartTypes]) -> BodyTypes:
 	
 	if legCount == 2 and armCount == 2:
 		body = BodyTypes.Human
-	elif body in [BodyTypes.Round,BodyTypes.Serpentine]:
+	elif armCount == 2 and body in [BodyTypes.Round,BodyTypes.Serpentine]:
 		body = BodyTypes.Arms
 	
 	# Step 4
@@ -264,7 +286,7 @@ func defineBodyType(limbDef : Dictionary[BodyPart,BodyPartTypes]) -> BodyTypes:
 	return body
 
 ## This returns the spine layout for the creature. Imagine this as a 2D image from the side, with each point referring to a seperate spine point
-func createSpinePoints() -> PackedVector2Array:
+func createSpinePoints(length, startingDir, curveMult) -> PackedVector2Array:
 	
 	var points : PackedVector2Array = []
 	
@@ -274,19 +296,13 @@ func createSpinePoints() -> PackedVector2Array:
 	noise.frequency = 0.56
 	
 	@warning_ignore("integer_division")
-	var length = randi_range(2,min(int(getAllStatTotal() / statTotalPerSpineSegment),5))
-	var direction : float = deg_to_rad(randf_range(-185,-175))
-	var curveMult = 0.5
-	if getPartsWithHighestStat("SP").size() <= 2:
-		#print(getPartsWithHighestStat("SP"))
-		direction =  deg_to_rad(randf_range(-95,-85))
-		curveMult = 0.25
+	var direction : float = deg_to_rad(startingDir)
 	var currentPosition = Vector2.ZERO
 	points.append(currentPosition)
 	
 	
 	for I in length:
-		direction += noise.get_noise_2dv(currentPosition) * PI * 0.8 * curveMult
+		direction += (noise.get_noise_2dv(currentPosition) * PI * 0.8) * curveMult
 		currentPosition += Vector2.from_angle(direction) * spineDistPerSegment
 		points.append(currentPosition)
 	
@@ -310,8 +326,8 @@ func sanitizeSpinePoints(spine : PackedVector2Array) -> Array[Vector3]:
 	return points
 
 ## Adds thickness values for each point
-func addSpineThickness(points,body):
-	var offset = getAllStatTotal() * spineMinMaxOffsetPerStat
+func addSpineThickness(points,body, mult = 1.0):
+	var offset = getAllStatTotal() * spineMinMaxOffsetPerStat * mult
 	for I in range(points.size()):
 		spineThicknessChart[I] = randf_range(spineMinThickness + offset ,spineMaxThickness + offset) + body.get(I,[]).size()*0.2
 	spineThicknessChart[points.size() - 2] = 0.5
@@ -395,15 +411,22 @@ func spinePosTo3D(pos : Vector2):
 func createHead(pos : Vector3):
 	var newMesh = MeshInstance3D.new()
 	add_child(newMesh)
-	newMesh.global_position = pos
+	newMesh.position = pos
 	newMesh.mesh = SphereMesh.new()
 	var newFace = Sprite3D.new()
 	newFace.texture = load("res://art/cuteface.png")
 	add_child(newFace)
-	newFace.global_position = pos + Vector3(0,0,-0.5)
+	newFace.position = pos + Vector3(0,0,-0.5)
 	
 
-
+func randomlyAssignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
+	var limbsRemaining : Array[BodyPart] = parts.duplicate()
+	var jointToLimb : Dictionary[int,Array] = {}
+	while limbsRemaining:
+		var new = limbsRemaining.pop_front()
+		var thinking = randf_range(0,spinePoints.size() - 1)
+		jointToLimb.get_or_add(thinking,[]).append(new)
+	return jointToLimb
 
 ## A very, VERY basic function for determining where each limb will be placed along the spine.
 func assignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
@@ -468,8 +491,7 @@ func assignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
 	
 	return jointToLimb
 
-## Place limbs at assigned spots.
-func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array]):
+func renderLimbsWithRandomRotation(spinePoints : Array[Vector3], assignment : Dictionary[int,Array], def : Dictionary[BodyPart,BodyPartTypes]):
 	for I in assignment:
 		var actualPos = spinePoints[I]
 		var placingParts = assignment[I]
@@ -483,17 +505,43 @@ func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array
 				percentage = 0
 			
 			var newModel
-			if C.get_meta("context","") in ["arm","leg"]:
+			if def[C] in [BodyPartTypes.Arm,BodyPartTypes.Leg]:
 				newModel = %PlaceholderLimbArmLeg.duplicate()
-			elif C.get_meta("context","") in ["back","front"]:
+			elif def[C] in [BodyPartTypes.Other]:
 				newModel = %PlaceholderLimbDefense.duplicate()
 			add_child(newModel)
-			newModel.global_position = actualPos + Vector3(percentage * spineThicknessChart[I],0,0)
-			if C.get_meta("context","") == "arm":
+			newModel.position = actualPos + Vector3(percentage * spineThicknessChart[I],0,0)
+			newModel.global_rotation_degrees = Vector3(randf_range(0,180),90,0)
+			
+		print(actualPos,placingParts)
+
+
+## Place limbs at assigned spots.
+func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array], def : Dictionary[BodyPart,BodyPartTypes]):
+	for I in assignment:
+		var actualPos = spinePoints[I]
+		var placingParts = assignment[I]
+		
+		var index = 0
+		for C in placingParts:
+			index += 1
+			
+			var percentage = lerp(-1,1,index / placingParts.size())
+			if placingParts.size() == 1:
+				percentage = 0
+			
+			var newModel
+			if def[C] in [BodyPartTypes.Arm,BodyPartTypes.Leg]:
+				newModel = %PlaceholderLimbArmLeg.duplicate()
+			elif def[C] in [BodyPartTypes.Other]:
+				newModel = %PlaceholderLimbDefense.duplicate()
+			add_child(newModel)
+			newModel.position = actualPos + Vector3(percentage * spineThicknessChart[I],0,0)
+			if def[C]  in [BodyPartTypes.Arm,BodyPartTypes.Wings]:
 				newModel.global_rotation_degrees = Vector3(percentage*-45,90,0)
-			if C.get_meta("context","") == "front":
-				newModel.global_position += Vector3(0,0,spineThicknessChart[I])
-			if C.get_meta("context","") == "back":
-				newModel.global_position -= Vector3(0,0,spineThicknessChart[I])
+			if def[C] == BodyPartTypes.Leg:
+				newModel.position += Vector3(0,0,spineThicknessChart[I])
+			if def[C] == BodyPartTypes.Other:
+				newModel.position -= Vector3(0,0,spineThicknessChart[I])
 			
 		print(actualPos,placingParts)
