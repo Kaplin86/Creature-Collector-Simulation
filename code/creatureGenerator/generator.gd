@@ -78,7 +78,7 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 
 @export_tool_button("Run Action") var run_action_btn = generate
 @export var seedVal := 1
-@export var parts : Array[BodyPart] = []
+@export var  parts : Array[BodyPart] = []
 @export var typings : Array[GlobalVars.Typings] = []
 @export_group("Config")
 @export var specializationThreshold = 0.5
@@ -87,6 +87,8 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 @export var spineMaxThickness := 0.2
 @export var spineMinThickness := 0.1
 @export_range(0.00000001,0.005,0.00000001) var spineMinMaxOffsetPerStat = 0.005
+@export_subgroup("Serpentine")
+@export var S_Curve : Curve
 
 var spineThicknessChart : Dictionary[int,float] = {}
 
@@ -150,11 +152,14 @@ func generate():
 		generateSerpentineBody(definePartsAsLimbs)
 
 func generateSerpentineBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
-	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment,180,0)
+	print(getAllStatTotal())
+	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1.5,180,0,S_Curve)
 	var properSpinePoints := sanitizeSpinePoints(spinePoints)
-	var limbAssignment := randomlyAssignLimbs(properSpinePoints)
-	
-	addSpineThickness(properSpinePoints,limbAssignment,0.6)
+	var partsList = limbDefinitions.keys()
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Tail))
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	addSpineThickness(properSpinePoints,limbAssignment,0.6,0.7)
 	renderSpineFromPoints(properSpinePoints)
 	
 	createHead(properSpinePoints[-1])
@@ -302,7 +307,7 @@ func defineBodyType(limbDef : Dictionary[BodyPart,BodyPartTypes]) -> BodyTypes:
 	return body
 
 ## This returns the spine layout for the creature. Imagine this as a 2D image from the side, with each point referring to a seperate spine point
-func createSpinePoints(length, startingDir, curveMult) -> PackedVector2Array:
+func createSpinePoints(length, startingDir, curveMult, forceCurve : Curve = null) -> PackedVector2Array:
 	
 	var points : PackedVector2Array = []
 	
@@ -319,6 +324,8 @@ func createSpinePoints(length, startingDir, curveMult) -> PackedVector2Array:
 	
 	for I in length:
 		direction += (noise.get_noise_2dv(currentPosition) * PI * 0.8) * curveMult
+		if forceCurve:
+			direction += forceCurve.sample(I/length)
 		currentPosition += Vector2.from_angle(direction) * spineDistPerSegment
 		points.append(currentPosition)
 	
@@ -342,19 +349,19 @@ func sanitizeSpinePoints(spine : PackedVector2Array) -> Array[Vector3]:
 	return points
 
 ## Adds thickness values for each point
-func addSpineThickness(points,body, mult = 1.0):
+func addSpineThickness(points,body, mult = 1.0,smoothness = 1.0):
 	spineThicknessChart = {}
 	var offset = getAllStatTotal() * spineMinMaxOffsetPerStat * mult
 	for I in range(points.size()):
-		spineThicknessChart[I] = randf_range(spineMinThickness + offset ,spineMaxThickness + offset) + body.get(I,[]).size()*0.2
+		spineThicknessChart[I] = (smoothness * randf_range(spineMinThickness ,spineMaxThickness)) + offset + body.get(I,[]).size()*0.2
 	spineThicknessChart[points.size() - 2] = offset * 0.2
 	spineThicknessChart[points.size() - 1] = offset * 0.2
 	
-	#var newSpineThickness : Dictionary[int,float]= {}
-	#for I in spineThicknessChart:
-	#	var basicVal = spineThicknessChart.get(I) 
-	#	newSpineThickness[I] = (basicVal + spineThicknessChart.get(I - 1,basicVal) + spineThicknessChart.get(I + 1, basicVal)) / 3
-	#spineThicknessChart = newSpineThickness
+	var newSpineThickness : Dictionary[int,float]= {}
+	for I in spineThicknessChart:
+		var basicVal = spineThicknessChart.get(I) 
+		newSpineThickness[I] = (basicVal + spineThicknessChart.get(I - 1,basicVal) + spineThicknessChart.get(I + 1, basicVal)) / 3
+	spineThicknessChart = newSpineThickness
 	
 
 ## Creates a handful of meshes to fill in for the spine
@@ -446,9 +453,9 @@ func createHead(pos : Vector3):
 	newFace.position = pos + Vector3(0,0,-0.5)
 	
 
-func randomlyAssignLimbs(spinePoints : Array[Vector3], partsList : Array[BodyPart] = []) -> Dictionary[int,Array]:
+func randomlyAssignLimbs(spinePoints : Array[Vector3], partsList : Array[BodyPart] = [null]) -> Dictionary[int,Array]:
 	var limbsRemaining : Array[BodyPart] = parts.duplicate()
-	if partsList != []:
+	if partsList != [null]:
 		limbsRemaining = partsList.duplicate(true)
 	var jointToLimb : Dictionary[int,Array] = {}
 	while limbsRemaining:
