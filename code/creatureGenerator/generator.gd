@@ -88,7 +88,9 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 @export var spineMinThickness := 0.1
 @export_range(0.00000001,0.005,0.00000001) var spineMinMaxOffsetPerStat = 0.005
 @export_subgroup("Serpentine")
-@export var S_Curve : Curve
+@export var S_Curve : Curve = preload("res://code/creatureGenerator/curves/serpentineCurve.tres")
+@export_subgroup("Fish")
+@export var F_Curve : Curve
 
 var spineThicknessChart : Dictionary[int,float] = {}
 
@@ -150,9 +152,23 @@ func generate():
 		generateRoundBody(definePartsAsLimbs)
 	elif bodyTypeUsing == BodyTypes.Serpentine:
 		generateSerpentineBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.Fish:
+		generateFishBody(definePartsAsLimbs)
+
+func generateFishBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
+	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1,180,0)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var partsList = limbDefinitions.keys()
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Tail))
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	addSpineThickness(properSpinePoints,limbAssignment,2,0.0,F_Curve)
+	renderSpineFromPoints(properSpinePoints)
+	
+	createHead(properSpinePoints[-1])
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
 
 func generateSerpentineBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
-	print(getAllStatTotal())
 	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1.5,180,0,S_Curve)
 	var properSpinePoints := sanitizeSpinePoints(spinePoints)
 	var partsList = limbDefinitions.keys()
@@ -273,10 +289,12 @@ func defineBodyType(limbDef : Dictionary[BodyPart,BodyPartTypes]) -> BodyTypes:
 		else:
 			body = BodyTypes.UprightTorso
 	elif typings.has(GlobalVars.Typings.Robot):
-		if randf_range(0,2) == 1:
+		if randi_range(0,2) == 1:
 			body = BodyTypes.Gathering
-	elif typings.has(GlobalVars.Typings.Water):
-		if randf_range(0,2) == 1:
+	
+	if typings.has(GlobalVars.Typings.Water):
+		var val = randi_range(0,2)
+		if val == 1:
 			body = BodyTypes.Fish
 	
 	# Step 2
@@ -349,11 +367,14 @@ func sanitizeSpinePoints(spine : PackedVector2Array) -> Array[Vector3]:
 	return points
 
 ## Adds thickness values for each point
-func addSpineThickness(points,body, mult = 1.0,smoothness = 1.0):
+func addSpineThickness(points,body, mult = 1.0,smoothness = 1.0, offsetCurve : Curve = null):
 	spineThicknessChart = {}
 	var offset = getAllStatTotal() * spineMinMaxOffsetPerStat * mult
 	for I in range(points.size()):
-		spineThicknessChart[I] = (smoothness * randf_range(spineMinThickness ,spineMaxThickness)) + offset + body.get(I,[]).size()*0.2
+		var usingOffset = offset
+		if offsetCurve:
+			usingOffset = offset * offsetCurve.sample(I/float(points.size()))
+		spineThicknessChart[I] = (smoothness * randf_range(spineMinThickness ,spineMaxThickness)) + (usingOffset) + body.get(I,[]).size()*0.2
 	spineThicknessChart[points.size() - 2] = offset * 0.2
 	spineThicknessChart[points.size() - 1] = offset * 0.2
 	
