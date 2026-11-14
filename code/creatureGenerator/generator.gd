@@ -154,6 +154,56 @@ func generate():
 		generateSerpentineBody(definePartsAsLimbs)
 	elif bodyTypeUsing == BodyTypes.Fish:
 		generateFishBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.Gathering:
+		generateGatheringBody(definePartsAsLimbs)
+
+func generateGatheringBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
+	var properSpinePoints : Array[Vector3] = []
+	var headCount = getAllStatTotal()/125
+	var startingHead = Vector3(0,0,0)
+	properSpinePoints.append(startingHead)
+	var angle
+	
+	var doneDUO = false
+	var dist = 1.0
+	for I in range(headCount):
+		if doneDUO == true:
+			angle = (Vector3.ZERO - angle).normalized()
+		else:
+			angle = Vector3(
+			randf_range(0.0, TAU),
+			randf_range(0.0, TAU),
+			randf_range(0.0, TAU)
+			).normalized()
+			
+			var fine = true
+			for C in properSpinePoints:
+				if C.distance_squared_to(dist * angle) < 2:
+					fine = false
+					break
+			var count = 0
+			while !fine and count < 200:
+				count += 1
+				print(count)
+				fine = true
+				angle = Vector3(randf_range(0.0, TAU),randf_range(0.0, TAU),randf_range(0.0, TAU)).normalized()
+				for C in properSpinePoints:
+					if C.distance_squared_to(dist * angle) < 0.65:
+						fine = false
+						break
+			
+		properSpinePoints.append(dist * angle)
+		doneDUO = !doneDUO
+	
+	for I in properSpinePoints:
+		createHead(I)
+	
+	var partsList = limbDefinitions.keys()
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	print(limbAssignment)
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
 
 func generateFishBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
 	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1,180,0)
@@ -212,7 +262,7 @@ func defineLimbs() -> Dictionary[BodyPart,BodyPartTypes]:
 	var limbDefs : Dictionary[BodyPart,BodyPartTypes] = {}
 	
 	var remainingLimbs = parts.duplicate(true)
-	var torsoScore = 0
+	var torsoScore = 30
 	var torso = null
 	for I in remainingLimbs:
 		var score = I.get("HP") * 1.5 + I.get("DEF") + I.get("SpD")
@@ -288,8 +338,10 @@ func defineBodyType(limbDef : Dictionary[BodyPart,BodyPartTypes]) -> BodyTypes:
 			body = BodyTypes.Serpentine
 		else:
 			body = BodyTypes.UprightTorso
-	elif typings.has(GlobalVars.Typings.Robot):
-		if randi_range(0,2) == 1:
+	
+	if typings.has(GlobalVars.Typings.Robot):
+		var val = randi_range(0,2)
+		if val == 1:
 			body = BodyTypes.Gathering
 	
 	if typings.has(GlobalVars.Typings.Water):
@@ -567,7 +619,7 @@ func renderLimbsWithRandomRotation(spinePoints : Array[Vector3], assignment : Di
 			elif def[C] in [BodyPartTypes.Other]:
 				newModel = %PlaceholderLimbDefense.duplicate()
 			add_child(newModel)
-			newModel.position = actualPos + Vector3(percentage * spineThicknessChart[I],0,0)
+			newModel.position = actualPos + Vector3(percentage * spineThicknessChart.get(I,0.35),0,0)
 			newModel.global_rotation_degrees = Vector3(randf_range(0,180),90,0)
 			
 		print(actualPos,placingParts)
