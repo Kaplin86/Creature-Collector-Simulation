@@ -553,7 +553,7 @@ layout_mode = 0
 offset_left = 745.0
 offset_top = 41.0
 offset_right = 1126.0
-offset_bottom = 286.0
+offset_bottom = 332.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0nytm")
 
 [node name="Label" type="Label" parent="Panel3" unique_id=305152295]
@@ -567,9 +567,12 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Heyo! Welcome to my super scuffed 
 creature collector themed simulator thingamajig
 Well, its not really creature collector-y yet, is it?
-It will be, trust!! But for this first and second ship, no.
+It will be, trust!! But for this first and second AND THIRD ship, no.
 
-If your apart of hack club, do DM me any interesting simulation result files you end up simulating :)"
+(TRUST ME BRO SOON PLZ)
+
+
+in the meantime, you can play around with the wip \"creature renderer\" \\/"
 autowrap_mode = 2
 
 [node name="Label" type="Label" parent="." unique_id=1552977148]
@@ -580,6 +583,15 @@ offset_right = 466.0
 offset_bottom = 537.0
 text = "Tip: Hover over a property to get a description."
 
+[node name="Button" type="Button" parent="." unique_id=827295418]
+layout_mode = 0
+offset_left = 833.0
+offset_top = 344.0
+offset_right = 1041.0
+offset_bottom = 375.0
+text = "Creature Renderer (NEW!)"
+
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
 [connection signal="file_selected" from="Button2/FileDialog" to="Button2" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="Panel2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_CREATRERENDERERbutton_pressed"]

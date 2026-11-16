@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dgj6pgauej7pv" path="res://code/creatureGenerator/generator.gd" id="1_m3rbe"]
 [ext_resource type="Script" uid="uid://c0krnp21mvj7g" path="res://code/creatureGenerator/generator_previewer.gd" id="1_rxfer"]
 [ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_rxfer"]
+[ext_resource type="Script" uid="uid://bv0mbrkeke3jq" path="res://code/UI/toMainMenu.gd" id="4_fmasq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rxfer"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -170,8 +171,15 @@ offset_right = 96.0
 offset_bottom = 368.0
 text = "<"
 
+[node name="Button" type="Button" parent="." unique_id=1994516399]
+offset_right = 72.0
+offset_bottom = 48.0
+text = "Back"
+script = ExtResource("4_fmasq")
+
 [connection signal="GenerationComplete" from="generator" to="." method="_on_generator_generation_complete"]
 [connection signal="value_changed" from="ColorRect/ScrollContainer/MainVbox/HBoxContainer/SpeciesSpinny" to="." method="_on_species_spinny_value_changed"]
 [connection signal="pressed" from="ColorRect/ScrollContainer/MainVbox/NewPart" to="." method="_on_new_part_pressed"]
 [connection signal="pressed" from="RightTurn" to="." method="_on_right_turn_pressed"]
 [connection signal="pressed" from="LeftTurn" to="." method="_on_left_turn_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

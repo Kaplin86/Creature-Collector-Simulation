@@ -12,3 +12,7 @@ func _on_button_pressed(): #Open Big Sim
 	NewScene.countPerGroup = %CountPerGroup.value
 	GlobalVars.reproductionType = %ReproductionType.selected
 	Transition.transition(NewScene)
+
+
+func _on_CREATRERENDERERbutton_pressed():
+	Transition.transition(load("res://scenes/creatureGenerator/generatorPreviewer.tscn").instantiate())
