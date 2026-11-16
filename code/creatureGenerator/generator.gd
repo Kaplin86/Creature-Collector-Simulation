@@ -95,8 +95,13 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 @export var FL_Curve : Curve = preload("res://code/creatureGenerator/curves/fourLeggedCurve.tres")
 @export_subgroup("Insectoid")
 @export var I_Curve : Curve
+@export_subgroup("Tailed Humanoid")
+@export var TH_Curve : Curve
+@export var TH_Curve2 : Curve
 
 var spineThicknessChart : Dictionary[int,float] = {}
+
+signal GenerationComplete ( bodyType : BodyTypes, partDefinitions : Dictionary[BodyPart,BodyPartTypes])
 
 func getStatTotal(stat) -> int:
 	var sum = 0
@@ -166,6 +171,141 @@ func generate():
 		generateFourLeggedBody(definePartsAsLimbs)
 	elif bodyTypeUsing == BodyTypes.Insectoid:
 		generateInsectoidBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.Legs:
+		generateLegsBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.Arms:
+		generateArmsBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.Human:
+		generateHumanBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.TailedHuman:
+		generateTailedHumanBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.WingedShape:
+		generateWingedBody(definePartsAsLimbs)
+	
+	GenerationComplete.emit(bodyTypeUsing,definePartsAsLimbs)
+
+func generateWingedBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes] ):
+	generateFishBody(limbDefinitions)
+
+func generateTailedHumanBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes] ):
+	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1.25,-90,0.01,TH_Curve)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var partsList = limbDefinitions.keys()
+	var legs : Array[BodyPart] = []
+	var legDef = limbDefinitions.duplicate()
+	for I in 2:
+		var val = legDef.find_key(BodyPartTypes.Leg)
+		legs.append(val)
+		partsList.erase(val)
+		legDef.erase(val)
+	
+	var arms : Array[BodyPart] = []
+	var armDef = limbDefinitions.duplicate()
+	for I in 2:
+		var val = armDef.find_key(BodyPartTypes.Arm)
+		arms.append(val)
+		partsList.erase(val)
+		armDef.erase(val)
+	
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	var leglimbAssignment : Dictionary[int,Array]= {int(0.5 * properSpinePoints.size()):legs}
+	var armLimbAssignment : Dictionary[int,Array] = {int(0.7 * properSpinePoints.size()):arms}
+	var limbThicknessAssignment = limbAssignment.duplicate()
+	limbThicknessAssignment.assign(leglimbAssignment)
+	limbThicknessAssignment.assign(armLimbAssignment)
+	addSpineThickness(properSpinePoints,limbThicknessAssignment,1,1.0,TH_Curve2)
+	renderSpineFromPoints(properSpinePoints)
+	
+	createHead(properSpinePoints[-1])
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
+	renderLimbs(properSpinePoints,leglimbAssignment,limbDefinitions)
+	renderLimbs(properSpinePoints,armLimbAssignment,limbDefinitions)
+
+func generateHumanBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes] ):
+	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1.0,-90,0.01)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var partsList = limbDefinitions.keys()
+	var legs : Array[BodyPart] = []
+	var legDef = limbDefinitions.duplicate()
+	for I in 2:
+		var val = legDef.find_key(BodyPartTypes.Leg)
+		legs.append(val)
+		partsList.erase(val)
+		legDef.erase(val)
+	
+	var arms : Array[BodyPart] = []
+	var armDef = limbDefinitions.duplicate()
+	for I in 2:
+		var val = armDef.find_key(BodyPartTypes.Arm)
+		arms.append(val)
+		partsList.erase(val)
+		armDef.erase(val)
+	
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	var leglimbAssignment : Dictionary[int,Array]= {2:legs}
+	var armLimbAssignment : Dictionary[int,Array] = {int(0.7 * properSpinePoints.size()):arms}
+	var limbThicknessAssignment = limbAssignment.duplicate()
+	limbThicknessAssignment.assign(leglimbAssignment)
+	limbThicknessAssignment.assign(armLimbAssignment)
+	addSpineThickness(properSpinePoints,limbThicknessAssignment,1,1.0)
+	renderSpineFromPoints(properSpinePoints)
+	
+	createHead(properSpinePoints[-1])
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
+	renderLimbs(properSpinePoints,leglimbAssignment,limbDefinitions)
+	renderLimbs(properSpinePoints,armLimbAssignment,limbDefinitions)
+
+func generateArmsBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes] ):
+	var spinePoints := createSpinePoints(1,-90,0)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var partsList = limbDefinitions.keys()
+	
+	var arms : Array[BodyPart] = []
+	var armDef = limbDefinitions.duplicate()
+	for I in 2:
+		var val = armDef.find_key(BodyPartTypes.Arm)
+		arms.append(val)
+		partsList.erase(val)
+		armDef.erase(val)
+	
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	var armlimbAssignment : Dictionary[int,Array]= {2:arms}
+	var limbThicknessAssignment = limbAssignment.duplicate()
+	limbThicknessAssignment.assign(armlimbAssignment)
+	
+	addSpineThickness(properSpinePoints,limbAssignment,0.5)
+	renderSpineFromPoints(properSpinePoints)
+	
+	addSpineThickness(properSpinePoints,limbAssignment,3,0.0)
+	createHead(properSpinePoints[-1])
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
+	renderLimbs(properSpinePoints,armlimbAssignment,limbDefinitions)
+
+
+func generateLegsBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes] ):
+	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 0.9,180,0.1,FL_Curve)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var partsList = limbDefinitions.keys()
+	var legs : Array[BodyPart] = []
+	var legDef = limbDefinitions.duplicate()
+	for I in 2:
+		var val = legDef.find_key(BodyPartTypes.Leg)
+		legs.append(val)
+		partsList.erase(val)
+		legDef.erase(val)
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	var leglimbAssignment : Dictionary[int,Array]= {int(randf_range(0.25,0.75) * spinePoints.size()):legs}
+	var limbThicknessAssignment = limbAssignment.duplicate()
+	limbThicknessAssignment.assign(leglimbAssignment)
+	addSpineThickness(properSpinePoints,limbThicknessAssignment,1,1.0)
+	renderSpineFromPoints(properSpinePoints)
+	
+	createHead(properSpinePoints[-1])
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
+	renderLimbs(properSpinePoints,leglimbAssignment,limbDefinitions)
 
 func generateInsectoidBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
 	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1,180,0)
@@ -728,12 +868,13 @@ func renderLimbsWithRandomRotation(spinePoints : Array[Vector3], assignment : Di
 				percentage = 0
 			
 			var newModel
-			if def[C] in [BodyPartTypes.Arm,BodyPartTypes.Leg]:
+			if def[C] in [BodyPartTypes.Arm,BodyPartTypes.Leg,BodyPartTypes.Wings,BodyPartTypes.Tail]:
 				newModel = %PlaceholderLimbArmLeg.duplicate()
-			elif def[C] in [BodyPartTypes.Other]:
+			elif def[C] in [BodyPartTypes.Other,BodyPartTypes.Torso]:
 				newModel = %PlaceholderLimbDefense.duplicate()
 			
 			add_child(newModel)
+			print(def[C])
 			newModel.position = actualPos + Vector3(percentage * spineThicknessChart.get(I,0.35),0,0)
 			newModel.global_rotation_degrees = Vector3(randf_range(0,180 * 2),90,0)
 			

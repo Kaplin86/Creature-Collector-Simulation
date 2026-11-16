@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://b5l5snkqh6vda"]
+
+[ext_resource type="Script" uid="uid://dfcnudjibdeml" path="res://code/creatureGenerator/bodypart_ui_previewer.gd" id="1_5tqnc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dohp1"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.7539839, 0.75398386, 0.75398386, 0.22352941)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Panel" type="PanelContainer" unique_id=1310374647]
+offset_right = 224.0
+offset_bottom = 245.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dohp1")
+script = ExtResource("1_5tqnc")
+
+[node name="Vbox" type="VBoxContainer" parent="." unique_id=2051680220]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Vbox" unique_id=691363857]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Vbox/HBoxContainer2" unique_id=1832296407]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Body Part 1"
+
+[node name="Delete" type="Button" parent="Vbox/HBoxContainer2" unique_id=857491503]
+layout_mode = 2
+text = "Delete"
+
+[node name="HBoxContainer" type="FlowContainer" parent="Vbox" unique_id=612195179]
+layout_mode = 2
+
+[node name="Container" type="HBoxContainer" parent="Vbox/HBoxContainer" unique_id=1795546434]
+layout_mode = 2
+tooltip_text = "The HP contribution for the part"
+
+[node name="Label" type="Label" parent="Vbox/HBoxContainer/Container" unique_id=1976325572]
+layout_mode = 2
+text = "HP"
+
+[node name="HPSpin" type="SpinBox" parent="Vbox/HBoxContainer/Container" unique_id=2082264079]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Container2" type="HBoxContainer" parent="Vbox/HBoxContainer" unique_id=1953444657]
+layout_mode = 2
+tooltip_text = "The ATTACK contribution of the part"
+
+[node name="Label" type="Label" parent="Vbox/HBoxContainer/Container2" unique_id=1641040303]
+layout_mode = 2
+text = "ATK"
+
+[node name="ATKSpin" type="SpinBox" parent="Vbox/HBoxContainer/Container2" unique_id=618259707]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Container3" type="HBoxContainer" parent="Vbox/HBoxContainer" unique_id=1505616097]
+layout_mode = 2
+tooltip_text = "The DEFENSE contribution of the part"
+
+[node name="Label" type="Label" parent="Vbox/HBoxContainer/Container3" unique_id=1496386895]
+layout_mode = 2
+text = "DEF"
+
+[node name="DEFspin" type="SpinBox" parent="Vbox/HBoxContainer/Container3" unique_id=205625776]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Container4" type="HBoxContainer" parent="Vbox/HBoxContainer" unique_id=931175853]
+layout_mode = 2
+tooltip_text = "The SPECIAL ATTACK contribution of the part"
+
+[node name="Label" type="Label" parent="Vbox/HBoxContainer/Container4" unique_id=1600678381]
+layout_mode = 2
+text = "SpA"
+
+[node name="SpAspin" type="SpinBox" parent="Vbox/HBoxContainer/Container4" unique_id=894743713]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Container5" type="HBoxContainer" parent="Vbox/HBoxContainer" unique_id=134632793]
+layout_mode = 2
+tooltip_text = "The SPECIAL DEFENSE contribution of the part"
+
+[node name="Label" type="Label" parent="Vbox/HBoxContainer/Container5" unique_id=1856503589]
+layout_mode = 2
+text = "SpD"
+
+[node name="SpDspin" type="SpinBox" parent="Vbox/HBoxContainer/Container5" unique_id=1646946191]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Container6" type="HBoxContainer" parent="Vbox/HBoxContainer" unique_id=1136034971]
+layout_mode = 2
+tooltip_text = "The SPEED contribution of the part
+"
+
+[node name="Label" type="Label" parent="Vbox/HBoxContainer/Container6" unique_id=1789471904]
+layout_mode = 2
+text = "SP"
+
+[node name="SPSpin" type="SpinBox" parent="Vbox/HBoxContainer/Container6" unique_id=1697343568]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="Vbox/HBoxContainer2/Delete" to="." method="_on_delete_pressed"]
+[connection signal="value_changed" from="Vbox/HBoxContainer/Container/HPSpin" to="." method="onUpdate"]
+[connection signal="value_changed" from="Vbox/HBoxContainer/Container2/ATKSpin" to="." method="onUpdate"]
+[connection signal="value_changed" from="Vbox/HBoxContainer/Container3/DEFspin" to="." method="onUpdate"]
+[connection signal="value_changed" from="Vbox/HBoxContainer/Container4/SpAspin" to="." method="onUpdate"]
+[connection signal="value_changed" from="Vbox/HBoxContainer/Container5/SpDspin" to="." method="onUpdate"]
+[connection signal="value_changed" from="Vbox/HBoxContainer/Container6/SPSpin" to="." method="onUpdate"]

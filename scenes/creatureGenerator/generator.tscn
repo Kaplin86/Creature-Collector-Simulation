@@ -151,6 +151,55 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18511796, 0.52608687), 0.0, 0.0, 0, 0, Vector2(0.491833, 0.5391304), 0.0, 0.0, 0, 0, Vector2(0.63883847, 0.38260865), 0.0, 0.0, 0, 0, Vector2(0.8330309, 0.6130434), 0.0, 0.0, 0, 0, Vector2(1, 0.5391304), 0.0, 0.0, 0, 0]
 point_count = 6
 
+[sub_resource type="Resource" id="Resource_tp7xj"]
+script = ExtResource("2_qo5ej")
+SP = 17
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_d1aj5"]
+script = ExtResource("2_qo5ej")
+SP = 17
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_snwtf"]
+script = ExtResource("2_qo5ej")
+ATK = 70
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_eslcg"]
+script = ExtResource("2_qo5ej")
+ATK = 65
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_s0e6g"]
+script = ExtResource("2_qo5ej")
+HP = 5
+ATK = 5
+DEF = 5
+SpA = 5
+SpD = 5
+SP = 5
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Curve" id="Curve_g8s65"]
+_limits = [-1.0, 1.0, -0.01, 1.0]
+_data = [Vector2(-0.01, -1), 0.0, 0.0, 0, 0, Vector2(0.11464609, 0), 0.0, 0.0, 0, 0, Vector2(0.17513612, -0.0782609), 0.0, 0.0, 0, 0, Vector2(0.20079856, 0.26086956), 0.0, 0.0, 0, 0, Vector2(0.3767695, 0.27826083), 0.0, 0.0, 0, 0, Vector2(0.41526318, 0.04347825), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Curve" id="Curve_0wrkg"]
+_data = [Vector2(0, 0.052173853), 0.0, 0.0, 0, 0, Vector2(0.49909255, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_tjev5"]
+script = ExtResource("2_qo5ej")
+ATK = 90
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_2tj6f"]
+script = ExtResource("2_qo5ej")
+ATK = 90
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
 [sub_resource type="SphereMesh" id="SphereMesh_qo5ej"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mltvj"]
@@ -201,7 +250,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.396177, 0, 0)
 script = ExtResource("1_lotmn")
 seedVal = 6
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2")])
-typings = Array[int]([4, 4])
+typings = Array[int]([5, 5])
 spineMinMaxOffsetPerStat = 0.00072369099999999
 
 [node name="UprightExample" type="Node3D" parent="." unique_id=1463905224]
@@ -220,11 +269,48 @@ parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qp4so"), SubResourc
 typings = Array[int]([0, 0])
 spineMinMaxOffsetPerStat = 0.00072369099999999
 
-[node name="InsectoidExample" type="Node3D" parent="." unique_id=777381811]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.204887, 0, 0)
+[node name="InsectoidExample2" type="Node3D" parent="." unique_id=302391789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.146458, 0, 0)
 script = ExtResource("1_lotmn")
 seedVal = 10
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_84nvk"), SubResource("Resource_atoue"), SubResource("Resource_1d17x"), SubResource("Resource_atb77"), SubResource("Resource_servg"), SubResource("Resource_wojyp"), SubResource("Resource_vofoh"), SubResource("Resource_bxy70")])
+typings = Array[int]([0, 0])
+spineMinMaxOffsetPerStat = 0.00072369099999999
+I_Curve = SubResource("Curve_qo5ej")
+
+[node name="LegsExample" type="Node3D" parent="." unique_id=169695221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.735205, 0, 0)
+script = ExtResource("1_lotmn")
+seedVal = 11
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5")])
+typings = Array[int]([0, 0])
+spineMinMaxOffsetPerStat = 0.00072369099999999
+I_Curve = SubResource("Curve_qo5ej")
+
+[node name="Human" type="Node3D" parent="." unique_id=2093149582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.531975, 0, 0)
+script = ExtResource("1_lotmn")
+seedVal = 11
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg")])
+typings = Array[int]([0, 0])
+spineMinMaxOffsetPerStat = 0.00072369099999999
+I_Curve = SubResource("Curve_qo5ej")
+
+[node name="Human2" type="Node3D" parent="." unique_id=1025374154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.500256, 0, 0)
+script = ExtResource("1_lotmn")
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg"), SubResource("Resource_s0e6g")])
+typings = Array[int]([0, 0])
+spineMinMaxOffsetPerStat = 0.00072369099999999
+I_Curve = SubResource("Curve_qo5ej")
+TH_Curve = SubResource("Curve_g8s65")
+TH_Curve2 = SubResource("Curve_0wrkg")
+
+[node name="ArmsExaple" type="Node3D" parent="." unique_id=459219176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.48697, 0, 0)
+script = ExtResource("1_lotmn")
+seedVal = 10
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_tjev5"), SubResource("Resource_2tj6f")])
 typings = Array[int]([0, 0])
 spineMinMaxOffsetPerStat = 0.00072369099999999
 I_Curve = SubResource("Curve_qo5ej")

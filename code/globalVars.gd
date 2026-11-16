@@ -17,7 +17,7 @@ enum SimulationReproductionType {
 var reproductionType : SimulationReproductionType = SimulationReproductionType.TwoParents
 
 ## The Age required for an [Agent] to reproduce, per stat total. 
-var AgeToReproducePerStat := 2
+var AgeToReproducePerStat := 2.1
 
 ## An arbitrary value that i honestly dont really know what it means anymore lol.
 var HungerRate := 0.003
@@ -61,6 +61,7 @@ enum Typings {
 	Water, ##Water, which beats Fire and Robot.
 	Green, ##Green, which beats Water
 	Turqoise, ##Turqoise, which... sorry?
+	MysteryFlavor, ## A mysterious type, weak to everything
 	Robot ## Robot, which resists all except water
 	} 
 
@@ -79,6 +80,8 @@ func getMoveEffectiveness(moveTyping : Typings, recipientTyping : Typings) -> fl
 		return 2.0
 	if recipientTyping == Typings.Robot:
 		return 0.5
+	if recipientTyping == Typings.MysteryFlavor:
+		return 2.0
 	
 	return 1.0
 

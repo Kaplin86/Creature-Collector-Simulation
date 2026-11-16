@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://caqybi23psix3"]
+
+[ext_resource type="Script" uid="uid://dgj6pgauej7pv" path="res://code/creatureGenerator/generator.gd" id="1_m3rbe"]
+[ext_resource type="Script" uid="uid://c0krnp21mvj7g" path="res://code/creatureGenerator/generator_previewer.gd" id="1_rxfer"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_rxfer"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rxfer"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_fmasq"]
+sky_material = SubResource("ProceduralSkyMaterial_rxfer")
+
+[sub_resource type="Environment" id="Environment_5hwmg"]
+background_mode = 2
+sky = SubResource("Sky_fmasq")
+
+[sub_resource type="Resource" id="Resource_qp4so"]
+script = ExtResource("2_rxfer")
+HP = 123
+ATK = 100
+DEF = 62
+SpA = 97
+SpD = 81
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_actsh"]
+script = ExtResource("2_rxfer")
+SP = 17
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_o0skd"]
+script = ExtResource("2_rxfer")
+SP = 17
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_6fqji"]
+script = ExtResource("2_rxfer")
+SP = 17
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_g8x8n"]
+script = ExtResource("2_rxfer")
+SP = 17
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="BoxMesh" id="BoxMesh_fmasq"]
+size = Vector3(0.27819824, 1.8676758, 0.28955078)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5hwmg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3rbe"]
+content_margin_left = 7.0
+content_margin_top = 7.0
+content_margin_right = 7.0
+content_margin_bottom = 7.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Node3D" type="Node3D" unique_id=751172432]
+script = ExtResource("1_rxfer")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1195495475]
+environment = SubResource("Environment_5hwmg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=811716400]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="generator" type="Node3D" parent="." unique_id=1594186051]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063183546, 0, 0)
+script = ExtResource("1_m3rbe")
+seedVal = 8
+parts = Array[ExtResource("2_rxfer")]([SubResource("Resource_qp4so"), SubResource("Resource_actsh"), SubResource("Resource_o0skd"), SubResource("Resource_6fqji"), SubResource("Resource_g8x8n")])
+typings = Array[int]([0, 2])
+spineMinMaxOffsetPerStat = 0.00072369099999999
+
+[node name="PlaceholderLimbArmLeg" type="Node3D" parent="." unique_id=981992969]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.35749, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceholderLimbArmLeg" unique_id=979124668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90697515, 0)
+mesh = SubResource("BoxMesh_fmasq")
+
+[node name="PlaceholderLimbDefense" type="Node3D" parent="." unique_id=1626827985]
+unique_name_in_owner = true
+transform = Transform3D(2.2609625, 0, 0, 0, 4.1085253, 0, 0, 0, 0.113764405, 34.042633, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceholderLimbDefense" unique_id=148127750]
+transform = Transform3D(-2.1855693e-09, 0.074999996, 0, -0.049999993, -3.278354e-09, 0, 0, 0, 0.94, 0, 0, 0)
+mesh = SubResource("CylinderMesh_5hwmg")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1447982274]
+transform = Transform3D(-0.9403031, 0.036448527, -0.33838102, 0, 0.9942488, 0.10709498, 0.34033838, 0.100701734, -0.93489516, -2.0435855, 0.92917085, -6.526839)
+h_offset = 2.975
+
+[node name="ColorRect" type="PanelContainer" parent="." unique_id=1789245668]
+custom_minimum_size = Vector2(379, 633)
+custom_maximum_size = Vector2(438.32, 633)
+offset_left = 712.0
+offset_top = 8.0
+offset_right = 1144.0
+offset_bottom = 641.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m3rbe")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect" unique_id=236071995]
+layout_mode = 2
+
+[node name="MainVbox" type="VBoxContainer" parent="ColorRect/ScrollContainer" unique_id=1591935880]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CurrentBodyType" type="Label" parent="ColorRect/ScrollContainer/MainVbox" unique_id=1079084301]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CURRENT BODY TYPE: FISH!"
+
+[node name="HBoxContainer" type="HFlowContainer" parent="ColorRect/ScrollContainer/MainVbox" unique_id=1545821977]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/ScrollContainer/MainVbox/HBoxContainer" unique_id=1417268262]
+layout_mode = 2
+text = "Species"
+
+[node name="SpeciesSpinny" type="SpinBox" parent="ColorRect/ScrollContainer/MainVbox/HBoxContainer" unique_id=1112625939]
+layout_mode = 2
+
+[node name="TypingContainer" type="HBoxContainer" parent="ColorRect/ScrollContainer/MainVbox" unique_id=74210248]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Typing" type="Label" parent="ColorRect/ScrollContainer/MainVbox/TypingContainer" unique_id=2012902021]
+layout_mode = 2
+text = "Typing: "
+
+[node name="OptionButton" type="OptionButton" parent="ColorRect/ScrollContainer/MainVbox/TypingContainer" unique_id=1868311330]
+layout_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="ColorRect/ScrollContainer/MainVbox/TypingContainer" unique_id=188052611]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="ColorRect/ScrollContainer/MainVbox" unique_id=893979142]
+layout_mode = 2
+
+[node name="NewPart" type="Button" parent="ColorRect/ScrollContainer/MainVbox" unique_id=1314938685]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Part"
+
+[node name="RightTurn" type="Button" parent="." unique_id=781943751]
+offset_left = 672.0
+offset_top = 288.0
+offset_right = 704.0
+offset_bottom = 368.0
+text = ">"
+
+[node name="LeftTurn" type="Button" parent="." unique_id=226779111]
+offset_left = 64.0
+offset_top = 288.0
+offset_right = 96.0
+offset_bottom = 368.0
+text = "<"
+
+[connection signal="GenerationComplete" from="generator" to="." method="_on_generator_generation_complete"]
+[connection signal="value_changed" from="ColorRect/ScrollContainer/MainVbox/HBoxContainer/SpeciesSpinny" to="." method="_on_species_spinny_value_changed"]
+[connection signal="pressed" from="ColorRect/ScrollContainer/MainVbox/NewPart" to="." method="_on_new_part_pressed"]
+[connection signal="pressed" from="RightTurn" to="." method="_on_right_turn_pressed"]
+[connection signal="pressed" from="LeftTurn" to="." method="_on_left_turn_pressed"]
