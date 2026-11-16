@@ -93,6 +93,8 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 @export var F_Curve : Curve = preload("res://code/creatureGenerator/curves/fishCurve.tres")
 @export_subgroup("FourLegged")
 @export var FL_Curve : Curve = preload("res://code/creatureGenerator/curves/fourLeggedCurve.tres")
+@export_subgroup("Insectoid")
+@export var I_Curve : Curve
 
 var spineThicknessChart : Dictionary[int,float] = {}
 
@@ -162,6 +164,40 @@ func generate():
 		generateUprightTorsoBody(definePartsAsLimbs)
 	elif bodyTypeUsing == BodyTypes.FourLegged:
 		generateFourLeggedBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.Insectoid:
+		generateInsectoidBody(definePartsAsLimbs)
+
+func generateInsectoidBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
+	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1,180,0)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var partsList = limbDefinitions.keys()
+	
+	var legs : Array[BodyPart] = []
+	var legDef = limbDefinitions.duplicate()
+	print("first is ", legDef.find_key(BodyPartTypes.Leg))
+	while legDef.find_key(BodyPartTypes.Leg) != null:
+		var val = legDef.find_key(BodyPartTypes.Leg)
+		legs.append(val)
+		legDef.erase(val)
+		
+	
+	if legs.size() % 2:
+		legs.remove_at(-1)
+	
+	for I in legs:
+		partsList.erase(I)
+	
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	var legAssignment := assignLimbs_InsectLegPairs(properSpinePoints,legs)
+	addSpineThickness(properSpinePoints,limbAssignment,2,0.0,I_Curve)
+	renderSpineFromPoints(properSpinePoints)
+	
+	createHead(properSpinePoints[-1])
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
+	print(legAssignment)
+	renderLimbs(properSpinePoints,legAssignment,limbDefinitions)
 
 func generateGatheringBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
 	var properSpinePoints : Array[Vector3] = []
@@ -190,7 +226,6 @@ func generateGatheringBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes])
 			var count = 0
 			while !fine and count < 200:
 				count += 1
-				print(count)
 				fine = true
 				angle = Vector3(randf_range(0.0, TAU),randf_range(0.0, TAU),randf_range(0.0, TAU)).normalized()
 				for C in properSpinePoints:
@@ -208,7 +243,6 @@ func generateGatheringBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes])
 	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
 	
 	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
-	print(limbAssignment)
 	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
 
 func generateFourLeggedBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
@@ -396,7 +430,7 @@ func defineBodyType(limbDef : Dictionary[BodyPart,BodyPartTypes]) -> BodyTypes:
 		body = BodyTypes.Legs
 	elif legCount == 4:
 		body = BodyTypes.FourLegged
-	elif legCount in [6,8]:
+	elif legCount >= 4:
 		body = BodyTypes.Insectoid
 	
 	# Step 3
@@ -592,6 +626,31 @@ func assignLimbs_FourLegs(spinePoints : Array[Vector3], partsList : Array[BodyPa
 	
 	return jointToLimb
 
+func assignLimbs_InsectLegPairs(spinePoints : Array[Vector3], partsList : Array[BodyPart] = [null])-> Dictionary[int,Array]:
+	var jointToLimb : Dictionary[int,Array] = {}
+	var pairs = [[]]
+	for I in partsList:
+		var last = pairs[-1]
+		if last.size() != 2:
+			last.append(I)
+		else:
+			pairs.append([I])
+	
+	if pairs[-1].size() != 2:
+		pairs.remove_at(-1)
+	
+	var count = 0
+	print("pairs is ", pairs)
+	for I in pairs:
+		var percent = count / float(max(pairs.size() - 1,1))
+		var mult = lerp(0.2,0.9,percent)
+		print("key is ", int(spinePoints.size() * mult))
+		jointToLimb[int(spinePoints.size() * mult)] = I
+		count += 1
+	
+	return jointToLimb
+
+
 ## A very, VERY basic function for determining where each limb will be placed along the spine.
 func assignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
 	var limbsRemaining : Array[BodyPart] = parts.duplicate()
@@ -673,11 +732,11 @@ func renderLimbsWithRandomRotation(spinePoints : Array[Vector3], assignment : Di
 				newModel = %PlaceholderLimbArmLeg.duplicate()
 			elif def[C] in [BodyPartTypes.Other]:
 				newModel = %PlaceholderLimbDefense.duplicate()
+			
 			add_child(newModel)
 			newModel.position = actualPos + Vector3(percentage * spineThicknessChart.get(I,0.35),0,0)
-			newModel.global_rotation_degrees = Vector3(randf_range(0,180),90,0)
+			newModel.global_rotation_degrees = Vector3(randf_range(0,180 * 2),90,0)
 			
-		print(actualPos,placingParts)
 
 
 ## Place limbs at assigned spots.
@@ -708,7 +767,6 @@ func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array
 			if def[C] == BodyPartTypes.Other:
 				newModel.position -= Vector3(0,0,spineThicknessChart[I])
 			
-		print(actualPos,placingParts)
 
 func _ready():
 	generate()
