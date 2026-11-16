@@ -90,7 +90,9 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 @export_subgroup("Serpentine")
 @export var S_Curve : Curve = preload("res://code/creatureGenerator/curves/serpentineCurve.tres")
 @export_subgroup("Fish")
-@export var F_Curve : Curve
+@export var F_Curve : Curve = preload("res://code/creatureGenerator/curves/fishCurve.tres")
+@export_subgroup("FourLegged")
+@export var FL_Curve : Curve = preload("res://code/creatureGenerator/curves/fourLeggedCurve.tres")
 
 var spineThicknessChart : Dictionary[int,float] = {}
 
@@ -156,6 +158,10 @@ func generate():
 		generateFishBody(definePartsAsLimbs)
 	elif bodyTypeUsing == BodyTypes.Gathering:
 		generateGatheringBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.UprightTorso:
+		generateUprightTorsoBody(definePartsAsLimbs)
+	elif bodyTypeUsing == BodyTypes.FourLegged:
+		generateFourLeggedBody(definePartsAsLimbs)
 
 func generateGatheringBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
 	var properSpinePoints : Array[Vector3] = []
@@ -203,6 +209,41 @@ func generateGatheringBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes])
 	
 	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
 	print(limbAssignment)
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
+
+func generateFourLeggedBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
+	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1.3,180,0.06,FL_Curve)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var partsList = limbDefinitions.keys()
+	var legs : Array[BodyPart] = []
+	var legDef = limbDefinitions.duplicate()
+	for I in 4:
+		var val = legDef.find_key(BodyPartTypes.Leg)
+		legs.append(val)
+		partsList.erase(val)
+		legDef.erase(val)
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	var leglimbAssignment := assignLimbs_FourLegs(properSpinePoints,legs)
+	var limbThicknessAssignment = limbAssignment.duplicate()
+	limbThicknessAssignment.assign(leglimbAssignment)
+	addSpineThickness(properSpinePoints,limbThicknessAssignment,1,1.0)
+	renderSpineFromPoints(properSpinePoints)
+	
+	createHead(properSpinePoints[-1])
+	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
+	renderLimbs(properSpinePoints,leglimbAssignment,limbDefinitions)
+
+func generateUprightTorsoBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
+	var spinePoints := createSpinePoints(getAllStatTotal() / statTotalPerSpineSegment * 1,-90,0.12)
+	var properSpinePoints := sanitizeSpinePoints(spinePoints)
+	var partsList = limbDefinitions.keys()
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
+	addSpineThickness(properSpinePoints,limbAssignment,1,1.0)
+	renderSpineFromPoints(properSpinePoints)
+	
+	createHead(properSpinePoints[-1])
 	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
 
 func generateFishBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
@@ -395,7 +436,7 @@ func createSpinePoints(length, startingDir, curveMult, forceCurve : Curve = null
 	for I in length:
 		direction += (noise.get_noise_2dv(currentPosition) * PI * 0.8) * curveMult
 		if forceCurve:
-			direction += forceCurve.sample(I/length)
+			direction += forceCurve.sample(I/float(length))
 		currentPosition += Vector2.from_angle(direction) * spineDistPerSegment
 		points.append(currentPosition)
 	
@@ -537,6 +578,20 @@ func randomlyAssignLimbs(spinePoints : Array[Vector3], partsList : Array[BodyPar
 		jointToLimb.get_or_add(thinking,[]).append(new)
 	return jointToLimb
 
+func assignLimbs_FourLegs(spinePoints : Array[Vector3], partsList : Array[BodyPart] = [null])-> Dictionary[int,Array]:
+	var jointToLimb : Dictionary[int,Array] = {}
+	
+	var pair1 = [partsList[0],partsList[1]]
+	var pair2 = [partsList[2],partsList[3]]
+	
+	var pair1point = int(spinePoints.size() * 0.6)
+	jointToLimb[pair1point] = pair1
+	
+	var pair2point = int(spinePoints.size() * 0.1)
+	jointToLimb[pair2point] = pair2
+	
+	return jointToLimb
+
 ## A very, VERY basic function for determining where each limb will be placed along the spine.
 func assignLimbs(spinePoints : Array[Vector3]) -> Dictionary[int,Array]:
 	var limbsRemaining : Array[BodyPart] = parts.duplicate()
@@ -649,7 +704,7 @@ func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array
 			if def[C]  in [BodyPartTypes.Arm,BodyPartTypes.Wings]:
 				newModel.global_rotation_degrees = Vector3(percentage*-45,90,0)
 			if def[C] == BodyPartTypes.Leg:
-				newModel.position += Vector3(0,0,spineThicknessChart[I])
+				newModel.position += Vector3(0,0,0)
 			if def[C] == BodyPartTypes.Other:
 				newModel.position -= Vector3(0,0,spineThicknessChart[I])
 			

@@ -49,10 +49,6 @@ SpD = 65
 SP = 35
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
-[sub_resource type="Curve" id="Curve_qo5ej"]
-_data = [Vector2(0, 0.055084705), 0.0, 0.0, 0, 0, Vector2(0.5154265, 0.55508476), 0.0, 0.0, 0, 0, Vector2(1, 0.5466102), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [sub_resource type="Resource" id="Resource_nxbpk"]
 script = ExtResource("2_qo5ej")
 ATK = 90
@@ -61,6 +57,45 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 [sub_resource type="Resource" id="Resource_7d1b2"]
 script = ExtResource("2_qo5ej")
 ATK = 90
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_g8s65"]
+script = ExtResource("2_qo5ej")
+HP = 70
+ATK = 60
+DEF = 75
+SpA = 110
+SpD = 75
+SP = 90
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_qp4so"]
+script = ExtResource("2_qo5ej")
+HP = 123
+ATK = 100
+DEF = 62
+SpA = 97
+SpD = 81
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_actsh"]
+script = ExtResource("2_qo5ej")
+SP = 17
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_o0skd"]
+script = ExtResource("2_qo5ej")
+SP = 17
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_6fqji"]
+script = ExtResource("2_qo5ej")
+SP = 17
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_g8x8n"]
+script = ExtResource("2_qo5ej")
+SP = 17
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [sub_resource type="SphereMesh" id="SphereMesh_qo5ej"]
@@ -85,6 +120,8 @@ typings = Array[int]([0, 1])
 spineDistPerSegment = 1.0
 spineMinMaxOffsetPerStat = 0.00072369099999999
 S_Curve = null
+F_Curve = null
+FL_Curve = null
 
 [node name="CircularExample" type="Node3D" parent="." unique_id=1391007162]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4845276, 0, 0)
@@ -93,6 +130,8 @@ seedVal = 3
 typings = Array[int]([0, 1])
 spineMinMaxOffsetPerStat = 0.00072369099999999
 S_Curve = null
+F_Curve = null
+FL_Curve = null
 
 [node name="SerpentineExample" type="Node3D" parent="." unique_id=488969311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.267545, 0, 0)
@@ -101,6 +140,8 @@ seedVal = 5
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_lotmn"), SubResource("Resource_qo5ej"), SubResource("Resource_0wrkg")])
 typings = Array[int]([0, 1])
 spineMinMaxOffsetPerStat = 0.00072369099999999
+F_Curve = null
+FL_Curve = null
 
 [node name="FishExample" type="Node3D" parent="." unique_id=1069097314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.585747, 0, 0)
@@ -109,7 +150,7 @@ seedVal = 6
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_7en3s")])
 typings = Array[int]([0, 1])
 spineMinMaxOffsetPerStat = 0.00072369099999999
-F_Curve = SubResource("Curve_qo5ej")
+FL_Curve = null
 
 [node name="GatheringExample" type="Node3D" parent="." unique_id=1001207787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.396177, 0, 0)
@@ -118,7 +159,24 @@ seedVal = 6
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2")])
 typings = Array[int]([4, 4])
 spineMinMaxOffsetPerStat = 0.00072369099999999
-F_Curve = SubResource("Curve_qo5ej")
+FL_Curve = null
+
+[node name="UprightExample" type="Node3D" parent="." unique_id=1463905224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.040089, 0, 0)
+script = ExtResource("1_lotmn")
+seedVal = 8
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_g8s65")])
+typings = Array[int]([0, 0])
+spineMinMaxOffsetPerStat = 0.00072369099999999
+FL_Curve = null
+
+[node name="FourLeggedExample" type="Node3D" parent="." unique_id=1533705109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.23198, 0, 0)
+script = ExtResource("1_lotmn")
+seedVal = 8
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qp4so"), SubResource("Resource_actsh"), SubResource("Resource_o0skd"), SubResource("Resource_6fqji"), SubResource("Resource_g8x8n")])
+typings = Array[int]([0, 0])
+spineMinMaxOffsetPerStat = 0.00072369099999999
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1627548154]
 transform = Transform3D(0.92621386, -0.14668633, 0.34729102, 0, 0.9211998, 0.3890899, -0.37699857, -0.36038047, 0.85322803, 1.6203085, 1.8153368, 3.980801)
