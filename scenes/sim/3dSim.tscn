@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bdb7dy3guicwn"]
+
+[ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_s80ek"]
+[ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_3e45q"]
+[ext_resource type="Texture2D" uid="uid://csu200iyltqde" path="res://art/grass.png" id="3_wjc0w"]
+[ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/simulation/spatial_grid.gd" id="4_wjc0w"]
+[ext_resource type="Script" uid="uid://o63rtge8fqcl" path="res://code/simulation/species_handler.gd" id="5_otpd7"]
+
+[sub_resource type="Resource" id="Resource_7y0fa"]
+script = ExtResource("2_3e45q")
+HP = 20
+ATK = 20
+DEF = 20
+SpA = 20
+SpD = 20
+SP = 20
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wmejg"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_wjc0w"]
+sky_material = SubResource("ProceduralSkyMaterial_wmejg")
+
+[sub_resource type="Environment" id="Environment_otpd7"]
+background_mode = 2
+sky = SubResource("Sky_wjc0w")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mltvj"]
+size = Vector3(32, 0.063, 32)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmejg"]
+albedo_texture = ExtResource("3_wjc0w")
+uv1_scale = Vector3(0.555, 0.555, 0.555)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mltvj"]
+material = SubResource("StandardMaterial3D_wmejg")
+size = Vector2(32, 32)
+
+[node name="Node3D" type="Node3D" unique_id=415339642]
+script = ExtResource("1_s80ek")
+basicBodyPart = SubResource("Resource_7y0fa")
+sizeX = 3000
+sizeY = 3000
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1321377267]
+environment = SubResource("Environment_otpd7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1702227021]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=443484570]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=568034667]
+shape = SubResource("BoxShape3D_mltvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=696170853]
+mesh = SubResource("PlaneMesh_mltvj")
+
+[node name="BG" type="TextureRect" parent="." unique_id=4327221]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.26666668)
+offset_left = -5114.0
+offset_top = -4934.0
+offset_right = 5101.0
+offset_bottom = 4871.0
+stretch_mode = 1
+
+[node name="StaticBody2D" type="Node" parent="." unique_id=466642804]
+unique_name_in_owner = true
+
+[node name="SpatialGrid" type="Node3D" parent="." unique_id=1203341539]
+unique_name_in_owner = true
+script = ExtResource("4_wjc0w")
+
+[node name="SpeciesHandler" type="Node2D" parent="." unique_id=194711763]
+unique_name_in_owner = true
+script = ExtResource("5_otpd7")

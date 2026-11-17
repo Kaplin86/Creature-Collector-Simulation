@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var simMinX = 0
 @export var simMaxX = 0
@@ -35,8 +35,7 @@ func _ready():
 	
 	
 	#@await get_tree().process_frame
-	%BG.global_position = Vector2(simMinX,simMinY)
-	%BG.size = Vector2(abs(simMinX - simMaxX),abs(simMinY - simMaxY))
+	$StaticBody3D/MeshInstance3D.mesh.size = Vector2(sizeX,sizeY)
 	
 	var TopWall = CollisionShape2D.new()
 	var BottomWall = CollisionShape2D.new()
@@ -71,13 +70,13 @@ func _ready():
 	
 	for I in range(startingTreeCount):
 		var newTree = FruitSpawningTree.new()
-		newTree.global_position = Vector2(randf_range(simMinX,simMaxX),randf_range(simMinY,simMaxY))
+		newTree.global_position = Vector3(randf_range(simMinX,simMaxX),0,randf_range(simMinY,simMaxY))
 		add_child(newTree)
 		for C in range(7):
 			newTree.spawnFruit()
 	
 	for I in range(startingSpeciesCount):
-		var randomPosition = Vector2(randf_range(simMinX,simMaxX),randf_range(simMinY,simMaxY))
+		var randomPosition = Vector3(randf_range(simMinX,simMaxX),0,randf_range(simMinY,simMaxY))
 		var newAgent = Agent.new()
 		for C in startingGenes: newAgent.genes.append(C.duplicate(true))
 		var part1 = basicBodyPart.duplicate(true)
@@ -87,7 +86,7 @@ func _ready():
 			newAgent.mutateAgent(newAgent)
 		newAgent.global_position = randomPosition
 		newAgent.species = %SpeciesHandler.checkChildIfNewSpecies(newAgent,-5)
-		newAgent.modulate = %SpeciesHandler.Species[newAgent.species].color
+		#newAgent.modulate = %SpeciesHandler.Species[newAgent.species].color
 		for C in range(countPerGroup):
 			var dupe = newAgent.duplicate()
 			dupe.level = randi_range(minStartingLevel,maxStartingLevel)

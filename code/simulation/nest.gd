@@ -1,4 +1,4 @@
-extends Node2D
+extends Node3D
 class_name Nest
 
 ## A nest object. Belongs to a specific species
@@ -22,6 +22,3 @@ func _process(delta):
 
 func _exit_tree():
 	_spatialGrid.removeEntity(self)
-
-func _draw():
-	draw_string(ThemeDB.fallback_font,Vector2.ZERO - Vector2(100,0),str(species),HORIZONTAL_ALIGNMENT_CENTER,200)

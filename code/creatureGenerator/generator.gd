@@ -208,6 +208,7 @@ func generateTailedHumanBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes
 		armDef.erase(val)
 	
 	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Torso))
+	partsList.erase(limbDefinitions.find_key(BodyPartTypes.Tail))
 	var limbAssignment := randomlyAssignLimbs(properSpinePoints,partsList)
 	var leglimbAssignment : Dictionary[int,Array]= {int(0.5 * properSpinePoints.size()):legs}
 	var armLimbAssignment : Dictionary[int,Array] = {int(0.7 * properSpinePoints.size()):arms}

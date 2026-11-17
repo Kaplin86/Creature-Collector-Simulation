@@ -181,13 +181,22 @@ SpD = 5
 SP = 5
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
-[sub_resource type="Curve" id="Curve_g8s65"]
+[sub_resource type="Curve" id="Curve_7en3s"]
 _limits = [-1.0, 1.0, -0.01, 1.0]
 _data = [Vector2(-0.01, -1), 0.0, 0.0, 0, 0, Vector2(0.11464609, 0), 0.0, 0.0, 0, 0, Vector2(0.17513612, -0.0782609), 0.0, 0.0, 0, 0, Vector2(0.20079856, 0.26086956), 0.0, 0.0, 0, 0, Vector2(0.3767695, 0.27826083), 0.0, 0.0, 0, 0, Vector2(0.41526318, 0.04347825), 0.0, 0.0, 0, 0]
 point_count = 6
 
+[sub_resource type="Curve" id="Curve_nxbpk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49909255, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_g8s65"]
+_limits = [-1.0, 1.0, -0.01, 1.0]
+_data = [Vector2(-0.01, -1), 0.0, 0.0, 0, 0, Vector2(0.11464609, 0), 0.0, 0.0, 0, 0, Vector2(0.17513612, -0.0782609), 0.0, 0.0, 0, 0, Vector2(0.20079856, 0.26086956), 0.0, 0.0, 0, 0, Vector2(0.3767695, 0.27826083), 0.0, 0.0, 0, 0, Vector2(0.41526318, 0.04347825), 0.0, 0.0, 0, 0, Vector2(0.47575316, 0.3043478), 0.0, 0.0, 0, 0, Vector2(0.50324863, -0.23478258), 0.0, 0.0, 0, 0]
+point_count = 8
+
 [sub_resource type="Curve" id="Curve_0wrkg"]
-_data = [Vector2(0, 0.052173853), 0.0, 0.0, 0, 0, Vector2(0.49909255, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49909255, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_tjev5"]
@@ -298,6 +307,17 @@ I_Curve = SubResource("Curve_qo5ej")
 
 [node name="Human2" type="Node3D" parent="." unique_id=1025374154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.500256, 0, 0)
+script = ExtResource("1_lotmn")
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg"), SubResource("Resource_s0e6g")])
+typings = Array[int]([0, 0])
+spineMinMaxOffsetPerStat = 0.00072369099999999
+I_Curve = SubResource("Curve_qo5ej")
+TH_Curve = SubResource("Curve_7en3s")
+TH_Curve2 = SubResource("Curve_nxbpk")
+
+[node name="Human3" type="Node3D" parent="." unique_id=594105267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.427143, 0, 0)
+visible = false
 script = ExtResource("1_lotmn")
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg"), SubResource("Resource_s0e6g")])
 typings = Array[int]([0, 0])

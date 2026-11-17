@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Sprite3D
 class_name Fruit
 
 ## A edible, fruit object.

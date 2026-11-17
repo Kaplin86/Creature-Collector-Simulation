@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody3D
 class_name Agent
 
 ## A simulation agent. Has [member HP], [member energy], [member parts], and a lot more. 
@@ -84,7 +84,7 @@ var lastPerformedGene : GDScript
 
 
 ## The current location the agent is walking to.
-var targetLocation : Vector2
+var targetLocation : Vector3
 
 ## Object that the creature is holding.
 var holdingObject : Node = null 
@@ -150,22 +150,25 @@ func drop() -> bool:
 
 var _texture = preload("res://art/50.png")
 
-@onready var ForwardRaycast : RayCast2D = RayCast2D.new()
+@onready var ForwardRaycast : RayCast3D = RayCast3D.new()
 
 func _ready():
 	updateLevelHashes()
 	
 	add_to_group("creature")
 	
-	var newSprite = Sprite2D.new()
-	newSprite.texture = _texture
-	add_child(newSprite)
+	var newMesh = MeshInstance3D.new()
+	add_child(newMesh)
+	var actualmesh := SphereMesh.new()
+	newMesh.mesh = actualmesh
+	actualmesh.radius = 3
+	
 	
 	HP = _HPHash
 	
 	_spatialGrid.addEntity(self)
 	
-	targetLocation = global_position + Vector2(randf_range(-50,50),randf_range(-50,50))
+	targetLocation = global_position + Vector3(randf_range(-50,50),0,randf_range(-50,50))
 	
 	ForwardRaycast.collision_mask = 2
 	add_child(ForwardRaycast)
@@ -332,10 +335,10 @@ func _process(delta):
 			
 			if global_position.distance_to(targetLocation) < 0.01:
 				global_position = targetLocation
-				velocity = Vector2.ZERO
+				velocity = Vector3.ZERO
 			
 		else:
-			velocity = Vector2.ZERO
+			velocity = Vector3.ZERO
 		
 		_spatialGrid.updateEntity(self,oldPos)
 		
@@ -361,14 +364,14 @@ func getAgeMetric() -> float:
 ## Most gene behaviors will call this if they fail.
 func setWanderTarget() -> void:
 	if randi_range(0,20) == 0:
-		var awayDirection = (global_position - global_position + Vector2(randf_range(-_SPHash * 2,_SPHash * 2),randf_range(-_SPHash * 2,_SPHash * 2))).normalized()
+		var awayDirection = (global_position - global_position + Vector3(randf_range(-_SPHash * 2,_SPHash * 2),0,randf_range(-_SPHash * 2,_SPHash * 2))).normalized()
 	
 		var possibleAngles = [0,30,-30,60,-60,90,-90,135,-135,180]
 		var bestDirection = awayDirection
 		var foundPath = false
 		
 		for angle in possibleAngles:
-			var testDirection = awayDirection.rotated(deg_to_rad(angle))
+			var testDirection = awayDirection.rotated(Vector3.UP,deg_to_rad(angle))
 			
 			ForwardRaycast.target_position = testDirection * 40
 			ForwardRaycast.force_raycast_update()
@@ -405,7 +408,7 @@ func soloReproduction() -> Agent:
 	mutateAgent(newAgent)
 
 	get_parent().add_child(newAgent)
-	newAgent.modulate = modulate
+	#newAgent.modulate = modulate
 	
 	newAgent.updateSpecies()
 	
@@ -415,7 +418,7 @@ func soloReproduction() -> Agent:
 ## Checks with [SpeciesHandler] to determine what class this creature is, and updates modulate accordingly.
 func updateSpecies():
 	species = _speciesHandler.checkChildIfNewSpecies(self,species)
-	modulate = _speciesHandler.Species[species].color
+	#modulate = _speciesHandler.Species[species].color
 
 ## Mutates the inputted agent.
 func mutateAgent(agent : Agent) -> void:
@@ -510,22 +513,22 @@ func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 	mutateAgent(newAgent)
 
 	get_parent().add_child(newAgent)
-	newAgent.modulate = modulate
+	#newAgent.modulate = modulate
 	
 	newAgent.species = _speciesHandler.checkChildIfNewSpecies(newAgent,species)
 	
 	
-	newAgent.modulate = _speciesHandler.Species[newAgent.species].color
+	#newAgent.modulate = _speciesHandler.Species[newAgent.species].color
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
 	
 	return newAgent
 
 ## Looks in the vision, calling [SpatialGrid], and returns all of the found nodes.
-func lookInVision() -> Array[Node2D]:
+func lookInVision() -> Array[Node3D]:
 	
 	var VisionDistance = getVisionDist()
-	var foundNodes : Array[Node2D] = []
+	var foundNodes : Array[Node3D] = []
 	var nodes = _spatialGrid.getEntitiesUsingDist(global_position,VisionDistance)
 	
 	for I in nodes:
@@ -549,11 +552,11 @@ func lookInVision() -> Array[Node2D]:
 	return foundNodes
 
 
-func _byDistance(a : Node2D,b : Node2D):
+func _byDistance(a : Node3D,b : Node3D):
 	return a.global_position.distance_squared_to(global_position) < b.global_position.distance_squared_to(global_position)
 
 ## Looks for food in vision, and returns the nearest one. This can either return a [Fruit], or another [Agent]
-func lookForFood() -> Node2D:
+func lookForFood() -> Node3D:
 	var results = lookInVision()
 	for I in results:
 		if dietType in [Diets.Herbivore,Diets.Omnivore]:
