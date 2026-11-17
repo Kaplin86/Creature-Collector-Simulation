@@ -1,15 +1,14 @@
 extends Node3D
 class_name FruitSpawningTree
 
-var fruitTexture = preload("res://art/fruit.png")
-var treeTexture = preload("res://art/tree.png")
+
+var treeModel = preload("res://scenes/sim/tree.tscn")
+var fruitModel = preload("res://scenes/sim/fruit.tscn")
 
 var fruits = []
 
 func _ready():
-	var newTexture = Sprite2D.new()
-	newTexture.texture = treeTexture
-	newTexture.scale =  Vector2(0.183,0.183)
+	var newTexture = treeModel.instantiate()
 	add_child(newTexture)
 
 var dt = 0.0
@@ -28,6 +27,7 @@ func spawnFruit():
 		var newFruit = Fruit.new()
 		add_sibling(newFruit)
 		newFruit.global_position = global_position + Vector3(randi_range(-200,200),0,randi_range(-200,200))
-		newFruit.texture = fruitTexture
-		newFruit.scale = Vector3(0.183,0.138,0.183)
+		var newNesh = fruitModel.instantiate()
+		newFruit.add_child(newNesh)
+		#newFruit.scale = Vector3(0.183,0.138,0.183)
 		fruits.append(newFruit)

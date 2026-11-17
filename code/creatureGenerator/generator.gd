@@ -103,6 +103,20 @@ var spineThicknessChart : Dictionary[int,float] = {}
 
 signal GenerationComplete ( bodyType : BodyTypes, partDefinitions : Dictionary[BodyPart,BodyPartTypes])
 
+func get_AABB() -> AABB:
+	var combinedAABB := AABB()
+	
+	var first = true
+	for I : VisualInstance3D in find_children("*","VisualInstance3D"):
+		var box = I.get_aabb() * I.global_transform
+		if first:
+			combinedAABB = box
+			first = false
+		else:
+			combinedAABB = combinedAABB.merge(box)
+	
+	return combinedAABB
+
 func getStatTotal(stat) -> int:
 	var sum = 0
 	for I in parts:
@@ -869,11 +883,13 @@ func renderLimbsWithRandomRotation(spinePoints : Array[Vector3], assignment : Di
 				percentage = 0
 			
 			var newModel
-			if def[C] in [BodyPartTypes.Arm,BodyPartTypes.Leg,BodyPartTypes.Wings,BodyPartTypes.Tail]:
-				newModel = %PlaceholderLimbArmLeg.duplicate()
-			elif def[C] in [BodyPartTypes.Other,BodyPartTypes.Torso]:
-				newModel = %PlaceholderLimbDefense.duplicate()
+			#if def[C] in [BodyPartTypes.Arm,BodyPartTypes.Leg,BodyPartTypes.Wings,BodyPartTypes.Tail]:
+			#	newModel = %PlaceholderLimbArmLeg.duplicate()
+			#elif def[C] in [BodyPartTypes.Other,BodyPartTypes.Torso]:
+			#	newModel = %PlaceholderLimbDefense.duplicate()
 			
+			
+			newModel = load("res://scenes/creatureGenerator/armLegPart.tscn").instantiate()
 			add_child(newModel)
 			print(def[C])
 			newModel.position = actualPos + Vector3(percentage * spineThicknessChart.get(I,0.35),0,0)

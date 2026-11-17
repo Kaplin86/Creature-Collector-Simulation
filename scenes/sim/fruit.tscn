@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ctd0vr8c48c1i"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4kxuq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mti6b"]
+albedo_color = Color(1, 0.21176471, 0.3764706, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4kxuq"]
+top_radius = 0.19873047
+bottom_radius = 0.19873047
+height = 1.4580078
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm1bc"]
+albedo_color = Color(0.48235294, 0.24313726, 0.47058824, 1)
+
+[node name="Node3D" type="Node3D" unique_id=445177493]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2006590846]
+transform = Transform3D(0.9307987, 0.36553216, 0, -0.36553216, 0.9307987, 0, 0, 0, 1, 0.24393153, 0, 0)
+mesh = SubResource("CapsuleMesh_4kxuq")
+surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1376434222]
+transform = Transform3D(0.9167641, -0.39942914, 0, 0.39942914, 0.9167641, 0, 0, 0, 1, -0.24772072, 0, 0)
+mesh = SubResource("CapsuleMesh_4kxuq")
+surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1794119608]
+transform = Transform3D(-4.0686505e-08, -1.5977918e-08, 1, -0.36553216, 0.9307987, 0, -0.9307987, -0.36553216, -4.371139e-08, -0.056540266, 0, -0.19118047)
+mesh = SubResource("CapsuleMesh_4kxuq")
+surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=399022609]
+transform = Transform3D(-4.007303e-08, 1.7459602e-08, 1, 0.39942914, 0.9167641, 0, -0.9167641, 0.39942914, -4.371139e-08, 0.05275108, 0, 0.19118047)
+mesh = SubResource("CapsuleMesh_4kxuq")
+surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=787855636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64916563, 0)
+mesh = SubResource("CylinderMesh_4kxuq")
+surface_material_override/0 = SubResource("StandardMaterial3D_mm1bc")

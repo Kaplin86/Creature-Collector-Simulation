@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgj6pgauej7pv" path="res://code/creatureGenerator/generator.gd" id="1_lotmn"]
 [ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_qo5ej"]
+[ext_resource type="PackedScene" uid="uid://dx3x6aed3pnb3" path="res://scenes/creatureGenerator/armLegPart.tscn" id="3_0wrkg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qo5ej"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -211,9 +212,6 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [sub_resource type="SphereMesh" id="SphereMesh_qo5ej"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_mltvj"]
-size = Vector3(0.27819824, 1.8676758, 0.28955078)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_4kxuq"]
 
 [node name="Node3D" type="Node3D" unique_id=510493856]
@@ -342,13 +340,9 @@ transform = Transform3D(0.92621386, -0.14668633, 0.34729102, 0, 0.9211998, 0.389
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.711058, 0, 0)
 mesh = SubResource("SphereMesh_qo5ej")
 
-[node name="PlaceholderLimbArmLeg" type="Node3D" parent="." unique_id=2023947803]
+[node name="PlaceholderLimbArmLeg" parent="." unique_id=1170912100 instance=ExtResource("3_0wrkg")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.493964, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceholderLimbArmLeg" unique_id=905600667]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90697515, 0)
-mesh = SubResource("BoxMesh_mltvj")
 
 [node name="PlaceholderLimbDefense" type="Node3D" parent="." unique_id=2006970701]
 unique_name_in_owner = true

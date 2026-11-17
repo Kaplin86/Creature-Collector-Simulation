@@ -66,15 +66,25 @@ func _ready():
 	%StaticBody2D.add_child(RightWall)
 	
 	
-	var move = Move.new()
+	
 	
 	for I in range(startingTreeCount):
 		var newTree = FruitSpawningTree.new()
-		newTree.global_position = Vector3(randf_range(simMinX,simMaxX),0,randf_range(simMinY,simMaxY))
 		add_child(newTree)
+		newTree.global_position = Vector3(randf_range(simMinX,simMaxX),0,randf_range(simMinY,simMaxY))
 		for C in range(7):
 			newTree.spawnFruit()
 	
+	spawnCreatures()
+	
+	for I in range(6):
+		while get_tree().get_nodes_in_group("creature").size() != 0:
+			await get_tree().process_frame
+		spawnCreatures()
+
+func spawnCreatures():
+	
+	var move = Move.new()
 	for I in range(startingSpeciesCount):
 		var randomPosition = Vector3(randf_range(simMinX,simMaxX),0,randf_range(simMinY,simMaxY))
 		var newAgent = Agent.new()
@@ -84,7 +94,7 @@ func _ready():
 		newAgent.moveSet.append(move.duplicate(true))
 		for C in range(mutationLevel):
 			newAgent.mutateAgent(newAgent)
-		newAgent.global_position = randomPosition
+		#newAgent.global_position = randomPosition
 		newAgent.species = %SpeciesHandler.checkChildIfNewSpecies(newAgent,-5)
 		#newAgent.modulate = %SpeciesHandler.Species[newAgent.species].color
 		for C in range(countPerGroup):
@@ -92,13 +102,12 @@ func _ready():
 			dupe.level = randi_range(minStartingLevel,maxStartingLevel)
 			dupe.age = dupe.level * 20
 			add_child(dupe)
+			dupe.global_position = randomPosition
 			
 		var newNest = Nest.new()
 		newNest.species = newAgent.species
-		newNest.global_position = randomPosition
 		add_child(newNest)
-	
-	
+		newNest.global_position = randomPosition
 
 func _process(delta):
 	#print(%SpatialGrid.getCell(get_global_mouse_position()))

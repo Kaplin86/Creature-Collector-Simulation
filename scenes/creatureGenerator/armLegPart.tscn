@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dx3x6aed3pnb3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mltvj"]
+size = Vector3(0.27819824, 1.8676758, 0.28955078)
+
+[node name="PlaceholderLimbArmLeg" type="Node3D" unique_id=1170912100]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1895702126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90697515, 0)
+mesh = SubResource("BoxMesh_mltvj")

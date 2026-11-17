@@ -130,7 +130,7 @@ func calculateBST() -> int:
 	return sum
 
 ## Picks up a object
-func pickup(node : Node2D) -> bool:
+func pickup(node : Node3D) -> bool:
 	if holdingObject == null:
 		var new = node.duplicate()
 		holdingObject = new
@@ -141,16 +141,20 @@ func pickup(node : Node2D) -> bool:
 ## Drops an object
 func drop() -> bool:
 	if holdingObject:
-		holdingObject.global_position = global_position
 		add_sibling(holdingObject)
+		holdingObject.global_position = global_position
 		holdingObject = null
 		return true
 	return false
 
 
-var _texture = preload("res://art/50.png")
 
 @onready var ForwardRaycast : RayCast3D = RayCast3D.new()
+
+@onready var visualGenerator : = CreatureGeneratorNode.new()
+var _hasGenerated = false
+
+@onready var visualIndicator := Sprite3D.new()
 
 func _ready():
 	updateLevelHashes()
@@ -183,6 +187,23 @@ func _ready():
 	if genes == []:
 		genes.append(BasicHuntingGene.new())
 		genes.append(BasicMateGene.new())
+	
+	add_child(visualIndicator)
+	visualIndicator.pixel_size = 0.002
+	visualIndicator.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	visualIndicator.fixed_size = true
+	visualIndicator.visibility_range_begin = 76.56
+	visualIndicator.texture = load("res://art/50.png")
+	
+
+func doVisual():
+	add_child(visualGenerator)
+	visualGenerator.seedVal = species
+	visualGenerator.parts = parts
+	visualGenerator.typings = getTyping()
+	visualGenerator.generate()
+	visualGenerator.global_position.y += visualGenerator.get_AABB().size.y
+	_hasGenerated = true
 
 
 ## To save on resources, passively needed values (such as BST, HP, Special Defense and Speed) are
@@ -311,7 +332,8 @@ func _process(delta):
 	
 	
 	ageAndEnergyTick(delta)
-	
+	if targetLocation != global_position:
+		look_at(targetLocation)
 	
 	var currentAction : BasicBehaviorGene = determineCurrentAction()
 	currentAction.act(self)
@@ -333,12 +355,15 @@ func _process(delta):
 			
 			move_and_collide(motion)
 			
+			
 			if global_position.distance_to(targetLocation) < 0.01:
 				global_position = targetLocation
 				velocity = Vector3.ZERO
 			
 		else:
 			velocity = Vector3.ZERO
+		
+		
 		
 		_spatialGrid.updateEntity(self,oldPos)
 		
@@ -418,7 +443,7 @@ func soloReproduction() -> Agent:
 ## Checks with [SpeciesHandler] to determine what class this creature is, and updates modulate accordingly.
 func updateSpecies():
 	species = _speciesHandler.checkChildIfNewSpecies(self,species)
-	#modulate = _speciesHandler.Species[species].color
+	visualIndicator.modulate = _speciesHandler.Species[species].color
 
 ## Mutates the inputted agent.
 func mutateAgent(agent : Agent) -> void:
@@ -573,9 +598,9 @@ func lookForFood() -> Node3D:
 	return null
 
 ## The same as [member lookForFood], except it returns all food options
-func lookForFoods() -> Array[Node2D]:
+func lookForFoods() -> Array[Node3D]:
 	var results = lookInVision()
-	var final : Array[Node2D] = []
+	var final : Array[Node3D] = []
 	for I in results:
 		if dietType in [Diets.Herbivore,Diets.Omnivore]:
 			if I is Fruit:
@@ -593,7 +618,7 @@ func lookForFoods() -> Array[Node2D]:
 
 
 ## Looks for predators in vision, and returns the nearest one.
-func lookForPredator() -> Node2D:
+func lookForPredator() -> Node3D:
 	var results = lookInVision()
 	for I in results:
 		if I is Agent:
