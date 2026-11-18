@@ -78,11 +78,27 @@ sky = SubResource("Sky_wjc0w")
 [sub_resource type="BoxShape3D" id="BoxShape3D_mltvj"]
 size = Vector3(32, 0.063, 32)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gffb6"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmejg"]
+next_pass = SubResource("StandardMaterial3D_gffb6")
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_wjc0w")
 uv1_scale = Vector3(0.555, 0.555, 0.555)
 uv1_triplanar = true
 texture_filter = 0
+stencil_mode = 2
+stencil_flags = 2
+stencil_outline_thickness = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mltvj"]
 material = SubResource("StandardMaterial3D_wmejg")

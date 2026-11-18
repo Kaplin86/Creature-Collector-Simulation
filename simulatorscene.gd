@@ -77,12 +77,12 @@ func _ready():
 		for C in range(7):
 			newTree.spawnFruit()
 	
-	spawnCreatures()
+	#spawnCreatures()
 	
 	makeGroundMesh()
 	
 	for I in range(6):
-		while get_tree().get_nodes_in_group("creature").size() != 0:
+		while get_tree().get_nodes_in_group("creature").size() != 1:
 			await get_tree().process_frame
 		spawnCreatures()
 	
@@ -128,34 +128,26 @@ func _on_button_2_pressed():
 
 func makeGroundMesh():
 	
-	var sampleMult = 10.0
-	
-	var vertices = PackedVector3Array()
-	var newMesh := ArrayMesh.new()
-	var grid : Dictionary[Vector2i,float] = {}
-	for X in range(sizeX / sampleMult):
-		for Y in range(sizeY / sampleMult):
-			grid[Vector2i(X * sampleMult,Y * sampleMult)] = groundNoise.get_noise_2d(X * sampleMult,Y * sampleMult)
-	
-	print(grid)
-	
-	for X in range(sizeX / sampleMult):
-		for Y in range(sizeY / sampleMult):
-			var usingX = int(X * sampleMult)
-			var usingY = int(Y * sampleMult)
-			var vector : Vector2i = Vector2i(usingX,usingY)
-			var points = [Vector3(usingX,grid[vector],usingY)]
-			if grid.has(vector + Vector2i(0,1)):
-				points.append(Vector3(usingX,grid[vector + Vector2i(0,sampleMult)],usingY + sampleMult))
-			if grid.has(vector + Vector2i(1,0)):
-				points.append(Vector3(usingX + sampleMult,grid[vector + Vector2i(sampleMult,0)],usingY))
-			if points.size() >= 3:
-				for I in points:
-					vertices.append(I)
-	
-	var arrays = []
-	arrays.resize(Mesh.ARRAY_MAX)
-	arrays[Mesh.ARRAY_VERTEX] = vertices
-	
-	newMesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-	$StaticBody3D/MeshInstance3D.mesh = newMesh
+	var groundMult = 30.0
+	var subdivisionCount = 20.0
+	#var normal = Vector3(1,0,0)
+	var actualMesh = SurfaceTool.new()
+	actualMesh.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for Xval in range(int(sizeX / subdivisionCount)):
+		for Yval in range(int(sizeY / subdivisionCount)):
+			var realX = Xval * subdivisionCount
+			var realY = Yval * subdivisionCount
+			var otherRealY = (Yval + 1) * subdivisionCount
+			var otherRealX = (Xval + 1) * subdivisionCount
+			
+			var chosenColor = Color.RED
+			
+			actualMesh.add_vertex(Vector3(realX,groundMult * groundNoise.get_noise_2d(realX,otherRealY),otherRealY))
+			actualMesh.add_vertex(Vector3(realX,groundMult * groundNoise.get_noise_2d(realX,realY),realY))
+			actualMesh.add_vertex(Vector3(otherRealX,groundMult * groundNoise.get_noise_2d(otherRealX,realY),realY))
+			
+			actualMesh.add_vertex(Vector3(otherRealX,groundMult * groundNoise.get_noise_2d(otherRealX,otherRealY),otherRealY))
+			actualMesh.add_vertex(Vector3(realX,groundMult * groundNoise.get_noise_2d(realX,otherRealY),otherRealY))
+			actualMesh.add_vertex(Vector3(otherRealX,groundMult * groundNoise.get_noise_2d(otherRealX,realY),realY))
+	actualMesh.generate_normals()
+	$StaticBody3D/MeshInstance3D.mesh = actualMesh.commit()
