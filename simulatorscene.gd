@@ -22,7 +22,12 @@ extends Node
 @export var minStartingLevel = 5
 @export var maxStartingLevel = 15
 
-@export var groundNoise : FastNoiseLite
+@export var topGround : FastNoiseLite
+@export var secondaryGroundNoise : FastNoiseLite
+@export var BiomeNoiseTemperature : FastNoiseLite
+@export var BiomeNoiseHumidity : FastNoiseLite
+
+@export var biomeTypingRanges : Dictionary[GlobalVars.Typings,Vector2]
 
 func _ready():
 	
@@ -128,11 +133,12 @@ func _on_button_2_pressed():
 
 func makeGroundMesh():
 	
-	var groundMult = 30.0
+	
 	var subdivisionCount = 20.0
 	#var normal = Vector3(1,0,0)
 	var actualMesh = SurfaceTool.new()
 	actualMesh.begin(Mesh.PRIMITIVE_TRIANGLES)
+	
 	for Xval in range(int(sizeX / subdivisionCount)):
 		for Yval in range(int(sizeY / subdivisionCount)):
 			var realX = Xval * subdivisionCount
@@ -140,14 +146,55 @@ func makeGroundMesh():
 			var otherRealY = (Yval + 1) * subdivisionCount
 			var otherRealX = (Xval + 1) * subdivisionCount
 			
-			var chosenColor = Color.RED
+			var chosenColor = Color.WHITE
+			var biome = getBiomeAtPoint(Vector2(realX,realY))
+			if biome == GlobalVars.Typings.Fire:
+				chosenColor = Color.RED
+			elif biome == GlobalVars.Typings.Water:
+				chosenColor = Color.BLUE
+			elif biome == GlobalVars.Typings.Green:
+				chosenColor = Color.GREEN
+			elif biome == GlobalVars.Typings.Robot:
+				chosenColor = Color.BLACK 
+			print(biome)
 			
-			actualMesh.add_vertex(Vector3(realX,groundMult * groundNoise.get_noise_2d(realX,otherRealY),otherRealY))
-			actualMesh.add_vertex(Vector3(realX,groundMult * groundNoise.get_noise_2d(realX,realY),realY))
-			actualMesh.add_vertex(Vector3(otherRealX,groundMult * groundNoise.get_noise_2d(otherRealX,realY),realY))
 			
-			actualMesh.add_vertex(Vector3(otherRealX,groundMult * groundNoise.get_noise_2d(otherRealX,otherRealY),otherRealY))
-			actualMesh.add_vertex(Vector3(realX,groundMult * groundNoise.get_noise_2d(realX,otherRealY),otherRealY))
-			actualMesh.add_vertex(Vector3(otherRealX,groundMult * groundNoise.get_noise_2d(otherRealX,realY),realY))
+			actualMesh.set_color(chosenColor)
+			actualMesh.add_vertex(Vector3(realX,getGroundValueAtPoint(realX,otherRealY),otherRealY))
+			actualMesh.set_color(chosenColor)
+			actualMesh.add_vertex(Vector3(realX, getGroundValueAtPoint(realX,realY),realY))
+			actualMesh.set_color(chosenColor)
+			actualMesh.add_vertex(Vector3(otherRealX,getGroundValueAtPoint(otherRealX,realY),realY))
+			
+			actualMesh.set_color(chosenColor)
+			actualMesh.add_vertex(Vector3(otherRealX,getGroundValueAtPoint(otherRealX,otherRealY),otherRealY))
+			actualMesh.set_color(chosenColor)
+			actualMesh.add_vertex(Vector3(realX,getGroundValueAtPoint(realX,otherRealY),otherRealY))
+			actualMesh.set_color(chosenColor)
+			actualMesh.add_vertex(Vector3(otherRealX,getGroundValueAtPoint(otherRealX,realY),realY))
 	actualMesh.generate_normals()
 	$StaticBody3D/MeshInstance3D.mesh = actualMesh.commit()
+
+func getGroundValueAtPoint(x,y):
+	var groundMult = 60.0
+	var secondVal = (secondaryGroundNoise.get_noise_2d(x,y) * 2)
+	if abs(secondVal) < 1.0:
+		secondVal *= 1.2
+	return groundMult*(topGround.get_noise_2d(x,y) * 1.0)*secondVal
+
+var numStore = {}
+func getBiomeAtPoint(val : Vector2):
+	var temperature = BiomeNoiseTemperature.get_noise_2dv(val)
+	var humidity = BiomeNoiseHumidity.get_noise_2dv(val)
+	var searchVector = Vector2(temperature,humidity)
+	
+	var closestBiome = null
+	var dist = 99999
+	for I in biomeTypingRanges:
+		if biomeTypingRanges[I].distance_squared_to(searchVector) < dist:
+			dist = biomeTypingRanges[I].distance_squared_to(searchVector)
+			closestBiome = I
+	print(dist)
+	if dist > 1.2:
+		return null
+	return closestBiome

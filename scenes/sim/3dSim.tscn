@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_s80ek"]
 [ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_3e45q"]
-[ext_resource type="Texture2D" uid="uid://csu200iyltqde" path="res://art/grass.png" id="3_wjc0w"]
 [ext_resource type="Script" uid="uid://dw7opa0wcldui" path="res://code/simulation/behaviorGenes/basicGene.gd" id="3_ym1nq"]
 [ext_resource type="Script" uid="uid://dik3rlumbu1em" path="res://code/simulation/behaviorGenes/basicHunt.gd" id="4_w2ain"]
 [ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/simulation/spatial_grid.gd" id="4_wjc0w"]
@@ -12,6 +11,7 @@
 [ext_resource type="Script" uid="uid://csxdydupwwvui" path="res://code/simulation/behaviorGenes/nestDestroyingGene.gd" id="7_pb2om"]
 [ext_resource type="Script" uid="uid://b2841htlhfmmj" path="res://code/simulation/behaviorGenes/pickupFoodGene.gd" id="8_yfoyy"]
 [ext_resource type="Script" uid="uid://de1wnb5d6xfov" path="res://code/simulation/behaviorGenes/dropOffAtNestGene.gd" id="9_y1ygo"]
+[ext_resource type="Texture2D" uid="uid://2jkd2fua77o6" path="res://art/grass2.png" id="10_gffb6"]
 [ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/UI/freecam.gd" id="13_w2ain"]
 [ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/UI/speedSlider.gd" id="14_gffb6"]
 [ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/UI/saveSim.gd" id="15_pb2om"]
@@ -54,15 +54,24 @@ script = ExtResource("9_y1ygo")
 minimum = 0.7
 metadata/_custom_type_script = "uid://de1wnb5d6xfov"
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_yfoyy"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gffb6"]
 noise_type = 3
-seed = 24
-frequency = 0.02
+frequency = 0.0019
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pb2om"]
+noise_type = 2
+seed = 1
+frequency = 0.0084
 fractal_type = 0
-fractal_lacunarity = -0.095
-fractal_gain = 0.05
-fractal_weighted_strength = 0.21
-fractal_ping_pong_strength = 4.355
+cellular_distance_function = 1
+domain_warp_fractal_octaves = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yfoyy"]
+frequency = 0.0023
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8x4oj"]
+seed = 3
+frequency = 0.0014
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wmejg"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -78,31 +87,17 @@ sky = SubResource("Sky_wjc0w")
 [sub_resource type="BoxShape3D" id="BoxShape3D_mltvj"]
 size = Vector3(32, 0.063, 32)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gffb6"]
-render_priority = 1
-transparency = 1
-no_depth_test = true
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-stencil_mode = 3
-stencil_flags = 1
-stencil_compare = 5
-metadata/_stencil_owned = true
+[sub_resource type="PlaneMesh" id="PlaneMesh_mltvj"]
+size = Vector2(32, 32)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmejg"]
-next_pass = SubResource("StandardMaterial3D_gffb6")
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_wjc0w")
+albedo_texture = ExtResource("10_gffb6")
 uv1_scale = Vector3(0.555, 0.555, 0.555)
 uv1_triplanar = true
 texture_filter = 0
-stencil_mode = 2
 stencil_flags = 2
 stencil_outline_thickness = 1.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_mltvj"]
-material = SubResource("StandardMaterial3D_wmejg")
-size = Vector2(32, 32)
 
 [node name="Node3D" type="Node3D" unique_id=415339642]
 script = ExtResource("1_s80ek")
@@ -114,7 +109,16 @@ sizeX = 3000
 sizeY = 3000
 mutationLevel = 3
 countPerGroup = 3
-groundNoise = SubResource("FastNoiseLite_yfoyy")
+topGround = SubResource("FastNoiseLite_gffb6")
+secondaryGroundNoise = SubResource("FastNoiseLite_pb2om")
+BiomeNoiseTemperature = SubResource("FastNoiseLite_yfoyy")
+BiomeNoiseHumidity = SubResource("FastNoiseLite_8x4oj")
+biomeTypingRanges = Dictionary[int, Vector2]({
+0: Vector2(1, 1),
+1: Vector2(-1, 1),
+2: Vector2(1, -1),
+5: Vector2(-1, -1)
+})
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1321377267]
 environment = SubResource("Environment_otpd7")
