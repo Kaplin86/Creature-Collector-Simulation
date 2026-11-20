@@ -67,11 +67,11 @@ cellular_distance_function = 1
 domain_warp_fractal_octaves = 1
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yfoyy"]
-frequency = 0.0023
+frequency = 0.0007
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8x4oj"]
 seed = 3
-frequency = 0.0014
+frequency = 0.0007
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wmejg"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -98,6 +98,13 @@ uv1_triplanar = true
 texture_filter = 0
 stencil_flags = 2
 stencil_outline_thickness = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mlghm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mltvj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h7o1"]
+albedo_color = Color(0.5305092, 1.0780092, 1.0780092, 1)
 
 [node name="Node3D" type="Node3D" unique_id=415339642]
 script = ExtResource("1_s80ek")
@@ -127,12 +134,14 @@ environment = SubResource("Environment_otpd7")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=443484570]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=443484570]
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=568034667]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=568034667]
 shape = SubResource("BoxShape3D_mltvj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=696170853]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=696170853]
 mesh = SubResource("PlaneMesh_mltvj")
 surface_material_override/0 = SubResource("StandardMaterial3D_wmejg")
 
@@ -207,6 +216,16 @@ offset_top = 61.0
 offset_right = 100.0
 offset_bottom = 110.0
 text = "Go Back To Main Menu"
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1712560792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.591214, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1524941570]
+shape = SubResource("SphereShape3D_mlghm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=2008786201]
+mesh = SubResource("SphereMesh_mltvj")
+surface_material_override/0 = SubResource("StandardMaterial3D_1h7o1")
 
 [connection signal="value_changed" from="CanvasLayer/Panel/HSlider" to="CanvasLayer/Panel/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]

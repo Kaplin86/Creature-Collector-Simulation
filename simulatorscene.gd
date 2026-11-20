@@ -42,52 +42,27 @@ func _ready():
 	
 	
 	#@await get_tree().process_frame
-	$StaticBody3D/MeshInstance3D.mesh.size = Vector2(sizeX,sizeY)
+
 	
-	var TopWall = CollisionShape2D.new()
-	var BottomWall = CollisionShape2D.new()
-	var Hitbox = RectangleShape2D.new()
-	Hitbox.size = Vector2(abs(simMinX - simMaxX) + 10,10)
-	
-	TopWall.global_position = Vector2(0,simMinY)
-	BottomWall.global_position = Vector2(0,simMaxY)
-	
-	TopWall.shape = Hitbox
-	BottomWall.shape = Hitbox
-	
-	%StaticBody2D.add_child(TopWall)
-	%StaticBody2D.add_child(BottomWall)
-	
-	var LeftWall = CollisionShape2D.new()
-	var RightWall = CollisionShape2D.new()
-	var Hitbox2 = RectangleShape2D.new()
-	Hitbox2.size = Vector2(10,abs(simMinY - simMaxY) + 10)
-	
-	LeftWall.global_position = Vector2(simMinX,  0)
-	RightWall.global_position = Vector2(simMaxX, 0)
-	
-	LeftWall.shape = Hitbox2
-	RightWall.shape = Hitbox2
-	
-	%StaticBody2D.add_child(LeftWall)
-	%StaticBody2D.add_child(RightWall)
-	
-	
-	
+	print("starting tree")
 	
 	for I in range(startingTreeCount):
+		print("made the tree.")
 		var newTree = FruitSpawningTree.new()
 		add_child(newTree)
 		newTree.global_position = Vector3(randf_range(simMinX,simMaxX),0,randf_range(simMinY,simMaxY))
 		for C in range(7):
 			newTree.spawnFruit()
+			print("made afruit")
 	
-	#spawnCreatures()
+	print("spawning...")
+	
+	spawnCreatures()
 	
 	makeGroundMesh()
 	
 	for I in range(6):
-		while get_tree().get_nodes_in_group("creature").size() != 1:
+		while get_tree().get_nodes_in_group("creature").size() != 0:
 			await get_tree().process_frame
 		spawnCreatures()
 	
@@ -132,8 +107,6 @@ func _on_button_2_pressed():
 	Transition.transition(load("res://startMenu.tscn").instantiate())
 
 func makeGroundMesh():
-	
-	
 	var subdivisionCount = 20.0
 	#var normal = Vector3(1,0,0)
 	var actualMesh = SurfaceTool.new()
@@ -173,7 +146,11 @@ func makeGroundMesh():
 			actualMesh.set_color(chosenColor)
 			actualMesh.add_vertex(Vector3(otherRealX,getGroundValueAtPoint(otherRealX,realY),realY))
 	actualMesh.generate_normals()
-	$StaticBody3D/MeshInstance3D.mesh = actualMesh.commit()
+	$Floor/MeshInstance3D.global_position = -Vector3(sizeX/2,0,sizeY/2)
+	$Floor/CollisionShape3D.global_position = -Vector3(sizeX/2,0,sizeY/2)
+	var arrmesh := actualMesh.commit()
+	$Floor/CollisionShape3D.shape = arrmesh.create_trimesh_shape()
+	$Floor/MeshInstance3D.mesh = arrmesh
 
 func getGroundValueAtPoint(x,y):
 	var groundMult = 60.0
@@ -194,7 +171,7 @@ func getBiomeAtPoint(val : Vector2):
 		if biomeTypingRanges[I].distance_squared_to(searchVector) < dist:
 			dist = biomeTypingRanges[I].distance_squared_to(searchVector)
 			closestBiome = I
-	print(dist)
+	
 	if dist > 1.2:
 		return null
 	return closestBiome

@@ -177,10 +177,10 @@ func _ready():
 	ForwardRaycast.collision_mask = 2
 	add_child(ForwardRaycast)
 	
-	var newHitbox = CollisionShape2D.new()
+	var newHitbox = CollisionShape3D.new()
 	add_child(newHitbox)
-	var circle = CircleShape2D.new()
-	circle.radius = 10
+	var circle = SphereShape3D.new()
+	circle.radius = 0.03
 	newHitbox.shape = circle
 	collision_mask = 2
 	
@@ -352,16 +352,14 @@ func _process(delta):
 		if dist > 0.0 and delta > 0.0:
 			var travelDist = min(speed * delta,dist)
 			var motion = offset.normalized() * travelDist
-			
+			motion += get_gravity() * delta
 			move_and_collide(motion)
 			
 			
 			if global_position.distance_to(targetLocation) < 0.01:
 				global_position = targetLocation
-				velocity = Vector3.ZERO
+				
 			
-		else:
-			velocity = Vector3.ZERO
 		
 		
 		
@@ -407,7 +405,7 @@ func setWanderTarget() -> void:
 				break
 		
 		if !foundPath:
-			bestDirection = Vector2.from_angle(randf()*TAU)
+			bestDirection = Vector3.FORWARD.rotated(Vector3.UP,randf()*TAU)
 		
 		targetLocation = global_position + bestDirection * 100
 		
