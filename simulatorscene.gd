@@ -22,6 +22,7 @@ extends Node
 @export var minStartingLevel = 5
 @export var maxStartingLevel = 15
 
+@export var bumpiness = 1.0
 @export var topGround : FastNoiseLite
 @export var secondaryGroundNoise : FastNoiseLite
 @export var BiomeNoiseTemperature : FastNoiseLite
@@ -43,23 +44,32 @@ func _ready():
 	
 	#@await get_tree().process_frame
 
-	
+	makeGroundMesh()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
 	print("starting tree")
 	
+	var treeRaycast = RayCast3D.new()
+	treeRaycast.collision_mask = 3
+	add_child(treeRaycast)
 	for I in range(startingTreeCount):
 		print("made the tree.")
 		var newTree = FruitSpawningTree.new()
+		treeRaycast.position = Vector3(randf_range(simMinX,simMaxX),30,randf_range(simMinY,simMaxY))
+		treeRaycast.target_position = treeRaycast.position - Vector3(0,90,0)
+		treeRaycast.force_raycast_update()
 		add_child(newTree)
-		newTree.global_position = Vector3(randf_range(simMinX,simMaxX),0,randf_range(simMinY,simMaxY))
+		newTree.global_position = treeRaycast.get_collision_point()
 		for C in range(7):
 			newTree.spawnFruit()
-			print("made afruit")
+			
 	
 	print("spawning...")
 	
 	spawnCreatures()
 	
-	makeGroundMesh()
+	
 	
 	for I in range(6):
 		while get_tree().get_nodes_in_group("creature").size() != 0:
@@ -69,10 +79,20 @@ func _ready():
 	
 
 func spawnCreatures():
-	
+	var creatureRaycast = RayCast3D.new()
+	creatureRaycast.collision_mask = 3
+	add_child(creatureRaycast)
 	var move = Move.new()
 	for I in range(startingSpeciesCount):
-		var randomPosition = Vector3(randf_range(simMinX,simMaxX),0,randf_range(simMinY,simMaxY))
+		var randomPosition = Vector3(randf_range(simMinX,simMaxX),150,randf_range(simMinY,simMaxY))
+		creatureRaycast.global_position = randomPosition
+		creatureRaycast.target_position = randomPosition - Vector3(0,9999,0)
+		creatureRaycast.force_raycast_update()
+		if creatureRaycast.is_colliding():
+			randomPosition = creatureRaycast.get_collision_point()
+			randomPosition += Vector3(0,10,0)
+			print("POS IS ", randomPosition)
+		
 		var newAgent = Agent.new()
 		for C in startingGenes: newAgent.genes.append(C.duplicate(true))
 		var part1 = basicBodyPart.duplicate(true)
@@ -87,6 +107,7 @@ func spawnCreatures():
 			var dupe = newAgent.duplicate()
 			dupe.level = randi_range(minStartingLevel,maxStartingLevel)
 			dupe.age = dupe.level * 20
+			dupe.global_position = randomPosition
 			add_child(dupe)
 			dupe.global_position = randomPosition
 			
@@ -157,7 +178,7 @@ func getGroundValueAtPoint(x,y):
 	var secondVal = (secondaryGroundNoise.get_noise_2d(x,y) * 2)
 	if abs(secondVal) < 1.0:
 		secondVal *= 1.2
-	return groundMult*(topGround.get_noise_2d(x,y) * 1.0)*secondVal
+	return -6 + (groundMult*(topGround.get_noise_2d(x,y) * 1.0)*secondVal * bumpiness)
 
 var numStore = {}
 func getBiomeAtPoint(val : Vector2):

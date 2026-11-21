@@ -26,7 +26,7 @@ func spawnFruit():
 	if fruits.size() <= 10:
 		var newFruit = Fruit.new()
 		add_sibling(newFruit)
-		newFruit.global_position = global_position + Vector3(randi_range(-200,200),0,randi_range(-200,200))
+		newFruit.global_position = global_position + Vector3(randf_range(-5,5),0,randf_range(-5,5))
 		var newNesh = fruitModel.instantiate()
 		newFruit.add_child(newNesh)
 		#newFruit.scale = Vector3(0.183,0.138,0.183)

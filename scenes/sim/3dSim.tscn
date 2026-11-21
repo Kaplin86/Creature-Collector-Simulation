@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/UI/freecam.gd" id="13_w2ain"]
 [ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/UI/speedSlider.gd" id="14_gffb6"]
 [ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/UI/saveSim.gd" id="15_pb2om"]
+[ext_resource type="Script" uid="uid://c7fc7oc8hryxy" path="res://code/UI/creature_display_handler.gd" id="16_yfoyy"]
+[ext_resource type="PackedScene" uid="uid://6y433bmh1127" path="res://scenes/ui/agentDisplay.tscn" id="17_y1ygo"]
 
 [sub_resource type="Resource" id="Resource_7y0fa"]
 script = ExtResource("2_3e45q")
@@ -106,16 +108,22 @@ stencil_outline_thickness = 1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h7o1"]
 albedo_color = Color(0.5305092, 1.0780092, 1.0780092, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_mltvj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlghm"]
+albedo_color = Color(0.41568628, 1, 0.41568628, 1)
+
 [node name="Node3D" type="Node3D" unique_id=415339642]
 script = ExtResource("1_s80ek")
 startingSpeciesCount = 81
-startingTreeCount = 150
+startingTreeCount = 300
 basicBodyPart = SubResource("Resource_7y0fa")
 startingGenes = Array[ExtResource("3_ym1nq")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e"), SubResource("Resource_a5t8r"), SubResource("Resource_pa1np"), SubResource("Resource_ggqyc")])
-sizeX = 3000
-sizeY = 3000
+sizeX = 1500
+sizeY = 1500
 mutationLevel = 3
 countPerGroup = 3
+bumpiness = 0.26
 topGround = SubResource("FastNoiseLite_gffb6")
 secondaryGroundNoise = SubResource("FastNoiseLite_pb2om")
 BiomeNoiseTemperature = SubResource("FastNoiseLite_yfoyy")
@@ -166,7 +174,8 @@ unique_name_in_owner = true
 script = ExtResource("5_otpd7")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2077672473]
-transform = Transform3D(1, 0, 0, 0, 0.44559065, 0.89523685, 0, -0.89523685, 0.44559065, 0, 5.451662, 0)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.44559065, 0.89523685, 0, -0.89523685, 0.44559065, 0, 19.762867, 0)
 fov = 118.124985
 script = ExtResource("13_w2ain")
 
@@ -226,6 +235,26 @@ shape = SubResource("SphereShape3D_mlghm")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=2008786201]
 mesh = SubResource("SphereMesh_mltvj")
 surface_material_override/0 = SubResource("StandardMaterial3D_1h7o1")
+
+[node name="CreatureDisplayHandler" type="Node3D" parent="." unique_id=1202184797]
+script = ExtResource("16_yfoyy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CreatureDisplayHandler" unique_id=686576788]
+
+[node name="Panel2" parent="CreatureDisplayHandler/CanvasLayer" unique_id=1985622593 instance=ExtResource("17_y1ygo")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.7013889
+anchor_top = 0.074074075
+anchor_right = 0.9965278
+anchor_bottom = 0.97530866
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1601046433]
+mesh = SubResource("BoxMesh_mltvj")
+surface_material_override/0 = SubResource("StandardMaterial3D_mlghm")
 
 [connection signal="value_changed" from="CanvasLayer/Panel/HSlider" to="CanvasLayer/Panel/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]

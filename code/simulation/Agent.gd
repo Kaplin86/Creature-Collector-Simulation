@@ -326,7 +326,6 @@ func flee() -> void:
 	
 	targetLocation = global_position + bestDirection * 100
 	
-	
 func _process(delta):
 	if _bstHash == 0.0: _bstHash = calculateBST()
 	
@@ -342,6 +341,9 @@ func _process(delta):
 	if result:
 		memoryFoodPosition = result.global_position
 	
+func _physics_process(delta):
+	
+	
 	if !inBattle:
 		var oldPos = global_position
 		
@@ -350,16 +352,24 @@ func _process(delta):
 		var speed = _SPHash * GlobalVars.SpeedPerSpeed 
 		
 		if dist > 0.0 and delta > 0.0:
-			var travelDist = min(speed * delta,dist)
-			var motion = offset.normalized() * travelDist
-			motion += get_gravity() * delta
-			move_and_collide(motion)
-			
-			
-			if global_position.distance_to(targetLocation) < 0.01:
-				global_position = targetLocation
-				
-			
+			velocity = offset.normalized() * speed
+		else:
+			velocity.x = 0
+			velocity.z = 0
+		
+		#var travelDist = min(speed * delta,dist)
+		
+		if !is_on_floor():
+			velocity += get_gravity()
+		else:
+			velocity.y = 0
+		
+		move_and_slide()
+		
+		
+		#if global_position.distance_to(targetLocation) < 0.01:
+		#	global_position = targetLocation
+		
 		
 		
 		
@@ -393,16 +403,16 @@ func setWanderTarget() -> void:
 		var bestDirection = awayDirection
 		var foundPath = false
 		
-		for angle in possibleAngles:
-			var testDirection = awayDirection.rotated(Vector3.UP,deg_to_rad(angle))
-			
-			ForwardRaycast.target_position = testDirection * 40
-			ForwardRaycast.force_raycast_update()
-			
-			if !ForwardRaycast.is_colliding():
-				bestDirection = testDirection
-				foundPath = true
-				break
+		#for angle in possibleAngles:
+		#	var testDirection = awayDirection.rotated(Vector3.UP,deg_to_rad(angle))
+		#	
+		#	ForwardRaycast.target_position = testDirection * 40
+		#	ForwardRaycast.force_raycast_update()
+		#	
+		#	if !ForwardRaycast.is_colliding():
+		#		bestDirection = testDirection
+		#		foundPath = true
+		#		break
 		
 		if !foundPath:
 			bestDirection = Vector3.FORWARD.rotated(Vector3.UP,randf()*TAU)
