@@ -45,7 +45,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				$CanvasLayer/Panel2.visible = false
 				$CanvasLayer/Panel2.displayingAgent = null 
 
-func _draw() -> void:
+func _process(delta):
 	if $CanvasLayer/Panel2.displayingAgent:
 		var agent : Agent =  $CanvasLayer/Panel2.displayingAgent
-		#draw_circle(agent.global_position,agent.getVisionDist(),Color.REBECCA_PURPLE,false,3)
+		global_position = agent.global_position
+		$VisionRing.mesh.inner_radius = agent.getVisionDist()
+		$VisionRing.mesh.outer_radius = agent.getVisionDist() + 0.1

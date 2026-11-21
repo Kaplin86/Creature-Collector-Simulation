@@ -48,20 +48,18 @@ func _ready():
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
-	print("starting tree")
 	
 	var treeRaycast = RayCast3D.new()
 	treeRaycast.collision_mask = 3
 	add_child(treeRaycast)
 	for I in range(startingTreeCount):
-		print("made the tree.")
 		var newTree = FruitSpawningTree.new()
 		treeRaycast.position = Vector3(randf_range(simMinX,simMaxX),30,randf_range(simMinY,simMaxY))
 		treeRaycast.target_position = treeRaycast.position - Vector3(0,90,0)
 		treeRaycast.force_raycast_update()
 		add_child(newTree)
 		newTree.global_position = treeRaycast.get_collision_point()
-		for C in range(7):
+		for C in range(1):
 			newTree.spawnFruit()
 			
 	
@@ -91,7 +89,7 @@ func spawnCreatures():
 		if creatureRaycast.is_colliding():
 			randomPosition = creatureRaycast.get_collision_point()
 			randomPosition += Vector3(0,0.5,0)
-			print("POS IS ", randomPosition)
+			
 		
 		var newAgent = Agent.new()
 		for C in startingGenes: newAgent.genes.append(C.duplicate(true))
@@ -103,6 +101,7 @@ func spawnCreatures():
 		#newAgent.global_position = randomPosition
 		newAgent.species = %SpeciesHandler.checkChildIfNewSpecies(newAgent,-5)
 		#newAgent.modulate = %SpeciesHandler.Species[newAgent.species].color
+		
 		for C in range(countPerGroup):
 			var dupe = newAgent.duplicate()
 			dupe.level = randi_range(minStartingLevel,maxStartingLevel)
@@ -119,8 +118,7 @@ func spawnCreatures():
 
 func _process(delta):
 	#print(%SpatialGrid.getCell(get_global_mouse_position()))
-	#print(delta)
-	pass
+	print("frame count ",int(1/delta))
 
 
 func _on_button_2_pressed():
@@ -150,7 +148,6 @@ func makeGroundMesh():
 				chosenColor = Color.GREEN
 			elif biome == GlobalVars.Typings.Robot:
 				chosenColor = Color.BLACK 
-			print(biome)
 			
 			
 			actualMesh.set_color(chosenColor)

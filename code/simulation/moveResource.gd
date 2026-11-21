@@ -31,7 +31,5 @@ func getRelevantStats(attacker : Agent, defender : Agent) -> Array[float]:
 func mutate():
 	if randf() <= GlobalVars.changeMoveDamageTypeChance:
 		damageType = abs(1-damageType)
-		print("new damage type")
 	if randf() <= GlobalVars.changeMoveElementalTypeChance:
 		typing = GlobalVars.Typings.values().pick_random()
-		print("new move typing")

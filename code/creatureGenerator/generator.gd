@@ -165,10 +165,6 @@ func generate():
 	
 	var definePartsAsLimbs := defineLimbs()
 	var bodyTypeUsing := defineBodyType(definePartsAsLimbs)
-	print("starting up ", seedVal )
-	print( BodyTypes.keys()[bodyTypeUsing] )
-	for I in definePartsAsLimbs.values():
-		print(BodyPartTypes.keys()[I])
 	#print(BodyPartTypes.keys()[definePartsAsLimbs.values()[0]])
 	
 	if bodyTypeUsing == BodyTypes.Round:
@@ -329,7 +325,6 @@ func generateInsectoidBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes])
 	
 	var legs : Array[BodyPart] = []
 	var legDef = limbDefinitions.duplicate()
-	print("first is ", legDef.find_key(BodyPartTypes.Leg))
 	while legDef.find_key(BodyPartTypes.Leg) != null:
 		var val = legDef.find_key(BodyPartTypes.Leg)
 		legs.append(val)
@@ -351,7 +346,6 @@ func generateInsectoidBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes])
 	
 	createHead(properSpinePoints[-1])
 	renderLimbsWithRandomRotation(properSpinePoints,limbAssignment,limbDefinitions)
-	print(legAssignment)
 	renderLimbs(properSpinePoints,legAssignment,limbDefinitions)
 
 func generateGatheringBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes]):
@@ -795,11 +789,9 @@ func assignLimbs_InsectLegPairs(spinePoints : Array[Vector3], partsList : Array[
 		pairs.remove_at(-1)
 	
 	var count = 0
-	print("pairs is ", pairs)
 	for I in pairs:
 		var percent = count / float(max(pairs.size() - 1,1))
 		var mult = lerp(0.2,0.9,percent)
-		print("key is ", int(spinePoints.size() * mult))
 		jointToLimb[int(spinePoints.size() * mult)] = I
 		count += 1
 	
@@ -891,7 +883,6 @@ func renderLimbsWithRandomRotation(spinePoints : Array[Vector3], assignment : Di
 			
 			newModel = load("res://scenes/creatureGenerator/armLegPart.tscn").instantiate()
 			add_child(newModel)
-			print(def[C])
 			newModel.position = actualPos + Vector3(percentage * spineThicknessChart.get(I,0.35),0,0)
 			newModel.global_rotation_degrees = Vector3(randf_range(0,180 * 2),90,0)
 			

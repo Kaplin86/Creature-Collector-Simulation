@@ -195,6 +195,8 @@ func _ready():
 	visualIndicator.visibility_range_begin = 76.56
 	visualIndicator.texture = load("res://art/50.png")
 	
+	updateSpecies()
+	
 
 func doVisual():
 	add_child(visualGenerator)
@@ -351,11 +353,12 @@ func _physics_process(delta):
 		var dist = offset.length()
 		var speed = _SPHash * GlobalVars.SpeedPerSpeed 
 		
-		if dist > 0.0 and delta > 0.0:
+		if dist > 0.1 and delta > 0.0:
 			velocity = offset.normalized() * speed
 		else:
 			velocity.x = 0
 			velocity.z = 0
+			
 		
 		#var travelDist = min(speed * delta,dist)
 		
@@ -698,7 +701,6 @@ func battle(target : Agent) -> void:
 	else:
 		energy -= 0.3
 		HP = 1
-		#print("battle lose", name)
 		
 		target.expPoints += level/7.0
 		if target.dietType in [Diets.Carnivore,Diets.Omnivore]:

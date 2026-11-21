@@ -108,7 +108,7 @@ func _update_mouselook():
 		_mouse_position = Vector2(0, 0)
 		
 		# Prevents looking up/down too far
-		pitch = clamp(pitch, -175 - _total_pitch, 0 - _total_pitch)
+		pitch = clamp(pitch, -145 - _total_pitch,70 - _total_pitch)
 		_total_pitch += pitch
 	
 		rotate_y(deg_to_rad(-yaw))
