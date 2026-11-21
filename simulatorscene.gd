@@ -90,7 +90,7 @@ func spawnCreatures():
 		creatureRaycast.force_raycast_update()
 		if creatureRaycast.is_colliding():
 			randomPosition = creatureRaycast.get_collision_point()
-			randomPosition += Vector3(0,10,0)
+			randomPosition += Vector3(0,0.5,0)
 			print("POS IS ", randomPosition)
 		
 		var newAgent = Agent.new()

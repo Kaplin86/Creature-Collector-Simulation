@@ -12,10 +12,12 @@ var _texture = preload("res://art/nest.png")
 
 func _ready():
 	_spatialGrid.addEntity(self)
-	var newSprite = Sprite2D.new()
-	newSprite.scale = Vector2(0.183,0.183)
-	newSprite.texture = _texture
-	add_child(newSprite)
+	var newMesh = MeshInstance3D.new()
+	add_child(newMesh)
+	var actualmesh := SphereMesh.new()
+	newMesh.mesh = actualmesh
+	actualmesh.radius = 3
+	print("john nesty at",global_position)
 
 func _process(delta):
 	_spatialGrid.updateEntity(self,global_position)
