@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://b2841htlhfmmj" path="res://code/simulation/behaviorGenes/pickupFoodGene.gd" id="8_yfoyy"]
 [ext_resource type="Script" uid="uid://de1wnb5d6xfov" path="res://code/simulation/behaviorGenes/dropOffAtNestGene.gd" id="9_y1ygo"]
 [ext_resource type="Texture2D" uid="uid://2jkd2fua77o6" path="res://art/grass2.png" id="10_gffb6"]
+[ext_resource type="Script" uid="uid://dtntdyuddmwl" path="res://code/simulation/creature_running_sectioner.gd" id="10_y1ygo"]
 [ext_resource type="Script" uid="uid://ddu1trpeec1cd" path="res://code/UI/freecam.gd" id="13_w2ain"]
 [ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/UI/speedSlider.gd" id="14_gffb6"]
 [ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/UI/saveSim.gd" id="15_pb2om"]
@@ -130,7 +131,7 @@ albedo_color = Color(0.41568628, 1, 0.41568628, 1)
 
 [node name="Node3D" type="Node3D" unique_id=415339642]
 script = ExtResource("1_s80ek")
-startingSpeciesCount = 81
+startingSpeciesCount = 75
 startingTreeCount = 500
 basicBodyPart = SubResource("Resource_7y0fa")
 startingGenes = Array[ExtResource("3_ym1nq")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e"), SubResource("Resource_a5t8r"), SubResource("Resource_pa1np"), SubResource("Resource_ggqyc")])
@@ -156,6 +157,10 @@ environment = SubResource("Environment_otpd7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1702227021]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
+
+[node name="CreatureRunningSectioner" type="Node3D" parent="." unique_id=1674344183]
+unique_name_in_owner = true
+script = ExtResource("10_y1ygo")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=443484570]
 collision_layer = 3

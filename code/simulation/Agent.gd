@@ -54,6 +54,7 @@ enum Diets {
 @export var moveSet : Array[Move] = []
 
 @onready var _spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
+@onready var _sectioner = get_parent().get_node("CreatureRunningSectioner")
 @onready var _speciesHandler : SpeciesHandler = get_parent().get_node("SpeciesHandler")
 
 ## A boolean to signify if the agent is looking for a mate.
@@ -171,6 +172,7 @@ func _ready():
 	HP = _HPHash
 	
 	_spatialGrid.addEntity(self)
+	_sectioner.addAgent(self)
 	
 	targetLocation = global_position + Vector3(randf_range(-50,50),0,randf_range(-50,50))
 	
@@ -220,6 +222,7 @@ func updateLevelHashes():
 
 func _exit_tree():
 	_spatialGrid.removeEntity(self)
+	_sectioner.removeAgent(self)
 
 ## Returns the typing of the first two moves. Will return only one if there is one move, or both moves share a type.
 ## For some reason the docs on this are consistently getting bugged. It returns a typing from the [enum GlobalVars.Typings]
@@ -327,22 +330,25 @@ func flee() -> void:
 		bestDirection = Vector2.from_angle(randf()*TAU)
 	
 	targetLocation = global_position + bestDirection * 100
-	
-func _process(delta):
+
+var passedThinkingTime = 0.0
+func frame(delta):
+	passedThinkingTime += delta
 	if _bstHash == 0.0: _bstHash = calculateBST()
 	
 	
 	ageAndEnergyTick(delta)
 	if targetLocation != global_position:
 		look_at(targetLocation)
+	if passedThinkingTime > 1:
+		var currentAction : BasicBehaviorGene = determineCurrentAction()
+		currentAction.act(self)
+		passedThinkingTime = 0.0
 	
-	var currentAction : BasicBehaviorGene = determineCurrentAction()
-	currentAction.act(self)
-	
-	var result = lookForFood()
-	if result:
-		memoryFoodPosition = result.global_position
-	
+		var result = lookForFood()
+		if result:
+			memoryFoodPosition = result.global_position
+		
 func _physics_process(delta):
 	
 	
@@ -561,7 +567,7 @@ func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 	return newAgent
 
 ## Looks in the vision, calling [SpatialGrid], and returns all of the found nodes.
-func lookInVision() -> Array[Node3D]:
+func lookInVision(criteraGroups : Array[String] = []) -> Array[Node3D]:
 	
 	var VisionDistance = getVisionDist()
 	var foundNodes : Array[Node3D] = []
@@ -574,14 +580,21 @@ func lookInVision() -> Array[Node3D]:
 		if !is_instance_valid(I):
 			continue
 		
+		var validObject = false
+		for C in criteraGroups:
+			if I.is_in_group(C):
+				validObject = true
+				break
+		if criteraGroups == []: validObject = true
 		
-		if global_position.distance_squared_to(I.global_position) < VisionDistance * VisionDistance:
-			ForwardRaycast.global_position = global_position
-			ForwardRaycast.target_position = I.global_position - global_position
-			ForwardRaycast.force_raycast_update()
-			
-			if !ForwardRaycast.is_colliding():
-				foundNodes.append(I)
+		if validObject:
+			if global_position.distance_squared_to(I.global_position) < VisionDistance * VisionDistance:
+				ForwardRaycast.global_position = global_position
+				ForwardRaycast.target_position = I.global_position - global_position
+				ForwardRaycast.force_raycast_update()
+				
+				if !ForwardRaycast.is_colliding():
+					foundNodes.append(I)
 	
 	foundNodes.sort_custom(_byDistance)
 	
@@ -593,65 +606,73 @@ func _byDistance(a : Node3D,b : Node3D):
 
 ## Looks for food in vision, and returns the nearest one. This can either return a [Fruit], or another [Agent]
 func lookForFood() -> Node3D:
-	var results = lookInVision()
+	var resultQuery : Array[String]= []
+	if dietType in [Diets.Herbivore,Diets.Omnivore]:
+		resultQuery.append("fruit")
+	if dietType in [Diets.Herbivore,Diets.Omnivore]:
+		resultQuery.append("creature")
+	
+	var results = lookInVision(resultQuery)
 	for I in results:
-		if dietType in [Diets.Herbivore,Diets.Omnivore]:
-			if I is Fruit:
-				return I
-		elif dietType in [Diets.Carnivore,Diets.Omnivore]:
-			if I is Agent:
-				if inverse_lerp(0,_HPHash,HP) >= battleRiskyness:
-					if !I.inBattle:
-						if I.species != species:
-							if I.age > 10:
-								return I
+		if I is Fruit:
+			return I
+		elif I is Agent:
+			if inverse_lerp(0,_HPHash,HP) >= battleRiskyness:
+				if !I.inBattle:
+					if I.species != species:
+						if I.age > 10:
+							return I
 	
 	return null
 
 ## The same as [member lookForFood], except it returns all food options
 func lookForFoods() -> Array[Node3D]:
-	var results = lookInVision()
+	
+	var resultQuery : Array[String]= []
+	if dietType in [Diets.Herbivore,Diets.Omnivore]:
+		resultQuery.append("fruit")
+	if dietType in [Diets.Herbivore,Diets.Omnivore]:
+		resultQuery.append("creature")
+	
+	var results = lookInVision(resultQuery)
+	
 	var final : Array[Node3D] = []
 	for I in results:
-		if dietType in [Diets.Herbivore,Diets.Omnivore]:
-			if I is Fruit:
-				final.append(I)
-				continue
-		elif dietType in [Diets.Carnivore,Diets.Omnivore]:
-			if I is Agent:
-				if inverse_lerp(0,_HPHash,HP) >= battleRiskyness:
-					if !I.inBattle:
-						if I.species != species:
-							final.append(I)
-							continue
+		if I is Fruit:
+			final.append(I)
+			continue
+		if I is Agent:
+			if inverse_lerp(0,_HPHash,HP) >= battleRiskyness:
+				if !I.inBattle:
+					if I.species != species:
+						final.append(I)
+						continue
 	
 	return final
 
 
 ## Looks for predators in vision, and returns the nearest one.
 func lookForPredator() -> Node3D:
-	var results = lookInVision()
+	var results = lookInVision(["creature"])
 	for I in results:
-		if I is Agent:
-			if I.species != species:
-				if I.energy <= 0.75:
-					if I.dietType in [Diets.Omnivore,Diets.Carnivore]:
-						if dietType == Diets.Herbivore: # herbivores flee fear all omnivores and carnivores
+		if I.species != species:
+			if I.energy <= 0.75:
+				if I.dietType in [Diets.Omnivore,Diets.Carnivore]:
+					if dietType == Diets.Herbivore: # herbivores flee fear all omnivores and carnivores
+						return I
+					else:
+						if I._bstHash >= _bstHash:
 							return I
-						else:
-							if I._bstHash >= _bstHash:
-								return I
 	
 	return null
 
 ## Looks for a valid mate in vision, and returns the nearest one.
 func lookForMate() -> Agent:
-	var results = lookInVision()
+	var results = lookInVision(["creature"])
 	for I in results:
-		if I is Agent:
-			if I.species == species:
-				if I.lookingForMate and !I.inBattle:
-					return I
+		if I.species == species:
+			if I.lookingForMate and !I.inBattle:
+				return I
 	
 	return null
 

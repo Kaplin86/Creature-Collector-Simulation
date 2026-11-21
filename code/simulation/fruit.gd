@@ -12,6 +12,7 @@ class_name Fruit
 func _ready():
 	await get_tree().process_frame
 	_spatialGrid.addEntity(self)
+	add_to_group("fruit")
 
 func _exit_tree():
 	_spatialGrid.removeEntity(self)

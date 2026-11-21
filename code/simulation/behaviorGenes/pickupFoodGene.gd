@@ -6,18 +6,20 @@ class_name PickupFoodGene
 ## See [method BasicBehaviorGene.evaluate]
 func evaluate(agent : Agent) -> float:
 	if agent.holdingObject == null:
-		return sanitizeOutput(agent.energy * multiplier)
+		if agent.has_meta("nest"):
+			return sanitizeOutput(agent.energy * multiplier)
 	return sanitizeOutput(-9999)
 
 ## Called when the agent chooses a specific action.[br]
 func act(agent : Agent) -> void:
 	if agent.holdingObject == null:
 		var resultOptions = agent.lookForFoods()
+		
 		var result
 		for I in resultOptions:
 			if is_instance_valid(I):
 				if agent.has_meta("nest"):
-					if agent.get_meta("lastNestPos").distance_to(I.global_position) > 20:
+					if agent.get_meta("lastNestPos").distance_squared_to(I.global_position) > 20:
 						result = I
 						break
 			

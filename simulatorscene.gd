@@ -118,7 +118,7 @@ func spawnCreatures():
 
 func _process(delta):
 	#print(%SpatialGrid.getCell(get_global_mouse_position()))
-	print("frame count ",int(1/delta))
+	print("frame count ",Engine.get_frames_per_second())
 
 
 func _on_button_2_pressed():
