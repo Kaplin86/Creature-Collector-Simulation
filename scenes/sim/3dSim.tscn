@@ -102,6 +102,12 @@ texture_filter = 0
 stencil_flags = 2
 stencil_outline_thickness = 1.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mlghm"]
+size = Vector3(31.806, 90, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1ygo"]
+size = Vector3(1, 90, 31.806)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfoyy"]
 render_priority = 1
 transparency = 1
@@ -172,6 +178,30 @@ shape = SubResource("BoxShape3D_mltvj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=696170853]
 mesh = SubResource("PlaneMesh_mltvj")
 surface_material_override/0 = SubResource("StandardMaterial3D_wmejg")
+
+[node name="RightWall" type="CollisionShape3D" parent="Floor" unique_id=1791078428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31376648, 0, 0)
+shape = SubResource("BoxShape3D_mlghm")
+disabled = true
+debug_color = Color(0.44804335, 0.45152575, 1, 0.41960785)
+
+[node name="LeftWall" type="CollisionShape3D" parent="Floor" unique_id=685440200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31376648, 0, 0)
+shape = SubResource("BoxShape3D_mlghm")
+disabled = true
+debug_color = Color(0.44804335, 0.45152575, 1, 0.41960785)
+
+[node name="ForwardWall" type="CollisionShape3D" parent="Floor" unique_id=1905043056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31376648, 0, 0)
+shape = SubResource("BoxShape3D_y1ygo")
+disabled = true
+debug_color = Color(0.44804335, 0.45152575, 1, 0.41960785)
+
+[node name="BackwardsWall" type="CollisionShape3D" parent="Floor" unique_id=1195843691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31376648, 0, 0)
+shape = SubResource("BoxShape3D_y1ygo")
+disabled = true
+debug_color = Color(0.44804335, 0.45152575, 1, 0.41960785)
 
 [node name="BG" type="TextureRect" parent="." unique_id=4327221]
 unique_name_in_owner = true

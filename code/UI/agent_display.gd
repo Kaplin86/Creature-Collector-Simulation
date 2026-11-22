@@ -35,6 +35,8 @@ func _process(delta: float) -> void:
 		%LevelBox.value = displayingAgent.level
 		%Exp.text = "EXP: (" + str(String.num(displayingAgent.expPoints,1)) + " / " + str(displayingAgent.expNeeded()) + ")"
 		
+		
+		
 		if displayingAgent.dietType == displayingAgent.Diets.Herbivore:
 			%Risk.visible = false
 			%CurrentRatio.visible = false
@@ -47,6 +49,7 @@ func _process(delta: float) -> void:
 		var cell =  %SpatialGrid.getCell(displayingAgent.global_position)
 		%Cell.text = "Spatial Cell - " + str(cell)
 		%InCell.text = "Bugged Cell? - " + str(not displayingAgent in  %SpatialGrid.grid.get(cell,[]))
+		%Moving.text = str(displayingAgent.moving)
 		for I in displayingAgent.lastValueCheckResults:
 			if scriptToGeneLabel.has(I):
 				var text : Label = scriptToGeneLabel[I]

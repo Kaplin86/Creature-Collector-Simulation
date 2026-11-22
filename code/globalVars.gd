@@ -14,7 +14,7 @@ enum SimulationReproductionType {
 
 ## The current reproduction type set for the simulation
 ## @experimental: This will likely be changed out and placed on the specific [Agent] / species at a later date
-var reproductionType : SimulationReproductionType = SimulationReproductionType.TwoParents
+var reproductionType : SimulationReproductionType = SimulationReproductionType.Duplication
 
 ## The Age required for an [Agent] to reproduce, per stat total. 
 var AgeToReproducePerStat := 2.1

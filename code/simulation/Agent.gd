@@ -348,7 +348,8 @@ func frame(delta):
 		var result = lookForFood()
 		if result:
 			memoryFoodPosition = result.global_position
-		
+
+var moving = false
 func _physics_process(delta):
 	
 	
@@ -359,11 +360,13 @@ func _physics_process(delta):
 		var dist = offset.length()
 		var speed = _SPHash * GlobalVars.SpeedPerSpeed 
 		
-		if dist > 0.1 and delta > 0.0:
-			velocity = offset.normalized() * speed
+		if dist > 0.01 and delta > 0.0:
+			velocity = offset.normalized() * min(speed, dist / delta)
+			moving = true
 		else:
 			velocity.x = 0
 			velocity.z = 0
+			moving = false
 			
 		
 		#var travelDist = min(speed * delta,dist)

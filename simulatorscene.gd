@@ -45,6 +45,14 @@ func _ready():
 	#@await get_tree().process_frame
 
 	makeGroundMesh()
+	
+	$Floor/RightWall.shape.size.x = sizeX
+	$Floor/ForwardWall.shape.size.z = sizeY
+	$Floor/RightWall.global_position = Vector3(0.0,0.0,(sizeX / 2) )
+	$Floor/LeftWall.global_position = Vector3(0.0,0.0,-(sizeX / 2) )
+	$Floor/ForwardWall.global_position = Vector3(-(sizeY / 2) ,0.0,0.0)
+	$Floor/BackwardsWall.global_position = Vector3((sizeY / 2) ,0.0,0.0)
+	
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
@@ -67,7 +75,10 @@ func _ready():
 	
 	spawnCreatures()
 	
-	
+	$Floor/RightWall.disabled = false
+	$Floor/LeftWall.disabled = false
+	$Floor/ForwardWall.disabled = false
+	$Floor/BackwardsWall.disabled = false
 	
 	for I in range(6):
 		while get_tree().get_nodes_in_group("creature").size() != 0:
@@ -118,7 +129,8 @@ func spawnCreatures():
 
 func _process(delta):
 	#print(%SpatialGrid.getCell(get_global_mouse_position()))
-	print("frame count ",Engine.get_frames_per_second())
+	print("frame count ",Engine.get_frames_per_second(), " - ", get_tree().get_node_count_in_group("creature"))
+	
 
 
 func _on_button_2_pressed():
