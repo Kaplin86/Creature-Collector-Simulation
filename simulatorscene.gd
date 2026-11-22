@@ -127,9 +127,15 @@ func spawnCreatures():
 		newNest.global_position = randomPosition
 	
 
+var frame = []
+var dt = 0.0
 func _process(delta):
 	#print(%SpatialGrid.getCell(get_global_mouse_position()))
-	print("frame count ",Engine.get_frames_per_second(), " - ", get_tree().get_node_count_in_group("creature"))
+	dt += delta
+	if dt > 60:
+		dt = 0.0
+		frame.append("frame count " + str(Engine.get_frames_per_second()) + " - "+  str(get_tree().get_node_count_in_group("creature")))
+	print(frame)
 	
 
 

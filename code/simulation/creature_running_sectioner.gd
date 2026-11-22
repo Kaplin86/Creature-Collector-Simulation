@@ -27,9 +27,14 @@ func _process(delta):
 		
 
 func addAgent(agent : Agent):
-	var chosenGroup = randi_range(0,groups.size() - 1)
-	agentToGroup[agent] = chosenGroup
-	groups[chosenGroup].append(agent)
+	var smallestGroup = 0
+	var groupSize = 99999
+	for I in range(groups.size()):
+		if groups[I].size() < groupSize:
+			smallestGroup = I
+			groupSize = groups[I].size()
+	agentToGroup[agent] = smallestGroup
+	groups[smallestGroup].append(agent)
 
 func removeAgent(agent : Agent):
 	var group = agentToGroup[agent]

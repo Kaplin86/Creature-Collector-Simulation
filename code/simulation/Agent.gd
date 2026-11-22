@@ -351,7 +351,7 @@ func frame(delta):
 
 var moving = false
 func _physics_process(delta):
-	
+	return
 	
 	if !inBattle:
 		var oldPos = global_position
