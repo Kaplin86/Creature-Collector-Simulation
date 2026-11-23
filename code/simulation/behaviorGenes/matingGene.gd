@@ -5,7 +5,7 @@ class_name BasicMateGene
 
 ## See [method BasicBehaviorGene.evaluate]
 func evaluate(agent : Agent) -> float:
-	if max(GlobalVars.AgeToReproducePerStat * agent._bstHash,40) < agent.age and agent.birthtimer < 0.01:
+	if max(GlobalVars.AgeToReproducePerStat * agent._bstHash,30) < agent.age and agent.birthtimer < 0.01:
 		return sanitizeOutput(agent.energy * multiplier)
 	
 	return -999
@@ -18,7 +18,6 @@ func act(agent : Agent) -> void:
 		agent.energy -= 0.3
 		return
 	
-	print("we aint solo reproducin!")
 
 	
 	agent.lookingForMate = true

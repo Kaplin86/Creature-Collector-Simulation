@@ -158,9 +158,14 @@ var _hasGenerated = false
 @onready var visualIndicator := Sprite3D.new()
 
 func _ready():
+	var startTime := Time.get_ticks_usec()
 	updateLevelHashes()
+	var processingTime := (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.readySamples.get_or_add("level hashes",[]).append(processingTime)
 	
 	add_to_group("creature")
+	
+	startTime = Time.get_ticks_usec()
 	
 	var newMesh = MeshInstance3D.new()
 	add_child(newMesh)
@@ -168,16 +173,35 @@ func _ready():
 	newMesh.mesh = actualmesh
 	actualmesh.radius = 3
 	
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.readySamples.get_or_add("basic mesh adding",[]).append(processingTime)
 	
 	HP = _HPHash
+	
+	startTime = Time.get_ticks_usec()
 	
 	_spatialGrid.addEntity(self)
 	_sectioner.addAgent(self)
 	
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.readySamples.get_or_add("spatial and sectioner",[]).append(processingTime)
+	
+	startTime = Time.get_ticks_usec()
+	
 	targetLocation = global_position + Vector3(randf_range(-50,50),0,randf_range(-50,50))
+	
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.readySamples.get_or_add("target location set",[]).append(processingTime)
+	
+	startTime = Time.get_ticks_usec()
 	
 	ForwardRaycast.collision_mask = 2
 	add_child(ForwardRaycast)
+	
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.readySamples.get_or_add("adding raycast",[]).append(processingTime)
+	
+	startTime = Time.get_ticks_usec()
 	
 	var newHitbox = CollisionShape3D.new()
 	add_child(newHitbox)
@@ -186,18 +210,27 @@ func _ready():
 	newHitbox.shape = circle
 	collision_mask = 2
 	
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.readySamples.get_or_add("hitboxes",[]).append(processingTime)
+	
 	if genes == []:
 		genes.append(BasicHuntingGene.new())
 		genes.append(BasicMateGene.new())
 	
+	startTime = Time.get_ticks_usec()
 	add_child(visualIndicator)
 	visualIndicator.pixel_size = 0.002
 	visualIndicator.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	visualIndicator.fixed_size = true
 	visualIndicator.visibility_range_begin = 76.56
 	visualIndicator.texture = load("res://art/50.png")
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.readySamples.get_or_add("visual indicator",[]).append(processingTime)
 	
+	startTime = Time.get_ticks_usec()
 	updateSpecies()
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.readySamples.get_or_add("update species",[]).append(processingTime)
 	
 
 func doVisual():
@@ -350,7 +383,12 @@ func frame(delta):
 	
 	ageAndEnergyTick(delta)
 	if targetLocation != global_position:
-		look_at(targetLocation)
+		var to_target := targetLocation - global_position
+		if to_target.length_squared() < 0.0001:
+			return
+		var dir := to_target.normalized()
+		if !dir.cross(Vector3.UP).is_zero_approx():
+			look_at(targetLocation)
 	if passedThinkingTime > 1:
 		var currentAction : BasicBehaviorGene = determineCurrentAction()
 		var startTime := Time.get_ticks_usec()
@@ -358,6 +396,7 @@ func frame(delta):
 		var processingTime := (Time.get_ticks_usec() - startTime) / 1000.0
 		
 		GlobalVars.geneUsingSamples.get_or_add(currentAction.get_script(),[]).append(processingTime)
+		
 		
 		passedThinkingTime = 0.0
 	
@@ -453,40 +492,67 @@ func setWanderTarget() -> void:
 ## The agent creates a new agent at this location, which inherits everything and gets mutated.[br]
 ## See [method mutateAgent]
 func soloReproduction() -> Agent:
-	
-	
+	var TOTALstartTime := Time.get_ticks_usec()
+	var startTime := Time.get_ticks_usec()
 	var newAgent = Agent.new()
 	newAgent.dietType = dietType
-	
-	var startTime := Time.get_ticks_usec()
-	
-	for I in parts: newAgent.parts.append(I.duplicate(true))
-	for I in genes: newAgent.genes.append(I.duplicate(true))
 	var processingTime := (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.matingGeneSamples.get_or_add("instantiating",[]).append(processingTime)
+	
+	startTime = Time.get_ticks_usec()
+	for I in parts:
+		var newPart = BodyPart.new()
+		newPart.HP = I.HP
+		newPart.ATK = I.ATK
+		newPart.DEF = I.DEF
+		newPart.SpA = I.SpA
+		newPart.SpD = I.SpD
+		newPart.SP = I.SP
+		newPart.UnDebuffedStats = I.UnDebuffedStats.duplicate(true)
+		newAgent.parts.append(newPart)
+	
+	for I in genes: newAgent.genes.append(I.duplicate(true))
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
 	
 	GlobalVars.matingGeneSamples.get_or_add("duplicating parts and genes",[]).append(processingTime)
 	
-	
+	startTime = Time.get_ticks_usec()
 	newAgent.moveSet = moveSet.duplicate(true)
-	newAgent.global_position = global_position
-	newAgent.targetLocation = global_position
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.matingGeneSamples.get_or_add("copying moves",[]).append(processingTime)
+	startTime = Time.get_ticks_usec()
+	var pos = position
+	newAgent.position = pos
+	newAgent.targetLocation = pos
+	
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.matingGeneSamples.get_or_add("position setting",[]).append(processingTime)
+	startTime = Time.get_ticks_usec()
+	
 	newAgent.energy = 0.7
 	newAgent.generation = generation + 1
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.matingGeneSamples.get_or_add("copying other data",[]).append(processingTime)
+	
 	
 	startTime = Time.get_ticks_usec()
 	mutateAgent(newAgent)
 	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
 	GlobalVars.matingGeneSamples.get_or_add("mutation",[]).append(processingTime)
 
+	startTime = Time.get_ticks_usec()
 	get_parent().add_child(newAgent)
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.matingGeneSamples.get_or_add("adding child",[]).append(processingTime)
 	#newAgent.modulate = modulate
 	
-	startTime = Time.get_ticks_usec()
-	newAgent.updateSpecies()
-	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
-	GlobalVars.matingGeneSamples.get_or_add("updating species time",[]).append(processingTime)
+	
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
+	
+	processingTime = (Time.get_ticks_usec() - TOTALstartTime) / 1000.0
+	GlobalVars.matingGeneSamples.get_or_add("TOTAL PROCESSING TIME",[]).append(processingTime)
+	
 	return newAgent
 
 ## Checks with [SpeciesHandler] to determine what class this creature is, and updates modulate accordingly.

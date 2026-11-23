@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://dik3rlumbu1em"
 
 [sub_resource type="Resource" id="Resource_jcwse"]
 script = ExtResource("5_km68o")
-multiplier = 1.5
+multiplier = 3.0
 metadata/_custom_type_script = "uid://b7avj5tkibsm1"
 
 [sub_resource type="Resource" id="Resource_fei7e"]
@@ -137,8 +137,7 @@ albedo_color = Color(0.41568628, 1, 0.41568628, 1)
 
 [node name="Node3D" type="Node3D" unique_id=415339642]
 script = ExtResource("1_s80ek")
-startingSpeciesCount = 5
-startingTreeCount = 200
+startingTreeCount = 500
 basicBodyPart = SubResource("Resource_7y0fa")
 startingGenes = Array[ExtResource("3_ym1nq")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e"), SubResource("Resource_a5t8r"), SubResource("Resource_pa1np"), SubResource("Resource_ggqyc")])
 sizeX = 500

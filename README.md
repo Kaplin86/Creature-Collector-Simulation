@@ -18,7 +18,7 @@ When a carnivore or omnivore wishes to hunt another creature, it will initate a 
 Once the simulation part of the project is well rounded, I wish to expand this into a survival-focused creature collector. One where you can release a creature into the ecosystem, and use a device to skip 1 year into the future, and see how the ecosystem changes.
 
 ## How to use / Play
-- Download the latest .EXE from [Github Releases](https://github.com/Kaplin86/Creature-Collector-Simulation/releases/tag/Major-Release)
+- Download the latest .EXE from [Github Releases](https://github.com/Kaplin86/Creature-Collector-Simulation/releases/)
 - Run the exe file
 - If windows defender pops up, press "Run Anyway"
 ### Non-windows versions
