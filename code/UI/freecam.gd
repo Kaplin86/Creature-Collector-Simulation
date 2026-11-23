@@ -33,6 +33,9 @@ var _shift = false
 var _alt = false
 
 func _input(event):
+	if !current:
+		return
+	
 	# Receives mouse motion
 	if event is InputEventMouseMotion:
 		_mouse_position = event.relative
@@ -115,6 +118,8 @@ func _update_mouselook():
 		rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
 
 func _process(delta: float) -> void:
+	if !current:
+		return
 	var realDelta = delta / Engine.time_scale
 	if target:
 		global_position = lerp(global_position,target.global_position + Vector3(0,10,10),realDelta * 4)
@@ -125,9 +130,4 @@ func _process(delta: float) -> void:
 		_update_movement(delta)
 		#rotation = lerp(rotation,Vector3(deg_to_rad(-63.5),0,0),realDelta * 4)
 	
-	var cellThings = %SpatialGrid.getEntitiesUsingDist(global_position,25)
-	for I in cellThings:
-		if is_instance_valid(I):
-			if I is Agent:
-				if !I._hasGenerated:
-					I.doVisual()
+	

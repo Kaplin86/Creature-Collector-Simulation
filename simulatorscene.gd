@@ -79,11 +79,17 @@ func _ready():
 	$Floor/LeftWall.disabled = false
 	$Floor/ForwardWall.disabled = false
 	$Floor/BackwardsWall.disabled = false
-	
+	var lastCount =  get_tree().get_nodes_in_group("creature").size()
 	for I in range(6):
-		while get_tree().get_nodes_in_group("creature").size() != 0:
-			await get_tree().process_frame
-		spawnCreatures()
+		
+		while lastCount != 0:
+			if get_tree():
+				await get_tree().process_frame
+			if get_tree():
+				lastCount =  get_tree().get_nodes_in_group("creature").size()
+			else:
+				lastCount= 0
+		if get_tree(): spawnCreatures()
 	
 	
 
@@ -151,6 +157,13 @@ func _process(delta):
 		
 		print("species count ", %SpeciesHandler.Species.size())
 		print(frame)
+	
+	var cellThings = %SpatialGrid.getEntitiesUsingDist(get_viewport().get_camera_3d().global_position,25)
+	for I in cellThings:
+		if is_instance_valid(I):
+			if I is Agent:
+				if !I._hasGenerated:
+					I.doVisual()
 	
 func get_average(numbers: Array) -> float:
 	if numbers.is_empty():

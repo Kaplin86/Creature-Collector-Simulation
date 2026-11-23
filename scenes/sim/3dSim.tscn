@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/UI/saveSim.gd" id="15_pb2om"]
 [ext_resource type="Script" uid="uid://c7fc7oc8hryxy" path="res://code/UI/creature_display_handler.gd" id="16_yfoyy"]
 [ext_resource type="PackedScene" uid="uid://6y433bmh1127" path="res://scenes/ui/agentDisplay.tscn" id="17_y1ygo"]
+[ext_resource type="Script" uid="uid://b7rnys7i2bk71" path="res://code/playerRelating/playerMain.gd" id="19_8x4oj"]
 
 [sub_resource type="Resource" id="Resource_yfoyy"]
 resource_local_to_scene = true
@@ -153,6 +154,9 @@ outer_radius = 6.426
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1ygo"]
 albedo_color = Color(0.41568628, 1, 0.41568628, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mltvj"]
+radius = 0.8330078
+
 [node name="Node3D" type="Node3D" unique_id=415339642]
 script = ExtResource("1_s80ek")
 startingTreeCount = 500
@@ -243,6 +247,7 @@ script = ExtResource("5_otpd7")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2077672473]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.44559065, 0.89523685, 0, -0.89523685, 0.44559065, 0, 19.762867, 0)
+current = true
 fov = 118.124985
 script = ExtResource("13_w2ain")
 
@@ -293,6 +298,21 @@ offset_right = 100.0
 offset_bottom = 110.0
 text = "Go Back To Main Menu"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1240741511]
+offset_left = 1.0
+offset_top = 585.0
+offset_right = 337.0
+offset_bottom = 646.0
+
+[node name="Play" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=972701925]
+layout_mode = 2
+text = "Start Journey"
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer" unique_id=907194721]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "H"
+
 [node name="CreatureDisplayHandler" type="Node3D" parent="." unique_id=1202184797]
 script = ExtResource("16_yfoyy")
 
@@ -316,6 +336,18 @@ mesh = SubResource("TorusMesh_mltvj")
 mesh = SubResource("BoxMesh_mltvj")
 surface_material_override/0 = SubResource("StandardMaterial3D_y1ygo")
 
+[node name="PlayerCharacter" type="CharacterBody3D" parent="." unique_id=1530704555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.201086, 0)
+script = ExtResource("19_8x4oj")
+active = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter" unique_id=1039680877]
+shape = SubResource("CapsuleShape3D_mltvj")
+
+[node name="Camera3D" type="Camera3D" parent="PlayerCharacter" unique_id=1564643819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37567997, -0.39882433)
+
 [connection signal="value_changed" from="CanvasLayer/Panel/HSlider" to="CanvasLayer/Panel/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
 [connection signal="file_selected" from="CanvasLayer/Button/FileDialog" to="CanvasLayer/Button" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
