@@ -110,3 +110,4 @@ func calculateDamage(move : Move, attacker : Agent,defender : Agent) -> int:
 
 var geneProcessingSamples = {}
 var geneUsingSamples = {}
+var matingGeneSamples = {}

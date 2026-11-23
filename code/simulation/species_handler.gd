@@ -9,7 +9,7 @@ var _Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 var Species : Array[SpeciesDatastore] = []
 
 ## The "distance" an [Agent] needs to have to be able to found a new species.
-var distThreshold := 40.0
+var distThreshold := 600.0
 
 ## The "distance" added per stat-difference on an [Agent] and a species' founder
 var statDifWeight := 0.5
@@ -54,35 +54,48 @@ func AddSpecies(first : Agent, Previous : int) -> int:
 	return Species.find(newDatastore)
 
 ## Checks the "distance" between an agent and a selected species.
-func evaluateSpecies(check : Agent, Specie : SpeciesDatastore) -> float:
+func evaluateSpecies(check : Agent, Specie : SpeciesDatastore, maximum : float) -> float:
 	var weight = 0
 	for I in _Stats:
 		weight += abs(check.calculateBaseStat(I) - Specie.originStats[I]) * statDifWeight
 	weight /= check.parts.size()
 	
+	if weight > maximum: return weight
 	
 	var checkDupe = check.parts.duplicate()
 	var originDupe = Specie.originParts.duplicate()
-	for I in originDupe:
-		I.sort()
 	
-	for I in checkDupe:
-		I.UnDebuffedStats.sort()
+	# im uncertain if the old code that was here even worked, given that parts are a custom resource
+	#for I in originDupe:
+	#	I.sort()
 	
-	for I in checkDupe:
-		if originDupe.has(I):
-			originDupe.erase(I)
-			checkDupe.erase(I)
+	#for I in checkDupe:
+	#	I.UnDebuffedStats.sort()
+	
+	#for I in checkDupe:
+	#	if originDupe.has(I):
+	#		originDupe.erase(I)
+	#		checkDupe.erase(I)
 	
 	weight += abs(originDupe.size() - checkDupe.size()) * limbDifWeight
 	
+	if weight > maximum: return weight
+	
 	if check.dietType != Specie.diet:
 		weight += dietWeight
+	
+	if weight > maximum: return weight
 	
 	var agentElements = check.getTyping()
 	for I in Specie.typings:
 		if not I in agentElements:
 			weight += elementWeight
+	
+	for I in agentElements:
+		if not I in Specie.typings:
+			weight += elementWeight
+	
+	if weight > maximum: return weight
 	
 	var scriptToGeneResource : Dictionary[GDScript,BasicBehaviorGene] = {}
 	for I in check.genes:
@@ -99,11 +112,16 @@ func evaluateSpecies(check : Agent, Specie : SpeciesDatastore) -> float:
 			weight += (abs(checkVersion.multiplier - I.multiplier) / 0.1) * behaviorValueWeight
 			weight += (abs(checkVersion.ageRestriction - I.ageRestriction) / 0.1) * behaviorValueWeight
 			scriptToGeneResource.erase(currentScript)
+			if weight > maximum: return weight
 		else:
 			# The creature lacks a behavior the species has.
 			weight += behaviorWeight
+			if weight > maximum: return weight
+
 	
 	weight += scriptToGeneResource.size() * behaviorWeight #if all behaviors are accounted for, the dictionary should be empty.
+	
+	
 	
 	return weight
 
@@ -111,9 +129,15 @@ func evaluateSpecies(check : Agent, Specie : SpeciesDatastore) -> float:
 ##If it does, it returns that species[br]
 ##If it doesn't, it returns a new species from [method AddSpecies]
 func checkChildIfNewSpecies(check : Agent, parentSpecies : int) -> int:
-	for I in Species:
-		var weight = evaluateSpecies(check, I)
-		if weight < distThreshold:
-			return Species.find(I)
+	var closestSpecies = 0
+	var closestSpeciesDistance = 99999
+	for I in range(Species.size()):
+		var weight = evaluateSpecies(check, Species[I], closestSpeciesDistance)
+		if weight < closestSpeciesDistance:
+			closestSpecies = I
+			closestSpeciesDistance = weight
+	
+	if closestSpeciesDistance < distThreshold:
+		return closestSpecies
 	
 	return AddSpecies(check, parentSpecies)

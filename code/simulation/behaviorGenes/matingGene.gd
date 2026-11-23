@@ -18,6 +18,9 @@ func act(agent : Agent) -> void:
 		agent.energy -= 0.3
 		return
 	
+	print("we aint solo reproducin!")
+
+	
 	agent.lookingForMate = true
 	var result = agent.lookForMate()
 	if result and result is Agent:

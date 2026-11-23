@@ -142,6 +142,12 @@ func _process(delta):
 			print(I," (evaluation) - ", get_average(GlobalVars.geneProcessingSamples[I]))
 		for I in GlobalVars.geneUsingSamples:
 			print(I," (using) - ", get_average(GlobalVars.geneUsingSamples[I]))
+		var sum = 0.0
+		for I in GlobalVars.matingGeneSamples:
+			sum += get_average(GlobalVars.matingGeneSamples[I])
+			print(I,"  - ", get_average(GlobalVars.matingGeneSamples[I]))
+		print("average total ", sum )
+		print("species count", %SpeciesHandler.Species.size())
 		print(frame)
 	
 func get_average(numbers: Array) -> float:

@@ -453,25 +453,38 @@ func setWanderTarget() -> void:
 ## The agent creates a new agent at this location, which inherits everything and gets mutated.[br]
 ## See [method mutateAgent]
 func soloReproduction() -> Agent:
+	
+	
 	var newAgent = Agent.new()
 	newAgent.dietType = dietType
 	
+	var startTime := Time.get_ticks_usec()
+	
 	for I in parts: newAgent.parts.append(I.duplicate(true))
 	for I in genes: newAgent.genes.append(I.duplicate(true))
-
+	var processingTime := (Time.get_ticks_usec() - startTime) / 1000.0
+	
+	GlobalVars.matingGeneSamples.get_or_add("duplicating parts and genes",[]).append(processingTime)
+	
+	
 	newAgent.moveSet = moveSet.duplicate(true)
 	newAgent.global_position = global_position
 	newAgent.targetLocation = global_position
 	newAgent.energy = 0.7
 	newAgent.generation = generation + 1
 	
-	
+	startTime = Time.get_ticks_usec()
 	mutateAgent(newAgent)
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.matingGeneSamples.get_or_add("mutation",[]).append(processingTime)
 
 	get_parent().add_child(newAgent)
 	#newAgent.modulate = modulate
 	
+	startTime = Time.get_ticks_usec()
 	newAgent.updateSpecies()
+	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
+	GlobalVars.matingGeneSamples.get_or_add("updating species time",[]).append(processingTime)
 	
 	birthtimer = _bstHash * GlobalVars.bstPerBirthTimer
 	return newAgent
