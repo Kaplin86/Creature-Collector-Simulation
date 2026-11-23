@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 		%Cell.text = "Spatial Cell - " + str(cell)
 		%InCell.text = "Bugged Cell? - " + str(not displayingAgent in  %SpatialGrid.grid.get(cell,[]))
 		%Moving.text = "moving? - " + str(displayingAgent.moving)
-		%Holding.text = "holding? - " + str(displayingAgent.holdingObject)
+		%Holding.text = "holding? - " + str(is_instance_valid(displayingAgent.holdingObject))
 		#print("check is ", displayingAgent.lastValueCheckResults)
 		for I in displayingAgent.lastValueCheckResults:
 			if scriptToGeneLabel.has(I):

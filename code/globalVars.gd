@@ -3,7 +3,7 @@ extends Node
 ## The global simulation variables.
 
 ## The mutatian "distance", as in how far up and down a stat can go when a mutation is called on it. Called for every stat, every mutation.
-var mutationDist := 1.5
+var mutationDist := 3
 
 ## The reproduction modes 
 ## @experimental: This will likely be changed out and placed on the specific [Agent] / species at a later date
@@ -23,16 +23,16 @@ var AgeToReproducePerStat := 2.1
 var HungerRate := 0.003
 
 ## The pixel distance an [Agent] can see, per Special Defense stat.
-var PixelVisionPerSPD := 4
+var PixelVisionPerSPD := 2
 
 ## The cooldown on reproducing placed on an [Agent], per stat total.
-var bstPerBirthTimer := 0.5
+var bstPerBirthTimer := 0.75
 
 ## The pixel speed on an [Agent], per Speed stat.
-var SpeedPerSpeed := 1
+var SpeedPerSpeed := 0.1
 
 ## The chance for an [Agent] to grow a new [BodyPart] when mutating
-var newLimbChance := 0.06
+var newLimbChance := 0.04
 ## The chance for [BodyPart] to change it's stat affinities when mutating.
 var MutateLimbDebuffChance := 0.06
 ## The chance for an [Agent] to change [enum Agent.Diets] when mutating.
@@ -48,7 +48,8 @@ var changeBehaviorGenesChance := 0.06
 var checkIfTargetIsReachable = false
 
 ## Max amount of times new agents can be made per minute
-
+var maxReproductionCount = 150
+var _agentsMadeThisMinute = 0
 
 ## Genes that the creatures can potentially gain
 var genePool : Array[GDScript]= [

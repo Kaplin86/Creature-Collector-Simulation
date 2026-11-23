@@ -138,6 +138,7 @@ func _process(delta):
 	#print(%SpatialGrid.getCell(get_global_mouse_position()))
 	dt += delta
 	if dt > 60:
+		GlobalVars._agentsMadeThisMinute = 0
 		dt = 0.0
 		frame.append("frame count " + str(Engine.get_frames_per_second()) + " - "+  str(get_tree().get_node_count_in_group("creature")))
 		for I in range(%CreatureRunningSectioner.groups.size()):
@@ -149,8 +150,8 @@ func _process(delta):
 			print(I," (using) - ", get_average(GlobalVars.geneUsingSamples[I]))
 		for I in GlobalVars.matingGeneSamples:
 			print("SOLO REPRODUCTION STUFF : ",I,"  - ", get_average(GlobalVars.matingGeneSamples[I]))
-		print("solo reproduction sample count ", GlobalVars.matingGeneSamples["instantiating"].size() )
-		print("mating gene count", GlobalVars.geneUsingSamples[BasicMateGene.new().get_script()].size())
+		print("solo reproduction sample count ", GlobalVars.matingGeneSamples.get("instantiating",[]).size() )
+		print("mating gene count", GlobalVars.geneUsingSamples.get(BasicMateGene.new().get_script(),[]).size())
 		
 		for I in GlobalVars.readySamples:
 			print("READY STUFF : ",I,"  - ", get_average(GlobalVars.readySamples[I]))

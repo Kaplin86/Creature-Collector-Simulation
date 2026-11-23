@@ -5,6 +5,9 @@ class_name BasicMateGene
 
 ## See [method BasicBehaviorGene.evaluate]
 func evaluate(agent : Agent) -> float:
+	if GlobalVars._agentsMadeThisMinute > GlobalVars.maxReproductionCount:
+		return -999
+	
 	if max(GlobalVars.AgeToReproducePerStat * agent._bstHash,30) < agent.age and agent.birthtimer < 0.01:
 		return sanitizeOutput(agent.energy * multiplier)
 	

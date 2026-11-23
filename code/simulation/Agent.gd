@@ -161,6 +161,10 @@ var _hasGenerated = false
 @onready var visualIndicator := Sprite3D.new()
 
 func _ready():
+	GlobalVars._agentsMadeThisMinute += 1
+	if GlobalVars._agentsMadeThisMinute > GlobalVars.maxReproductionCount:
+		queue_free()
+	
 	var startTime := Time.get_ticks_usec()
 	updateLevelHashes()
 	var processingTime := (Time.get_ticks_usec() - startTime) / 1000.0
@@ -225,7 +229,7 @@ func _ready():
 	visualIndicator.pixel_size = 0.002
 	visualIndicator.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	visualIndicator.fixed_size = true
-	visualIndicator.visibility_range_begin = 76.56
+	visualIndicator.visibility_range_begin = 30
 	visualIndicator.texture = load("res://art/50.png")
 	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
 	GlobalVars.readySamples.get_or_add("visual indicator",[]).append(processingTime)
@@ -252,7 +256,7 @@ func doVisual():
 func updateLevelHashes():
 	_bstHash = max(calculateBST(),5)
 	_SpDHash = max(5,calculateFinalStat("SpD"))
-	_SPHash = max(5,calculateFinalStat("SP"))
+	_SPHash = max(0.1,calculateFinalStat("SP"))
 	_HPHash = max(5,calculateFinalStat("HP"))
 	_lastHashLevel = level
 
@@ -394,7 +398,7 @@ func frame(delta):
 			var dir := to_target.normalized()
 			if !dir.cross(Vector3.UP).is_zero_approx():
 				look_at(targetLocation)
-				#rotation.x = 0.0
+				rotation.x = 0.0
 			
 	if passedThinkingTime > 1.0:
 		passedThinkingTime = 0.0

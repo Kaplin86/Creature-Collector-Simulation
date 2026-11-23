@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dfg3ixrf4mqlx" path="res://code/UI/speedSlider.gd" id="14_gffb6"]
 [ext_resource type="Script" uid="uid://cx2tkntp1i7ho" path="res://code/UI/saveSim.gd" id="15_pb2om"]
 [ext_resource type="Script" uid="uid://c7fc7oc8hryxy" path="res://code/UI/creature_display_handler.gd" id="16_yfoyy"]
+[ext_resource type="Script" uid="uid://cfsh5iuxcsp00" path="res://code/UI/playerUIManager.gd" id="17_72off"]
 [ext_resource type="PackedScene" uid="uid://6y433bmh1127" path="res://scenes/ui/agentDisplay.tscn" id="17_y1ygo"]
 [ext_resource type="Script" uid="uid://b7rnys7i2bk71" path="res://code/playerRelating/playerMain.gd" id="19_8x4oj"]
 
@@ -306,20 +307,45 @@ offset_right = 100.0
 offset_bottom = 110.0
 text = "Go Back To Main Menu"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1240741511]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=178235087]
 offset_left = 1.0
-offset_top = 585.0
-offset_right = 337.0
+offset_top = 623.0
+offset_right = 87.0
 offset_bottom = 646.0
 
-[node name="Play" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=972701925]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer" unique_id=1240741511]
 layout_mode = 2
-text = "Start Journey"
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer" unique_id=907194721]
+[node name="Species" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer" unique_id=907194721]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "H"
+
+[node name="CreatureCount" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer" unique_id=1878655485]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "H"
+
+[node name="PlayerUI" type="CanvasLayer" parent="." unique_id=95889918]
+script = ExtResource("17_72off")
+
+[node name="PanelContainer" type="PanelContainer" parent="PlayerUI" unique_id=244122172]
+offset_left = 10.0
+offset_top = 107.0
+offset_right = 163.0
+offset_bottom = 548.0
+
+[node name="PartyArea" type="VBoxContainer" parent="PlayerUI/PanelContainer" unique_id=1771108469]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerUI" unique_id=1171079513]
+offset_left = 11.0
+offset_top = 81.0
+offset_right = 163.0
+offset_bottom = 104.0
+text = "party"
+horizontal_alignment = 1
 
 [node name="CreatureDisplayHandler" type="Node3D" parent="." unique_id=1202184797]
 script = ExtResource("16_yfoyy")
@@ -348,7 +374,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_y1ygo")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.201086, 0)
 script = ExtResource("19_8x4oj")
-active = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter" unique_id=1039680877]
 shape = SubResource("CapsuleShape3D_mltvj")

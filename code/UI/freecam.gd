@@ -118,6 +118,8 @@ func _update_mouselook():
 		rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
 
 func _process(delta: float) -> void:
+	$"../CanvasLayer".visible = current
+	$"../PlayerUI".visible = !current
 	if !current:
 		return
 	var realDelta = delta / Engine.time_scale

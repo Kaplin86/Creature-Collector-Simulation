@@ -10,6 +10,13 @@ func evaluate(agent : Agent) -> float:
 ##If an action needs to keep memory of something, it should be saved on the gene and be limited.
 func act(agent : Agent) -> void:
 	agent.lookingForMate = false
+	if agent.holdingObject is Fruit:
+		var val = min(agent.holdingObject.NutritionalValue,1 - agent.energy)
+		agent.energy += val
+		agent.holdingObject.NutritionalValue -= val
+		if agent.holdingObject.NutritionalValue <= 0.0:
+			agent.holdingObject = null
+			
 	var result = agent.lookForFood()
 	
 	if result:

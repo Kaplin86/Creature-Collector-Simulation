@@ -31,7 +31,7 @@ func mutateRandomly() -> void:
 		if I in UnDebuffedStats: 
 			mult = 0.5
 			positiveWeight = 1.2
-		var valSet = get(I) + randf_range(-GlobalVars.mutationDist,GlobalVars.mutationDist) * mult
+		var valSet = get(I) + randf_range(-GlobalVars.mutationDist * 0.75,GlobalVars.mutationDist) * mult
 		set(I,max(0,valSet))
 
 ## Randomly switches out one of the [member UnDebuffedStats] for a different one.

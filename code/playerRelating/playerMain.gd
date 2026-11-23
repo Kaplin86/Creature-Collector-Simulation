@@ -1,9 +1,12 @@
 extends CharacterBody3D
+class_name Player
 
 const SPEED = 10.0
 var mouse_sensitivity = 0.002
 
 @export var active = false
+
+@export var party : Array[Agent] = []
 
 func _process(delta):
 	$Camera3D.current = active
@@ -14,6 +17,13 @@ func _process(delta):
 
 func _physics_process(delta):
 	if !active: return
+	
+	if party == []:
+		var kinapped : Agent = get_tree().get_nodes_in_group("creature").pick_random()
+		party.append(kinapped)
+		kinapped.get_parent().remove_child(kinapped)
+		$"../PlayerUI".render(self)
+	
 	var input_dir = Input.get_vector("left","right","forward","backward")
 	var dir = (transform.basis * Vector3(input_dir.x,0,input_dir.y)).normalized()
 	

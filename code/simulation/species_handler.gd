@@ -9,7 +9,7 @@ var _Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 var Species : Array[SpeciesDatastore] = []
 
 ## The "distance" an [Agent] needs to have to be able to found a new species.
-var distThreshold := 40.0
+var distThreshold := 60.0
 
 ## The "distance" added per stat-difference on an [Agent] and a species' founder
 var statDifWeight := 0.25
@@ -21,9 +21,9 @@ var dietWeight := 45.0
 ## This checks for both elements, and disreguards order
 var elementWeight := 40.0
 ## The "distance" added for each behavior TYPE difference (per missing or added behavior)
-var behaviorWeight := 40.0
+var behaviorWeight := 10.0
 ## The "distance" added for each behavior VALUE difference (per each 0.1 difference in value)
-var behaviorValueWeight := 0.05
+var behaviorValueWeight := 0.00
 
 ## Adds a new species to the [member Species] array, and returns the new species number.
 func AddSpecies(first : Agent, Previous : int) -> int:
