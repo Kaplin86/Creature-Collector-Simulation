@@ -29,11 +29,16 @@ func evaluate(agent : Agent) -> float:
 
 ## The agent will look for a nest, and save it if it can find one. Otherwise, roll a 1 in 30 chance to create one. Costs 0.1 energy.
 func act(agent : Agent) -> void:
-	
+	geneDebug = {}
 	attemptToFindNest(agent)
 	
 	if !agent.has_meta("nest"):
-		if agent.getAgeMetric() > 0.5 and ( randi_range(1,30) == 3): #only be able to 
+		geneDebug["can make nest"] = "no"
+		if agent.getAgeMetric() > 0.5: geneDebug["can make nest"] = "yes"
+		var gamble = randi_range(1,4)
+		if gamble != 3: geneDebug["gamble fail"] = "yes " + str(gamble)
+		if agent.getAgeMetric() > 0.5 and ( gamble == 3): #only be able to 
+			geneDebug["make nest"] = "yes"
 			var newNest = Nest.new()
 			newNest.species = agent.species
 			newNest.global_position = agent.global_position
@@ -42,11 +47,15 @@ func act(agent : Agent) -> void:
 			agent.set_meta("lastNestPos",newNest.global_position)
 			agent.energy -= 0.1
 		else:
+			geneDebug["make nest"] = "no"
 			agent.setWanderTarget()
 
 func attemptToFindNest(agent : Agent):
+	geneDebug["attempt to find pre-existing nest"] = "fail"
 	for I : Node3D in agent.lookInVision(["nest"]):
 		if I is Nest:
 			if I.species == agent.species:
 				agent.set_meta("nest",I)
 				agent.set_meta("lastNestPos",I.global_position)
+				geneDebug["attempt to find pre-existing nest"] = "success"
+				return

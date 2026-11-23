@@ -7,7 +7,7 @@ extends Node
 
 @export var startingSpeciesCount = 10
 @export var startingTreeCount = 10
-@export var basicBodyPart : BodyPart
+@export var basicBodyPart : Array[BodyPart] = []
 @export var startingGenes : Array[BasicBehaviorGene] = []
 
 @export var sizeX = 10000
@@ -67,8 +67,8 @@ func _ready():
 		treeRaycast.force_raycast_update()
 		add_child(newTree)
 		newTree.global_position = treeRaycast.get_collision_point()
-		#for C in range(1):
-		#	newTree.spawnFruit()
+		for C in range(1):
+			newTree.spawnFruit()
 			
 	
 	print("spawning...")
@@ -104,8 +104,7 @@ func spawnCreatures():
 		
 		var newAgent = Agent.new()
 		for C in startingGenes: newAgent.genes.append(C.duplicate(true))
-		var part1 = basicBodyPart.duplicate(true)
-		newAgent.parts.append(part1)
+		for C in basicBodyPart: newAgent.parts.append(C.duplicate(true))
 		newAgent.moveSet.append(move.duplicate(true))
 		for C in range(mutationLevel):
 			newAgent.mutateAgent(newAgent)

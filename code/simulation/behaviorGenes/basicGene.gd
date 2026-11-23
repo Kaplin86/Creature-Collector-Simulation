@@ -21,6 +21,9 @@ class_name BasicBehaviorGene
 ##All outputs should be ran through [method _sanitizeOutput] before returned.
 @abstract func evaluate(agent : Agent) -> float
 
+## A dictionary that gets reset at the start of act, and reports how the act function went
+var geneDebug = {}
+
 ## Makes sure the gene's value is within the correct
 func sanitizeOutput(input : float) -> float:
 	return clamp(input,minimum,maximum)

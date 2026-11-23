@@ -13,9 +13,11 @@ func evaluate(agent : Agent) -> float:
 ## Called when the agent chooses a specific action.[br]
 ##If an action needs to keep memory of something, it should be saved on the gene and be limited.
 func act(agent : Agent) -> void:
+	geneDebug = {}
 	if GlobalVars.reproductionType == GlobalVars.SimulationReproductionType.Duplication:
+		geneDebug["success"] = "yes"
 		agent.soloReproduction()
-		agent.energy -= 0.3
+		agent.energy -= 0.45
 		return
 	
 
@@ -23,8 +25,11 @@ func act(agent : Agent) -> void:
 	agent.lookingForMate = true
 	var result = agent.lookForMate()
 	if result and result is Agent:
+		geneDebug["found mate"] = "yes"
 		agent.targetLocation = result.global_position
+		geneDebug["close enough to reproduce"] = "no"
 		if agent.global_position.distance_squared_to(result.global_position) <= 10:
+			geneDebug["close enough to reproduce"] = "yes"
 			var ChildBearer : Agent = result
 			var Other : Agent = agent
 			if result.energy < agent.energy:
@@ -33,5 +38,9 @@ func act(agent : Agent) -> void:
 			
 			ChildBearer.duoReproduction(ChildBearer,Other)
 			ChildBearer.energy -= 0.25
+			geneDebug["child bearer"] = ChildBearer
+			geneDebug["success"] = "yes"
 	else:
+		geneDebug["found mate"] = "no"
+		geneDebug["wandering?"] = "yes"
 		agent.setWanderTarget()

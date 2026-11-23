@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 		%Name.text = displayingAgent.name
 		%DietType.selected = displayingAgent.dietType
 		%Age.text = "Age - " + str(int(floor(displayingAgent.age))) + " SECONDS"
+		%Age2.text = "Age Metric - " + String.num(displayingAgent.getAgeMetric(),3)
 		%Species.text = "Species #" + str(displayingAgent.species)
 		%Energy.text = "Energy - " + str(String.num(displayingAgent.energy,4))
 		%HP.text = "HP - " + str(int(displayingAgent.HP))
@@ -49,7 +50,8 @@ func _process(delta: float) -> void:
 		var cell =  %SpatialGrid.getCell(displayingAgent.global_position)
 		%Cell.text = "Spatial Cell - " + str(cell)
 		%InCell.text = "Bugged Cell? - " + str(not displayingAgent in  %SpatialGrid.grid.get(cell,[]))
-		%Moving.text = str(displayingAgent.moving)
+		%Moving.text = "moving? - " + str(displayingAgent.moving)
+		%Holding.text = "holding? - " + str(displayingAgent.holdingObject)
 		#print("check is ", displayingAgent.lastValueCheckResults)
 		for I in displayingAgent.lastValueCheckResults:
 			if scriptToGeneLabel.has(I):
@@ -61,12 +63,19 @@ func _process(delta: float) -> void:
 				bar.value = displayingAgent.lastValueCheckResults[I]
 				if I == displayingAgent.lastPerformedGene:
 					text.add_theme_color_override("font_color",Color.RED) 
+				if displayingAgent.lastValueCheckResults[I] == -86:
+					text.add_theme_color_override("font_color",Color.GRAY)
 		
 		for I in %StatDisplay.StatTypes:
 			%StatDisplay.CurrentStatblock[%StatDisplay.StatTypes[I]] = displayingAgent.calculateFinalStat(str(I))
 			%StatDisplay.CurrentStatblockMAX[%StatDisplay.StatTypes[I]] = displayingAgent.calculateFinalStatManualLevel(str(I),100)
 			#print(%StatDisplay.StatTypes[I],"- ",displayingAgent.calculateFinalStat(str(I)), " / ", displayingAgent.calculateFinalStatManualLevel(str(I),100))
 			%StatDisplay.queue_redraw()
+		
+		var string = str(String.num(displayingAgent.passedThinkingTime,2))+ "\n"
+		for I in displayingAgent.lastPerformedGeneDEBUG.keys():
+			string += str(I) + " - " + str(displayingAgent.lastPerformedGeneDEBUG[I]) + "\n"
+		%GeneReport.text = string
 
 func onNew():
 	scriptToGeneLabel = {}
@@ -97,7 +106,7 @@ func onNew():
 		scriptToGeneBar[script] = newBar
 		scriptToGeneLabel[script] = newLabel
 		newBar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		newBar.tooltip_text = "Min: " + str(String.num(I.minimum,2)) + "\nMax: " + str(String.num(I.maximum,2)) + "\nMult: " + str(String.num(I.multiplier,2))
+		newBar.tooltip_text = "Min: " + str(String.num(I.minimum,2)) + "\nMax: " + str(String.num(I.maximum,2)) + "\nMult: " + str(String.num(I.multiplier,2)) +"\nAge Req: " + str(String.num(I.ageRestriction,2))
 		var index = newgeneIndexToResource.find_key(script)
 		if index != null:
 			notDisabled.erase(index)

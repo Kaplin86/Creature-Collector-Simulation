@@ -891,7 +891,8 @@ func renderLimbsWithRandomRotation(spinePoints : Array[Vector3], assignment : Di
 ## Place limbs at assigned spots.
 func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array], def : Dictionary[BodyPart,BodyPartTypes]):
 	for I in assignment:
-		var actualPos = spinePoints[I]
+		var actualPos = spinePoints.get(I)
+		if !actualPos: actualPos = spinePoints.get(0)
 		var placingParts = assignment[I]
 		
 		var index = 0
@@ -903,10 +904,11 @@ func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array
 				percentage = 0
 			
 			var newModel
-			if def[C] in [BodyPartTypes.Arm,BodyPartTypes.Leg]:
-				newModel = %PlaceholderLimbArmLeg.duplicate()
-			elif def[C] in [BodyPartTypes.Other]:
-				newModel = %PlaceholderLimbDefense.duplicate()
+			#if def[C] in [BodyPartTypes.Arm,BodyPartTypes.Leg]:
+			#	newModel = %PlaceholderLimbArmLeg.duplicate()
+			#elif def[C] in [BodyPartTypes.Other]:
+			#	newModel = %PlaceholderLimbDefense.duplicate()
+			newModel = load("res://scenes/creatureGenerator/armLegPart.tscn").instantiate()
 			add_child(newModel)
 			newModel.position = actualPos + Vector3(percentage * spineThicknessChart[I],0,0)
 			if def[C]  in [BodyPartTypes.Arm,BodyPartTypes.Wings]:

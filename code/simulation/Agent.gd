@@ -75,6 +75,9 @@ var lastValueCheckResults : Dictionary[GDScript,float]= {}
 ## Last performed gene, in script form
 var lastPerformedGene : GDScript
 
+## The debug value from the last performed gene
+var lastPerformedGeneDEBUG : Dictionary
+
 #Behavior Vals -----------------
 ## The diet type the agent has
 @export var dietType : Diets = Diets.Herbivore
@@ -167,11 +170,11 @@ func _ready():
 	
 	startTime = Time.get_ticks_usec()
 	
-	var newMesh = MeshInstance3D.new()
-	add_child(newMesh)
-	var actualmesh := SphereMesh.new()
-	newMesh.mesh = actualmesh
-	actualmesh.radius = 3
+	#var newMesh = MeshInstance3D.new()
+	#add_child(newMesh)
+	#var actualmesh := SphereMesh.new()
+	#newMesh.mesh = actualmesh
+	#actualmesh.radius = 3
 	
 	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
 	GlobalVars.readySamples.get_or_add("basic mesh adding",[]).append(processingTime)
@@ -319,6 +322,9 @@ func determineCurrentAction() -> BasicBehaviorGene:
 		
 		lastValueCheckResults[I.get_script()] = val
 		
+		if currentAgeRatio < I.ageRestriction:
+			lastValueCheckResults[I.get_script()] = -86
+		
 		if val > highestTier:
 			if currentAgeRatio >= I.ageRestriction:
 				currentAction = I
@@ -384,21 +390,24 @@ func frame(delta):
 	ageAndEnergyTick(delta)
 	if targetLocation != global_position:
 		var to_target := targetLocation - global_position
-		if to_target.length_squared() < 0.0001:
-			return
-		var dir := to_target.normalized()
-		if !dir.cross(Vector3.UP).is_zero_approx():
-			look_at(targetLocation)
-	if passedThinkingTime > 1:
+		if !to_target.length_squared() < 0.0001:
+			var dir := to_target.normalized()
+			if !dir.cross(Vector3.UP).is_zero_approx():
+				look_at(targetLocation)
+				#rotation.x = 0.0
+			
+	if passedThinkingTime > 1.0:
+		passedThinkingTime = 0.0
 		var currentAction : BasicBehaviorGene = determineCurrentAction()
 		var startTime := Time.get_ticks_usec()
 		currentAction.act(self)
 		var processingTime := (Time.get_ticks_usec() - startTime) / 1000.0
 		
+		lastPerformedGeneDEBUG = currentAction.geneDebug
 		GlobalVars.geneUsingSamples.get_or_add(currentAction.get_script(),[]).append(processingTime)
 		
 		
-		passedThinkingTime = 0.0
+		
 	
 		var result = lookForFood()
 		if result:
@@ -460,10 +469,15 @@ func expNeeded() -> float:
 func getAgeMetric() -> float:
 	return inverse_lerp(0,max(GlobalVars.AgeToReproducePerStat * _bstHash,30),age)
 
+## The time since last wander.
+var wanderTimer = 0.0
+
 ## sets [member targetLocation] to a nearby location, based on Speed.[br]
 ## Most gene behaviors will call this if they fail.
 func setWanderTarget() -> void:
-	if randi_range(0,20) == 0:
+	wanderTimer += get_process_delta_time()
+	if randi_range(0,max(0,int(5 - wanderTimer))) == 0:
+		wanderTimer = 0.0
 		var awayDirection = (global_position - global_position + Vector3(randf_range(-_SPHash * 2,_SPHash * 2),0,randf_range(-_SPHash * 2,_SPHash * 2))).normalized()
 	
 		var possibleAngles = [0,30,-30,60,-60,90,-90,135,-135,180]
@@ -500,16 +514,7 @@ func soloReproduction() -> Agent:
 	GlobalVars.matingGeneSamples.get_or_add("instantiating",[]).append(processingTime)
 	
 	startTime = Time.get_ticks_usec()
-	for I in parts:
-		var newPart = BodyPart.new()
-		newPart.HP = I.HP
-		newPart.ATK = I.ATK
-		newPart.DEF = I.DEF
-		newPart.SpA = I.SpA
-		newPart.SpD = I.SpD
-		newPart.SP = I.SP
-		newPart.UnDebuffedStats = I.UnDebuffedStats.duplicate(true)
-		newAgent.parts.append(newPart)
+	for I in parts: newAgent.parts.append(I.duplicate(true))
 	
 	for I in genes: newAgent.genes.append(I.duplicate(true))
 	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
@@ -679,6 +684,8 @@ func lookInVision(criteraGroups : Array[String] = [], returnOnlyClosest = false)
 		if !is_instance_valid(I):
 			continue
 		
+		
+		
 		var validObject = false
 		for C in criteraGroups:
 			if I.is_in_group(C):
@@ -705,9 +712,10 @@ func lookInVision(criteraGroups : Array[String] = [], returnOnlyClosest = false)
 			valid = true
 		
 		if valid:
-			trulyFoundNodes.append(I)
-			if returnOnlyClosest:
-				return [I]
+			if is_instance_valid(I):
+				trulyFoundNodes.append(I)
+				if returnOnlyClosest:
+					return [I]
 	
 	
 	
@@ -725,7 +733,7 @@ func lookForFood() -> Node3D:
 	var resultQuery : Array[String]= []
 	if dietType in [Diets.Herbivore,Diets.Omnivore]:
 		resultQuery.append("fruit")
-	if dietType in [Diets.Herbivore,Diets.Omnivore]:
+	if dietType in [Diets.Carnivore,Diets.Omnivore]:
 		resultQuery.append("creature")
 	
 	var results = lookInVision(resultQuery)

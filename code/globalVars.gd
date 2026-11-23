@@ -3,7 +3,7 @@ extends Node
 ## The global simulation variables.
 
 ## The mutatian "distance", as in how far up and down a stat can go when a mutation is called on it. Called for every stat, every mutation.
-var mutationDist := 2
+var mutationDist := 1.5
 
 ## The reproduction modes 
 ## @experimental: This will likely be changed out and placed on the specific [Agent] / species at a later date
@@ -32,17 +32,17 @@ var bstPerBirthTimer := 0.5
 var SpeedPerSpeed := 1
 
 ## The chance for an [Agent] to grow a new [BodyPart] when mutating
-var newLimbChance := 0.03
+var newLimbChance := 0.06
 ## The chance for [BodyPart] to change it's stat affinities when mutating.
-var MutateLimbDebuffChance := 0.03
+var MutateLimbDebuffChance := 0.06
 ## The chance for an [Agent] to change [enum Agent.Diets] when mutating.
-var changedDietChance := 0.03
+var changedDietChance := 0.06
 ## The chance for an [Agent] to change a [enum Move.DamageType] on a move.
-var changeMoveDamageTypeChance := 0.03
+var changeMoveDamageTypeChance := 0.06
 ## The chance for an [Agent] to change the typing on a move
-var changeMoveElementalTypeChance := 0.03
+var changeMoveElementalTypeChance := 0.06
 ## The chance for an [Agent] to alter their [member Agent.genes]
-var changeBehaviorGenesChance := 0.03
+var changeBehaviorGenesChance := 0.06
 
 ## If vision checks call raycasts
 var checkIfTargetIsReachable = false

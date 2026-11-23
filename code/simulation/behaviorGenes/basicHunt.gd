@@ -11,6 +11,7 @@ func evaluate(agent : Agent) -> float:
 func act(agent : Agent) -> void:
 	agent.lookingForMate = false
 	var result = agent.lookForFood()
+	
 	if result:
 		agent.targetLocation = result.global_position
 		attemptToEat(result, agent)

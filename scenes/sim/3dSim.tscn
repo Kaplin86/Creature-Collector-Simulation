@@ -19,14 +19,32 @@
 [ext_resource type="Script" uid="uid://c7fc7oc8hryxy" path="res://code/UI/creature_display_handler.gd" id="16_yfoyy"]
 [ext_resource type="PackedScene" uid="uid://6y433bmh1127" path="res://scenes/ui/agentDisplay.tscn" id="17_y1ygo"]
 
-[sub_resource type="Resource" id="Resource_7y0fa"]
+[sub_resource type="Resource" id="Resource_yfoyy"]
+resource_local_to_scene = true
 script = ExtResource("2_3e45q")
 HP = 20
 ATK = 20
 DEF = 20
 SpA = 20
 SpD = 20
-SP = 20
+SP = 5
+UnDebuffedStats = Array[String](["HP", "ATK", "SpA"])
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_y1ygo"]
+resource_local_to_scene = true
+script = ExtResource("2_3e45q")
+HP = 10
+SpD = 5
+SP = 25
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_8x4oj"]
+resource_local_to_scene = true
+script = ExtResource("2_3e45q")
+HP = 10
+DEF = 5
+SP = 25
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [sub_resource type="Resource" id="Resource_e02ve"]
@@ -138,11 +156,11 @@ albedo_color = Color(0.41568628, 1, 0.41568628, 1)
 [node name="Node3D" type="Node3D" unique_id=415339642]
 script = ExtResource("1_s80ek")
 startingTreeCount = 500
-basicBodyPart = SubResource("Resource_7y0fa")
+basicBodyPart = Array[ExtResource("2_3e45q")]([SubResource("Resource_yfoyy"), SubResource("Resource_y1ygo"), SubResource("Resource_8x4oj")])
 startingGenes = Array[ExtResource("3_ym1nq")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e"), SubResource("Resource_a5t8r"), SubResource("Resource_pa1np"), SubResource("Resource_ggqyc")])
 sizeX = 500
 sizeY = 500
-mutationLevel = 3
+mutationLevel = 9
 countPerGroup = 3
 bumpiness = 0.26
 topGround = SubResource("FastNoiseLite_gffb6")
