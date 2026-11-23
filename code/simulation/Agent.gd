@@ -248,6 +248,7 @@ func doVisual():
 	visualGenerator.generate()
 	visualGenerator.global_position.y += visualGenerator.get_AABB().size.y
 	_hasGenerated = true
+	
 
 
 ## To save on resources, passively needed values (such as BST, HP, Special Defense and Speed) are
@@ -568,6 +569,8 @@ func soloReproduction() -> Agent:
 func updateSpecies():
 	species = _speciesHandler.checkChildIfNewSpecies(self,species)
 	visualIndicator.modulate = _speciesHandler.Species[species].color
+	visualGenerator.surfaceMaterial.albedo_color = _speciesHandler.Species[species].color
+	
 
 ## Mutates the inputted agent.
 func mutateAgent(agent : Agent) -> void:

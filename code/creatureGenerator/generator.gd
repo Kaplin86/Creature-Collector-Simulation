@@ -80,13 +80,15 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 @export var seedVal := 1
 @export var  parts : Array[BodyPart] = []
 @export var typings : Array[GlobalVars.Typings] = []
+@export var surfaceMaterial : Material = StandardMaterial3D.new()
+
 @export_group("Config")
 @export var specializationThreshold = 0.5
 @export var statTotalPerSpineSegment := 50
 @export var spineDistPerSegment := 0.25
 @export var spineMaxThickness := 0.2
 @export var spineMinThickness := 0.1
-@export_range(0.00000001,0.005,0.00000001) var spineMinMaxOffsetPerStat = 0.005
+@export_range(0.00000001,0.005,0.00000001) var spineMinMaxOffsetPerStat = 0.00072369
 @export_subgroup("Serpentine")
 @export var S_Curve : Curve = preload("res://code/creatureGenerator/curves/serpentineCurve.tres")
 @export_subgroup("Fish")
@@ -102,6 +104,7 @@ var Stats = ["HP","ATK","DEF","SpA","SpD","SP"]
 var spineThicknessChart : Dictionary[int,float] = {}
 
 signal GenerationComplete ( bodyType : BodyTypes, partDefinitions : Dictionary[BodyPart,BodyPartTypes])
+
 
 func get_AABB() -> AABB:
 	var combinedAABB := AABB()
@@ -191,6 +194,11 @@ func generate():
 		generateTailedHumanBody(definePartsAsLimbs)
 	elif bodyTypeUsing == BodyTypes.WingedShape:
 		generateWingedBody(definePartsAsLimbs)
+	
+	for I in get_children():
+		
+		if I is MeshInstance3D:
+			I.set_surface_override_material(0,surfaceMaterial)
 	
 	GenerationComplete.emit(bodyTypeUsing,definePartsAsLimbs)
 
@@ -666,7 +674,6 @@ func renderSpineFromPoints(points : Array[Vector3]) -> void:
 	var newMesh = MeshInstance3D.new()
 	var actualMesh = SurfaceTool.new()
 	
-
 	
 	
 	var rings :Array[Array] = []

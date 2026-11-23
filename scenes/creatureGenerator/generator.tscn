@@ -15,6 +15,10 @@ sky_material = SubResource("ProceduralSkyMaterial_qo5ej")
 background_mode = 2
 sky = SubResource("Sky_0wrkg")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wrkg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7en3s"]
+
 [sub_resource type="Resource" id="Resource_lotmn"]
 script = ExtResource("2_qo5ej")
 HP = 30
@@ -35,10 +39,7 @@ SpD = 40
 SP = 40
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
-[sub_resource type="Resource" id="Resource_0wrkg"]
-script = ExtResource("2_qo5ej")
-SP = 70
-metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxbpk"]
 
 [sub_resource type="Resource" id="Resource_7en3s"]
 script = ExtResource("2_qo5ej")
@@ -50,6 +51,8 @@ SpD = 65
 SP = 35
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7d1b2"]
+
 [sub_resource type="Resource" id="Resource_nxbpk"]
 script = ExtResource("2_qo5ej")
 ATK = 90
@@ -60,6 +63,8 @@ script = ExtResource("2_qo5ej")
 ATK = 90
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8s65"]
+
 [sub_resource type="Resource" id="Resource_g8s65"]
 script = ExtResource("2_qo5ej")
 HP = 70
@@ -69,6 +74,8 @@ SpA = 110
 SpD = 75
 SP = 90
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qp4so"]
 
 [sub_resource type="Resource" id="Resource_qp4so"]
 script = ExtResource("2_qo5ej")
@@ -98,6 +105,8 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 script = ExtResource("2_qo5ej")
 SP = 17
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_actsh"]
 
 [sub_resource type="Resource" id="Resource_wplbj"]
 script = ExtResource("2_qo5ej")
@@ -148,6 +157,8 @@ script = ExtResource("2_qo5ej")
 SP = 17
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0skd"]
+
 [sub_resource type="Curve" id="Curve_qo5ej"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18511796, 0.52608687), 0.0, 0.0, 0, 0, Vector2(0.491833, 0.5391304), 0.0, 0.0, 0, 0, Vector2(0.63883847, 0.38260865), 0.0, 0.0, 0, 0, Vector2(0.8330309, 0.6130434), 0.0, 0.0, 0, 0, Vector2(1, 0.5391304), 0.0, 0.0, 0, 0]
 point_count = 6
@@ -162,6 +173,8 @@ script = ExtResource("2_qo5ej")
 SP = 17
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fqji"]
+
 [sub_resource type="Resource" id="Resource_snwtf"]
 script = ExtResource("2_qo5ej")
 ATK = 70
@@ -171,6 +184,8 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 script = ExtResource("2_qo5ej")
 ATK = 65
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8x8n"]
 
 [sub_resource type="Resource" id="Resource_s0e6g"]
 script = ExtResource("2_qo5ej")
@@ -182,6 +197,8 @@ SpD = 5
 SP = 5
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wplbj"]
+
 [sub_resource type="Curve" id="Curve_7en3s"]
 _limits = [-1.0, 1.0, -0.01, 1.0]
 _data = [Vector2(-0.01, -1), 0.0, 0.0, 0, 0, Vector2(0.11464609, 0), 0.0, 0.0, 0, 0, Vector2(0.17513612, -0.0782609), 0.0, 0.0, 0, 0, Vector2(0.20079856, 0.26086956), 0.0, 0.0, 0, 0, Vector2(0.3767695, 0.27826083), 0.0, 0.0, 0, 0, Vector2(0.41526318, 0.04347825), 0.0, 0.0, 0, 0]
@@ -190,6 +207,8 @@ point_count = 6
 [sub_resource type="Curve" id="Curve_nxbpk"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49909255, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84nvk"]
 
 [sub_resource type="Curve" id="Curve_g8s65"]
 _limits = [-1.0, 1.0, -0.01, 1.0]
@@ -210,6 +229,8 @@ script = ExtResource("2_qo5ej")
 ATK = 90
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atoue"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_qo5ej"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4kxuq"]
@@ -226,23 +247,23 @@ shadow_enabled = true
 [node name="Node2D" type="Node3D" parent="." unique_id=1829976961]
 script = ExtResource("1_lotmn")
 typings = Array[int]([0, 1])
+surfaceMaterial = SubResource("StandardMaterial3D_0wrkg")
 spineDistPerSegment = 1.0
-spineMinMaxOffsetPerStat = 0.00072369099999999
 
 [node name="CircularExample" type="Node3D" parent="." unique_id=1391007162]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4845276, 0, 0)
 script = ExtResource("1_lotmn")
 seedVal = 3
 typings = Array[int]([0, 1])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_7en3s")
 
 [node name="SerpentineExample" type="Node3D" parent="." unique_id=488969311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.267545, 0, 0)
 script = ExtResource("1_lotmn")
 seedVal = 5
-parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_lotmn"), SubResource("Resource_qo5ej"), SubResource("Resource_0wrkg")])
+parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_lotmn"), SubResource("Resource_qo5ej")])
 typings = Array[int]([0, 1])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_nxbpk")
 
 [node name="FishExample" type="Node3D" parent="." unique_id=1069097314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.585747, 0, 0)
@@ -250,7 +271,7 @@ script = ExtResource("1_lotmn")
 seedVal = 6
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_7en3s")])
 typings = Array[int]([0, 1])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_7d1b2")
 
 [node name="GatheringExample" type="Node3D" parent="." unique_id=1001207787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.396177, 0, 0)
@@ -258,7 +279,7 @@ script = ExtResource("1_lotmn")
 seedVal = 6
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2")])
 typings = Array[int]([5, 5])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_g8s65")
 
 [node name="UprightExample" type="Node3D" parent="." unique_id=1463905224]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.040089, 0, 0)
@@ -266,7 +287,7 @@ script = ExtResource("1_lotmn")
 seedVal = 8
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_g8s65")])
 typings = Array[int]([0, 0])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_qp4so")
 
 [node name="FourLeggedExample" type="Node3D" parent="." unique_id=1533705109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.23198, 0, 0)
@@ -274,7 +295,7 @@ script = ExtResource("1_lotmn")
 seedVal = 8
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qp4so"), SubResource("Resource_actsh"), SubResource("Resource_o0skd"), SubResource("Resource_6fqji"), SubResource("Resource_g8x8n")])
 typings = Array[int]([0, 0])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_actsh")
 
 [node name="InsectoidExample2" type="Node3D" parent="." unique_id=302391789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.146458, 0, 0)
@@ -282,7 +303,7 @@ script = ExtResource("1_lotmn")
 seedVal = 10
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_84nvk"), SubResource("Resource_atoue"), SubResource("Resource_1d17x"), SubResource("Resource_atb77"), SubResource("Resource_servg"), SubResource("Resource_wojyp"), SubResource("Resource_vofoh"), SubResource("Resource_bxy70")])
 typings = Array[int]([0, 0])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_o0skd")
 I_Curve = SubResource("Curve_qo5ej")
 
 [node name="LegsExample" type="Node3D" parent="." unique_id=169695221]
@@ -291,7 +312,7 @@ script = ExtResource("1_lotmn")
 seedVal = 11
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5")])
 typings = Array[int]([0, 0])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_6fqji")
 I_Curve = SubResource("Curve_qo5ej")
 
 [node name="Human" type="Node3D" parent="." unique_id=2093149582]
@@ -300,7 +321,7 @@ script = ExtResource("1_lotmn")
 seedVal = 11
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg")])
 typings = Array[int]([0, 0])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_g8x8n")
 I_Curve = SubResource("Curve_qo5ej")
 
 [node name="Human2" type="Node3D" parent="." unique_id=1025374154]
@@ -308,7 +329,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.500256, 0, 0)
 script = ExtResource("1_lotmn")
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg"), SubResource("Resource_s0e6g")])
 typings = Array[int]([0, 0])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_wplbj")
 I_Curve = SubResource("Curve_qo5ej")
 TH_Curve = SubResource("Curve_7en3s")
 TH_Curve2 = SubResource("Curve_nxbpk")
@@ -319,7 +340,7 @@ visible = false
 script = ExtResource("1_lotmn")
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg"), SubResource("Resource_s0e6g")])
 typings = Array[int]([0, 0])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_84nvk")
 I_Curve = SubResource("Curve_qo5ej")
 TH_Curve = SubResource("Curve_g8s65")
 TH_Curve2 = SubResource("Curve_0wrkg")
@@ -330,7 +351,7 @@ script = ExtResource("1_lotmn")
 seedVal = 10
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_tjev5"), SubResource("Resource_2tj6f")])
 typings = Array[int]([0, 0])
-spineMinMaxOffsetPerStat = 0.00072369099999999
+surfaceMaterial = SubResource("StandardMaterial3D_atoue")
 I_Curve = SubResource("Curve_qo5ej")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1627548154]

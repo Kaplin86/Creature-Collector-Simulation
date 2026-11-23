@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 [sub_resource type="Resource" id="Resource_y1ygo"]
 resource_local_to_scene = true
 script = ExtResource("2_3e45q")
-HP = 10
+HP = 20
 SpD = 5
 SP = 25
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
@@ -44,7 +44,23 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 [sub_resource type="Resource" id="Resource_8x4oj"]
 resource_local_to_scene = true
 script = ExtResource("2_3e45q")
-HP = 10
+HP = 29
+DEF = 5
+SP = 25
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_72off"]
+resource_local_to_scene = true
+script = ExtResource("2_3e45q")
+HP = 20
+DEF = 5
+SP = 25
+metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
+
+[sub_resource type="Resource" id="Resource_bvgn5"]
+resource_local_to_scene = true
+script = ExtResource("2_3e45q")
+HP = 20
 DEF = 5
 SP = 25
 metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
@@ -161,7 +177,7 @@ radius = 0.8330078
 [node name="Node3D" type="Node3D" unique_id=415339642]
 script = ExtResource("1_s80ek")
 startingTreeCount = 500
-basicBodyPart = Array[ExtResource("2_3e45q")]([SubResource("Resource_yfoyy"), SubResource("Resource_y1ygo"), SubResource("Resource_8x4oj")])
+basicBodyPart = Array[ExtResource("2_3e45q")]([SubResource("Resource_yfoyy"), SubResource("Resource_y1ygo"), SubResource("Resource_8x4oj"), SubResource("Resource_72off"), SubResource("Resource_bvgn5")])
 startingGenes = Array[ExtResource("3_ym1nq")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e"), SubResource("Resource_a5t8r"), SubResource("Resource_pa1np"), SubResource("Resource_ggqyc")])
 sizeX = 500
 sizeY = 500
