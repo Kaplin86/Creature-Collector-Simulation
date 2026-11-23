@@ -103,3 +103,5 @@ func calculateDamage(move : Move, attacker : Agent,defender : Agent) -> int:
 
 	
 	return floor(fullAttack)
+
+var geneProcessingSamples = {}

@@ -275,8 +275,15 @@ func determineCurrentAction() -> BasicBehaviorGene:
 	
 	var currentAgeRatio = getAgeMetric()
 	
+	var settingHash = false
+	if _maxGeneHash == 0.0: settingHash = true
+	
 	for I in genes:
+		var startTime := Time.get_ticks_usec()
 		var val = I.evaluate(self)
+		var processingTime := (Time.get_ticks_usec() - startTime) / 1000.0
+		
+		GlobalVars.geneProcessingSamples.get_or_add(I.get_script(),[]).append(processingTime)
 		
 		lastValueCheckResults[I.get_script()] = val
 		
@@ -284,10 +291,11 @@ func determineCurrentAction() -> BasicBehaviorGene:
 			if currentAgeRatio >= I.ageRestriction:
 				currentAction = I
 				highestTier = val
-			
-		_maxGeneHash = max(_maxGeneHash,I.maximum)
-		_minGeneHash = min(_minGeneHash,I.minimum)
-	
+		
+		if settingHash:
+			_maxGeneHash = max(_maxGeneHash,I.maximum)
+			_minGeneHash = min(_minGeneHash,I.minimum)
+		
 	lastPerformedGene = currentAction.get_script()
 	
 	return currentAction
@@ -351,7 +359,7 @@ func frame(delta):
 
 var moving = false
 func _physics_process(delta):
-	return
+	
 	
 	if !inBattle:
 		var oldPos = global_position

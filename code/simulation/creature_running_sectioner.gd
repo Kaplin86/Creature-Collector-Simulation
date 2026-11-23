@@ -6,6 +6,9 @@ var agentToGroup = {}
 
 var num = 0
 var dt = 0.0
+
+var processingTimePerGroup : Array[Array] = [[],[],[],[],[],[],[],[]]
+
 func _process(delta):
 	dt += delta
 	for I in range(groups.size()):
@@ -16,10 +19,13 @@ func _process(delta):
 	var timeUsing = elapsedTime[num]
 	elapsedTime[num] = 0.0
 	
+	var startTime := Time.get_ticks_usec()
 	for agent: Agent in groups[num].duplicate():
 		if is_instance_valid(agent) and !agent.is_queued_for_deletion():
 			if agentToGroup.has(agent):
 				agent.frame(timeUsing)
+	var processingTime := (Time.get_ticks_usec() - startTime) / 1000.0
+	processingTimePerGroup[num].append(processingTime)
 	
 	#if Engine.get_frames_per_second() < 20 and dt > 50:
 	#	dt = 0.0

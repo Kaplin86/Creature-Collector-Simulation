@@ -135,8 +135,22 @@ func _process(delta):
 	if dt > 60:
 		dt = 0.0
 		frame.append("frame count " + str(Engine.get_frames_per_second()) + " - "+  str(get_tree().get_node_count_in_group("creature")))
-	print(frame)
+		for I in range(%CreatureRunningSectioner.groups.size()):
+			
+			print("group ", I, " has a average tick time of ", get_average(%CreatureRunningSectioner.processingTimePerGroup[I]))
+		for I in GlobalVars.geneProcessingSamples:
+			print(I," - ", get_average(GlobalVars.geneProcessingSamples[I]))
+		print(frame)
 	
+func get_average(numbers: Array) -> float:
+	if numbers.is_empty():
+		return 0.0
+	
+	var sum := 0.0
+	for n in numbers:
+		sum += n
+	
+	return sum / numbers.size()
 
 
 func _on_button_2_pressed():
