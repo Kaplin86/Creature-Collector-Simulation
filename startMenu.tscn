@@ -339,9 +339,9 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/field_and_buttons_separation = -1
 min_value = 100.0
-max_value = 10000.0
+max_value = 3000.0
 step = 50.0
-value = 3000.0
+value = 500.0
 
 [node name="Label" type="Label" parent="Panel2/Panel/VBoxContainer/HBoxContainer" unique_id=800864478]
 layout_mode = 2
@@ -352,9 +352,9 @@ text = "X"
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 100.0
-max_value = 10000.0
+max_value = 3000.0
 step = 50.0
-value = 3000.0
+value = 500.0
 
 [node name="Panel2" type="Panel" parent="Panel2" unique_id=1711716665]
 layout_mode = 0
@@ -391,9 +391,9 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/field_and_buttons_separation = -1
 min_value = 1.0
-max_value = 10000.0
+max_value = 1000.0
 step = 10.0
-value = 81.0
+value = 21.0
 
 [node name="Panel4" type="Panel" parent="Panel2" unique_id=852051001]
 layout_mode = 0
@@ -431,7 +431,7 @@ layout_mode = 2
 theme_override_constants/field_and_buttons_separation = -1
 max_value = 10000.0
 step = 10.0
-value = 150.0
+value = 300.0
 
 [node name="Panel5" type="Panel" parent="Panel2" unique_id=526246565]
 layout_mode = 0
@@ -584,7 +584,7 @@ offset_left = 829.0
 offset_top = 609.0
 offset_right = 1037.0
 offset_bottom = 640.0
-text = "Creature Renderer (!)"
+text = "Creature Renderer"
 
 [connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
 [connection signal="file_selected" from="Button2/FileDialog" to="Button2" method="_on_file_dialog_file_selected"]

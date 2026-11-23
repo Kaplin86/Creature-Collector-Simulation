@@ -3,7 +3,7 @@ extends Control
 
 
 func _on_button_pressed(): #Open Big Sim
-	var NewScene = load("res://simulation_scene_big.tscn").instantiate()
+	var NewScene = load("res://scenes/sim/3dSim.tscn").instantiate()
 	NewScene.sizeX = %XSize.value
 	NewScene.sizeY = %YSize.value
 	NewScene.startingSpeciesCount = %SpeciesCount.value
