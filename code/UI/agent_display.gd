@@ -50,6 +50,7 @@ func _process(delta: float) -> void:
 		%Cell.text = "Spatial Cell - " + str(cell)
 		%InCell.text = "Bugged Cell? - " + str(not displayingAgent in  %SpatialGrid.grid.get(cell,[]))
 		%Moving.text = str(displayingAgent.moving)
+		#print("check is ", displayingAgent.lastValueCheckResults)
 		for I in displayingAgent.lastValueCheckResults:
 			if scriptToGeneLabel.has(I):
 				var text : Label = scriptToGeneLabel[I]
@@ -58,7 +59,6 @@ func _process(delta: float) -> void:
 				bar.min_value = displayingAgent._minGeneHash
 				bar.max_value = displayingAgent._maxGeneHash
 				bar.value = displayingAgent.lastValueCheckResults[I]
-				
 				if I == displayingAgent.lastPerformedGene:
 					text.add_theme_color_override("font_color",Color.RED) 
 		

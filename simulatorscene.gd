@@ -67,8 +67,8 @@ func _ready():
 		treeRaycast.force_raycast_update()
 		add_child(newTree)
 		newTree.global_position = treeRaycast.get_collision_point()
-		for C in range(1):
-			newTree.spawnFruit()
+		#for C in range(1):
+		#	newTree.spawnFruit()
 			
 	
 	print("spawning...")
@@ -139,7 +139,9 @@ func _process(delta):
 			
 			print("group ", I, " has a average tick time of ", get_average(%CreatureRunningSectioner.processingTimePerGroup[I]))
 		for I in GlobalVars.geneProcessingSamples:
-			print(I," - ", get_average(GlobalVars.geneProcessingSamples[I]))
+			print(I," (evaluation) - ", get_average(GlobalVars.geneProcessingSamples[I]))
+		for I in GlobalVars.geneUsingSamples:
+			print(I," (using) - ", get_average(GlobalVars.geneUsingSamples[I]))
 		print(frame)
 	
 func get_average(numbers: Array) -> float:

@@ -3,8 +3,8 @@ class_name Fruit
 
 ## A edible, fruit object.
 
-## The amount of energy recoveredwhen a carnivore eats this
-@export var NutritionalValue = 0.25
+## The amount of energy recoveredwhen a herbivore eats this
+@export var NutritionalValue = 0.2
 
 @onready var _spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
 

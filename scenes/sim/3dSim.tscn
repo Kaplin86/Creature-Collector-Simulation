@@ -138,7 +138,7 @@ albedo_color = Color(0.41568628, 1, 0.41568628, 1)
 [node name="Node3D" type="Node3D" unique_id=415339642]
 script = ExtResource("1_s80ek")
 startingSpeciesCount = 5
-startingTreeCount = 500
+startingTreeCount = 200
 basicBodyPart = SubResource("Resource_7y0fa")
 startingGenes = Array[ExtResource("3_ym1nq")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e"), SubResource("Resource_a5t8r"), SubResource("Resource_pa1np"), SubResource("Resource_ggqyc")])
 sizeX = 500

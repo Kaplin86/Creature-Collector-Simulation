@@ -45,7 +45,7 @@ func act(agent : Agent) -> void:
 			agent.setWanderTarget()
 
 func attemptToFindNest(agent : Agent):
-	for I : Node3D in agent.lookInVision():
+	for I : Node3D in agent.lookInVision(["nest"]):
 		if I is Nest:
 			if I.species == agent.species:
 				agent.set_meta("nest",I)

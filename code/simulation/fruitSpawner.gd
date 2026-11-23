@@ -14,7 +14,7 @@ func _ready():
 var dt = 0.0
 func _process(delta):
 	dt += delta
-	if dt >= 90:
+	if dt >= 180:
 		spawnFruit()
 		dt = 0.0
 
@@ -23,7 +23,7 @@ func spawnFruit():
 		if !is_instance_valid(I):
 			fruits.erase(I)
 	
-	if fruits.size() <= 10:
+	if fruits.size() <= 5:
 		var newFruit = Fruit.new()
 		add_sibling(newFruit)
 		newFruit.global_position = global_position + Vector3(randf_range(-5,5),0,randf_range(-5,5))

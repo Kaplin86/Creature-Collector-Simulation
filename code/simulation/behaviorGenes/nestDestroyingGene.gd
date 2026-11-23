@@ -4,24 +4,18 @@ class_name NestDestroyingGene
 ## The creature will destroy nests of a differing species
 
 func evaluate(agent : Agent) -> float:
-	var nest = getEnemyNestInVision(agent)
-	if nest:
-		return sanitizeOutput(
-			inverse_lerp(agent.getVisionDist(),0,agent.global_position.distance_squared_to(nest.global_position))
-			* multiplier
-		)
-	
-	return sanitizeOutput(-99)
+	return sanitizeOutput(agent.energy * multiplier)
 
 func act(agent : Agent) -> void:
 	var result = getEnemyNestInVision(agent)
 	if result:
 		agent.targetLocation = result.global_position
 		attemptToBreak(result, agent)
-	
+	else:
+		agent.setWanderTarget()
 
 func getEnemyNestInVision(agent : Agent) -> Nest:
-	for I in agent.lookInVision(["nest"],true):
+	for I in agent.lookInVision(["nest"]):
 		if I.species != agent.species:
 			return I
 	return null

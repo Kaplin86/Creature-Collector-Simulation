@@ -4,7 +4,7 @@ class_name SpatialGrid
 ## A system to efficiently seperate the map into a grid for faster vision-searching
 
 ## The size of each cell
-@export var cellSize : float = 120
+@export var cellSize : float = 30
 
 ## The grid, with keys being cells, and the arrays being objects inside that cell
 var grid : Dictionary[Vector3i,Array] = {}

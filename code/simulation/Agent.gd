@@ -66,8 +66,8 @@ var _SPHash = 0.0
 var _HPHash = 0.0
 var _lastHashLevel : int = -99
 
-var _minGeneHash = 0.0 # the lowest value the lowest gene can be
-var _maxGeneHash = 0.0 # the highest value the highest gene can be
+var _minGeneHash # the lowest value the lowest gene can be
+var _maxGeneHash # the highest value the highest gene can be
 
 ## A dictionary with the last checked gene values, indexed by script.
 var lastValueCheckResults : Dictionary[GDScript,float]= {}
@@ -268,15 +268,14 @@ func determineCurrentAction() -> BasicBehaviorGene:
 	var currentAction = wanderGene
 	var highestTier = 0.65
 	
-	_minGeneHash = 999
-	_maxGeneHash = -999
+	
 	
 	lastValueCheckResults[currentAction.get_script()] = highestTier
 	
 	var currentAgeRatio = getAgeMetric()
 	
 	var settingHash = false
-	if _maxGeneHash == 0.0: settingHash = true
+	if !_maxGeneHash: settingHash = true
 	
 	for I in genes:
 		var startTime := Time.get_ticks_usec()
@@ -293,8 +292,12 @@ func determineCurrentAction() -> BasicBehaviorGene:
 				highestTier = val
 		
 		if settingHash:
-			_maxGeneHash = max(_maxGeneHash,I.maximum)
-			_minGeneHash = min(_minGeneHash,I.minimum)
+			if !_maxGeneHash:
+				_maxGeneHash = I.maximum
+				_minGeneHash = I.minimum
+			else:
+				_maxGeneHash = max(_maxGeneHash,I.maximum)
+				_minGeneHash = min(_minGeneHash,I.minimum)
 		
 	lastPerformedGene = currentAction.get_script()
 	
@@ -350,7 +353,12 @@ func frame(delta):
 		look_at(targetLocation)
 	if passedThinkingTime > 1:
 		var currentAction : BasicBehaviorGene = determineCurrentAction()
+		var startTime := Time.get_ticks_usec()
 		currentAction.act(self)
+		var processingTime := (Time.get_ticks_usec() - startTime) / 1000.0
+		
+		GlobalVars.geneUsingSamples.get_or_add(currentAction.get_script(),[]).append(processingTime)
+		
 		passedThinkingTime = 0.0
 	
 		var result = lookForFood()
@@ -607,11 +615,17 @@ func lookInVision(criteraGroups : Array[String] = [], returnOnlyClosest = false)
 	foundNodes.sort_custom(_byDistance)
 	
 	for I in foundNodes:
-		ForwardRaycast.global_position = global_position
-		ForwardRaycast.target_position = I.global_position - global_position
-		ForwardRaycast.force_raycast_update()
+		var valid = false
+		if GlobalVars.checkIfTargetIsReachable:
+			ForwardRaycast.global_position = global_position
+			ForwardRaycast.target_position = I.global_position - global_position
+			ForwardRaycast.force_raycast_update()
+			if !ForwardRaycast.is_colliding():
+				valid = true
+		else:
+			valid = true
 		
-		if !ForwardRaycast.is_colliding():
+		if valid:
 			trulyFoundNodes.append(I)
 			if returnOnlyClosest:
 				return [I]

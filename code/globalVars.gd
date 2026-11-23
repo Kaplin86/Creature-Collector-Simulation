@@ -44,6 +44,9 @@ var changeMoveElementalTypeChance := 0.03
 ## The chance for an [Agent] to alter their [member Agent.genes]
 var changeBehaviorGenesChance := 0.03
 
+## If vision checks call raycasts
+var checkIfTargetIsReachable = false
+
 ## Genes that the creatures can potentially gain
 var genePool : Array[GDScript]= [
 	BasicHuntingGene,
@@ -53,6 +56,7 @@ var genePool : Array[GDScript]= [
 	DropOffAtNestGene,
 	PickupFoodGene
 ]
+
 
 
 ## The various elemental typings.
@@ -105,3 +109,4 @@ func calculateDamage(move : Move, attacker : Agent,defender : Agent) -> int:
 	return floor(fullAttack)
 
 var geneProcessingSamples = {}
+var geneUsingSamples = {}
