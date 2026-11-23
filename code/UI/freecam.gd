@@ -130,4 +130,6 @@ func _process(delta: float) -> void:
 		_update_movement(delta)
 		#rotation = lerp(rotation,Vector3(deg_to_rad(-63.5),0,0),realDelta * 4)
 	
-	
+	if Input.is_action_just_pressed("ui_cancel"):
+		await get_tree().process_frame
+		%PlayerCharacter.active = true

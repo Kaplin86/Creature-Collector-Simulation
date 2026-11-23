@@ -47,6 +47,9 @@ var changeBehaviorGenesChance := 0.06
 ## If vision checks call raycasts
 var checkIfTargetIsReachable = false
 
+## Max amount of times new agents can be made per minute
+
+
 ## Genes that the creatures can potentially gain
 var genePool : Array[GDScript]= [
 	BasicHuntingGene,

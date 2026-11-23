@@ -910,7 +910,7 @@ func renderLimbs(spinePoints : Array[Vector3], assignment : Dictionary[int,Array
 			#	newModel = %PlaceholderLimbDefense.duplicate()
 			newModel = load("res://scenes/creatureGenerator/armLegPart.tscn").instantiate()
 			add_child(newModel)
-			newModel.position = actualPos + Vector3(percentage * spineThicknessChart[I],0,0)
+			newModel.position = actualPos + Vector3(percentage * spineThicknessChart.get(I,spineThicknessChart.get(0)),0,0)
 			if def[C]  in [BodyPartTypes.Arm,BodyPartTypes.Wings]:
 				newModel.global_rotation_degrees = Vector3(percentage*-45,90,0)
 			if def[C] == BodyPartTypes.Leg:

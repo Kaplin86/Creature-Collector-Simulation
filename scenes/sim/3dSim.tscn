@@ -276,6 +276,14 @@ offset_right = 313.0
 offset_bottom = 48.0
 text = "SPEED - 1.0"
 
+[node name="ElapsedTime" type="Label" parent="CanvasLayer/Panel" unique_id=141592257]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 2.0
+offset_right = 543.0
+offset_bottom = 28.0
+text = "Elapsed Time: 2342352135"
+
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=1885020605]
 anchors_preset = -1
 anchor_left = 0.78125
@@ -337,6 +345,7 @@ mesh = SubResource("BoxMesh_mltvj")
 surface_material_override/0 = SubResource("StandardMaterial3D_y1ygo")
 
 [node name="PlayerCharacter" type="CharacterBody3D" parent="." unique_id=1530704555]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.201086, 0)
 script = ExtResource("19_8x4oj")
 active = true
