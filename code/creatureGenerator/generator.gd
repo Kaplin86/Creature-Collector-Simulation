@@ -110,7 +110,7 @@ func get_AABB() -> AABB:
 	var combinedAABB := AABB()
 	
 	var first = true
-	for I : VisualInstance3D in find_children("*","VisualInstance3D"):
+	for I : VisualInstance3D in find_children("*","VisualInstance3D",true,false):
 		var box = I.get_aabb() * I.global_transform
 		if first:
 			combinedAABB = box

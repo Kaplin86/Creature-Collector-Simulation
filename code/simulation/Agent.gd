@@ -246,7 +246,8 @@ func doVisual():
 	visualGenerator.parts = parts
 	visualGenerator.typings = getTyping()
 	visualGenerator.generate()
-	visualGenerator.global_position.y += visualGenerator.get_AABB().size.y
+	await get_tree().process_frame
+	visualGenerator.global_position.y += visualGenerator.get_AABB().size.y * 0.02
 	_hasGenerated = true
 	
 
