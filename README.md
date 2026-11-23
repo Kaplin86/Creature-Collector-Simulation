@@ -3,8 +3,11 @@
 An ambitious Godot 4.7 project to attempt to replicate the themings of element-based creatures (i.e. Pokemon, Cassette Beasts, Coromon, Etc.) inside of a nature simulator
 
 ## Controls
-- Use scroll wheel to zoom the camera
-- Hold middle mouse and move to pan the camera
+FreeCam Mode:
+- WASD to move
+- Right click to rotate
+- Scroll wheel to increase speed
+- Click to inspect
 
 ## How does it work?
 Creatures, or "Agents", have a list of ambiguous body parts that correlates to stats. Everytime a creature reproduces, it will mutate the stats a little bit, or potentially do more drastic things, such as changing diet types, adding new limbs, and more.
@@ -27,6 +30,9 @@ Once the simulation part of the project is well rounded, I wish to expand this i
 ## Development
 - Engine used is Godot 4.7
 - Clone the repo, and hit Import in Godot, and select the project.godot file inside the repo
+
+## Known bugs
+That bizzare floating tree in the center of the map. got no clue why thats there lol.
 
 ## License
 
