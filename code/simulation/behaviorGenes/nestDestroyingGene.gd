@@ -21,10 +21,9 @@ func act(agent : Agent) -> void:
 	
 
 func getEnemyNestInVision(agent : Agent) -> Nest:
-	for I in agent.lookInVision():
-		if I is Nest:
-			if I.species != agent.species:
-				return I
+	for I in agent.lookInVision(["nest"],true):
+		if I.species != agent.species:
+			return I
 	return null
 
 func attemptToBreak(nest : Nest, agent : Agent):

@@ -23,6 +23,7 @@ func _ready():
 	var actualmesh := SphereMesh.new()
 	newMesh.mesh = actualmesh
 	actualmesh.radius = 3
+	add_to_group("nest")
 
 func _process(delta):
 	_spatialGrid.updateEntity(self,global_position)

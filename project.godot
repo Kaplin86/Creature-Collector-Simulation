@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 creature=""
 fruit=""
+nest=""
 
 [input]
 

@@ -578,11 +578,12 @@ func duoReproduction(parent1 : Agent, parent2 : Agent) -> Agent:
 	return newAgent
 
 ## Looks in the vision, calling [SpatialGrid], and returns all of the found nodes.
-func lookInVision(criteraGroups : Array[String] = []) -> Array[Node3D]:
+func lookInVision(criteraGroups : Array[String] = [], returnOnlyClosest = false) -> Array[Node3D]:
 	
 	var VisionDistance = getVisionDist()
 	var foundNodes : Array[Node3D] = []
 	var nodes = _spatialGrid.getEntitiesUsingDist(global_position,VisionDistance)
+	
 	
 	for I in nodes:
 		if I == self:
@@ -599,17 +600,28 @@ func lookInVision(criteraGroups : Array[String] = []) -> Array[Node3D]:
 		if criteraGroups == []: validObject = true
 		
 		if validObject:
-			if global_position.distance_squared_to(I.global_position) < VisionDistance * VisionDistance:
-				ForwardRaycast.global_position = global_position
-				ForwardRaycast.target_position = I.global_position - global_position
-				ForwardRaycast.force_raycast_update()
-				
-				if !ForwardRaycast.is_colliding():
-					foundNodes.append(I)
-	
+			var dist = global_position.distance_squared_to(I.global_position)
+			if dist < VisionDistance * VisionDistance:
+				foundNodes.append(I)
+	var trulyFoundNodes : Array[Node3D] = []
 	foundNodes.sort_custom(_byDistance)
 	
-	return foundNodes
+	for I in foundNodes:
+		ForwardRaycast.global_position = global_position
+		ForwardRaycast.target_position = I.global_position - global_position
+		ForwardRaycast.force_raycast_update()
+		
+		if !ForwardRaycast.is_colliding():
+			trulyFoundNodes.append(I)
+			if returnOnlyClosest:
+				return [I]
+	
+	
+	
+	
+	
+	
+	return trulyFoundNodes
 
 
 func _byDistance(a : Node3D,b : Node3D):
