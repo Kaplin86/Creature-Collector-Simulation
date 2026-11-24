@@ -235,6 +235,9 @@ metadata/_custom_type_script = "uid://3ajv3eiqwxrm"
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4kxuq"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_mltvj"]
+size = Vector3(1, 2.8, 1)
+
 [node name="Node3D" type="Node3D" unique_id=510493856]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1534849307]
@@ -245,20 +248,21 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Node2D" type="Node3D" parent="." unique_id=1829976961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
 script = ExtResource("1_lotmn")
 typings = Array[int]([0, 1])
 surfaceMaterial = SubResource("StandardMaterial3D_0wrkg")
 spineDistPerSegment = 1.0
 
 [node name="CircularExample" type="Node3D" parent="." unique_id=1391007162]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4845276, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4845276, 0.24999978, 0)
 script = ExtResource("1_lotmn")
 seedVal = 3
 typings = Array[int]([0, 1])
 surfaceMaterial = SubResource("StandardMaterial3D_7en3s")
 
 [node name="SerpentineExample" type="Node3D" parent="." unique_id=488969311]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.267545, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.267545, 0.20901209, 0)
 script = ExtResource("1_lotmn")
 seedVal = 5
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_lotmn"), SubResource("Resource_qo5ej")])
@@ -266,7 +270,7 @@ typings = Array[int]([0, 1])
 surfaceMaterial = SubResource("StandardMaterial3D_nxbpk")
 
 [node name="FishExample" type="Node3D" parent="." unique_id=1069097314]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.585747, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.585747, 0.63652277, 0)
 script = ExtResource("1_lotmn")
 seedVal = 6
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_7en3s")])
@@ -274,7 +278,7 @@ typings = Array[int]([0, 1])
 surfaceMaterial = SubResource("StandardMaterial3D_7d1b2")
 
 [node name="GatheringExample" type="Node3D" parent="." unique_id=1001207787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.396177, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.396177, 0.5668731, 0)
 script = ExtResource("1_lotmn")
 seedVal = 6
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_7en3s"), SubResource("Resource_nxbpk"), SubResource("Resource_7d1b2")])
@@ -282,7 +286,7 @@ typings = Array[int]([5, 5])
 surfaceMaterial = SubResource("StandardMaterial3D_g8s65")
 
 [node name="UprightExample" type="Node3D" parent="." unique_id=1463905224]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.040089, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.040089, 0.31270787, 0)
 script = ExtResource("1_lotmn")
 seedVal = 8
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_g8s65")])
@@ -290,7 +294,7 @@ typings = Array[int]([0, 0])
 surfaceMaterial = SubResource("StandardMaterial3D_qp4so")
 
 [node name="FourLeggedExample" type="Node3D" parent="." unique_id=1533705109]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.23198, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.23198, 0.6663501, 0)
 script = ExtResource("1_lotmn")
 seedVal = 8
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_qp4so"), SubResource("Resource_actsh"), SubResource("Resource_o0skd"), SubResource("Resource_6fqji"), SubResource("Resource_g8x8n")])
@@ -298,7 +302,7 @@ typings = Array[int]([0, 0])
 surfaceMaterial = SubResource("StandardMaterial3D_actsh")
 
 [node name="InsectoidExample2" type="Node3D" parent="." unique_id=302391789]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.146458, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.146458, 1.477473, 0)
 script = ExtResource("1_lotmn")
 seedVal = 10
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_84nvk"), SubResource("Resource_atoue"), SubResource("Resource_1d17x"), SubResource("Resource_atb77"), SubResource("Resource_servg"), SubResource("Resource_wojyp"), SubResource("Resource_vofoh"), SubResource("Resource_bxy70")])
@@ -307,7 +311,7 @@ surfaceMaterial = SubResource("StandardMaterial3D_o0skd")
 I_Curve = SubResource("Curve_qo5ej")
 
 [node name="LegsExample" type="Node3D" parent="." unique_id=169695221]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.735205, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.735205, 1.1557279, 0)
 script = ExtResource("1_lotmn")
 seedVal = 11
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5")])
@@ -316,7 +320,7 @@ surfaceMaterial = SubResource("StandardMaterial3D_6fqji")
 I_Curve = SubResource("Curve_qo5ej")
 
 [node name="Human" type="Node3D" parent="." unique_id=2093149582]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.531975, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.531975, 0.8374158, 0)
 script = ExtResource("1_lotmn")
 seedVal = 11
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg")])
@@ -325,7 +329,7 @@ surfaceMaterial = SubResource("StandardMaterial3D_g8x8n")
 I_Curve = SubResource("Curve_qo5ej")
 
 [node name="Human2" type="Node3D" parent="." unique_id=1025374154]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.500256, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.500256, 0.8500762, 0)
 script = ExtResource("1_lotmn")
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg"), SubResource("Resource_s0e6g")])
 typings = Array[int]([0, 0])
@@ -335,7 +339,7 @@ TH_Curve = SubResource("Curve_7en3s")
 TH_Curve2 = SubResource("Curve_nxbpk")
 
 [node name="Human3" type="Node3D" parent="." unique_id=594105267]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.427143, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.427143, 1.9415467, 0)
 visible = false
 script = ExtResource("1_lotmn")
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_wplbj"), SubResource("Resource_tp7xj"), SubResource("Resource_d1aj5"), SubResource("Resource_snwtf"), SubResource("Resource_eslcg"), SubResource("Resource_s0e6g")])
@@ -346,7 +350,7 @@ TH_Curve = SubResource("Curve_g8s65")
 TH_Curve2 = SubResource("Curve_0wrkg")
 
 [node name="ArmsExaple" type="Node3D" parent="." unique_id=459219176]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.48697, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.48697, 1.2044433, 0)
 script = ExtResource("1_lotmn")
 seedVal = 10
 parts = Array[ExtResource("2_qo5ej")]([SubResource("Resource_tjev5"), SubResource("Resource_2tj6f")])
@@ -372,3 +376,7 @@ transform = Transform3D(2.2609625, 0, 0, 0, 4.1085253, 0, 0, 0, 0.113764405, 8.1
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceholderLimbDefense" unique_id=671807125]
 transform = Transform3D(-2.1855693e-09, 0.074999996, 0, -0.049999993, -3.278354e-09, 0, 0, 0, 0.94, 0, 0, 0)
 mesh = SubResource("CylinderMesh_4kxuq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=136600499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.625803, 1.4101224, 0)
+mesh = SubResource("BoxMesh_mltvj")

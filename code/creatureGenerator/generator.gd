@@ -106,19 +106,36 @@ var spineThicknessChart : Dictionary[int,float] = {}
 signal GenerationComplete ( bodyType : BodyTypes, partDefinitions : Dictionary[BodyPart,BodyPartTypes])
 
 
+func getSizeAABBstyle() -> float:
+	var low = 99
+	var high = 0
+	for I : VisualInstance3D in find_children("*","VisualInstance3D",true,false):
+		var localLow =  I.get_aabb().position.y
+		if localLow < low:
+			low = localLow
+		var localHigh =  I.get_aabb().end.y
+		if localHigh > high:
+			high = localHigh
+	return abs(low - high)
+
 func get_AABB() -> AABB:
 	var combinedAABB := AABB()
 	
 	var first = true
 	for I : VisualInstance3D in find_children("*","VisualInstance3D",true,false):
-		var box = I.get_aabb() * I.global_transform
+		var relativeTransform = global_transform.affine_inverse() * I.global_transform
+		var box = I.get_aabb()  * relativeTransform
+		
+		
+		
 		if first:
 			combinedAABB = box
 			first = false
 		else:
 			combinedAABB = combinedAABB.merge(box)
-	
+
 	return combinedAABB
+
 
 func getStatTotal(stat) -> int:
 	var sum = 0
@@ -201,6 +218,11 @@ func generate():
 			I.set_surface_override_material(0,surfaceMaterial)
 	
 	GenerationComplete.emit(bodyTypeUsing,definePartsAsLimbs)
+	await get_tree().process_frame
+
+	position.y = get_AABB().position.y #aligns the head to be right below 0
+	position.y += getSizeAABBstyle() * 1.1 #increase by the creature's height, putting it in place
+
 
 func generateWingedBody(limbDefinitions : Dictionary[BodyPart,BodyPartTypes] ):
 	generateFishBody(limbDefinitions)

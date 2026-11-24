@@ -18,8 +18,9 @@ func _process(delta):
 func _physics_process(delta):
 	if !active: return
 	
-	if party == []:
+	if party.size() != 4:
 		var kinapped : Agent = get_tree().get_nodes_in_group("creature").pick_random()
+		print("i got ", kinapped)
 		party.append(kinapped)
 		kinapped.get_parent().remove_child(kinapped)
 		$"../PlayerUI".render(self)

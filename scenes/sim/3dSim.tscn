@@ -198,7 +198,7 @@ biomeTypingRanges = Dictionary[int, Vector2]({
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1321377267]
 environment = SubResource("Environment_otpd7")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1702227021]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=1702227021]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
@@ -244,10 +244,10 @@ debug_color = Color(0.44804335, 0.45152575, 1, 0.41960785)
 [node name="BG" type="TextureRect" parent="." unique_id=4327221]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.26666668)
-offset_left = -5114.0
-offset_top = -4934.0
-offset_right = 5101.0
-offset_bottom = 4871.0
+offset_left = -5107.0
+offset_top = -4894.0
+offset_right = 5108.0
+offset_bottom = 4911.0
 stretch_mode = 1
 
 [node name="StaticBody2D" type="Node" parent="." unique_id=466642804]
@@ -345,23 +345,23 @@ text = "H"
 [node name="PlayerUI" type="CanvasLayer" parent="." unique_id=95889918]
 script = ExtResource("17_72off")
 
-[node name="PanelContainer" type="PanelContainer" parent="PlayerUI" unique_id=244122172]
+[node name="Label" type="Label" parent="PlayerUI" unique_id=1171079513]
 offset_left = 10.0
-offset_top = 107.0
+offset_top = 39.0
 offset_right = 163.0
-offset_bottom = 548.0
+offset_bottom = 62.0
+text = "party"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PlayerUI" unique_id=244122172]
+offset_left = 20.0
+offset_top = 67.0
+offset_right = 153.0
+offset_bottom = 92.0
 
 [node name="PartyArea" type="VBoxContainer" parent="PlayerUI/PanelContainer" unique_id=1771108469]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Label" type="Label" parent="PlayerUI" unique_id=1171079513]
-offset_left = 11.0
-offset_top = 81.0
-offset_right = 163.0
-offset_bottom = 104.0
-text = "party"
-horizontal_alignment = 1
 
 [node name="CreatureDisplayHandler" type="Node3D" parent="." unique_id=1202184797]
 script = ExtResource("16_yfoyy")

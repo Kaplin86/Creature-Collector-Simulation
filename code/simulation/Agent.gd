@@ -159,8 +159,9 @@ func drop() -> bool:
 var _hasGenerated = false
 
 @onready var visualIndicator := Sprite3D.new()
-
+var _doReady = true
 func _ready():
+	if !_doReady: return
 	GlobalVars._agentsMadeThisMinute += 1
 	if GlobalVars._agentsMadeThisMinute > GlobalVars.maxReproductionCount:
 		queue_free()
@@ -246,8 +247,8 @@ func doVisual():
 	visualGenerator.parts = parts
 	visualGenerator.typings = getTyping()
 	visualGenerator.generate()
-	await get_tree().process_frame
-	visualGenerator.global_position.y += visualGenerator.get_AABB().size.y * 0.02
+	#await get_tree().process_frame
+	#visualGenerator.global_position.y += visualGenerator.get_AABB().size.y * 0.02
 	_hasGenerated = true
 	
 
@@ -263,8 +264,8 @@ func updateLevelHashes():
 	_lastHashLevel = level
 
 func _exit_tree():
-	_spatialGrid.removeEntity(self)
-	_sectioner.removeAgent(self)
+	if _spatialGrid: _spatialGrid.removeEntity(self)
+	if _sectioner: _sectioner.removeAgent(self)
 
 ## Returns the typing of the first two moves. Will return only one if there is one move, or both moves share a type.
 ## For some reason the docs on this are consistently getting bugged. It returns a typing from the [enum GlobalVars.Typings]
