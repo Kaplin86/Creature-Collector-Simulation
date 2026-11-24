@@ -218,3 +218,27 @@ func _attack_battle_press():
 	)
 	
 	#turnOver.emit()
+
+func attemptToCatch(agent : Agent):
+	var metric = (3 * agent._HPHash - 2 * agent.HP) / (3 * agent._HPHash)
+	metric *= max((30 - agent.level) / 10,1)
+	
+	if randf() <= metric:
+		return true
+	
+	return false
+
+
+func _capture_battle():
+	$Battle/BasicButtons.visible = false
+	var catch = attemptToCatch(currentAlly)
+	await get_tree().create_timer(1).timeout
+	if catch:
+		$Battle.visible = false
+		inBattle = false
+		currentEnemy.get_parent().remove_child(currentEnemy)
+		%PlayerCharacter.addToParty(currentEnemy)
+		get_tree().paused = false
+		render(%PlayerCharacter)
+	else:
+		turnOver.emit()

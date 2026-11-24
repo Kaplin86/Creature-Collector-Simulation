@@ -705,4 +705,5 @@ vertical_alignment = 1
 [connection signal="file_selected" from="CanvasLayer/Button/FileDialog" to="CanvasLayer/Button" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="PlayerUI/Battle/BasicButtons/Attack" to="PlayerUI" method="_attack_battle_press"]
+[connection signal="pressed" from="PlayerUI/Battle/BasicButtons/Capture" to="PlayerUI" method="_capture_battle"]
 [connection signal="pressed" from="PlayerUI/Battle/BasicButtons/Flee" to="PlayerUI" method="_flee_battle_press"]
