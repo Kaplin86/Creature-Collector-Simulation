@@ -111,13 +111,15 @@ func doStarterPrompt():
 				I.level = 5
 				%PlayerCharacter.addToParty(I)
 				render(%PlayerCharacter)
-				doBattle(%PlayerCharacter, get_tree().get_nodes_in_group("creature").pick_random())
+				#doBattle(%PlayerCharacter, get_tree().get_nodes_in_group("creature").pick_random())
 		)
 
 var currentAlly : Agent # the current ally in battle
 var currentEnemy : Agent
 func doBattle(player : Player, enemy : Agent):
+	
 	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	inBattle = true
 	currentAlly = player.party[0]
 	currentEnemy = enemy

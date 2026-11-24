@@ -9,13 +9,32 @@ var mouse_sensitivity = 0.002
 @export var party : Array[Agent] = []
 var starterPrompted = false
 
+@onready var raycast = RayCast3D.new()
+
 func _process(delta):
 	$Camera3D.current = active
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		active = false
+	
+	if active:
+		#raycast.position = $Camera3D.position
+		raycast.global_position = $Camera3D.global_position
+		raycast.global_rotation = $Camera3D.global_rotation
+		if raycast.get_collider() is Agent:
+			$Battle.visible = true
+			if Input.is_action_just_pressed("interact"):
+				$"../PlayerUI".doBattle(self,raycast.get_collider())
+		else:
+			$Battle.visible = false
+	
 
+func _ready():
+	add_child(raycast)
+	raycast.position = $Camera3D.position
+	raycast.collision_mask = 3
+	raycast.target_position = Vector3(0, 0, -10)
 
 func _physics_process(delta):
 	if !active: return

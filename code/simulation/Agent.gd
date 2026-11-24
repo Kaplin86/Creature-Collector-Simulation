@@ -218,6 +218,13 @@ func _ready():
 	newHitbox.shape = circle
 	collision_mask = 2
 	
+	var NewerHitbox = CollisionShape3D.new()
+	NewerHitbox.position = Vector3(0,1.5,0)
+	add_child(NewerHitbox)
+	var Newcircle = SphereShape3D.new()
+	Newcircle.radius = 1
+	NewerHitbox.shape = Newcircle
+	
 	processingTime = (Time.get_ticks_usec() - startTime) / 1000.0
 	GlobalVars.readySamples.get_or_add("hitboxes",[]).append(processingTime)
 	

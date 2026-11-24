@@ -510,6 +510,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Battle" type="Control" parent="PlayerUI" unique_id=255657427]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -680,6 +681,24 @@ shape = SubResource("CapsuleShape3D_mltvj")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerCharacter" unique_id=1564643819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37567997, -0.39882433)
+
+[node name="Battle" type="Label" parent="PlayerCharacter" unique_id=1729374289]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "[E]
+Battle?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="value_changed" from="CanvasLayer/Panel/HSlider" to="CanvasLayer/Panel/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
