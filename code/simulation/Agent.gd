@@ -53,9 +53,9 @@ enum Diets {
 ## The list of Moves a creature has. At max, it can have 4
 @export var moveSet : Array[Move] = []
 
-@onready var _spatialGrid : SpatialGrid = get_parent().get_node("SpatialGrid")
-@onready var _sectioner = get_parent().get_node("CreatureRunningSectioner")
-@onready var _speciesHandler : SpeciesHandler = get_parent().get_node("SpeciesHandler")
+@onready var _spatialGrid : SpatialGrid = get_parent().get_node_or_null("SpatialGrid")
+@onready var _sectioner = get_parent().get_node_or_null("CreatureRunningSectioner")
+@onready var _speciesHandler : SpeciesHandler = get_parent().get_node_or_null("SpeciesHandler")
 
 ## A boolean to signify if the agent is looking for a mate.
 var lookingForMate := false
@@ -250,8 +250,32 @@ func doVisual():
 	#await get_tree().process_frame
 	#visualGenerator.global_position.y += visualGenerator.get_AABB().size.y * 0.02
 	_hasGenerated = true
-	
+	nameMoves()
 
+## Changes the name value on all the attacks
+func nameMoves():
+	seed(species)
+	var currentBodyparts = visualGenerator._partHash.values()
+	
+	var physicalMoveNames = ["Slam","Shove"]
+	var specialMoveNames = ["Beam","Spell","Shuriken","Dance","Magic","Shot"]
+	
+	if visualGenerator.BodyPartTypes.Arm in currentBodyparts:
+		physicalMoveNames.append_array(["Punch","Flick","Swipe","Jab"])
+	if visualGenerator.BodyPartTypes.Leg in currentBodyparts:
+		physicalMoveNames.append_array(["Kick","Stomp"])
+	
+	for I in moveSet:
+		var nameStart = GlobalVars.Typings.find_key(I.typing) + " "
+		if I.damageType == I.DamageTypes.Physical:
+			var chosen = physicalMoveNames.pick_random()
+			nameStart += chosen
+			physicalMoveNames.erase(chosen)
+		else:
+			var chosen = specialMoveNames.pick_random()
+			nameStart += chosen
+			specialMoveNames.erase(chosen)
+		I.name = nameStart
 
 ## To save on resources, passively needed values (such as BST, HP, Special Defense and Speed) are
 ## stored as hash variables rather than being recalculated every frame.[br]

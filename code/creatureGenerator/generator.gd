@@ -177,7 +177,7 @@ func getPartsWithHighestStat(stat, startingArray = null) -> Array[BodyPart]:
 		if valid: partsReturned.append(I)
 	return partsReturned
 
-
+var _partHash : Dictionary[BodyPart,BodyPartTypes]
 func generate():
 	seed(seedVal)
 
@@ -185,6 +185,7 @@ func generate():
 	
 	var definePartsAsLimbs := defineLimbs()
 	var bodyTypeUsing := defineBodyType(definePartsAsLimbs)
+	_partHash = definePartsAsLimbs
 	#print(BodyPartTypes.keys()[definePartsAsLimbs.values()[0]])
 	
 	if bodyTypeUsing == BodyTypes.Round:

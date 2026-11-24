@@ -46,10 +46,14 @@ func _physics_process(delta):
 		velocity.y = 0
 	
 	move_and_slide()
-	
-	
-		
 
+func addToParty(creature : Agent):
+	creature.updateLevelHashes()
+	creature.HP = creature._HPHash
+	creature.visualGenerator = CreatureGeneratorNode.new()
+	creature.visualGenerator.surfaceMaterial.albedo_color = %SpeciesHandler.Species[creature.species].color
+	creature.doVisual()
+	party.append(creature)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:

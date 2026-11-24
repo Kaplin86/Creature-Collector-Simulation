@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://qp1l0a00d7q7"]
+
+[ext_resource type="Script" uid="uid://b3bb2mh70ookc" path="res://code/UI/agentDisplayBattle.gd" id="1_y4act"]
+
+[node name="PanelContainer" type="PanelContainer" unique_id=456493762]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y4act")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=67147960]
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="VBoxContainer" unique_id=387391706]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NAME" type="Label" parent="VBoxContainer/Row1" unique_id=459890893]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Creature Name"
+
+[node name="LV" type="Label" parent="VBoxContainer/Row1" unique_id=950051791]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LV.1"
+horizontal_alignment = 2
+
+[node name="HPBAR" type="ProgressBar" parent="VBoxContainer" unique_id=1490305277]
+layout_mode = 2
+size_flags_vertical = 2

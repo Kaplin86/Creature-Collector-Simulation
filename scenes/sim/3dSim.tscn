@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2qexxfc81xxv" path="res://simulatorscene.gd" id="1_s80ek"]
 [ext_resource type="Script" uid="uid://3ajv3eiqwxrm" path="res://code/simulation/partResource.gd" id="2_3e45q"]
-[ext_resource type="Script" uid="uid://dw7opa0wcldui" path="res://code/simulation/behaviorGenes/basicGene.gd" id="3_ym1nq"]
+[ext_resource type="Script" uid="uid://dw7opa0wcldui" path="res://code/simulation/behaviorGenes/basicGene.gd" id="3_dxu0k"]
 [ext_resource type="Script" uid="uid://dik3rlumbu1em" path="res://code/simulation/behaviorGenes/basicHunt.gd" id="4_w2ain"]
 [ext_resource type="Script" uid="uid://byy7l3dkx816i" path="res://code/simulation/spatial_grid.gd" id="4_wjc0w"]
 [ext_resource type="Script" uid="uid://b7avj5tkibsm1" path="res://code/simulation/behaviorGenes/matingGene.gd" id="5_km68o"]
@@ -19,7 +19,10 @@
 [ext_resource type="Script" uid="uid://c7fc7oc8hryxy" path="res://code/UI/creature_display_handler.gd" id="16_yfoyy"]
 [ext_resource type="Script" uid="uid://cfsh5iuxcsp00" path="res://code/UI/playerUIManager.gd" id="17_72off"]
 [ext_resource type="PackedScene" uid="uid://6y433bmh1127" path="res://scenes/ui/agentDisplay.tscn" id="17_y1ygo"]
+[ext_resource type="Texture2D" uid="uid://cv32qjhtrm6yp" path="res://art/battleBackground.PNG" id="18_bihjm"]
 [ext_resource type="Script" uid="uid://b7rnys7i2bk71" path="res://code/playerRelating/playerMain.gd" id="19_8x4oj"]
+[ext_resource type="Texture2D" uid="uid://nfbxld78idkp" path="res://art/50.png" id="19_dxu0k"]
+[ext_resource type="PackedScene" uid="uid://qp1l0a00d7q7" path="res://scenes/ui/agentDisplayBattle.tscn" id="20_dxu0k"]
 
 [sub_resource type="Resource" id="Resource_yfoyy"]
 resource_local_to_scene = true
@@ -156,6 +159,114 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bihjm"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.101960786, 0.101960786, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxu0k"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.46209204, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oewu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pnwc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 1, 0.0627451, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ixp0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.87058824, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pkkn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22352941, 0.7137255, 0.22352941, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdyob"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3g7hr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0.627451, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aremp"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22352941, 0.22352941, 0.7490196, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfoyy"]
 render_priority = 1
 transparency = 1
@@ -190,7 +301,7 @@ radius = 0.8330078
 script = ExtResource("1_s80ek")
 startingTreeCount = 500
 basicBodyPart = Array[ExtResource("2_3e45q")]([SubResource("Resource_yfoyy"), SubResource("Resource_y1ygo"), SubResource("Resource_8x4oj"), SubResource("Resource_72off"), SubResource("Resource_bvgn5")])
-startingGenes = Array[ExtResource("3_ym1nq")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e"), SubResource("Resource_a5t8r"), SubResource("Resource_pa1np"), SubResource("Resource_ggqyc")])
+startingGenes = Array[ExtResource("3_dxu0k")]([SubResource("Resource_e02ve"), SubResource("Resource_jcwse"), SubResource("Resource_fei7e"), SubResource("Resource_a5t8r"), SubResource("Resource_pa1np"), SubResource("Resource_ggqyc")])
 sizeX = 500
 sizeY = 500
 mutationLevel = 9
@@ -355,6 +466,7 @@ size_flags_horizontal = 3
 text = "H"
 
 [node name="PlayerUI" type="CanvasLayer" parent="." unique_id=95889918]
+process_mode = 3
 script = ExtResource("17_72off")
 
 [node name="Label" type="Label" parent="PlayerUI" unique_id=1171079513]
@@ -376,6 +488,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Starters" type="Panel" parent="PlayerUI" unique_id=484320713]
+visible = false
 anchors_preset = -1
 anchor_left = 0.20572917
 anchor_top = 0.20100309
@@ -395,6 +508,144 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Battle" type="Control" parent="PlayerUI" unique_id=255657427]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="PlayerUI/Battle" unique_id=269084222]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_bihjm")
+metadata/_edit_use_anchors_ = true
+
+[node name="50" type="Sprite2D" parent="PlayerUI/Battle" unique_id=829815930]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(282, 601.00006)
+scale = Vector2(16.659328, 1.5603018)
+texture = ExtResource("19_dxu0k")
+
+[node name="51" type="Sprite2D" parent="PlayerUI/Battle" unique_id=1502566129]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(945, 410)
+scale = Vector2(7.248189, 0.46304816)
+texture = ExtResource("19_dxu0k")
+
+[node name="Ally" type="TextureRect" parent="PlayerUI/Battle" unique_id=2046630854]
+layout_mode = 0
+offset_left = -83.0
+offset_top = 193.0
+offset_right = 571.9077
+offset_bottom = 805.0
+offset_transform_enabled = true
+expand_mode = 2
+
+[node name="Foe" type="TextureRect" parent="PlayerUI/Battle" unique_id=1199581894]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 194.0
+offset_right = 1091.0
+offset_bottom = 470.0
+offset_transform_enabled = true
+expand_mode = 2
+
+[node name="BasicButtons" type="HBoxContainer" parent="PlayerUI/Battle" unique_id=1856005139]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 572.0
+offset_right = 1119.0
+offset_bottom = 621.0
+
+[node name="Attack" type="Button" parent="PlayerUI/Battle/BasicButtons" unique_id=1712942660]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.12955844, 0.12955847, 0.12955844, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_bihjm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dxu0k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7oewu")
+text = "Attack"
+
+[node name="Switch" type="Button" parent="PlayerUI/Battle/BasicButtons" unique_id=120112771]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.12955844, 0.12955847, 0.12955844, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_1pnwc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ixp0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5pkkn")
+text = "Switch"
+
+[node name="Capture" type="Button" parent="PlayerUI/Battle/BasicButtons" unique_id=497132845]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.12955844, 0.12955847, 0.12955844, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_cdyob")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3g7hr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aremp")
+text = "Capture"
+
+[node name="Flee" type="Button" parent="PlayerUI/Battle/BasicButtons" unique_id=1323193347]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.12955844, 0.12955847, 0.12955844, 1)
+text = "Flee"
+
+[node name="Moves" type="HBoxContainer" parent="PlayerUI/Battle" unique_id=2063934962]
+visible = false
+layout_mode = 0
+offset_left = 591.0
+offset_top = 572.0
+offset_right = 1119.0
+offset_bottom = 621.0
+alignment = 2
+
+[node name="AllyDisplay" parent="PlayerUI/Battle" unique_id=456493762 instance=ExtResource("20_dxu0k")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 153.0
+offset_top = 261.0
+offset_right = 396.0
+offset_bottom = 321.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="EnemyDisplay" parent="PlayerUI/Battle" unique_id=1196123772 instance=ExtResource("20_dxu0k")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 829.0
+offset_top = 148.0
+offset_right = 1072.0
+offset_bottom = 208.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="CreatureDisplayHandler" type="Node3D" parent="." unique_id=1202184797]
 script = ExtResource("16_yfoyy")
@@ -434,3 +685,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37567997, -0.39882433)
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
 [connection signal="file_selected" from="CanvasLayer/Button/FileDialog" to="CanvasLayer/Button" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PlayerUI/Battle/BasicButtons/Attack" to="PlayerUI" method="_attack_battle_press"]
+[connection signal="pressed" from="PlayerUI/Battle/BasicButtons/Flee" to="PlayerUI" method="_flee_battle_press"]
