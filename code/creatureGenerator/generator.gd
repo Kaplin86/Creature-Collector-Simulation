@@ -218,7 +218,7 @@ func generate():
 			I.set_surface_override_material(0,surfaceMaterial)
 	
 	GenerationComplete.emit(bodyTypeUsing,definePartsAsLimbs)
-	await get_tree().process_frame
+	#await get_tree().process_frame
 
 	position.y = get_AABB().position.y #aligns the head to be right below 0
 	position.y += getSizeAABBstyle() * 1.1 #increase by the creature's height, putting it in place
