@@ -487,6 +487,10 @@ offset_bottom = 92.0
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerUI/PanelContainer/PartyArea" unique_id=536207132]
+custom_minimum_size = Vector2(0, 125.595)
+layout_mode = 2
+
 [node name="Starters" type="Panel" parent="PlayerUI" unique_id=484320713]
 visible = false
 anchors_preset = -1
@@ -624,6 +628,14 @@ offset_right = 1119.0
 offset_bottom = 621.0
 alignment = 2
 
+[node name="CharactersToSwitch" type="HBoxContainer" parent="PlayerUI/Battle" unique_id=1340342634]
+visible = false
+layout_mode = 0
+offset_left = 486.0
+offset_top = 484.0
+offset_right = 1119.0
+offset_bottom = 621.0
+
 [node name="AllyDisplay" parent="PlayerUI/Battle" unique_id=456493762 instance=ExtResource("20_dxu0k")]
 layout_mode = 0
 anchors_preset = 0
@@ -705,5 +717,6 @@ vertical_alignment = 1
 [connection signal="file_selected" from="CanvasLayer/Button/FileDialog" to="CanvasLayer/Button" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="PlayerUI/Battle/BasicButtons/Attack" to="PlayerUI" method="_attack_battle_press"]
+[connection signal="pressed" from="PlayerUI/Battle/BasicButtons/Switch" to="PlayerUI" method="_switch_battle"]
 [connection signal="pressed" from="PlayerUI/Battle/BasicButtons/Capture" to="PlayerUI" method="_capture_battle"]
 [connection signal="pressed" from="PlayerUI/Battle/BasicButtons/Flee" to="PlayerUI" method="_flee_battle_press"]

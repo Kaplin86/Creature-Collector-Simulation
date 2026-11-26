@@ -9,6 +9,11 @@ func render(player : Player):
 		var newViewport = createAgentViewport(creature,true)
 		container.add_child(newViewport)
 		%PartyArea.add_child(container)
+		var newBar = ProgressBar.new()
+		container.add_child(newBar)
+		newBar.custom_minimum_size.x = %PartyArea.size.x
+		newBar.value = creature.HP
+		newBar.max_value = creature._HPHash
 
 var inBattle = false
 
@@ -116,13 +121,18 @@ func doStarterPrompt():
 
 var currentAlly : Agent # the current ally in battle
 var currentEnemy : Agent
+var currentPlayer : Player
 func doBattle(player : Player, enemy : Agent):
-	
 	get_tree().paused = true
+	var beforeSpeed = Engine.time_scale
+	Engine.time_scale = 1
+	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	inBattle = true
 	currentAlly = player.party[0]
+	currentPlayer = player
 	currentEnemy = enemy
+	$Battle.visible = true
 	$Battle.visible = true
 	var allyviewport = createAgentViewport(currentAlly,false,Vector3(0,deg_to_rad(-60),0),Vector3(0,-1,-5))
 	add_child(allyviewport)
@@ -132,6 +142,7 @@ func doBattle(player : Player, enemy : Agent):
 	$Battle/Foe.texture = enemyviewport.get_texture()
 	$Battle/AllyDisplay.render(currentAlly)
 	$Battle/EnemyDisplay.render(enemy)
+	$Battle/BasicButtons.visible = true
 	
 	while inBattle:
 		await turnOver
@@ -152,6 +163,8 @@ func doBattle(player : Player, enemy : Agent):
 	$Battle.visible = false
 	inBattle = false
 	get_tree().paused = false
+	render(currentPlayer)
+	Engine.time_scale = beforeSpeed
 
 var dt = 0.0
 func _process(delta):
@@ -161,9 +174,10 @@ func _process(delta):
 
 
 func _flee_battle_press():
-	$Battle.visible = false
+	#$Battle.visible = false
 	inBattle = false
-	get_tree().paused = false
+	turnOver.emit()
+	#get_tree().paused = false
 
 func doNumberFloatEffect(number, pos):
 	var newNumber = Label.new()
@@ -210,7 +224,7 @@ func _attack_battle_press():
 	
 	var newButton = Button.new()
 	$Battle/Moves.add_child(newButton)
-	newButton.text = "back"
+	newButton.text = "Back"
 	newButton.pressed.connect(
 		func():
 			$Battle/Moves.visible = false
@@ -242,3 +256,45 @@ func _capture_battle():
 		render(%PlayerCharacter)
 	else:
 		turnOver.emit()
+
+
+func _switch_battle():
+	for I in $Battle/CharactersToSwitch.get_children(): I.queue_free()
+	
+	$Battle/BasicButtons.visible = false
+	$Battle/CharactersToSwitch.visible = true
+	
+	for I in currentPlayer.party:
+		var newButton : Button = Button.new()
+		var viewport = createAgentViewport(I,true)
+		viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+		newButton.add_child(viewport)
+		newButton.icon = viewport.get_texture()
+		newButton.expand_icon = true
+		newButton.custom_minimum_size.x = 137.0
+		if I == currentAlly: newButton.disabled = true
+		$Battle/CharactersToSwitch.add_child(newButton)
+		newButton.pressed.connect( func():
+				currentAlly = I
+				$Battle/CharactersToSwitch.visible = false
+				var allyviewport = createAgentViewport(currentAlly,false,Vector3(0,deg_to_rad(-60),0),Vector3(0,-1,-5))
+				add_child(allyviewport)
+				var tween = create_tween()
+				tween.tween_property($Battle/Ally,"modulate",Color.TRANSPARENT,1)
+				tween.tween_property($Battle/Ally,"modulate",Color.WHITE,1)
+				await get_tree().create_timer(1).timeout
+				$Battle/Ally.texture = allyviewport.get_texture()
+				$Battle/AllyDisplay.render(currentAlly)
+				await get_tree().create_timer(1).timeout
+				turnOver.emit()
+		)
+	
+	var newButton = Button.new()
+	$Battle/CharactersToSwitch.add_child(newButton)
+	newButton.text = "Back"
+	newButton.pressed.connect(
+		func():
+			$Battle/CharactersToSwitch.visible = false
+			$Battle/BasicButtons.visible = true
+	)
+	

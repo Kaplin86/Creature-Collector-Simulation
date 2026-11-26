@@ -33,8 +33,9 @@ func check():
 			if I.species == C:
 				count += 1
 				if count == 1:
-					if I.species in range(I._speciesHandler.Species.size()):
-						report["specieData"] = I._speciesHandler.Species[I.species].duplicate(true)
+					if I._speciesHandler:
+						if I.species in range(I._speciesHandler.Species.size()):
+							report["specieData"] = I._speciesHandler.Species[I.species].duplicate(true)
 				averageBST += I.calculateBST()
 				averageLevel += I.level
 				for E in stats:

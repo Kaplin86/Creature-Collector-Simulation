@@ -52,8 +52,8 @@ func _physics_process(delta):
 	var dir = (transform.basis * Vector3(input_dir.x,0,input_dir.y)).normalized()
 	
 	if dir:
-		velocity.x = dir.x * SPEED
-		velocity.z = dir.z * SPEED
+		velocity.x = dir.x * SPEED / Engine.time_scale
+		velocity.z = dir.z * SPEED / Engine.time_scale
 		if mouseModeOverwrite: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else:
 		velocity.x = move_toward(velocity.x,0,SPEED)
